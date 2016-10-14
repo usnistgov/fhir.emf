@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated fhir-all -->
+      <package
+            uri="http://www.w3.org/1999/xhtml"
+            class="org.w3._1999.xhtml.XhtmlPackage"
+            genModel="model/fhir.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated fhir-all -->
+      <parser
+            type="xhtml"
+            class="org.w3._1999.xhtml.util.XhtmlResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated fhir-all -->
+      <package
+            uri="http://www.w3.org/XML/1998/namespace"
+            class="org.w3.xml._1998.namespace.NamespacePackage"
+            genModel="model/fhir.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated fhir-all -->
+      <parser
+            type="namespace"
+            class="org.w3.xml._1998.namespace.util.NamespaceResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated fhir-all -->
+      <package
+            uri="http://hl7.org/fhir"
+            class="org.hl7.fhir.FhirPackage"
+            genModel="model/fhir.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated fhir-all -->
+      <parser
+            type="fhir"
+            class="org.hl7.fhir.util.FhirResourceFactoryImpl"/>
+   </extension>
+
+</plugin>
