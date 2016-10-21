@@ -479,6 +479,8 @@ import org.hl7.fhir.OrderStatusList;
 import org.hl7.fhir.OrderWhen;
 import org.hl7.fhir.Organization;
 import org.hl7.fhir.OrganizationContact;
+import org.hl7.fhir.Parameters;
+import org.hl7.fhir.ParametersParameter;
 import org.hl7.fhir.ParticipantRequired;
 import org.hl7.fhir.ParticipantRequiredList;
 import org.hl7.fhir.ParticipantStatus;
@@ -1066,6 +1068,8 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 			case FhirPackage.ORDER_WHEN: return createOrderWhen();
 			case FhirPackage.ORGANIZATION: return createOrganization();
 			case FhirPackage.ORGANIZATION_CONTACT: return createOrganizationContact();
+			case FhirPackage.PARAMETERS: return createParameters();
+			case FhirPackage.PARAMETERS_PARAMETER: return createParametersParameter();
 			case FhirPackage.PARTICIPANT_REQUIRED: return createParticipantRequired();
 			case FhirPackage.PARTICIPANT_STATUS: return createParticipantStatus();
 			case FhirPackage.PARTICIPATION_STATUS: return createParticipationStatus();
@@ -6014,6 +6018,26 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	public OrganizationContact createOrganizationContact() {
 		OrganizationContactImpl organizationContact = new OrganizationContactImpl();
 		return organizationContact;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameters createParameters() {
+		ParametersImpl parameters = new ParametersImpl();
+		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParametersParameter createParametersParameter() {
+		ParametersParameterImpl parametersParameter = new ParametersParameterImpl();
+		return parametersParameter;
 	}
 
 	/**

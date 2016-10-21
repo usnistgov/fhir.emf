@@ -3244,6 +3244,24 @@ public interface FhirFactory extends EFactory {
 	OrganizationContact createOrganizationContact();
 
 	/**
+	 * Returns a new object of class '<em>Parameters</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameters</em>'.
+	 * @generated
+	 */
+	Parameters createParameters();
+
+	/**
+	 * Returns a new object of class '<em>Parameters Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameters Parameter</em>'.
+	 * @generated
+	 */
+	ParametersParameter createParametersParameter();
+
+	/**
 	 * Returns a new object of class '<em>Participant Required</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

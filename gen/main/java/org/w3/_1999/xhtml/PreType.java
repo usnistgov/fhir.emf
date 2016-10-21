@@ -3,6 +3,7 @@
 package org.w3._1999.xhtml;
 
 import java.util.List;
+import org.eclipse.emf.ecore.xml.namespace.SpaceType;
 
 /**
  * <!-- begin-user-doc -->
@@ -524,13 +525,13 @@ public interface PreType extends PreContent {
 	 * @see org.eclipse.emf.ecore.xml.namespace.SpaceType
 	 * @see #isSetSpace()
 	 * @see #unsetSpace()
-	 * @see #setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType)
+	 * @see #setSpace(SpaceType)
 	 * @see org.w3._1999.xhtml.XhtmlPackage#getPreType_Space()
 	 * @model default="preserve" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='space' namespace='http://www.w3.org/XML/1998/namespace'"
 	 * @generated
 	 */
-	org.eclipse.emf.ecore.xml.namespace.SpaceType getSpace();
+	SpaceType getSpace();
 
 	/**
 	 * Sets the value of the '{@link org.w3._1999.xhtml.PreType#getSpace <em>Space</em>}' attribute.
@@ -543,7 +544,7 @@ public interface PreType extends PreContent {
 	 * @see #getSpace()
 	 * @generated
 	 */
-	void setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType value);
+	void setSpace(SpaceType value);
 
 	/**
 	 * Unsets the value of the '{@link org.w3._1999.xhtml.PreType#getSpace <em>Space</em>}' attribute.
@@ -551,7 +552,7 @@ public interface PreType extends PreContent {
 	 * <!-- end-user-doc -->
 	 * @see #isSetSpace()
 	 * @see #getSpace()
-	 * @see #setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType)
+	 * @see #setSpace(SpaceType)
 	 * @generated
 	 */
 	void unsetSpace();
@@ -563,7 +564,7 @@ public interface PreType extends PreContent {
 	 * @return whether the value of the '<em>Space</em>' attribute is set.
 	 * @see #unsetSpace()
 	 * @see #getSpace()
-	 * @see #setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType)
+	 * @see #setSpace(SpaceType)
 	 * @generated
 	 */
 	boolean isSetSpace();

@@ -5,6 +5,7 @@ package org.w3._1999.xhtml;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.xml.namespace.SpaceType;
 
 /**
  * <!-- begin-user-doc -->
@@ -264,13 +265,13 @@ public interface StyleType extends EObject {
 	 * @see org.eclipse.emf.ecore.xml.namespace.SpaceType
 	 * @see #isSetSpace()
 	 * @see #unsetSpace()
-	 * @see #setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType)
+	 * @see #setSpace(SpaceType)
 	 * @see org.w3._1999.xhtml.XhtmlPackage#getStyleType_Space()
 	 * @model default="preserve" unsettable="true"
 	 *        extendedMetaData="kind='attribute' name='space' namespace='http://www.w3.org/XML/1998/namespace'"
 	 * @generated
 	 */
-	org.eclipse.emf.ecore.xml.namespace.SpaceType getSpace();
+	SpaceType getSpace();
 
 	/**
 	 * Sets the value of the '{@link org.w3._1999.xhtml.StyleType#getSpace <em>Space</em>}' attribute.
@@ -283,7 +284,7 @@ public interface StyleType extends EObject {
 	 * @see #getSpace()
 	 * @generated
 	 */
-	void setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType value);
+	void setSpace(SpaceType value);
 
 	/**
 	 * Unsets the value of the '{@link org.w3._1999.xhtml.StyleType#getSpace <em>Space</em>}' attribute.
@@ -291,7 +292,7 @@ public interface StyleType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @see #isSetSpace()
 	 * @see #getSpace()
-	 * @see #setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType)
+	 * @see #setSpace(SpaceType)
 	 * @generated
 	 */
 	void unsetSpace();
@@ -303,7 +304,7 @@ public interface StyleType extends EObject {
 	 * @return whether the value of the '<em>Space</em>' attribute is set.
 	 * @see #unsetSpace()
 	 * @see #getSpace()
-	 * @see #setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType)
+	 * @see #setSpace(SpaceType)
 	 * @generated
 	 */
 	boolean isSetSpace();

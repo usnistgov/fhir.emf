@@ -366,6 +366,8 @@ import org.hl7.fhir.OrderStatus;
 import org.hl7.fhir.OrderWhen;
 import org.hl7.fhir.Organization;
 import org.hl7.fhir.OrganizationContact;
+import org.hl7.fhir.Parameters;
+import org.hl7.fhir.ParametersParameter;
 import org.hl7.fhir.ParticipantRequired;
 import org.hl7.fhir.ParticipantStatus;
 import org.hl7.fhir.ParticipationStatus;
@@ -2000,6 +2002,14 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOrganizationContact(OrganizationContact object) {
 				return createOrganizationContactAdapter();
+			}
+			@Override
+			public Adapter caseParameters(Parameters object) {
+				return createParametersAdapter();
+			}
+			@Override
+			public Adapter caseParametersParameter(ParametersParameter object) {
+				return createParametersParameterAdapter();
 			}
 			@Override
 			public Adapter caseParticipantRequired(ParticipantRequired object) {
@@ -7618,6 +7628,34 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOrganizationContactAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.hl7.fhir.Parameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.hl7.fhir.Parameters
+	 * @generated
+	 */
+	public Adapter createParametersAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.hl7.fhir.ParametersParameter <em>Parameters Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.hl7.fhir.ParametersParameter
+	 * @generated
+	 */
+	public Adapter createParametersParameterAdapter() {
 		return null;
 	}
 

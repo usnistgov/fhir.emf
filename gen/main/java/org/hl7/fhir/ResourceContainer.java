@@ -2626,30 +2626,30 @@ public interface ResourceContainer extends EObject {
 	void setVisionPrescription(VisionPrescription value);
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' attribute.
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' attribute.
-	 * @see #setParameters(Object)
+	 * @return the value of the '<em>Parameters</em>' containment reference.
+	 * @see #setParameters(Parameters)
 	 * @see org.hl7.fhir.FhirPackage#getResourceContainer_Parameters()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnySimpleType"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='Parameters' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Object getParameters();
+	Parameters getParameters();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ResourceContainer#getParameters <em>Parameters</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.ResourceContainer#getParameters <em>Parameters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parameters</em>' attribute.
+	 * @param value the new value of the '<em>Parameters</em>' containment reference.
 	 * @see #getParameters()
 	 * @generated
 	 */
-	void setParameters(Object value);
+	void setParameters(Parameters value);
 
 } // ResourceContainer

@@ -75,6 +75,7 @@ import org.hl7.fhir.OperationOutcome;
 import org.hl7.fhir.Order;
 import org.hl7.fhir.OrderResponse;
 import org.hl7.fhir.Organization;
+import org.hl7.fhir.Parameters;
 import org.hl7.fhir.Patient;
 import org.hl7.fhir.PaymentNotice;
 import org.hl7.fhir.PaymentReconciliation;
@@ -1181,24 +1182,14 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	protected VisionPrescription visionPrescription;
 
 	/**
-	 * The default value of the '{@link #getParameters() <em>Parameters</em>}' attribute.
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object PARAMETERS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected Object parameters = PARAMETERS_EDEFAULT;
+	protected Parameters parameters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -5135,7 +5126,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getParameters() {
+	public Parameters getParameters() {
 		return parameters;
 	}
 
@@ -5144,11 +5135,33 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameters(Object newParameters) {
-		Object oldParameters = parameters;
+	public NotificationChain basicSetParameters(Parameters newParameters, NotificationChain msgs) {
+		Parameters oldParameters = parameters;
 		parameters = newParameters;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__PARAMETERS, oldParameters, parameters));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__PARAMETERS, oldParameters, newParameters);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParameters(Parameters newParameters) {
+		if (newParameters != parameters) {
+			NotificationChain msgs = null;
+			if (parameters != null)
+				msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__PARAMETERS, null, msgs);
+			if (newParameters != null)
+				msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__PARAMETERS, null, msgs);
+			msgs = basicSetParameters(newParameters, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__PARAMETERS, newParameters, newParameters));
 	}
 
 	/**
@@ -5337,6 +5350,8 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				return basicSetValueSet(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__VISION_PRESCRIPTION:
 				return basicSetVisionPrescription(null, msgs);
+			case FhirPackage.RESOURCE_CONTAINER__PARAMETERS:
+				return basicSetParameters(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -5829,7 +5844,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				setVisionPrescription((VisionPrescription)newValue);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__PARAMETERS:
-				setParameters(newValue);
+				setParameters((Parameters)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -6123,7 +6138,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				setVisionPrescription((VisionPrescription)null);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__PARAMETERS:
-				setParameters(PARAMETERS_EDEFAULT);
+				setParameters((Parameters)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -6324,7 +6339,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 			case FhirPackage.RESOURCE_CONTAINER__VISION_PRESCRIPTION:
 				return visionPrescription != null;
 			case FhirPackage.RESOURCE_CONTAINER__PARAMETERS:
-				return PARAMETERS_EDEFAULT == null ? parameters != null : !PARAMETERS_EDEFAULT.equals(parameters);
+				return parameters != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -6347,8 +6362,6 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 		result.append(medicationOrder);
 		result.append(", questionnaireResponse: ");
 		result.append(questionnaireResponse);
-		result.append(", parameters: ");
-		result.append(parameters);
 		result.append(')');
 		return result.toString();
 	}

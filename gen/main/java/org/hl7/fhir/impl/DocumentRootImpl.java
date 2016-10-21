@@ -88,6 +88,7 @@ import org.hl7.fhir.OperationOutcome;
 import org.hl7.fhir.Order;
 import org.hl7.fhir.OrderResponse;
 import org.hl7.fhir.Organization;
+import org.hl7.fhir.Parameters;
 import org.hl7.fhir.Patient;
 import org.hl7.fhir.PaymentNotice;
 import org.hl7.fhir.PaymentReconciliation;
@@ -193,6 +194,7 @@ import org.hl7.fhir.VisionPrescription;
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getOrderResponse <em>Order Response</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getOrganization <em>Organization</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getPaymentNotice <em>Payment Notice</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getPaymentReconciliation <em>Payment Reconciliation</em>}</li>
@@ -2071,6 +2073,33 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Parameters getParameters() {
+		return (Parameters)getMixed().get(FhirPackage.eINSTANCE.getDocumentRoot_Parameters(), true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParameters(Parameters newParameters, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(FhirPackage.eINSTANCE.getDocumentRoot_Parameters(), newParameters, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParameters(Parameters newParameters) {
+		((FeatureMap.Internal)getMixed()).set(FhirPackage.eINSTANCE.getDocumentRoot_Parameters(), newParameters);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Patient getPatient() {
 		return (Patient)getMixed().get(FhirPackage.eINSTANCE.getDocumentRoot_Patient(), true);
 	}
@@ -2966,6 +2995,8 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return basicSetOrderResponse(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__ORGANIZATION:
 				return basicSetOrganization(null, msgs);
+			case FhirPackage.DOCUMENT_ROOT__PARAMETERS:
+				return basicSetParameters(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__PATIENT:
 				return basicSetPatient(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__PAYMENT_NOTICE:
@@ -3173,6 +3204,8 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return getOrderResponse();
 			case FhirPackage.DOCUMENT_ROOT__ORGANIZATION:
 				return getOrganization();
+			case FhirPackage.DOCUMENT_ROOT__PARAMETERS:
+				return getParameters();
 			case FhirPackage.DOCUMENT_ROOT__PATIENT:
 				return getPatient();
 			case FhirPackage.DOCUMENT_ROOT__PAYMENT_NOTICE:
@@ -3444,6 +3477,9 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return;
 			case FhirPackage.DOCUMENT_ROOT__ORGANIZATION:
 				setOrganization((Organization)newValue);
+				return;
+			case FhirPackage.DOCUMENT_ROOT__PARAMETERS:
+				setParameters((Parameters)newValue);
 				return;
 			case FhirPackage.DOCUMENT_ROOT__PATIENT:
 				setPatient((Patient)newValue);
@@ -3745,6 +3781,9 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 			case FhirPackage.DOCUMENT_ROOT__ORGANIZATION:
 				setOrganization((Organization)null);
 				return;
+			case FhirPackage.DOCUMENT_ROOT__PARAMETERS:
+				setParameters((Parameters)null);
+				return;
 			case FhirPackage.DOCUMENT_ROOT__PATIENT:
 				setPatient((Patient)null);
 				return;
@@ -3977,6 +4016,8 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return getOrderResponse() != null;
 			case FhirPackage.DOCUMENT_ROOT__ORGANIZATION:
 				return getOrganization() != null;
+			case FhirPackage.DOCUMENT_ROOT__PARAMETERS:
+				return getParameters() != null;
 			case FhirPackage.DOCUMENT_ROOT__PATIENT:
 				return getPatient() != null;
 			case FhirPackage.DOCUMENT_ROOT__PAYMENT_NOTICE:

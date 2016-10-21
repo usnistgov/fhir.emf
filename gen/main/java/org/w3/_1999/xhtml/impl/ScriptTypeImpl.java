@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.emf.ecore.xml.namespace.SpaceType;
 import org.w3._1999.xhtml.DeferType;
 import org.w3._1999.xhtml.ScriptType;
 import org.w3._1999.xhtml.XhtmlPackage;
@@ -126,7 +127,7 @@ public class ScriptTypeImpl extends MinimalEObjectImpl.Container implements Scri
 	 * @generated
 	 * @ordered
 	 */
-	protected static final org.eclipse.emf.ecore.xml.namespace.SpaceType SPACE_EDEFAULT = org.eclipse.emf.ecore.xml.namespace.SpaceType.PRESERVE_LITERAL;
+	protected static final SpaceType SPACE_EDEFAULT = SpaceType.PRESERVE_LITERAL;
 
 	/**
 	 * The cached value of the '{@link #getSpace() <em>Space</em>}' attribute.
@@ -136,7 +137,7 @@ public class ScriptTypeImpl extends MinimalEObjectImpl.Container implements Scri
 	 * @generated
 	 * @ordered
 	 */
-	protected org.eclipse.emf.ecore.xml.namespace.SpaceType space = SPACE_EDEFAULT;
+	protected SpaceType space = SPACE_EDEFAULT;
 
 	/**
 	 * This is true if the Space attribute has been set.
@@ -311,7 +312,7 @@ public class ScriptTypeImpl extends MinimalEObjectImpl.Container implements Scri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.eclipse.emf.ecore.xml.namespace.SpaceType getSpace() {
+	public SpaceType getSpace() {
 		return space;
 	}
 
@@ -320,8 +321,8 @@ public class ScriptTypeImpl extends MinimalEObjectImpl.Container implements Scri
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSpace(org.eclipse.emf.ecore.xml.namespace.SpaceType newSpace) {
-		org.eclipse.emf.ecore.xml.namespace.SpaceType oldSpace = space;
+	public void setSpace(SpaceType newSpace) {
+		SpaceType oldSpace = space;
 		space = newSpace == null ? SPACE_EDEFAULT : newSpace;
 		boolean oldSpaceESet = spaceESet;
 		spaceESet = true;
@@ -335,7 +336,7 @@ public class ScriptTypeImpl extends MinimalEObjectImpl.Container implements Scri
 	 * @generated
 	 */
 	public void unsetSpace() {
-		org.eclipse.emf.ecore.xml.namespace.SpaceType oldSpace = space;
+		SpaceType oldSpace = space;
 		boolean oldSpaceESet = spaceESet;
 		space = SPACE_EDEFAULT;
 		spaceESet = false;
@@ -456,7 +457,7 @@ public class ScriptTypeImpl extends MinimalEObjectImpl.Container implements Scri
 				setId((String)newValue);
 				return;
 			case XhtmlPackage.SCRIPT_TYPE__SPACE:
-				setSpace((org.eclipse.emf.ecore.xml.namespace.SpaceType)newValue);
+				setSpace((SpaceType)newValue);
 				return;
 			case XhtmlPackage.SCRIPT_TYPE__SRC:
 				setSrc((String)newValue);

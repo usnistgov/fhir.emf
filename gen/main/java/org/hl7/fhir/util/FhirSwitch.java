@@ -364,6 +364,8 @@ import org.hl7.fhir.OrderStatus;
 import org.hl7.fhir.OrderWhen;
 import org.hl7.fhir.Organization;
 import org.hl7.fhir.OrganizationContact;
+import org.hl7.fhir.Parameters;
+import org.hl7.fhir.ParametersParameter;
 import org.hl7.fhir.ParticipantRequired;
 import org.hl7.fhir.ParticipantStatus;
 import org.hl7.fhir.ParticipationStatus;
@@ -3292,6 +3294,21 @@ public class FhirSwitch<T> extends Switch<T> {
 				T result = caseOrganizationContact(organizationContact);
 				if (result == null) result = caseBackboneElement(organizationContact);
 				if (result == null) result = caseElement(organizationContact);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FhirPackage.PARAMETERS: {
+				Parameters parameters = (Parameters)theEObject;
+				T result = caseParameters(parameters);
+				if (result == null) result = caseResource(parameters);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FhirPackage.PARAMETERS_PARAMETER: {
+				ParametersParameter parametersParameter = (ParametersParameter)theEObject;
+				T result = caseParametersParameter(parametersParameter);
+				if (result == null) result = caseBackboneElement(parametersParameter);
+				if (result == null) result = caseElement(parametersParameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -9784,6 +9801,36 @@ public class FhirSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOrganizationContact(OrganizationContact object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameters</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameters</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameters(Parameters object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameters Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameters Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParametersParameter(ParametersParameter object) {
 		return null;
 	}
 

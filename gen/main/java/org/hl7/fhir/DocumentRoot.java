@@ -87,6 +87,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.hl7.fhir.DocumentRoot#getOrder <em>Order</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentRoot#getOrderResponse <em>Order Response</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentRoot#getOrganization <em>Organization</em>}</li>
+ *   <li>{@link org.hl7.fhir.DocumentRoot#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentRoot#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentRoot#getPaymentNotice <em>Payment Notice</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentRoot#getPaymentReconciliation <em>Payment Reconciliation</em>}</li>
@@ -1866,6 +1867,32 @@ public interface DocumentRoot extends EObject {
 	 * @generated
 	 */
 	void setOrganization(Organization value);
+
+	/**
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * This special resource type is used to represent an operation request and response (operations.html). It has no other use, and there is no RESTful endpoint associated with it.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Parameters</em>' containment reference.
+	 * @see #setParameters(Parameters)
+	 * @see org.hl7.fhir.FhirPackage#getDocumentRoot_Parameters()
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="kind='element' name='Parameters' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Parameters getParameters();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.DocumentRoot#getParameters <em>Parameters</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parameters</em>' containment reference.
+	 * @see #getParameters()
+	 * @generated
+	 */
+	void setParameters(Parameters value);
 
 	/**
 	 * Returns the value of the '<em><b>Patient</b></em>' containment reference.

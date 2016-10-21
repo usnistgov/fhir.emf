@@ -480,6 +480,8 @@ import org.hl7.fhir.OrderStatusList;
 import org.hl7.fhir.OrderWhen;
 import org.hl7.fhir.Organization;
 import org.hl7.fhir.OrganizationContact;
+import org.hl7.fhir.Parameters;
+import org.hl7.fhir.ParametersParameter;
 import org.hl7.fhir.ParticipantRequired;
 import org.hl7.fhir.ParticipantRequiredList;
 import org.hl7.fhir.ParticipantStatus;
@@ -1462,6 +1464,10 @@ public class FhirValidator extends EObjectValidator {
 				return validateOrganization((Organization)value, diagnostics, context);
 			case FhirPackage.ORGANIZATION_CONTACT:
 				return validateOrganizationContact((OrganizationContact)value, diagnostics, context);
+			case FhirPackage.PARAMETERS:
+				return validateParameters((Parameters)value, diagnostics, context);
+			case FhirPackage.PARAMETERS_PARAMETER:
+				return validateParametersParameter((ParametersParameter)value, diagnostics, context);
 			case FhirPackage.PARTICIPANT_REQUIRED:
 				return validateParticipantRequired((ParticipantRequired)value, diagnostics, context);
 			case FhirPackage.PARTICIPANT_STATUS:
@@ -5577,6 +5583,24 @@ public class FhirValidator extends EObjectValidator {
 	 */
 	public boolean validateOrganizationContact(OrganizationContact organizationContact, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(organizationContact, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParameters(Parameters parameters, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(parameters, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParametersParameter(ParametersParameter parametersParameter, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(parametersParameter, diagnostics, context);
 	}
 
 	/**

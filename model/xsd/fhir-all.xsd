@@ -94,6 +94,7 @@ Copyright (c) 2011+, HL7, Inc
   <xs:include schemaLocation="order.xsd"/>
   <xs:include schemaLocation="orderresponse.xsd"/>
   <xs:include schemaLocation="organization.xsd"/>
+  <xs:include schemaLocation="parameters.xsd"/>
   <xs:include schemaLocation="patient.xsd"/>
   <xs:include schemaLocation="paymentnotice.xsd"/>
   <xs:include schemaLocation="paymentreconciliation.xsd"/>
