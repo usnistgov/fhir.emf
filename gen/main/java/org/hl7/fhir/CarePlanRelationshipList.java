@@ -55,7 +55,7 @@ public enum CarePlanRelationshipList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The referenced plan is considered to be part of this plan.
+	 * Includes
 	 * <!-- end-model-doc -->
 	 * @see #INCLUDES
 	 * @model name="includes"
@@ -69,7 +69,7 @@ public enum CarePlanRelationshipList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This plan takes the places of the referenced plan.
+	 * Replaces
 	 * <!-- end-model-doc -->
 	 * @see #REPLACES
 	 * @model name="replaces"
@@ -83,7 +83,7 @@ public enum CarePlanRelationshipList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This plan provides details about how to perform activities defined at a higher level by the referenced plan.
+	 * Fulfills
 	 * <!-- end-model-doc -->
 	 * @see #FULFILLS
 	 * @model name="fulfills"

@@ -16,7 +16,7 @@ package org.hl7.fhir;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.ImplementationGuideResource#getPurpose <em>Purpose</em>}</li>
+ *   <li>{@link org.hl7.fhir.ImplementationGuideResource#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.ImplementationGuideResource#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.ImplementationGuideResource#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.ImplementationGuideResource#getAcronym <em>Acronym</em>}</li>
@@ -31,30 +31,30 @@ package org.hl7.fhir;
  */
 public interface ImplementationGuideResource extends BackboneElement {
 	/**
-	 * Returns the value of the '<em><b>Purpose</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Example</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Why the resource is included in the guide.
+	 * Whether a resource is included in the guide as part of the rules defined by the guide, or just as an example of a resource that conforms to the rules and/or help implementers understand the intent of the guide.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Purpose</em>' containment reference.
-	 * @see #setPurpose(GuideResourcePurpose)
-	 * @see org.hl7.fhir.FhirPackage#getImplementationGuideResource_Purpose()
+	 * @return the value of the '<em>Example</em>' containment reference.
+	 * @see #setExample(org.hl7.fhir.Boolean)
+	 * @see org.hl7.fhir.FhirPackage#getImplementationGuideResource_Example()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='purpose' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='example' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	GuideResourcePurpose getPurpose();
+	org.hl7.fhir.Boolean getExample();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ImplementationGuideResource#getPurpose <em>Purpose</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ImplementationGuideResource#getExample <em>Example</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Purpose</em>' containment reference.
-	 * @see #getPurpose()
+	 * @param value the new value of the '<em>Example</em>' containment reference.
+	 * @see #getExample()
 	 * @generated
 	 */
-	void setPurpose(GuideResourcePurpose value);
+	void setExample(org.hl7.fhir.Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.

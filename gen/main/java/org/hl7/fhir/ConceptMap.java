@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.ConceptMap#getSourceReference <em>Source Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ConceptMap#getTargetUri <em>Target Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.ConceptMap#getTargetReference <em>Target Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.ConceptMap#getElement <em>Element</em>}</li>
+ *   <li>{@link org.hl7.fhir.ConceptMap#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getConceptMap()
@@ -155,13 +155,13 @@ public interface ConceptMap extends DomainResource {
 	 * The status of the concept map.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(Code)
+	 * @see #setStatus(ConformanceResourceStatus)
 	 * @see org.hl7.fhir.FhirPackage#getConceptMap_Status()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getStatus();
+	ConformanceResourceStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ConceptMap#getStatus <em>Status</em>}' containment reference.
@@ -171,7 +171,7 @@ public interface ConceptMap extends DomainResource {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(Code value);
+	void setStatus(ConformanceResourceStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Experimental</b></em>' containment reference.
@@ -275,13 +275,13 @@ public interface ConceptMap extends DomainResource {
 	 * A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
-	 * @see #setDescription(org.hl7.fhir.String)
+	 * @see #setDescription(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getConceptMap_Description()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getDescription();
+	Markdown getDescription();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ConceptMap#getDescription <em>Description</em>}' containment reference.
@@ -291,7 +291,7 @@ public interface ConceptMap extends DomainResource {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(org.hl7.fhir.String value);
+	void setDescription(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Use Context</b></em>' containment reference list.
@@ -317,13 +317,13 @@ public interface ConceptMap extends DomainResource {
 	 * Explains why this concept map is needed and why it has been constrained as it has.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Requirements</em>' containment reference.
-	 * @see #setRequirements(org.hl7.fhir.String)
+	 * @see #setRequirements(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getConceptMap_Requirements()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='requirements' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getRequirements();
+	Markdown getRequirements();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ConceptMap#getRequirements <em>Requirements</em>}' containment reference.
@@ -333,7 +333,7 @@ public interface ConceptMap extends DomainResource {
 	 * @see #getRequirements()
 	 * @generated
 	 */
-	void setRequirements(org.hl7.fhir.String value);
+	void setRequirements(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Copyright</b></em>' containment reference.
@@ -466,19 +466,19 @@ public interface ConceptMap extends DomainResource {
 	void setTargetReference(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Element</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.ConceptMapElement}.
+	 * Returns the value of the '<em><b>Group</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.ConceptMapGroup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Mappings for an individual concept in the source to one or more concepts in the target.
+	 * A group of mappings that all have the same source and target system.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Element</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getConceptMap_Element()
+	 * @return the value of the '<em>Group</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getConceptMap_Group()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='element' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='group' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<ConceptMapElement> getElement();
+	EList<ConceptMapGroup> getGroup();
 
 } // ConceptMap

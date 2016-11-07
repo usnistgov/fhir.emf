@@ -58,14 +58,30 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INTENDED(3, "intended", "intended");
+	INTENDED(3, "intended", "intended"), /**
+	 * The '<em><b>Stopped</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STOPPED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	STOPPED(4, "stopped", "stopped"), /**
+	 * The '<em><b>On Hold</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ON_HOLD_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ON_HOLD(5, "onHold", "on-hold");
 
 	/**
 	 * The '<em><b>Active</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The medication is still being taken.
+	 * Active
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
@@ -79,7 +95,7 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The medication is no longer being taken.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -93,7 +109,7 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The statement was entered in error.
+	 * Entered in Error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
@@ -107,7 +123,7 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The medication may be taken at some time in the future.
+	 * Intended
 	 * <!-- end-model-doc -->
 	 * @see #INTENDED
 	 * @model name="intended"
@@ -115,6 +131,34 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int INTENDED_VALUE = 3;
+
+	/**
+	 * The '<em><b>Stopped</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Stopped
+	 * <!-- end-model-doc -->
+	 * @see #STOPPED
+	 * @model name="stopped"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STOPPED_VALUE = 4;
+
+	/**
+	 * The '<em><b>On Hold</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * On Hold
+	 * <!-- end-model-doc -->
+	 * @see #ON_HOLD
+	 * @model name="onHold" literal="on-hold"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ON_HOLD_VALUE = 5;
 
 	/**
 	 * An array of all the '<em><b>Medication Statement Status List</b></em>' enumerators.
@@ -128,6 +172,8 @@ public enum MedicationStatementStatusList implements Enumerator {
 			COMPLETED,
 			ENTERED_IN_ERROR,
 			INTENDED,
+			STOPPED,
+			ON_HOLD,
 		};
 
 	/**
@@ -188,6 +234,8 @@ public enum MedicationStatementStatusList implements Enumerator {
 			case COMPLETED_VALUE: return COMPLETED;
 			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
 			case INTENDED_VALUE: return INTENDED;
+			case STOPPED_VALUE: return STOPPED;
+			case ON_HOLD_VALUE: return ON_HOLD;
 		}
 		return null;
 	}

@@ -21,10 +21,10 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.NamingSystem#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getKind <em>Kind</em>}</li>
+ *   <li>{@link org.hl7.fhir.NamingSystem#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getPublisher <em>Publisher</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getContact <em>Contact</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getResponsible <em>Responsible</em>}</li>
- *   <li>{@link org.hl7.fhir.NamingSystem#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystem#getUseContext <em>Use Context</em>}</li>
@@ -72,13 +72,13 @@ public interface NamingSystem extends DomainResource {
 	 * Indicates whether the naming system is "ready for use" or not.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(Code)
+	 * @see #setStatus(ConformanceResourceStatus)
 	 * @see org.hl7.fhir.FhirPackage#getNamingSystem_Status()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getStatus();
+	ConformanceResourceStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.NamingSystem#getStatus <em>Status</em>}' containment reference.
@@ -88,7 +88,7 @@ public interface NamingSystem extends DomainResource {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(Code value);
+	void setStatus(ConformanceResourceStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' containment reference.
@@ -244,13 +244,13 @@ public interface NamingSystem extends DomainResource {
 	 * Details about what the namespace identifies including scope, granularity, version labeling, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
-	 * @see #setDescription(org.hl7.fhir.String)
+	 * @see #setDescription(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getNamingSystem_Description()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getDescription();
+	Markdown getDescription();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.NamingSystem#getDescription <em>Description</em>}' containment reference.
@@ -260,7 +260,7 @@ public interface NamingSystem extends DomainResource {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(org.hl7.fhir.String value);
+	void setDescription(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Use Context</b></em>' containment reference list.

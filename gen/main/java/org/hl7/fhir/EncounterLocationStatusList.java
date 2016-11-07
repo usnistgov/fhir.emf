@@ -65,7 +65,7 @@ public enum EncounterLocationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The patient is planned to be moved to this location at some point in the future.
+	 * Planned
 	 * <!-- end-model-doc -->
 	 * @see #PLANNED
 	 * @model name="planned"
@@ -79,9 +79,7 @@ public enum EncounterLocationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The patient is currently at this location, or was between the period specified.
-	 * 
-	 * A system may update these records when the patient leaves the location to either reserved, or completed
+	 * Active
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
@@ -95,7 +93,7 @@ public enum EncounterLocationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This location is held empty for this patient.
+	 * Reserved
 	 * <!-- end-model-doc -->
 	 * @see #RESERVED
 	 * @model name="reserved"
@@ -109,9 +107,7 @@ public enum EncounterLocationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The patient was at this location during the period specified.
-	 * 
-	 * Not to be used when the patient is currently at the location
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"

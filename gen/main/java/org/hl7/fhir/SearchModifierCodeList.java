@@ -125,7 +125,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter returns resources that have a value or not.
+	 * Missing
 	 * <!-- end-model-doc -->
 	 * @see #MISSING
 	 * @model name="missing"
@@ -139,7 +139,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter returns resources that have a value that exactly matches the supplied parameter (the whole string, including casing and accents).
+	 * Exact
 	 * <!-- end-model-doc -->
 	 * @see #EXACT
 	 * @model name="exact"
@@ -153,7 +153,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter returns resources that include the supplied parameter value anywhere within the field being searched.
+	 * Contains
 	 * <!-- end-model-doc -->
 	 * @see #CONTAINS
 	 * @model name="contains"
@@ -167,7 +167,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter returns resources that do not contain a match .
+	 * Not
 	 * <!-- end-model-doc -->
 	 * @see #NOT
 	 * @model name="not"
@@ -181,7 +181,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter is processed as a string that searches text associated with the code/value - either CodeableConcept.text, Coding.display, or Identifier.type.text.
+	 * Text
 	 * <!-- end-model-doc -->
 	 * @see #TEXT
 	 * @model name="text"
@@ -195,7 +195,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is in the specified value set.
+	 * In
 	 * <!-- end-model-doc -->
 	 * @see #IN
 	 * @model name="in"
@@ -209,7 +209,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set.
+	 * Not In
 	 * <!-- end-model-doc -->
 	 * @see #NOT_IN
 	 * @model name="notIn" literal="not-in"
@@ -223,7 +223,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter tests whether the value in a resource is subsumed by the specified value (is-a, or hierarchical relationships).
+	 * Below
 	 * <!-- end-model-doc -->
 	 * @see #BELOW
 	 * @model name="below"
@@ -237,7 +237,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter tests whether the value in a resource subsumes the specified value (is-a, or hierarchical relationships).
+	 * Above
 	 * <!-- end-model-doc -->
 	 * @see #ABOVE
 	 * @model name="above"
@@ -251,7 +251,7 @@ public enum SearchModifierCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The search parameter only applies to the Resource Type specified as a modifier (e.g. the modifier is not actually :type, but :Patient etc.).
+	 * Type
 	 * <!-- end-model-doc -->
 	 * @see #TYPE
 	 * @model name="type"

@@ -151,14 +151,14 @@ public class DiagnosticReportImpl extends DomainResourceImpl implements Diagnost
 	protected Instant issued;
 
 	/**
-	 * The cached value of the '{@link #getPerformer() <em>Performer</em>}' containment reference.
+	 * The cached value of the '{@link #getPerformer() <em>Performer</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPerformer()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference performer;
+	protected EList<Reference> performer;
 
 	/**
 	 * The cached value of the '{@link #getRequest() <em>Request</em>}' containment reference list.
@@ -620,42 +620,11 @@ public class DiagnosticReportImpl extends DomainResourceImpl implements Diagnost
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getPerformer() {
+	public EList<Reference> getPerformer() {
+		if (performer == null) {
+			performer = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.DIAGNOSTIC_REPORT__PERFORMER);
+		}
 		return performer;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPerformer(Reference newPerformer, NotificationChain msgs) {
-		Reference oldPerformer = performer;
-		performer = newPerformer;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DIAGNOSTIC_REPORT__PERFORMER, oldPerformer, newPerformer);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPerformer(Reference newPerformer) {
-		if (newPerformer != performer) {
-			NotificationChain msgs = null;
-			if (performer != null)
-				msgs = ((InternalEObject)performer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DIAGNOSTIC_REPORT__PERFORMER, null, msgs);
-			if (newPerformer != null)
-				msgs = ((InternalEObject)newPerformer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DIAGNOSTIC_REPORT__PERFORMER, null, msgs);
-			msgs = basicSetPerformer(newPerformer, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DIAGNOSTIC_REPORT__PERFORMER, newPerformer, newPerformer));
 	}
 
 	/**
@@ -812,7 +781,7 @@ public class DiagnosticReportImpl extends DomainResourceImpl implements Diagnost
 			case FhirPackage.DIAGNOSTIC_REPORT__ISSUED:
 				return basicSetIssued(null, msgs);
 			case FhirPackage.DIAGNOSTIC_REPORT__PERFORMER:
-				return basicSetPerformer(null, msgs);
+				return ((InternalEList<?>)getPerformer()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DIAGNOSTIC_REPORT__REQUEST:
 				return ((InternalEList<?>)getRequest()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DIAGNOSTIC_REPORT__SPECIMEN:
@@ -919,7 +888,8 @@ public class DiagnosticReportImpl extends DomainResourceImpl implements Diagnost
 				setIssued((Instant)newValue);
 				return;
 			case FhirPackage.DIAGNOSTIC_REPORT__PERFORMER:
-				setPerformer((Reference)newValue);
+				getPerformer().clear();
+				getPerformer().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.DIAGNOSTIC_REPORT__REQUEST:
 				getRequest().clear();
@@ -992,7 +962,7 @@ public class DiagnosticReportImpl extends DomainResourceImpl implements Diagnost
 				setIssued((Instant)null);
 				return;
 			case FhirPackage.DIAGNOSTIC_REPORT__PERFORMER:
-				setPerformer((Reference)null);
+				getPerformer().clear();
 				return;
 			case FhirPackage.DIAGNOSTIC_REPORT__REQUEST:
 				getRequest().clear();
@@ -1049,7 +1019,7 @@ public class DiagnosticReportImpl extends DomainResourceImpl implements Diagnost
 			case FhirPackage.DIAGNOSTIC_REPORT__ISSUED:
 				return issued != null;
 			case FhirPackage.DIAGNOSTIC_REPORT__PERFORMER:
-				return performer != null;
+				return performer != null && !performer.isEmpty();
 			case FhirPackage.DIAGNOSTIC_REPORT__REQUEST:
 				return request != null && !request.isEmpty();
 			case FhirPackage.DIAGNOSTIC_REPORT__SPECIMEN:

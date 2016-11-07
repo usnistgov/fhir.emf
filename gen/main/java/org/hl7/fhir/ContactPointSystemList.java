@@ -75,7 +75,7 @@ public enum ContactPointSystemList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
+	 * Phone
 	 * <!-- end-model-doc -->
 	 * @see #PHONE
 	 * @model name="phone"
@@ -89,7 +89,7 @@ public enum ContactPointSystemList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
+	 * Fax
 	 * <!-- end-model-doc -->
 	 * @see #FAX
 	 * @model name="fax"
@@ -103,7 +103,7 @@ public enum ContactPointSystemList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value is an email address.
+	 * Email
 	 * <!-- end-model-doc -->
 	 * @see #EMAIL
 	 * @model name="email"
@@ -117,7 +117,7 @@ public enum ContactPointSystemList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value is a pager number. These may be local pager numbers that are only usable on a particular pager system.
+	 * Pager
 	 * <!-- end-model-doc -->
 	 * @see #PAGER
 	 * @model name="pager"
@@ -131,7 +131,7 @@ public enum ContactPointSystemList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A contact that is not a phone, fax, or email address. The format of the value SHOULD be a URL. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses. If this is not a URL, then it will require human interpretation.
+	 * URL
 	 * <!-- end-model-doc -->
 	 * @see #OTHER
 	 * @model name="other"

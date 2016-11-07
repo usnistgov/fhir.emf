@@ -16,15 +16,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.ConceptMap;
 import org.hl7.fhir.ConceptMapContact;
-import org.hl7.fhir.ConceptMapElement;
+import org.hl7.fhir.ConceptMapGroup;
+import org.hl7.fhir.ConformanceResourceStatus;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
+import org.hl7.fhir.Markdown;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.Uri;
 
@@ -53,7 +53,7 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.ConceptMapImpl#getSourceReference <em>Source Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConceptMapImpl#getTargetUri <em>Target Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConceptMapImpl#getTargetReference <em>Target Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ConceptMapImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ConceptMapImpl#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @generated
@@ -107,7 +107,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * @generated
 	 * @ordered
 	 */
-	protected Code status;
+	protected ConformanceResourceStatus status;
 
 	/**
 	 * The cached value of the '{@link #getExperimental() <em>Experimental</em>}' containment reference.
@@ -157,7 +157,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String description;
+	protected Markdown description;
 
 	/**
 	 * The cached value of the '{@link #getUseContext() <em>Use Context</em>}' containment reference list.
@@ -177,7 +177,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String requirements;
+	protected Markdown requirements;
 
 	/**
 	 * The cached value of the '{@link #getCopyright() <em>Copyright</em>}' containment reference.
@@ -230,14 +230,14 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	protected Reference targetReference;
 
 	/**
-	 * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference list.
+	 * The cached value of the '{@link #getGroup() <em>Group</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getElement()
+	 * @see #getGroup()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConceptMapElement> element;
+	protected EList<ConceptMapGroup> group;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -435,7 +435,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getStatus() {
+	public ConformanceResourceStatus getStatus() {
 		return status;
 	}
 
@@ -444,8 +444,8 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStatus(Code newStatus, NotificationChain msgs) {
-		Code oldStatus = status;
+	public NotificationChain basicSetStatus(ConformanceResourceStatus newStatus, NotificationChain msgs) {
+		ConformanceResourceStatus oldStatus = status;
 		status = newStatus;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP__STATUS, oldStatus, newStatus);
@@ -459,7 +459,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStatus(Code newStatus) {
+	public void setStatus(ConformanceResourceStatus newStatus) {
 		if (newStatus != status) {
 			NotificationChain msgs = null;
 			if (status != null)
@@ -619,7 +619,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getDescription() {
+	public Markdown getDescription() {
 		return description;
 	}
 
@@ -628,8 +628,8 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDescription(org.hl7.fhir.String newDescription, NotificationChain msgs) {
-		org.hl7.fhir.String oldDescription = description;
+	public NotificationChain basicSetDescription(Markdown newDescription, NotificationChain msgs) {
+		Markdown oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP__DESCRIPTION, oldDescription, newDescription);
@@ -643,7 +643,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(org.hl7.fhir.String newDescription) {
+	public void setDescription(Markdown newDescription) {
 		if (newDescription != description) {
 			NotificationChain msgs = null;
 			if (description != null)
@@ -674,7 +674,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getRequirements() {
+	public Markdown getRequirements() {
 		return requirements;
 	}
 
@@ -683,8 +683,8 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRequirements(org.hl7.fhir.String newRequirements, NotificationChain msgs) {
-		org.hl7.fhir.String oldRequirements = requirements;
+	public NotificationChain basicSetRequirements(Markdown newRequirements, NotificationChain msgs) {
+		Markdown oldRequirements = requirements;
 		requirements = newRequirements;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP__REQUIREMENTS, oldRequirements, newRequirements);
@@ -698,7 +698,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRequirements(org.hl7.fhir.String newRequirements) {
+	public void setRequirements(Markdown newRequirements) {
 		if (newRequirements != requirements) {
 			NotificationChain msgs = null;
 			if (requirements != null)
@@ -932,11 +932,11 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ConceptMapElement> getElement() {
-		if (element == null) {
-			element = new EObjectContainmentEList<ConceptMapElement>(ConceptMapElement.class, this, FhirPackage.CONCEPT_MAP__ELEMENT);
+	public EList<ConceptMapGroup> getGroup() {
+		if (group == null) {
+			group = new EObjectContainmentEList<ConceptMapGroup>(ConceptMapGroup.class, this, FhirPackage.CONCEPT_MAP__GROUP);
 		}
-		return element;
+		return group;
 	}
 
 	/**
@@ -981,8 +981,8 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 				return basicSetTargetUri(null, msgs);
 			case FhirPackage.CONCEPT_MAP__TARGET_REFERENCE:
 				return basicSetTargetReference(null, msgs);
-			case FhirPackage.CONCEPT_MAP__ELEMENT:
-				return ((InternalEList<?>)getElement()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CONCEPT_MAP__GROUP:
+				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1029,8 +1029,8 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 				return getTargetUri();
 			case FhirPackage.CONCEPT_MAP__TARGET_REFERENCE:
 				return getTargetReference();
-			case FhirPackage.CONCEPT_MAP__ELEMENT:
-				return getElement();
+			case FhirPackage.CONCEPT_MAP__GROUP:
+				return getGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1057,7 +1057,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 				setName((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP__STATUS:
-				setStatus((Code)newValue);
+				setStatus((ConformanceResourceStatus)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP__EXPERIMENTAL:
 				setExperimental((org.hl7.fhir.Boolean)newValue);
@@ -1073,14 +1073,14 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 				setDate((DateTime)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP__DESCRIPTION:
-				setDescription((org.hl7.fhir.String)newValue);
+				setDescription((Markdown)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP__USE_CONTEXT:
 				getUseContext().clear();
 				getUseContext().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP__REQUIREMENTS:
-				setRequirements((org.hl7.fhir.String)newValue);
+				setRequirements((Markdown)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP__COPYRIGHT:
 				setCopyright((org.hl7.fhir.String)newValue);
@@ -1097,9 +1097,9 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 			case FhirPackage.CONCEPT_MAP__TARGET_REFERENCE:
 				setTargetReference((Reference)newValue);
 				return;
-			case FhirPackage.CONCEPT_MAP__ELEMENT:
-				getElement().clear();
-				getElement().addAll((Collection<? extends ConceptMapElement>)newValue);
+			case FhirPackage.CONCEPT_MAP__GROUP:
+				getGroup().clear();
+				getGroup().addAll((Collection<? extends ConceptMapGroup>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1126,7 +1126,7 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 				setName((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.CONCEPT_MAP__STATUS:
-				setStatus((Code)null);
+				setStatus((ConformanceResourceStatus)null);
 				return;
 			case FhirPackage.CONCEPT_MAP__EXPERIMENTAL:
 				setExperimental((org.hl7.fhir.Boolean)null);
@@ -1141,13 +1141,13 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 				setDate((DateTime)null);
 				return;
 			case FhirPackage.CONCEPT_MAP__DESCRIPTION:
-				setDescription((org.hl7.fhir.String)null);
+				setDescription((Markdown)null);
 				return;
 			case FhirPackage.CONCEPT_MAP__USE_CONTEXT:
 				getUseContext().clear();
 				return;
 			case FhirPackage.CONCEPT_MAP__REQUIREMENTS:
-				setRequirements((org.hl7.fhir.String)null);
+				setRequirements((Markdown)null);
 				return;
 			case FhirPackage.CONCEPT_MAP__COPYRIGHT:
 				setCopyright((org.hl7.fhir.String)null);
@@ -1164,8 +1164,8 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 			case FhirPackage.CONCEPT_MAP__TARGET_REFERENCE:
 				setTargetReference((Reference)null);
 				return;
-			case FhirPackage.CONCEPT_MAP__ELEMENT:
-				getElement().clear();
+			case FhirPackage.CONCEPT_MAP__GROUP:
+				getGroup().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -1213,8 +1213,8 @@ public class ConceptMapImpl extends DomainResourceImpl implements ConceptMap {
 				return targetUri != null;
 			case FhirPackage.CONCEPT_MAP__TARGET_REFERENCE:
 				return targetReference != null;
-			case FhirPackage.CONCEPT_MAP__ELEMENT:
-				return element != null && !element.isEmpty();
+			case FhirPackage.CONCEPT_MAP__GROUP:
+				return group != null && !group.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

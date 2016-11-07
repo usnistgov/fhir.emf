@@ -26,6 +26,7 @@ import org.hl7.fhir.PositiveInt;
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseNoteImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseNoteImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseNoteImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseNoteImpl#getLanguage <em>Language</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,6 +61,16 @@ public class ClaimResponseNoteImpl extends BackboneElementImpl implements ClaimR
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String text;
+
+	/**
+	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Coding language;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +225,49 @@ public class ClaimResponseNoteImpl extends BackboneElementImpl implements ClaimR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Coding getLanguage() {
+		return language;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetLanguage(Coding newLanguage, NotificationChain msgs) {
+		Coding oldLanguage = language;
+		language = newLanguage;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE, oldLanguage, newLanguage);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLanguage(Coding newLanguage) {
+		if (newLanguage != language) {
+			NotificationChain msgs = null;
+			if (language != null)
+				msgs = ((InternalEObject)language).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE, null, msgs);
+			if (newLanguage != null)
+				msgs = ((InternalEObject)newLanguage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE, null, msgs);
+			msgs = basicSetLanguage(newLanguage, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE, newLanguage, newLanguage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -223,6 +277,8 @@ public class ClaimResponseNoteImpl extends BackboneElementImpl implements ClaimR
 				return basicSetType(null, msgs);
 			case FhirPackage.CLAIM_RESPONSE_NOTE__TEXT:
 				return basicSetText(null, msgs);
+			case FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE:
+				return basicSetLanguage(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -241,6 +297,8 @@ public class ClaimResponseNoteImpl extends BackboneElementImpl implements ClaimR
 				return getType();
 			case FhirPackage.CLAIM_RESPONSE_NOTE__TEXT:
 				return getText();
+			case FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE:
+				return getLanguage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -261,6 +319,9 @@ public class ClaimResponseNoteImpl extends BackboneElementImpl implements ClaimR
 				return;
 			case FhirPackage.CLAIM_RESPONSE_NOTE__TEXT:
 				setText((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE:
+				setLanguage((Coding)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -283,6 +344,9 @@ public class ClaimResponseNoteImpl extends BackboneElementImpl implements ClaimR
 			case FhirPackage.CLAIM_RESPONSE_NOTE__TEXT:
 				setText((org.hl7.fhir.String)null);
 				return;
+			case FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE:
+				setLanguage((Coding)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -301,6 +365,8 @@ public class ClaimResponseNoteImpl extends BackboneElementImpl implements ClaimR
 				return type != null;
 			case FhirPackage.CLAIM_RESPONSE_NOTE__TEXT:
 				return text != null;
+			case FhirPackage.CLAIM_RESPONSE_NOTE__LANGUAGE:
+				return language != null;
 		}
 		return super.eIsSet(featureID);
 	}

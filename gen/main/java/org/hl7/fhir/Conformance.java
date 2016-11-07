@@ -23,13 +23,15 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Conformance#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getExperimental <em>Experimental</em>}</li>
+ *   <li>{@link org.hl7.fhir.Conformance#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getPublisher <em>Publisher</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getContact <em>Contact</em>}</li>
- *   <li>{@link org.hl7.fhir.Conformance#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.hl7.fhir.Conformance#getUseContext <em>Use Context</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getCopyright <em>Copyright</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getKind <em>Kind</em>}</li>
+ *   <li>{@link org.hl7.fhir.Conformance#getInstantiates <em>Instantiates</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getSoftware <em>Software</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getImplementation <em>Implementation</em>}</li>
  *   <li>{@link org.hl7.fhir.Conformance#getFhirVersion <em>Fhir Version</em>}</li>
@@ -132,13 +134,13 @@ public interface Conformance extends DomainResource {
 	 * The status of this conformance statement.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(Code)
+	 * @see #setStatus(ConformanceResourceStatus)
 	 * @see org.hl7.fhir.FhirPackage#getConformance_Status()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getStatus();
+	ConformanceResourceStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Conformance#getStatus <em>Status</em>}' containment reference.
@@ -148,7 +150,7 @@ public interface Conformance extends DomainResource {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(Code value);
+	void setStatus(ConformanceResourceStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Experimental</b></em>' containment reference.
@@ -252,13 +254,13 @@ public interface Conformance extends DomainResource {
 	 * A free text natural language description of the conformance statement and its use. Typically, this is used when the conformance statement describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
-	 * @see #setDescription(org.hl7.fhir.String)
+	 * @see #setDescription(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getConformance_Description()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getDescription();
+	Markdown getDescription();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Conformance#getDescription <em>Description</em>}' containment reference.
@@ -268,7 +270,23 @@ public interface Conformance extends DomainResource {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(org.hl7.fhir.String value);
+	void setDescription(Markdown value);
+
+	/**
+	 * Returns the value of the '<em><b>Use Context</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of conformance statements.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Use Context</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getConformance_UseContext()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='useContext' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CodeableConcept> getUseContext();
 
 	/**
 	 * Returns the value of the '<em><b>Requirements</b></em>' containment reference.
@@ -278,13 +296,13 @@ public interface Conformance extends DomainResource {
 	 * Explains why this conformance statement is needed and why it's been constrained as it has.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Requirements</em>' containment reference.
-	 * @see #setRequirements(org.hl7.fhir.String)
+	 * @see #setRequirements(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getConformance_Requirements()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='requirements' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getRequirements();
+	Markdown getRequirements();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Conformance#getRequirements <em>Requirements</em>}' containment reference.
@@ -294,7 +312,7 @@ public interface Conformance extends DomainResource {
 	 * @see #getRequirements()
 	 * @generated
 	 */
-	void setRequirements(org.hl7.fhir.String value);
+	void setRequirements(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Copyright</b></em>' containment reference.
@@ -347,6 +365,22 @@ public interface Conformance extends DomainResource {
 	 * @generated
 	 */
 	void setKind(ConformanceStatementKind value);
+
+	/**
+	 * Returns the value of the '<em><b>Instantiates</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Uri}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Reference to a canonical URL of another conformance that this software implements or uses. This conformance statement is a published API description that corresponds to a business service. The rest of the conformance statement does not need to repeat the details of the referenced Conformance resource, but can do so.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Instantiates</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getConformance_Instantiates()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='instantiates' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Uri> getInstantiates();
 
 	/**
 	 * Returns the value of the '<em><b>Software</b></em>' containment reference.

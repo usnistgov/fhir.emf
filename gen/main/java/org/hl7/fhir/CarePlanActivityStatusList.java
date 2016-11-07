@@ -85,7 +85,7 @@ public enum CarePlanActivityStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity is planned but no action has yet been taken.
+	 * Not Started
 	 * <!-- end-model-doc -->
 	 * @see #NOT_STARTED
 	 * @model name="notStarted" literal="not-started"
@@ -99,7 +99,7 @@ public enum CarePlanActivityStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Appointment or other booking has occurred but activity has not yet begun.
+	 * Scheduled
 	 * <!-- end-model-doc -->
 	 * @see #SCHEDULED
 	 * @model name="scheduled"
@@ -113,7 +113,7 @@ public enum CarePlanActivityStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity has been started but is not yet complete.
+	 * In Progress
 	 * <!-- end-model-doc -->
 	 * @see #IN_PROGRESS
 	 * @model name="inProgress" literal="in-progress"
@@ -127,7 +127,7 @@ public enum CarePlanActivityStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Activity was started but has temporarily ceased with an expectation of resumption at a future time.
+	 * On Hold
 	 * <!-- end-model-doc -->
 	 * @see #ON_HOLD
 	 * @model name="onHold" literal="on-hold"
@@ -141,7 +141,7 @@ public enum CarePlanActivityStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The activities have been completed (more or less) as planned.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -155,7 +155,7 @@ public enum CarePlanActivityStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The activities have been ended prior to completion (perhaps even before they were started).
+	 * Cancelled
 	 * <!-- end-model-doc -->
 	 * @see #CANCELLED
 	 * @model name="cancelled"

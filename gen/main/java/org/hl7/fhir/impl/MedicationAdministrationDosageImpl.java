@@ -13,10 +13,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.MedicationAdministrationDosage;
-import org.hl7.fhir.Range;
+import org.hl7.fhir.Quantity;
 import org.hl7.fhir.Ratio;
 import org.hl7.fhir.Reference;
-import org.hl7.fhir.SimpleQuantity;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,9 +30,9 @@ import org.hl7.fhir.SimpleQuantity;
  *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getSiteReference <em>Site Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getRoute <em>Route</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getDose <em>Dose</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getRateRatio <em>Rate Ratio</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getRateRange <em>Rate Range</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationAdministrationDosageImpl#getRateQuantity <em>Rate Quantity</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,14 +89,14 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	protected CodeableConcept method;
 
 	/**
-	 * The cached value of the '{@link #getQuantity() <em>Quantity</em>}' containment reference.
+	 * The cached value of the '{@link #getDose() <em>Dose</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQuantity()
+	 * @see #getDose()
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity quantity;
+	protected Quantity dose;
 
 	/**
 	 * The cached value of the '{@link #getRateRatio() <em>Rate Ratio</em>}' containment reference.
@@ -110,14 +109,14 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	protected Ratio rateRatio;
 
 	/**
-	 * The cached value of the '{@link #getRateRange() <em>Rate Range</em>}' containment reference.
+	 * The cached value of the '{@link #getRateQuantity() <em>Rate Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRateRange()
+	 * @see #getRateQuantity()
 	 * @generated
 	 * @ordered
 	 */
-	protected Range rateRange;
+	protected Quantity rateQuantity;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -358,8 +357,8 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getQuantity() {
-		return quantity;
+	public Quantity getDose() {
+		return dose;
 	}
 
 	/**
@@ -367,11 +366,11 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetQuantity(SimpleQuantity newQuantity, NotificationChain msgs) {
-		SimpleQuantity oldQuantity = quantity;
-		quantity = newQuantity;
+	public NotificationChain basicSetDose(Quantity newDose, NotificationChain msgs) {
+		Quantity oldDose = dose;
+		dose = newDose;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY, oldQuantity, newQuantity);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE, oldDose, newDose);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -382,18 +381,18 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQuantity(SimpleQuantity newQuantity) {
-		if (newQuantity != quantity) {
+	public void setDose(Quantity newDose) {
+		if (newDose != dose) {
 			NotificationChain msgs = null;
-			if (quantity != null)
-				msgs = ((InternalEObject)quantity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY, null, msgs);
-			if (newQuantity != null)
-				msgs = ((InternalEObject)newQuantity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY, null, msgs);
-			msgs = basicSetQuantity(newQuantity, msgs);
+			if (dose != null)
+				msgs = ((InternalEObject)dose).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE, null, msgs);
+			if (newDose != null)
+				msgs = ((InternalEObject)newDose).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE, null, msgs);
+			msgs = basicSetDose(newDose, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY, newQuantity, newQuantity));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE, newDose, newDose));
 	}
 
 	/**
@@ -444,8 +443,8 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Range getRateRange() {
-		return rateRange;
+	public Quantity getRateQuantity() {
+		return rateQuantity;
 	}
 
 	/**
@@ -453,11 +452,11 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRateRange(Range newRateRange, NotificationChain msgs) {
-		Range oldRateRange = rateRange;
-		rateRange = newRateRange;
+	public NotificationChain basicSetRateQuantity(Quantity newRateQuantity, NotificationChain msgs) {
+		Quantity oldRateQuantity = rateQuantity;
+		rateQuantity = newRateQuantity;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE, oldRateRange, newRateRange);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY, oldRateQuantity, newRateQuantity);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -468,18 +467,18 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRateRange(Range newRateRange) {
-		if (newRateRange != rateRange) {
+	public void setRateQuantity(Quantity newRateQuantity) {
+		if (newRateQuantity != rateQuantity) {
 			NotificationChain msgs = null;
-			if (rateRange != null)
-				msgs = ((InternalEObject)rateRange).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE, null, msgs);
-			if (newRateRange != null)
-				msgs = ((InternalEObject)newRateRange).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE, null, msgs);
-			msgs = basicSetRateRange(newRateRange, msgs);
+			if (rateQuantity != null)
+				msgs = ((InternalEObject)rateQuantity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY, null, msgs);
+			if (newRateQuantity != null)
+				msgs = ((InternalEObject)newRateQuantity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY, null, msgs);
+			msgs = basicSetRateQuantity(newRateQuantity, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE, newRateRange, newRateRange));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY, newRateQuantity, newRateQuantity));
 	}
 
 	/**
@@ -500,12 +499,12 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 				return basicSetRoute(null, msgs);
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__METHOD:
 				return basicSetMethod(null, msgs);
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY:
-				return basicSetQuantity(null, msgs);
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE:
+				return basicSetDose(null, msgs);
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RATIO:
 				return basicSetRateRatio(null, msgs);
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE:
-				return basicSetRateRange(null, msgs);
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY:
+				return basicSetRateQuantity(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -528,12 +527,12 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 				return getRoute();
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__METHOD:
 				return getMethod();
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY:
-				return getQuantity();
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE:
+				return getDose();
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RATIO:
 				return getRateRatio();
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE:
-				return getRateRange();
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY:
+				return getRateQuantity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -561,14 +560,14 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__METHOD:
 				setMethod((CodeableConcept)newValue);
 				return;
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY:
-				setQuantity((SimpleQuantity)newValue);
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE:
+				setDose((Quantity)newValue);
 				return;
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RATIO:
 				setRateRatio((Ratio)newValue);
 				return;
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE:
-				setRateRange((Range)newValue);
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY:
+				setRateQuantity((Quantity)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -597,14 +596,14 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__METHOD:
 				setMethod((CodeableConcept)null);
 				return;
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY:
-				setQuantity((SimpleQuantity)null);
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE:
+				setDose((Quantity)null);
 				return;
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RATIO:
 				setRateRatio((Ratio)null);
 				return;
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE:
-				setRateRange((Range)null);
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY:
+				setRateQuantity((Quantity)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -628,12 +627,12 @@ public class MedicationAdministrationDosageImpl extends BackboneElementImpl impl
 				return route != null;
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__METHOD:
 				return method != null;
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__QUANTITY:
-				return quantity != null;
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__DOSE:
+				return dose != null;
 			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RATIO:
 				return rateRatio != null;
-			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_RANGE:
-				return rateRange != null;
+			case FhirPackage.MEDICATION_ADMINISTRATION_DOSAGE__RATE_QUANTITY:
+				return rateQuantity != null;
 		}
 		return super.eIsSet(featureID);
 	}

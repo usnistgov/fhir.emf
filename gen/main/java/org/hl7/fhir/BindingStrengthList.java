@@ -65,7 +65,7 @@ public enum BindingStrengthList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * To be conformant, instances of this element SHALL include a code from the specified value set.
+	 * Required
 	 * <!-- end-model-doc -->
 	 * @see #REQUIRED
 	 * @model name="required"
@@ -79,7 +79,7 @@ public enum BindingStrengthList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * To be conformant, instances of this element SHALL include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead.
+	 * Extensible
 	 * <!-- end-model-doc -->
 	 * @see #EXTENSIBLE
 	 * @model name="extensible"
@@ -93,7 +93,7 @@ public enum BindingStrengthList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Instances are encouraged to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant.
+	 * Preferred
 	 * <!-- end-model-doc -->
 	 * @see #PREFERRED
 	 * @model name="preferred"
@@ -107,7 +107,7 @@ public enum BindingStrengthList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included.
+	 * Example
 	 * <!-- end-model-doc -->
 	 * @see #EXAMPLE
 	 * @model name="example"

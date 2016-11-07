@@ -2,19 +2,23 @@
  */
 package org.hl7.fhir.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.ObservationReferenceRange;
+import org.hl7.fhir.Quantity;
 import org.hl7.fhir.Range;
-import org.hl7.fhir.SimpleQuantity;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +46,7 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity low;
+	protected Quantity low;
 
 	/**
 	 * The cached value of the '{@link #getHigh() <em>High</em>}' containment reference.
@@ -52,17 +56,17 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity high;
+	protected Quantity high;
 
 	/**
-	 * The cached value of the '{@link #getMeaning() <em>Meaning</em>}' containment reference.
+	 * The cached value of the '{@link #getMeaning() <em>Meaning</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMeaning()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept meaning;
+	protected EList<CodeableConcept> meaning;
 
 	/**
 	 * The cached value of the '{@link #getAge() <em>Age</em>}' containment reference.
@@ -108,7 +112,7 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getLow() {
+	public Quantity getLow() {
 		return low;
 	}
 
@@ -117,8 +121,8 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLow(SimpleQuantity newLow, NotificationChain msgs) {
-		SimpleQuantity oldLow = low;
+	public NotificationChain basicSetLow(Quantity newLow, NotificationChain msgs) {
+		Quantity oldLow = low;
 		low = newLow;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION_REFERENCE_RANGE__LOW, oldLow, newLow);
@@ -132,7 +136,7 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLow(SimpleQuantity newLow) {
+	public void setLow(Quantity newLow) {
 		if (newLow != low) {
 			NotificationChain msgs = null;
 			if (low != null)
@@ -151,7 +155,7 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getHigh() {
+	public Quantity getHigh() {
 		return high;
 	}
 
@@ -160,8 +164,8 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHigh(SimpleQuantity newHigh, NotificationChain msgs) {
-		SimpleQuantity oldHigh = high;
+	public NotificationChain basicSetHigh(Quantity newHigh, NotificationChain msgs) {
+		Quantity oldHigh = high;
 		high = newHigh;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION_REFERENCE_RANGE__HIGH, oldHigh, newHigh);
@@ -175,7 +179,7 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHigh(SimpleQuantity newHigh) {
+	public void setHigh(Quantity newHigh) {
 		if (newHigh != high) {
 			NotificationChain msgs = null;
 			if (high != null)
@@ -194,42 +198,11 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getMeaning() {
+	public EList<CodeableConcept> getMeaning() {
+		if (meaning == null) {
+			meaning = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING);
+		}
 		return meaning;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMeaning(CodeableConcept newMeaning, NotificationChain msgs) {
-		CodeableConcept oldMeaning = meaning;
-		meaning = newMeaning;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING, oldMeaning, newMeaning);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMeaning(CodeableConcept newMeaning) {
-		if (newMeaning != meaning) {
-			NotificationChain msgs = null;
-			if (meaning != null)
-				msgs = ((InternalEObject)meaning).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING, null, msgs);
-			if (newMeaning != null)
-				msgs = ((InternalEObject)newMeaning).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING, null, msgs);
-			msgs = basicSetMeaning(newMeaning, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING, newMeaning, newMeaning));
 	}
 
 	/**
@@ -331,7 +304,7 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__HIGH:
 				return basicSetHigh(null, msgs);
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING:
-				return basicSetMeaning(null, msgs);
+				return ((InternalEList<?>)getMeaning()).basicRemove(otherEnd, msgs);
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__AGE:
 				return basicSetAge(null, msgs);
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__TEXT:
@@ -367,17 +340,19 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__LOW:
-				setLow((SimpleQuantity)newValue);
+				setLow((Quantity)newValue);
 				return;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__HIGH:
-				setHigh((SimpleQuantity)newValue);
+				setHigh((Quantity)newValue);
 				return;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING:
-				setMeaning((CodeableConcept)newValue);
+				getMeaning().clear();
+				getMeaning().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__AGE:
 				setAge((Range)newValue);
@@ -398,13 +373,13 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__LOW:
-				setLow((SimpleQuantity)null);
+				setLow((Quantity)null);
 				return;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__HIGH:
-				setHigh((SimpleQuantity)null);
+				setHigh((Quantity)null);
 				return;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING:
-				setMeaning((CodeableConcept)null);
+				getMeaning().clear();
 				return;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__AGE:
 				setAge((Range)null);
@@ -429,7 +404,7 @@ public class ObservationReferenceRangeImpl extends BackboneElementImpl implement
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__HIGH:
 				return high != null;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__MEANING:
-				return meaning != null;
+				return meaning != null && !meaning.isEmpty();
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__AGE:
 				return age != null;
 			case FhirPackage.OBSERVATION_REFERENCE_RANGE__TEXT:

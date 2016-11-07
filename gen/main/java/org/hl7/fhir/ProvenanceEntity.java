@@ -2,6 +2,8 @@
  */
 package org.hl7.fhir;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -133,29 +135,19 @@ public interface ProvenanceEntity extends BackboneElement {
 	void setDisplay(org.hl7.fhir.String value);
 
 	/**
-	 * Returns the value of the '<em><b>Agent</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Agent</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.ProvenanceAgent}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Agent</em>' containment reference.
-	 * @see #setAgent(ProvenanceAgent)
+	 * @return the value of the '<em>Agent</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getProvenanceEntity_Agent()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='agent' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	ProvenanceAgent getAgent();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ProvenanceEntity#getAgent <em>Agent</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Agent</em>' containment reference.
-	 * @see #getAgent()
-	 * @generated
-	 */
-	void setAgent(ProvenanceAgent value);
+	EList<ProvenanceAgent> getAgent();
 
 } // ProvenanceEntity

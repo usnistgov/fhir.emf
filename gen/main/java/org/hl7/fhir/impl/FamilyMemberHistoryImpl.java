@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.AdministrativeGender;
 import org.hl7.fhir.Age;
 import org.hl7.fhir.Annotation;
-import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Date;
 import org.hl7.fhir.DateTime;
@@ -50,11 +50,12 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getBornPeriod <em>Born Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getBornDate <em>Born Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getBornString <em>Born String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getAgeQuantity <em>Age Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getAgeAge <em>Age Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getAgeRange <em>Age Range</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getAgeString <em>Age String</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getEstimatedAge <em>Estimated Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getDeceasedBoolean <em>Deceased Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getDeceasedQuantity <em>Deceased Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getDeceasedAge <em>Deceased Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getDeceasedRange <em>Deceased Range</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getDeceasedDate <em>Deceased Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getDeceasedString <em>Deceased String</em>}</li>
@@ -133,7 +134,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * @generated
 	 * @ordered
 	 */
-	protected Code gender;
+	protected AdministrativeGender gender;
 
 	/**
 	 * The cached value of the '{@link #getBornPeriod() <em>Born Period</em>}' containment reference.
@@ -166,14 +167,14 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	protected org.hl7.fhir.String bornString;
 
 	/**
-	 * The cached value of the '{@link #getAgeQuantity() <em>Age Quantity</em>}' containment reference.
+	 * The cached value of the '{@link #getAgeAge() <em>Age Age</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAgeQuantity()
+	 * @see #getAgeAge()
 	 * @generated
 	 * @ordered
 	 */
-	protected Age ageQuantity;
+	protected Age ageAge;
 
 	/**
 	 * The cached value of the '{@link #getAgeRange() <em>Age Range</em>}' containment reference.
@@ -196,6 +197,16 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	protected org.hl7.fhir.String ageString;
 
 	/**
+	 * The cached value of the '{@link #getEstimatedAge() <em>Estimated Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEstimatedAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Boolean estimatedAge;
+
+	/**
 	 * The cached value of the '{@link #getDeceasedBoolean() <em>Deceased Boolean</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,14 +217,14 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	protected org.hl7.fhir.Boolean deceasedBoolean;
 
 	/**
-	 * The cached value of the '{@link #getDeceasedQuantity() <em>Deceased Quantity</em>}' containment reference.
+	 * The cached value of the '{@link #getDeceasedAge() <em>Deceased Age</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDeceasedQuantity()
+	 * @see #getDeceasedAge()
 	 * @generated
 	 * @ordered
 	 */
-	protected Age deceasedQuantity;
+	protected Age deceasedAge;
 
 	/**
 	 * The cached value of the '{@link #getDeceasedRange() <em>Deceased Range</em>}' containment reference.
@@ -516,7 +527,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getGender() {
+	public AdministrativeGender getGender() {
 		return gender;
 	}
 
@@ -525,8 +536,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGender(Code newGender, NotificationChain msgs) {
-		Code oldGender = gender;
+	public NotificationChain basicSetGender(AdministrativeGender newGender, NotificationChain msgs) {
+		AdministrativeGender oldGender = gender;
 		gender = newGender;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__GENDER, oldGender, newGender);
@@ -540,7 +551,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGender(Code newGender) {
+	public void setGender(AdministrativeGender newGender) {
 		if (newGender != gender) {
 			NotificationChain msgs = null;
 			if (gender != null)
@@ -688,8 +699,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Age getAgeQuantity() {
-		return ageQuantity;
+	public Age getAgeAge() {
+		return ageAge;
 	}
 
 	/**
@@ -697,11 +708,11 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAgeQuantity(Age newAgeQuantity, NotificationChain msgs) {
-		Age oldAgeQuantity = ageQuantity;
-		ageQuantity = newAgeQuantity;
+	public NotificationChain basicSetAgeAge(Age newAgeAge, NotificationChain msgs) {
+		Age oldAgeAge = ageAge;
+		ageAge = newAgeAge;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY, oldAgeQuantity, newAgeQuantity);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE, oldAgeAge, newAgeAge);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -712,18 +723,18 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAgeQuantity(Age newAgeQuantity) {
-		if (newAgeQuantity != ageQuantity) {
+	public void setAgeAge(Age newAgeAge) {
+		if (newAgeAge != ageAge) {
 			NotificationChain msgs = null;
-			if (ageQuantity != null)
-				msgs = ((InternalEObject)ageQuantity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY, null, msgs);
-			if (newAgeQuantity != null)
-				msgs = ((InternalEObject)newAgeQuantity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY, null, msgs);
-			msgs = basicSetAgeQuantity(newAgeQuantity, msgs);
+			if (ageAge != null)
+				msgs = ((InternalEObject)ageAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE, null, msgs);
+			if (newAgeAge != null)
+				msgs = ((InternalEObject)newAgeAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE, null, msgs);
+			msgs = basicSetAgeAge(newAgeAge, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY, newAgeQuantity, newAgeQuantity));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE, newAgeAge, newAgeAge));
 	}
 
 	/**
@@ -817,6 +828,49 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.hl7.fhir.Boolean getEstimatedAge() {
+		return estimatedAge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEstimatedAge(org.hl7.fhir.Boolean newEstimatedAge, NotificationChain msgs) {
+		org.hl7.fhir.Boolean oldEstimatedAge = estimatedAge;
+		estimatedAge = newEstimatedAge;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE, oldEstimatedAge, newEstimatedAge);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEstimatedAge(org.hl7.fhir.Boolean newEstimatedAge) {
+		if (newEstimatedAge != estimatedAge) {
+			NotificationChain msgs = null;
+			if (estimatedAge != null)
+				msgs = ((InternalEObject)estimatedAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE, null, msgs);
+			if (newEstimatedAge != null)
+				msgs = ((InternalEObject)newEstimatedAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE, null, msgs);
+			msgs = basicSetEstimatedAge(newEstimatedAge, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE, newEstimatedAge, newEstimatedAge));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.hl7.fhir.Boolean getDeceasedBoolean() {
 		return deceasedBoolean;
 	}
@@ -860,8 +914,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Age getDeceasedQuantity() {
-		return deceasedQuantity;
+	public Age getDeceasedAge() {
+		return deceasedAge;
 	}
 
 	/**
@@ -869,11 +923,11 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDeceasedQuantity(Age newDeceasedQuantity, NotificationChain msgs) {
-		Age oldDeceasedQuantity = deceasedQuantity;
-		deceasedQuantity = newDeceasedQuantity;
+	public NotificationChain basicSetDeceasedAge(Age newDeceasedAge, NotificationChain msgs) {
+		Age oldDeceasedAge = deceasedAge;
+		deceasedAge = newDeceasedAge;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY, oldDeceasedQuantity, newDeceasedQuantity);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE, oldDeceasedAge, newDeceasedAge);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -884,18 +938,18 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDeceasedQuantity(Age newDeceasedQuantity) {
-		if (newDeceasedQuantity != deceasedQuantity) {
+	public void setDeceasedAge(Age newDeceasedAge) {
+		if (newDeceasedAge != deceasedAge) {
 			NotificationChain msgs = null;
-			if (deceasedQuantity != null)
-				msgs = ((InternalEObject)deceasedQuantity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY, null, msgs);
-			if (newDeceasedQuantity != null)
-				msgs = ((InternalEObject)newDeceasedQuantity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY, null, msgs);
-			msgs = basicSetDeceasedQuantity(newDeceasedQuantity, msgs);
+			if (deceasedAge != null)
+				msgs = ((InternalEObject)deceasedAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE, null, msgs);
+			if (newDeceasedAge != null)
+				msgs = ((InternalEObject)newDeceasedAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE, null, msgs);
+			msgs = basicSetDeceasedAge(newDeceasedAge, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY, newDeceasedQuantity, newDeceasedQuantity));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE, newDeceasedAge, newDeceasedAge));
 	}
 
 	/**
@@ -1110,16 +1164,18 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				return basicSetBornDate(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__BORN_STRING:
 				return basicSetBornString(null, msgs);
-			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY:
-				return basicSetAgeQuantity(null, msgs);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE:
+				return basicSetAgeAge(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_RANGE:
 				return basicSetAgeRange(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_STRING:
 				return basicSetAgeString(null, msgs);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE:
+				return basicSetEstimatedAge(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_BOOLEAN:
 				return basicSetDeceasedBoolean(null, msgs);
-			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY:
-				return basicSetDeceasedQuantity(null, msgs);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE:
+				return basicSetDeceasedAge(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_RANGE:
 				return basicSetDeceasedRange(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_DATE:
@@ -1162,16 +1218,18 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				return getBornDate();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__BORN_STRING:
 				return getBornString();
-			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY:
-				return getAgeQuantity();
+			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE:
+				return getAgeAge();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_RANGE:
 				return getAgeRange();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_STRING:
 				return getAgeString();
+			case FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE:
+				return getEstimatedAge();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_BOOLEAN:
 				return getDeceasedBoolean();
-			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY:
-				return getDeceasedQuantity();
+			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE:
+				return getDeceasedAge();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_RANGE:
 				return getDeceasedRange();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_DATE:
@@ -1215,7 +1273,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				setRelationship((CodeableConcept)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__GENDER:
-				setGender((Code)newValue);
+				setGender((AdministrativeGender)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__BORN_PERIOD:
 				setBornPeriod((Period)newValue);
@@ -1226,8 +1284,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 			case FhirPackage.FAMILY_MEMBER_HISTORY__BORN_STRING:
 				setBornString((org.hl7.fhir.String)newValue);
 				return;
-			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY:
-				setAgeQuantity((Age)newValue);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE:
+				setAgeAge((Age)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_RANGE:
 				setAgeRange((Range)newValue);
@@ -1235,11 +1293,14 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_STRING:
 				setAgeString((org.hl7.fhir.String)newValue);
 				return;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE:
+				setEstimatedAge((org.hl7.fhir.Boolean)newValue);
+				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_BOOLEAN:
 				setDeceasedBoolean((org.hl7.fhir.Boolean)newValue);
 				return;
-			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY:
-				setDeceasedQuantity((Age)newValue);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE:
+				setDeceasedAge((Age)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_RANGE:
 				setDeceasedRange((Range)newValue);
@@ -1288,7 +1349,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				setRelationship((CodeableConcept)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__GENDER:
-				setGender((Code)null);
+				setGender((AdministrativeGender)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__BORN_PERIOD:
 				setBornPeriod((Period)null);
@@ -1299,8 +1360,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 			case FhirPackage.FAMILY_MEMBER_HISTORY__BORN_STRING:
 				setBornString((org.hl7.fhir.String)null);
 				return;
-			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY:
-				setAgeQuantity((Age)null);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE:
+				setAgeAge((Age)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_RANGE:
 				setAgeRange((Range)null);
@@ -1308,11 +1369,14 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_STRING:
 				setAgeString((org.hl7.fhir.String)null);
 				return;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE:
+				setEstimatedAge((org.hl7.fhir.Boolean)null);
+				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_BOOLEAN:
 				setDeceasedBoolean((org.hl7.fhir.Boolean)null);
 				return;
-			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY:
-				setDeceasedQuantity((Age)null);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE:
+				setDeceasedAge((Age)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_RANGE:
 				setDeceasedRange((Range)null);
@@ -1361,16 +1425,18 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				return bornDate != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__BORN_STRING:
 				return bornString != null;
-			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_QUANTITY:
-				return ageQuantity != null;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_AGE:
+				return ageAge != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_RANGE:
 				return ageRange != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__AGE_STRING:
 				return ageString != null;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__ESTIMATED_AGE:
+				return estimatedAge != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_BOOLEAN:
 				return deceasedBoolean != null;
-			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_QUANTITY:
-				return deceasedQuantity != null;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_AGE:
+				return deceasedAge != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_RANGE:
 				return deceasedRange != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DECEASED_DATE:

@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.OperationOutcomeIssue#getDetails <em>Details</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationOutcomeIssue#getDiagnostics <em>Diagnostics</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationOutcomeIssue#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.hl7.fhir.OperationOutcomeIssue#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getOperationOutcomeIssue()
@@ -148,5 +149,21 @@ public interface OperationOutcomeIssue extends BackboneElement {
 	 * @generated
 	 */
 	EList<org.hl7.fhir.String> getLocation();
+
+	/**
+	 * Returns the value of the '<em><b>Expression</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.String}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A simple FluentPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Expression</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getOperationOutcomeIssue_Expression()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='expression' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<org.hl7.fhir.String> getExpression();
 
 } // OperationOutcomeIssue

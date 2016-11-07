@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.hl7.fhir.CodeableConcept;
+import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Instant;
 import org.hl7.fhir.Period;
@@ -89,7 +88,7 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CodeableConcept> reason;
+	protected EList<Coding> reason;
 
 	/**
 	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' containment reference.
@@ -99,7 +98,7 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept activity;
+	protected Coding activity;
 
 	/**
 	 * The cached value of the '{@link #getLocation() <em>Location</em>}' containment reference.
@@ -273,9 +272,9 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CodeableConcept> getReason() {
+	public EList<Coding> getReason() {
 		if (reason == null) {
-			reason = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.PROVENANCE__REASON);
+			reason = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.PROVENANCE__REASON);
 		}
 		return reason;
 	}
@@ -285,7 +284,7 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getActivity() {
+	public Coding getActivity() {
 		return activity;
 	}
 
@@ -294,8 +293,8 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActivity(CodeableConcept newActivity, NotificationChain msgs) {
-		CodeableConcept oldActivity = activity;
+	public NotificationChain basicSetActivity(Coding newActivity, NotificationChain msgs) {
+		Coding oldActivity = activity;
 		activity = newActivity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROVENANCE__ACTIVITY, oldActivity, newActivity);
@@ -309,7 +308,7 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setActivity(CodeableConcept newActivity) {
+	public void setActivity(Coding newActivity) {
 		if (newActivity != activity) {
 			NotificationChain msgs = null;
 			if (activity != null)
@@ -499,10 +498,10 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 				return;
 			case FhirPackage.PROVENANCE__REASON:
 				getReason().clear();
-				getReason().addAll((Collection<? extends CodeableConcept>)newValue);
+				getReason().addAll((Collection<? extends Coding>)newValue);
 				return;
 			case FhirPackage.PROVENANCE__ACTIVITY:
-				setActivity((CodeableConcept)newValue);
+				setActivity((Coding)newValue);
 				return;
 			case FhirPackage.PROVENANCE__LOCATION:
 				setLocation((Reference)newValue);
@@ -548,7 +547,7 @@ public class ProvenanceImpl extends DomainResourceImpl implements Provenance {
 				getReason().clear();
 				return;
 			case FhirPackage.PROVENANCE__ACTIVITY:
-				setActivity((CodeableConcept)null);
+				setActivity((Coding)null);
 				return;
 			case FhirPackage.PROVENANCE__LOCATION:
 				setLocation((Reference)null);

@@ -65,7 +65,7 @@ public enum DeviceMetricCategoryList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * DeviceObservations generated for this DeviceMetric are measured.
+	 * Measurement
 	 * <!-- end-model-doc -->
 	 * @see #MEASUREMENT
 	 * @model name="measurement"
@@ -79,7 +79,7 @@ public enum DeviceMetricCategoryList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * DeviceObservations generated for this DeviceMetric is a setting that will influence the behavior of the Device.
+	 * Setting
 	 * <!-- end-model-doc -->
 	 * @see #SETTING
 	 * @model name="setting"
@@ -93,7 +93,7 @@ public enum DeviceMetricCategoryList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * DeviceObservations generated for this DeviceMetric are calculated.
+	 * Calculation
 	 * <!-- end-model-doc -->
 	 * @see #CALCULATION
 	 * @model name="calculation"
@@ -107,7 +107,7 @@ public enum DeviceMetricCategoryList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The category of this DeviceMetric is unspecified.
+	 * Unspecified
 	 * <!-- end-model-doc -->
 	 * @see #UNSPECIFIED
 	 * @model name="unspecified"

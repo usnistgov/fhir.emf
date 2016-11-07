@@ -23,6 +23,7 @@ import org.hl7.fhir.TestScriptVariable;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.TestScriptVariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.TestScriptVariableImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptVariableImpl#getHeaderField <em>Header Field</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptVariableImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptVariableImpl#getSourceId <em>Source Id</em>}</li>
@@ -40,6 +41,16 @@ public class TestScriptVariableImpl extends BackboneElementImpl implements TestS
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String name;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.String defaultValue;
 
 	/**
 	 * The cached value of the '{@link #getHeaderField() <em>Header Field</em>}' containment reference.
@@ -131,6 +142,49 @@ public class TestScriptVariableImpl extends BackboneElementImpl implements TestS
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_VARIABLE__NAME, newName, newName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.hl7.fhir.String getDefaultValue() {
+		return defaultValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultValue(org.hl7.fhir.String newDefaultValue, NotificationChain msgs) {
+		org.hl7.fhir.String oldDefaultValue = defaultValue;
+		defaultValue = newDefaultValue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE, oldDefaultValue, newDefaultValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultValue(org.hl7.fhir.String newDefaultValue) {
+		if (newDefaultValue != defaultValue) {
+			NotificationChain msgs = null;
+			if (defaultValue != null)
+				msgs = ((InternalEObject)defaultValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE, null, msgs);
+			if (newDefaultValue != null)
+				msgs = ((InternalEObject)newDefaultValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE, null, msgs);
+			msgs = basicSetDefaultValue(newDefaultValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE, newDefaultValue, newDefaultValue));
 	}
 
 	/**
@@ -272,6 +326,8 @@ public class TestScriptVariableImpl extends BackboneElementImpl implements TestS
 		switch (featureID) {
 			case FhirPackage.TEST_SCRIPT_VARIABLE__NAME:
 				return basicSetName(null, msgs);
+			case FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE:
+				return basicSetDefaultValue(null, msgs);
 			case FhirPackage.TEST_SCRIPT_VARIABLE__HEADER_FIELD:
 				return basicSetHeaderField(null, msgs);
 			case FhirPackage.TEST_SCRIPT_VARIABLE__PATH:
@@ -292,6 +348,8 @@ public class TestScriptVariableImpl extends BackboneElementImpl implements TestS
 		switch (featureID) {
 			case FhirPackage.TEST_SCRIPT_VARIABLE__NAME:
 				return getName();
+			case FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE:
+				return getDefaultValue();
 			case FhirPackage.TEST_SCRIPT_VARIABLE__HEADER_FIELD:
 				return getHeaderField();
 			case FhirPackage.TEST_SCRIPT_VARIABLE__PATH:
@@ -312,6 +370,9 @@ public class TestScriptVariableImpl extends BackboneElementImpl implements TestS
 		switch (featureID) {
 			case FhirPackage.TEST_SCRIPT_VARIABLE__NAME:
 				setName((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE:
+				setDefaultValue((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.TEST_SCRIPT_VARIABLE__HEADER_FIELD:
 				setHeaderField((org.hl7.fhir.String)newValue);
@@ -337,6 +398,9 @@ public class TestScriptVariableImpl extends BackboneElementImpl implements TestS
 			case FhirPackage.TEST_SCRIPT_VARIABLE__NAME:
 				setName((org.hl7.fhir.String)null);
 				return;
+			case FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE:
+				setDefaultValue((org.hl7.fhir.String)null);
+				return;
 			case FhirPackage.TEST_SCRIPT_VARIABLE__HEADER_FIELD:
 				setHeaderField((org.hl7.fhir.String)null);
 				return;
@@ -360,6 +424,8 @@ public class TestScriptVariableImpl extends BackboneElementImpl implements TestS
 		switch (featureID) {
 			case FhirPackage.TEST_SCRIPT_VARIABLE__NAME:
 				return name != null;
+			case FhirPackage.TEST_SCRIPT_VARIABLE__DEFAULT_VALUE:
+				return defaultValue != null;
 			case FhirPackage.TEST_SCRIPT_VARIABLE__HEADER_FIELD:
 				return headerField != null;
 			case FhirPackage.TEST_SCRIPT_VARIABLE__PATH:

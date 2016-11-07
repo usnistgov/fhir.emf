@@ -58,7 +58,7 @@ public interface Element extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see org.hl7.fhir.FhirPackage#getElement_Id()
-	 * @model dataType="org.hl7.fhir.IdPrimitive"
+	 * @model dataType="org.hl7.fhir.StringPrimitive"
 	 *        extendedMetaData="kind='attribute' name='id'"
 	 * @generated
 	 */

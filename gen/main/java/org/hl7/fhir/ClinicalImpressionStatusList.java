@@ -21,16 +21,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ClinicalImpressionStatusList implements Enumerator {
 	/**
-	 * The '<em><b>In Progress</b></em>' literal object.
+	 * The '<em><b>Draft</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #IN_PROGRESS_VALUE
+	 * @see #DRAFT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	IN_PROGRESS(0, "inProgress", "in-progress"),
-
-	/**
+	DRAFT(0, "draft", "draft"), /**
 	 * The '<em><b>Completed</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -51,25 +49,25 @@ public enum ClinicalImpressionStatusList implements Enumerator {
 	ENTERED_IN_ERROR(2, "enteredInError", "entered-in-error");
 
 	/**
-	 * The '<em><b>In Progress</b></em>' literal value.
+	 * The '<em><b>Draft</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The assessment is still on-going and results are not yet final.
+	 * In progress
 	 * <!-- end-model-doc -->
-	 * @see #IN_PROGRESS
-	 * @model name="inProgress" literal="in-progress"
+	 * @see #DRAFT
+	 * @model name="draft"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int IN_PROGRESS_VALUE = 0;
+	public static final int DRAFT_VALUE = 0;
 
 	/**
 	 * The '<em><b>Completed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The assessment is done and the results are final.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -83,7 +81,7 @@ public enum ClinicalImpressionStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This assessment was never actually done and the record is erroneous (e.g. Wrong patient).
+	 * Entered in Error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
@@ -100,7 +98,7 @@ public enum ClinicalImpressionStatusList implements Enumerator {
 	 */
 	private static final ClinicalImpressionStatusList[] VALUES_ARRAY =
 		new ClinicalImpressionStatusList[] {
-			IN_PROGRESS,
+			DRAFT,
 			COMPLETED,
 			ENTERED_IN_ERROR,
 		};
@@ -159,7 +157,7 @@ public enum ClinicalImpressionStatusList implements Enumerator {
 	 */
 	public static ClinicalImpressionStatusList get(int value) {
 		switch (value) {
-			case IN_PROGRESS_VALUE: return IN_PROGRESS;
+			case DRAFT_VALUE: return DRAFT;
 			case COMPLETED_VALUE: return COMPLETED;
 			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
 		}

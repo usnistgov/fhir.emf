@@ -2,6 +2,8 @@
  */
 package org.hl7.fhir;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -36,13 +38,13 @@ public interface ObservationReferenceRange extends BackboneElement {
 	 * The value of the low bound of the reference range.  The low bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the low bound is omitted,  it is assumed to be meaningless (e.g. reference range is <=2.3).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Low</em>' containment reference.
-	 * @see #setLow(SimpleQuantity)
+	 * @see #setLow(Quantity)
 	 * @see org.hl7.fhir.FhirPackage#getObservationReferenceRange_Low()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='low' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getLow();
+	Quantity getLow();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ObservationReferenceRange#getLow <em>Low</em>}' containment reference.
@@ -52,7 +54,7 @@ public interface ObservationReferenceRange extends BackboneElement {
 	 * @see #getLow()
 	 * @generated
 	 */
-	void setLow(SimpleQuantity value);
+	void setLow(Quantity value);
 
 	/**
 	 * Returns the value of the '<em><b>High</b></em>' containment reference.
@@ -62,13 +64,13 @@ public interface ObservationReferenceRange extends BackboneElement {
 	 * The value of the high bound of the reference range.  The high bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the high bound is omitted,  it is assumed to be meaningless (e.g. reference range is >= 2.3).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>High</em>' containment reference.
-	 * @see #setHigh(SimpleQuantity)
+	 * @see #setHigh(Quantity)
 	 * @see org.hl7.fhir.FhirPackage#getObservationReferenceRange_High()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='high' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getHigh();
+	Quantity getHigh();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ObservationReferenceRange#getHigh <em>High</em>}' containment reference.
@@ -78,33 +80,23 @@ public interface ObservationReferenceRange extends BackboneElement {
 	 * @see #getHigh()
 	 * @generated
 	 */
-	void setHigh(SimpleQuantity value);
+	void setHigh(Quantity value);
 
 	/**
-	 * Returns the value of the '<em><b>Meaning</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Meaning</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Code for the meaning of the reference range.
+	 * Codes to indicate the the target population this reference range applies to.  For example, a reference range may be based on the normal population or a particular sex, race, therapeutic status, or endocrine or reproductive status.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Meaning</em>' containment reference.
-	 * @see #setMeaning(CodeableConcept)
+	 * @return the value of the '<em>Meaning</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getObservationReferenceRange_Meaning()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='meaning' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getMeaning();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ObservationReferenceRange#getMeaning <em>Meaning</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Meaning</em>' containment reference.
-	 * @see #getMeaning()
-	 * @generated
-	 */
-	void setMeaning(CodeableConcept value);
+	EList<CodeableConcept> getMeaning();
 
 	/**
 	 * Returns the value of the '<em><b>Age</b></em>' containment reference.

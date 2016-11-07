@@ -65,7 +65,7 @@ public enum NarrativeStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The contents of the narrative are entirely generated from the structured data in the content.
+	 * Generated
 	 * <!-- end-model-doc -->
 	 * @see #GENERATED
 	 * @model name="generated"
@@ -79,7 +79,7 @@ public enum NarrativeStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The contents of the narrative are entirely generated from the structured data in the content and some of the content is generated from extensions
+	 * Extensions
 	 * <!-- end-model-doc -->
 	 * @see #EXTENSIONS
 	 * @model name="extensions"
@@ -93,7 +93,7 @@ public enum NarrativeStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The contents of the narrative contain additional information not found in the structured data
+	 * Additional
 	 * <!-- end-model-doc -->
 	 * @see #ADDITIONAL
 	 * @model name="additional"
@@ -107,7 +107,7 @@ public enum NarrativeStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The contents of the narrative are some equivalent of "No human-readable text provided in this case"
+	 * Empty
 	 * <!-- end-model-doc -->
 	 * @see #EMPTY
 	 * @model name="empty"

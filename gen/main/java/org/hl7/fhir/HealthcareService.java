@@ -19,9 +19,11 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.HealthcareService#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.HealthcareService#getActive <em>Active</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getProvidedBy <em>Provided By</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getServiceCategory <em>Service Category</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.HealthcareService#getSpecialty <em>Specialty</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getServiceName <em>Service Name</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getComment <em>Comment</em>}</li>
@@ -62,6 +64,32 @@ public interface HealthcareService extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Active</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Whether this healthcareservice record is in active use.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Active</em>' containment reference.
+	 * @see #setActive(org.hl7.fhir.Boolean)
+	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Active()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='active' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.Boolean getActive();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.HealthcareService#getActive <em>Active</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Active</em>' containment reference.
+	 * @see #getActive()
+	 * @generated
+	 */
+	void setActive(org.hl7.fhir.Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Provided By</b></em>' containment reference.
@@ -117,11 +145,11 @@ public interface HealthcareService extends DomainResource {
 
 	/**
 	 * Returns the value of the '<em><b>Service Type</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.HealthcareServiceServiceType}.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A specific type of service that may be delivered or performed.
+	 * The specific type of service that may be delivered or performed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Service Type</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_ServiceType()
@@ -129,33 +157,39 @@ public interface HealthcareService extends DomainResource {
 	 *        extendedMetaData="kind='element' name='serviceType' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<HealthcareServiceServiceType> getServiceType();
+	EList<CodeableConcept> getServiceType();
 
 	/**
-	 * Returns the value of the '<em><b>Location</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Specialty</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The location where this healthcare service may be provided.
+	 * Collection of specialties handled by the service site. This is more of a medical term.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Location</em>' containment reference.
-	 * @see #setLocation(Reference)
+	 * @return the value of the '<em>Specialty</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Specialty()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='specialty' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CodeableConcept> getSpecialty();
+
+	/**
+	 * Returns the value of the '<em><b>Location</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The location(s) where this healthcare service may be provided.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Location</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Location()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='location' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getLocation();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.HealthcareService#getLocation <em>Location</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Location</em>' containment reference.
-	 * @see #getLocation()
-	 * @generated
-	 */
-	void setLocation(Reference value);
+	EList<Reference> getLocation();
 
 	/**
 	 * Returns the value of the '<em><b>Service Name</b></em>' containment reference.

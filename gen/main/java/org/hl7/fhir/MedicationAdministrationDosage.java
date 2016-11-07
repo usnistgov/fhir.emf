@@ -21,9 +21,9 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getSiteReference <em>Site Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getRoute <em>Route</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getMethod <em>Method</em>}</li>
- *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getDose <em>Dose</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getRateRatio <em>Rate Ratio</em>}</li>
- *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getRateRange <em>Rate Range</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationAdministrationDosage#getRateQuantity <em>Rate Quantity</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getMedicationAdministrationDosage()
@@ -36,7 +36,9 @@ public interface MedicationAdministrationDosage extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.
+	 * Free text dosage can be used for cases where the dosage administered is too complex to code. When coded dosage is present, the free text dosage may still be present for display to humans.
+	 * 
+	 * The dosage instructions should reflect the dosage of the medication that was administered.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Text</em>' containment reference.
 	 * @see #setText(org.hl7.fhir.String)
@@ -162,37 +164,37 @@ public interface MedicationAdministrationDosage extends BackboneElement {
 	void setMethod(CodeableConcept value);
 
 	/**
-	 * Returns the value of the '<em><b>Quantity</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Dose</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Quantity</em>' containment reference.
-	 * @see #setQuantity(SimpleQuantity)
-	 * @see org.hl7.fhir.FhirPackage#getMedicationAdministrationDosage_Quantity()
+	 * @return the value of the '<em>Dose</em>' containment reference.
+	 * @see #setDose(Quantity)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationAdministrationDosage_Dose()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='quantity' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='dose' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getQuantity();
+	Quantity getDose();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MedicationAdministrationDosage#getQuantity <em>Quantity</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationAdministrationDosage#getDose <em>Dose</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Quantity</em>' containment reference.
-	 * @see #getQuantity()
+	 * @param value the new value of the '<em>Dose</em>' containment reference.
+	 * @see #getDose()
 	 * @generated
 	 */
-	void setQuantity(SimpleQuantity value);
+	void setDose(Quantity value);
 
 	/**
 	 * Returns the value of the '<em><b>Rate Ratio</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours. (choose any one of rate*, but only one)
+	 * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours. (choose any one of rate*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Rate Ratio</em>' containment reference.
 	 * @see #setRateRatio(Ratio)
@@ -214,29 +216,29 @@ public interface MedicationAdministrationDosage extends BackboneElement {
 	void setRateRatio(Ratio value);
 
 	/**
-	 * Returns the value of the '<em><b>Rate Range</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Rate Quantity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours. (choose any one of rate*, but only one)
+	 * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours. (choose any one of rate*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Rate Range</em>' containment reference.
-	 * @see #setRateRange(Range)
-	 * @see org.hl7.fhir.FhirPackage#getMedicationAdministrationDosage_RateRange()
+	 * @return the value of the '<em>Rate Quantity</em>' containment reference.
+	 * @see #setRateQuantity(Quantity)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationAdministrationDosage_RateQuantity()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='rateRange' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='rateQuantity' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Range getRateRange();
+	Quantity getRateQuantity();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MedicationAdministrationDosage#getRateRange <em>Rate Range</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationAdministrationDosage#getRateQuantity <em>Rate Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rate Range</em>' containment reference.
-	 * @see #getRateRange()
+	 * @param value the new value of the '<em>Rate Quantity</em>' containment reference.
+	 * @see #getRateQuantity()
 	 * @generated
 	 */
-	void setRateRange(Range value);
+	void setRateQuantity(Quantity value);
 
 } // MedicationAdministrationDosage

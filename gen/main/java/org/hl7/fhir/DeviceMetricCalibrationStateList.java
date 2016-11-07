@@ -65,7 +65,7 @@ public enum DeviceMetricCalibrationStateList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The metric has not been calibrated.
+	 * Not Calibrated
 	 * <!-- end-model-doc -->
 	 * @see #NOT_CALIBRATED
 	 * @model name="notCalibrated" literal="not-calibrated"
@@ -79,7 +79,7 @@ public enum DeviceMetricCalibrationStateList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The metric needs to be calibrated.
+	 * Calibration Required
 	 * <!-- end-model-doc -->
 	 * @see #CALIBRATION_REQUIRED
 	 * @model name="calibrationRequired" literal="calibration-required"
@@ -93,7 +93,7 @@ public enum DeviceMetricCalibrationStateList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The metric has been calibrated.
+	 * Calibrated
 	 * <!-- end-model-doc -->
 	 * @see #CALIBRATED
 	 * @model name="calibrated"
@@ -107,7 +107,7 @@ public enum DeviceMetricCalibrationStateList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The state of calibration of this metric is unspecified.
+	 * Unspecified
 	 * <!-- end-model-doc -->
 	 * @see #UNSPECIFIED
 	 * @model name="unspecified"

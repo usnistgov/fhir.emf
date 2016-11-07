@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
@@ -36,15 +37,15 @@ import org.hl7.fhir.Reference;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ListImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ListImpl#getMode <em>Mode</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ListImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getEncounter <em>Encounter</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ListImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getDate <em>Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ListImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getOrderedBy <em>Ordered By</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ListImpl#getMode <em>Mode</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getNote <em>Note</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ListImpl#getEmptyReason <em>Empty Reason</em>}</li>
@@ -62,6 +63,26 @@ public class ListImpl extends DomainResourceImpl implements List {
 	 * @ordered
 	 */
 	protected EList<Identifier> identifier;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected ListStatus status;
+
+	/**
+	 * The cached value of the '{@link #getMode() <em>Mode</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected ListMode mode;
 
 	/**
 	 * The cached value of the '{@link #getTitle() <em>Title</em>}' containment reference.
@@ -94,16 +115,6 @@ public class ListImpl extends DomainResourceImpl implements List {
 	protected Reference subject;
 
 	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSource()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference source;
-
-	/**
 	 * The cached value of the '{@link #getEncounter() <em>Encounter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,16 +123,6 @@ public class ListImpl extends DomainResourceImpl implements List {
 	 * @ordered
 	 */
 	protected Reference encounter;
-
-	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected ListStatus status;
 
 	/**
 	 * The cached value of the '{@link #getDate() <em>Date</em>}' containment reference.
@@ -134,6 +135,16 @@ public class ListImpl extends DomainResourceImpl implements List {
 	protected DateTime date;
 
 	/**
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference source;
+
+	/**
 	 * The cached value of the '{@link #getOrderedBy() <em>Ordered By</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -144,24 +155,14 @@ public class ListImpl extends DomainResourceImpl implements List {
 	protected CodeableConcept orderedBy;
 
 	/**
-	 * The cached value of the '{@link #getMode() <em>Mode</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMode()
-	 * @generated
-	 * @ordered
-	 */
-	protected ListMode mode;
-
-	/**
-	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference.
+	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNote()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String note;
+	protected EList<Annotation> note;
 
 	/**
 	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' containment reference list.
@@ -606,42 +607,11 @@ public class ListImpl extends DomainResourceImpl implements List {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNote() {
+	public EList<Annotation> getNote() {
+		if (note == null) {
+			note = new EObjectContainmentEList<Annotation>(Annotation.class, this, FhirPackage.LIST__NOTE);
+		}
 		return note;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNote(org.hl7.fhir.String newNote, NotificationChain msgs) {
-		org.hl7.fhir.String oldNote = note;
-		note = newNote;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.LIST__NOTE, oldNote, newNote);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNote(org.hl7.fhir.String newNote) {
-		if (newNote != note) {
-			NotificationChain msgs = null;
-			if (note != null)
-				msgs = ((InternalEObject)note).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LIST__NOTE, null, msgs);
-			if (newNote != null)
-				msgs = ((InternalEObject)newNote).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LIST__NOTE, null, msgs);
-			msgs = basicSetNote(newNote, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.LIST__NOTE, newNote, newNote));
 	}
 
 	/**
@@ -709,26 +679,26 @@ public class ListImpl extends DomainResourceImpl implements List {
 		switch (featureID) {
 			case FhirPackage.LIST__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.LIST__STATUS:
+				return basicSetStatus(null, msgs);
+			case FhirPackage.LIST__MODE:
+				return basicSetMode(null, msgs);
 			case FhirPackage.LIST__TITLE:
 				return basicSetTitle(null, msgs);
 			case FhirPackage.LIST__CODE:
 				return basicSetCode(null, msgs);
 			case FhirPackage.LIST__SUBJECT:
 				return basicSetSubject(null, msgs);
-			case FhirPackage.LIST__SOURCE:
-				return basicSetSource(null, msgs);
 			case FhirPackage.LIST__ENCOUNTER:
 				return basicSetEncounter(null, msgs);
-			case FhirPackage.LIST__STATUS:
-				return basicSetStatus(null, msgs);
 			case FhirPackage.LIST__DATE:
 				return basicSetDate(null, msgs);
+			case FhirPackage.LIST__SOURCE:
+				return basicSetSource(null, msgs);
 			case FhirPackage.LIST__ORDERED_BY:
 				return basicSetOrderedBy(null, msgs);
-			case FhirPackage.LIST__MODE:
-				return basicSetMode(null, msgs);
 			case FhirPackage.LIST__NOTE:
-				return basicSetNote(null, msgs);
+				return ((InternalEList<?>)getNote()).basicRemove(otherEnd, msgs);
 			case FhirPackage.LIST__ENTRY:
 				return ((InternalEList<?>)getEntry()).basicRemove(otherEnd, msgs);
 			case FhirPackage.LIST__EMPTY_REASON:
@@ -747,24 +717,24 @@ public class ListImpl extends DomainResourceImpl implements List {
 		switch (featureID) {
 			case FhirPackage.LIST__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.LIST__STATUS:
+				return getStatus();
+			case FhirPackage.LIST__MODE:
+				return getMode();
 			case FhirPackage.LIST__TITLE:
 				return getTitle();
 			case FhirPackage.LIST__CODE:
 				return getCode();
 			case FhirPackage.LIST__SUBJECT:
 				return getSubject();
-			case FhirPackage.LIST__SOURCE:
-				return getSource();
 			case FhirPackage.LIST__ENCOUNTER:
 				return getEncounter();
-			case FhirPackage.LIST__STATUS:
-				return getStatus();
 			case FhirPackage.LIST__DATE:
 				return getDate();
+			case FhirPackage.LIST__SOURCE:
+				return getSource();
 			case FhirPackage.LIST__ORDERED_BY:
 				return getOrderedBy();
-			case FhirPackage.LIST__MODE:
-				return getMode();
 			case FhirPackage.LIST__NOTE:
 				return getNote();
 			case FhirPackage.LIST__ENTRY:
@@ -788,6 +758,12 @@ public class ListImpl extends DomainResourceImpl implements List {
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
 				return;
+			case FhirPackage.LIST__STATUS:
+				setStatus((ListStatus)newValue);
+				return;
+			case FhirPackage.LIST__MODE:
+				setMode((ListMode)newValue);
+				return;
 			case FhirPackage.LIST__TITLE:
 				setTitle((org.hl7.fhir.String)newValue);
 				return;
@@ -797,26 +773,21 @@ public class ListImpl extends DomainResourceImpl implements List {
 			case FhirPackage.LIST__SUBJECT:
 				setSubject((Reference)newValue);
 				return;
-			case FhirPackage.LIST__SOURCE:
-				setSource((Reference)newValue);
-				return;
 			case FhirPackage.LIST__ENCOUNTER:
 				setEncounter((Reference)newValue);
-				return;
-			case FhirPackage.LIST__STATUS:
-				setStatus((ListStatus)newValue);
 				return;
 			case FhirPackage.LIST__DATE:
 				setDate((DateTime)newValue);
 				return;
+			case FhirPackage.LIST__SOURCE:
+				setSource((Reference)newValue);
+				return;
 			case FhirPackage.LIST__ORDERED_BY:
 				setOrderedBy((CodeableConcept)newValue);
 				return;
-			case FhirPackage.LIST__MODE:
-				setMode((ListMode)newValue);
-				return;
 			case FhirPackage.LIST__NOTE:
-				setNote((org.hl7.fhir.String)newValue);
+				getNote().clear();
+				getNote().addAll((Collection<? extends Annotation>)newValue);
 				return;
 			case FhirPackage.LIST__ENTRY:
 				getEntry().clear();
@@ -840,6 +811,12 @@ public class ListImpl extends DomainResourceImpl implements List {
 			case FhirPackage.LIST__IDENTIFIER:
 				getIdentifier().clear();
 				return;
+			case FhirPackage.LIST__STATUS:
+				setStatus((ListStatus)null);
+				return;
+			case FhirPackage.LIST__MODE:
+				setMode((ListMode)null);
+				return;
 			case FhirPackage.LIST__TITLE:
 				setTitle((org.hl7.fhir.String)null);
 				return;
@@ -849,26 +826,20 @@ public class ListImpl extends DomainResourceImpl implements List {
 			case FhirPackage.LIST__SUBJECT:
 				setSubject((Reference)null);
 				return;
-			case FhirPackage.LIST__SOURCE:
-				setSource((Reference)null);
-				return;
 			case FhirPackage.LIST__ENCOUNTER:
 				setEncounter((Reference)null);
-				return;
-			case FhirPackage.LIST__STATUS:
-				setStatus((ListStatus)null);
 				return;
 			case FhirPackage.LIST__DATE:
 				setDate((DateTime)null);
 				return;
+			case FhirPackage.LIST__SOURCE:
+				setSource((Reference)null);
+				return;
 			case FhirPackage.LIST__ORDERED_BY:
 				setOrderedBy((CodeableConcept)null);
 				return;
-			case FhirPackage.LIST__MODE:
-				setMode((ListMode)null);
-				return;
 			case FhirPackage.LIST__NOTE:
-				setNote((org.hl7.fhir.String)null);
+				getNote().clear();
 				return;
 			case FhirPackage.LIST__ENTRY:
 				getEntry().clear();
@@ -890,26 +861,26 @@ public class ListImpl extends DomainResourceImpl implements List {
 		switch (featureID) {
 			case FhirPackage.LIST__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.LIST__STATUS:
+				return status != null;
+			case FhirPackage.LIST__MODE:
+				return mode != null;
 			case FhirPackage.LIST__TITLE:
 				return title != null;
 			case FhirPackage.LIST__CODE:
 				return code != null;
 			case FhirPackage.LIST__SUBJECT:
 				return subject != null;
-			case FhirPackage.LIST__SOURCE:
-				return source != null;
 			case FhirPackage.LIST__ENCOUNTER:
 				return encounter != null;
-			case FhirPackage.LIST__STATUS:
-				return status != null;
 			case FhirPackage.LIST__DATE:
 				return date != null;
+			case FhirPackage.LIST__SOURCE:
+				return source != null;
 			case FhirPackage.LIST__ORDERED_BY:
 				return orderedBy != null;
-			case FhirPackage.LIST__MODE:
-				return mode != null;
 			case FhirPackage.LIST__NOTE:
-				return note != null;
+				return note != null && !note.isEmpty();
 			case FhirPackage.LIST__ENTRY:
 				return entry != null && !entry.isEmpty();
 			case FhirPackage.LIST__EMPTY_REASON:

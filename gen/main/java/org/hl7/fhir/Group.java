@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Group#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.Group#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.Group#getActual <em>Actual</em>}</li>
+ *   <li>{@link org.hl7.fhir.Group#getActive <em>Active</em>}</li>
  *   <li>{@link org.hl7.fhir.Group#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.Group#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.Group#getQuantity <em>Quantity</em>}</li>
@@ -100,6 +101,32 @@ public interface Group extends DomainResource {
 	 * @generated
 	 */
 	void setActual(org.hl7.fhir.Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Active</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates whether the record for the group is available for use or is merely being retained for historical purposes.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Active</em>' containment reference.
+	 * @see #setActive(org.hl7.fhir.Boolean)
+	 * @see org.hl7.fhir.FhirPackage#getGroup_Active()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='active' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.Boolean getActive();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Group#getActive <em>Active</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Active</em>' containment reference.
+	 * @see #getActive()
+	 * @generated
+	 */
+	void setActive(org.hl7.fhir.Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' containment reference.

@@ -65,7 +65,7 @@ public enum IdentityAssuranceLevelList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Little or no confidence in the asserted identity's accuracy.
+	 * Level 1
 	 * <!-- end-model-doc -->
 	 * @see #LEVEL1
 	 * @model name="level1"
@@ -79,7 +79,7 @@ public enum IdentityAssuranceLevelList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some confidence in the asserted identity's accuracy.
+	 * Level 2
 	 * <!-- end-model-doc -->
 	 * @see #LEVEL2
 	 * @model name="level2"
@@ -93,7 +93,7 @@ public enum IdentityAssuranceLevelList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * High confidence in the asserted identity's accuracy.
+	 * Level 3
 	 * <!-- end-model-doc -->
 	 * @see #LEVEL3
 	 * @model name="level3"
@@ -107,7 +107,7 @@ public enum IdentityAssuranceLevelList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Very high confidence in the asserted identity's accuracy.
+	 * Level 4
 	 * <!-- end-model-doc -->
 	 * @see #LEVEL4
 	 * @model name="level4"

@@ -45,7 +45,7 @@ public enum ConformanceEventModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The application sends requests and receives responses.
+	 * Sender
 	 * <!-- end-model-doc -->
 	 * @see #SENDER
 	 * @model name="sender"
@@ -59,7 +59,7 @@ public enum ConformanceEventModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The application receives requests and sends responses.
+	 * Receiver
 	 * <!-- end-model-doc -->
 	 * @see #RECEIVER
 	 * @model name="receiver"

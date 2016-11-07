@@ -125,7 +125,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Default value. Equals comparison.
+	 * equals
 	 * <!-- end-model-doc -->
 	 * @see #EQUALS
 	 * @model name="equals"
@@ -139,7 +139,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Not equals comparison.
+	 * notEquals
 	 * <!-- end-model-doc -->
 	 * @see #NOT_EQUALS
 	 * @model name="notEquals"
@@ -153,7 +153,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value within a known set of values.
+	 * in
 	 * <!-- end-model-doc -->
 	 * @see #IN
 	 * @model name="in"
@@ -167,7 +167,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value not within a known set of values.
+	 * notIn
 	 * <!-- end-model-doc -->
 	 * @see #NOT_IN
 	 * @model name="notIn"
@@ -181,7 +181,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value to be greater than a known value.
+	 * greaterThan
 	 * <!-- end-model-doc -->
 	 * @see #GREATER_THAN
 	 * @model name="greaterThan"
@@ -195,7 +195,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value to be less than a known value.
+	 * lessThan
 	 * <!-- end-model-doc -->
 	 * @see #LESS_THAN
 	 * @model name="lessThan"
@@ -209,7 +209,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value is empty.
+	 * empty
 	 * <!-- end-model-doc -->
 	 * @see #EMPTY
 	 * @model name="empty"
@@ -223,7 +223,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value is not empty.
+	 * notEmpty
 	 * <!-- end-model-doc -->
 	 * @see #NOT_EMPTY
 	 * @model name="notEmpty"
@@ -237,7 +237,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value string contains a known value.
+	 * contains
 	 * <!-- end-model-doc -->
 	 * @see #CONTAINS
 	 * @model name="contains"
@@ -251,7 +251,7 @@ public enum AssertionOperatorTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Compare value string does not contain a known value.
+	 * notContains
 	 * <!-- end-model-doc -->
 	 * @see #NOT_CONTAINS
 	 * @model name="notContains"

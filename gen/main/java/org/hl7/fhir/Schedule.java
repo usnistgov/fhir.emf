@@ -19,7 +19,10 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Schedule#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.Schedule#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Schedule#getActive <em>Active</em>}</li>
+ *   <li>{@link org.hl7.fhir.Schedule#getServiceCategory <em>Service Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.Schedule#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Schedule#getSpecialty <em>Specialty</em>}</li>
  *   <li>{@link org.hl7.fhir.Schedule#getActor <em>Actor</em>}</li>
  *   <li>{@link org.hl7.fhir.Schedule#getPlanningHorizon <em>Planning Horizon</em>}</li>
  *   <li>{@link org.hl7.fhir.Schedule#getComment <em>Comment</em>}</li>
@@ -47,20 +50,88 @@ public interface Schedule extends DomainResource {
 	EList<Identifier> getIdentifier();
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Active</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Whether this schedule record is in active use, or should not be used (such as was entered in error).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Active</em>' containment reference.
+	 * @see #setActive(org.hl7.fhir.Boolean)
+	 * @see org.hl7.fhir.FhirPackage#getSchedule_Active()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='active' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.Boolean getActive();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Schedule#getActive <em>Active</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Active</em>' containment reference.
+	 * @see #getActive()
+	 * @generated
+	 */
+	void setActive(org.hl7.fhir.Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Service Category</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A broad categorisation of the service that is to be performed during this appointment.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Service Category</em>' containment reference.
+	 * @see #setServiceCategory(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getSchedule_ServiceCategory()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='serviceCategory' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CodeableConcept getServiceCategory();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Schedule#getServiceCategory <em>Service Category</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Service Category</em>' containment reference.
+	 * @see #getServiceCategory()
+	 * @generated
+	 */
+	void setServiceCategory(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Service Type</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The schedule type can be used for the categorization of healthcare services or other appointment types.
+	 * The specific service that is to be performed during this appointment.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getSchedule_Type()
+	 * @return the value of the '<em>Service Type</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getSchedule_ServiceType()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='serviceType' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<CodeableConcept> getType();
+	EList<CodeableConcept> getServiceType();
+
+	/**
+	 * Returns the value of the '<em><b>Specialty</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The specialty of a practitioner that would be required to perform the service requested in this appointment.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Specialty</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getSchedule_Specialty()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='specialty' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CodeableConcept> getSpecialty();
 
 	/**
 	 * Returns the value of the '<em><b>Actor</b></em>' containment reference.

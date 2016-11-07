@@ -65,7 +65,7 @@ public enum ProcedureRequestPriorityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has a normal priority.
+	 * Routine
 	 * <!-- end-model-doc -->
 	 * @see #ROUTINE
 	 * @model name="routine"
@@ -79,7 +79,7 @@ public enum ProcedureRequestPriorityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request should be done urgently.
+	 * Urgent
 	 * <!-- end-model-doc -->
 	 * @see #URGENT
 	 * @model name="urgent"
@@ -93,7 +93,7 @@ public enum ProcedureRequestPriorityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request is time-critical.
+	 * Stat
 	 * <!-- end-model-doc -->
 	 * @see #STAT
 	 * @model name="stat"
@@ -107,7 +107,7 @@ public enum ProcedureRequestPriorityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request should be acted on as soon as possible.
+	 * ASAP
 	 * <!-- end-model-doc -->
 	 * @see #ASAP
 	 * @model name="asap"

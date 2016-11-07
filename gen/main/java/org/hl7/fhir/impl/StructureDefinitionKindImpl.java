@@ -34,7 +34,7 @@ public class StructureDefinitionKindImpl extends ElementImpl implements Structur
 	 * @generated
 	 * @ordered
 	 */
-	protected static final StructureDefinitionKindList VALUE_EDEFAULT = StructureDefinitionKindList.DATATYPE;
+	protected static final StructureDefinitionKindList VALUE_EDEFAULT = StructureDefinitionKindList.PRIMITIVE_TYPE;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

@@ -59,13 +59,13 @@ public interface AuditEventNetwork extends BackboneElement {
 	 * An identifier for the type of network access point that originated the audit event.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(AuditEventParticipantNetworkType)
+	 * @see #setType(AuditEventAgentNetworkType)
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventNetwork_Type()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	AuditEventParticipantNetworkType getType();
+	AuditEventAgentNetworkType getType();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AuditEventNetwork#getType <em>Type</em>}' containment reference.
@@ -75,6 +75,6 @@ public interface AuditEventNetwork extends BackboneElement {
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(AuditEventParticipantNetworkType value);
+	void setType(AuditEventAgentNetworkType value);
 
 } // AuditEventNetwork

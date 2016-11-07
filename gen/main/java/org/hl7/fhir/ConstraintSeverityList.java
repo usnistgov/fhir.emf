@@ -45,7 +45,7 @@ public enum ConstraintSeverityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the constraint is violated, the resource is not conformant.
+	 * Error
 	 * <!-- end-model-doc -->
 	 * @see #ERROR
 	 * @model name="error"
@@ -59,7 +59,7 @@ public enum ConstraintSeverityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the constraint is violated, the resource is conformant, but it is not necessarily following best practice.
+	 * Warning
 	 * <!-- end-model-doc -->
 	 * @see #WARNING
 	 * @model name="warning"

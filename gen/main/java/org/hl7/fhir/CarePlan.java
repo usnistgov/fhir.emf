@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.CarePlan#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlan#getSupport <em>Support</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlan#getRelatedPlan <em>Related Plan</em>}</li>
- *   <li>{@link org.hl7.fhir.CarePlan#getParticipant <em>Participant</em>}</li>
+ *   <li>{@link org.hl7.fhir.CarePlan#getCareTeam <em>Care Team</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlan#getGoal <em>Goal</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlan#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlan#getNote <em>Note</em>}</li>
@@ -294,20 +294,20 @@ public interface CarePlan extends DomainResource {
 	EList<CarePlanRelatedPlan> getRelatedPlan();
 
 	/**
-	 * Returns the value of the '<em><b>Participant</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.CarePlanParticipant}.
+	 * Returns the value of the '<em><b>Care Team</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Participant</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getCarePlan_Participant()
+	 * @return the value of the '<em>Care Team</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getCarePlan_CareTeam()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='participant' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='careTeam' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<CarePlanParticipant> getParticipant();
+	EList<Reference> getCareTeam();
 
 	/**
 	 * Returns the value of the '<em><b>Goal</b></em>' containment reference list.

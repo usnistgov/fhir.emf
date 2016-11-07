@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This resource identifies an instance of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.  Medical devices includes durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.  Non-medical devices may include items such as a machine, cellphone, computer, application, etc.
+ * This resource identifies an instance or a type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.  Medical devices includes durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.  Non-medical devices may include items such as a machine, cellphone, computer, application, etc.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *
@@ -19,21 +19,21 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Device#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getType <em>Type</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getUdiCarrier <em>Udi Carrier</em>}</li>
  *   <li>{@link org.hl7.fhir.Device#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getLotNumber <em>Lot Number</em>}</li>
  *   <li>{@link org.hl7.fhir.Device#getManufacturer <em>Manufacturer</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getManufactureDate <em>Manufacture Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getExpirationDate <em>Expiration Date</em>}</li>
  *   <li>{@link org.hl7.fhir.Device#getModel <em>Model</em>}</li>
  *   <li>{@link org.hl7.fhir.Device#getVersion <em>Version</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getManufactureDate <em>Manufacture Date</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getExpiry <em>Expiry</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getUdi <em>Udi</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getLotNumber <em>Lot Number</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.hl7.fhir.Device#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.Device#getPatient <em>Patient</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.hl7.fhir.Device#getContact <em>Contact</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.Device#getUrl <em>Url</em>}</li>
+ *   <li>{@link org.hl7.fhir.Device#getNote <em>Note</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getDevice()
@@ -47,7 +47,7 @@ public interface Device extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Unique instance identifiers assigned to a device by organizations like manufacturers or owners. If the identifier identifies the type of device, Device.type should be used.
+	 * Unique instance identifiers assigned to a device by manufacturers other organizations or owners.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getDevice_Identifier()
@@ -56,6 +56,32 @@ public interface Device extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Udi Carrier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * [Unique device identifier (UDI)](device.html#5.11.3.2.2) barcode or rfid string assigned to device label or package.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Udi Carrier</em>' containment reference.
+	 * @see #setUdiCarrier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getDevice_UdiCarrier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='udiCarrier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Identifier getUdiCarrier();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Device#getUdiCarrier <em>Udi Carrier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Udi Carrier</em>' containment reference.
+	 * @see #getUdiCarrier()
+	 * @generated
+	 */
+	void setUdiCarrier(Identifier value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
@@ -230,56 +256,30 @@ public interface Device extends DomainResource {
 	void setManufactureDate(DateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Expiry</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Expiration Date</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The date and time beyond which this device is no longer valid or should not be used (if applicable).
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Expiry</em>' containment reference.
-	 * @see #setExpiry(DateTime)
-	 * @see org.hl7.fhir.FhirPackage#getDevice_Expiry()
+	 * @return the value of the '<em>Expiration Date</em>' containment reference.
+	 * @see #setExpirationDate(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getDevice_ExpirationDate()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='expiry' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='expirationDate' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	DateTime getExpiry();
+	DateTime getExpirationDate();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Device#getExpiry <em>Expiry</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.Device#getExpirationDate <em>Expiration Date</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expiry</em>' containment reference.
-	 * @see #getExpiry()
+	 * @param value the new value of the '<em>Expiration Date</em>' containment reference.
+	 * @see #getExpirationDate()
 	 * @generated
 	 */
-	void setExpiry(DateTime value);
-
-	/**
-	 * Returns the value of the '<em><b>Udi</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * United States Food and Drug Administration mandated Unique Device Identifier (UDI). Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Udi</em>' containment reference.
-	 * @see #setUdi(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getDevice_Udi()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='udi' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	org.hl7.fhir.String getUdi();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Device#getUdi <em>Udi</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Udi</em>' containment reference.
-	 * @see #getUdi()
-	 * @generated
-	 */
-	void setUdi(org.hl7.fhir.String value);
+	void setExpirationDate(DateTime value);
 
 	/**
 	 * Returns the value of the '<em><b>Lot Number</b></em>' containment reference.
@@ -364,7 +364,7 @@ public interface Device extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Patient information, if the resource is affixed to a person.
+	 * Patient information, If the device is affixed to a person.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Patient</em>' containment reference.
 	 * @see #setPatient(Reference)

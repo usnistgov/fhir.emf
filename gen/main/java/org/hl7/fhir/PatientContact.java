@@ -123,13 +123,13 @@ public interface PatientContact extends BackboneElement {
 	 * Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Gender</em>' containment reference.
-	 * @see #setGender(Code)
+	 * @see #setGender(AdministrativeGender)
 	 * @see org.hl7.fhir.FhirPackage#getPatientContact_Gender()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='gender' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getGender();
+	AdministrativeGender getGender();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.PatientContact#getGender <em>Gender</em>}' containment reference.
@@ -139,7 +139,7 @@ public interface PatientContact extends BackboneElement {
 	 * @see #getGender()
 	 * @generated
 	 */
-	void setGender(Code value);
+	void setGender(AdministrativeGender value);
 
 	/**
 	 * Returns the value of the '<em><b>Organization</b></em>' containment reference.

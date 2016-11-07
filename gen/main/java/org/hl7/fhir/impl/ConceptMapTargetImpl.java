@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.Code;
 import org.hl7.fhir.ConceptMapDependsOn;
+import org.hl7.fhir.ConceptMapEquivalence;
 import org.hl7.fhir.ConceptMapTarget;
 import org.hl7.fhir.FhirPackage;
-import org.hl7.fhir.Uri;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +31,6 @@ import org.hl7.fhir.Uri;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.ConceptMapTargetImpl#getCodeSystem <em>Code System</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConceptMapTargetImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConceptMapTargetImpl#getEquivalence <em>Equivalence</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConceptMapTargetImpl#getComments <em>Comments</em>}</li>
@@ -42,16 +41,6 @@ import org.hl7.fhir.Uri;
  * @generated
  */
 public class ConceptMapTargetImpl extends BackboneElementImpl implements ConceptMapTarget {
-	/**
-	 * The cached value of the '{@link #getCodeSystem() <em>Code System</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCodeSystem()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri codeSystem;
-
 	/**
 	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -70,7 +59,7 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	 * @generated
 	 * @ordered
 	 */
-	protected Code equivalence;
+	protected ConceptMapEquivalence equivalence;
 
 	/**
 	 * The cached value of the '{@link #getComments() <em>Comments</em>}' containment reference.
@@ -126,49 +115,6 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uri getCodeSystem() {
-		return codeSystem;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCodeSystem(Uri newCodeSystem, NotificationChain msgs) {
-		Uri oldCodeSystem = codeSystem;
-		codeSystem = newCodeSystem;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM, oldCodeSystem, newCodeSystem);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCodeSystem(Uri newCodeSystem) {
-		if (newCodeSystem != codeSystem) {
-			NotificationChain msgs = null;
-			if (codeSystem != null)
-				msgs = ((InternalEObject)codeSystem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM, null, msgs);
-			if (newCodeSystem != null)
-				msgs = ((InternalEObject)newCodeSystem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM, null, msgs);
-			msgs = basicSetCodeSystem(newCodeSystem, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM, newCodeSystem, newCodeSystem));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Code getCode() {
 		return code;
 	}
@@ -212,7 +158,7 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getEquivalence() {
+	public ConceptMapEquivalence getEquivalence() {
 		return equivalence;
 	}
 
@@ -221,8 +167,8 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEquivalence(Code newEquivalence, NotificationChain msgs) {
-		Code oldEquivalence = equivalence;
+	public NotificationChain basicSetEquivalence(ConceptMapEquivalence newEquivalence, NotificationChain msgs) {
+		ConceptMapEquivalence oldEquivalence = equivalence;
 		equivalence = newEquivalence;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_TARGET__EQUIVALENCE, oldEquivalence, newEquivalence);
@@ -236,7 +182,7 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEquivalence(Code newEquivalence) {
+	public void setEquivalence(ConceptMapEquivalence newEquivalence) {
 		if (newEquivalence != equivalence) {
 			NotificationChain msgs = null;
 			if (equivalence != null)
@@ -325,8 +271,6 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM:
-				return basicSetCodeSystem(null, msgs);
 			case FhirPackage.CONCEPT_MAP_TARGET__CODE:
 				return basicSetCode(null, msgs);
 			case FhirPackage.CONCEPT_MAP_TARGET__EQUIVALENCE:
@@ -349,8 +293,6 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM:
-				return getCodeSystem();
 			case FhirPackage.CONCEPT_MAP_TARGET__CODE:
 				return getCode();
 			case FhirPackage.CONCEPT_MAP_TARGET__EQUIVALENCE:
@@ -374,14 +316,11 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM:
-				setCodeSystem((Uri)newValue);
-				return;
 			case FhirPackage.CONCEPT_MAP_TARGET__CODE:
 				setCode((Code)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP_TARGET__EQUIVALENCE:
-				setEquivalence((Code)newValue);
+				setEquivalence((ConceptMapEquivalence)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP_TARGET__COMMENTS:
 				setComments((org.hl7.fhir.String)newValue);
@@ -406,14 +345,11 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM:
-				setCodeSystem((Uri)null);
-				return;
 			case FhirPackage.CONCEPT_MAP_TARGET__CODE:
 				setCode((Code)null);
 				return;
 			case FhirPackage.CONCEPT_MAP_TARGET__EQUIVALENCE:
-				setEquivalence((Code)null);
+				setEquivalence((ConceptMapEquivalence)null);
 				return;
 			case FhirPackage.CONCEPT_MAP_TARGET__COMMENTS:
 				setComments((org.hl7.fhir.String)null);
@@ -436,8 +372,6 @@ public class ConceptMapTargetImpl extends BackboneElementImpl implements Concept
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_TARGET__CODE_SYSTEM:
-				return codeSystem != null;
 			case FhirPackage.CONCEPT_MAP_TARGET__CODE:
 				return code != null;
 			case FhirPackage.CONCEPT_MAP_TARGET__EQUIVALENCE:

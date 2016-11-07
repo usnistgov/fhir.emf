@@ -19,12 +19,11 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getFocal <em>Focal</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getCoverage <em>Coverage</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getCoverageIdentifier <em>Coverage Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getCoverageReference <em>Coverage Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getBusinessArrangement <em>Business Arrangement</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getRelationship <em>Relationship</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getPreAuthRef <em>Pre Auth Ref</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getClaimResponse <em>Claim Response</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimResponseCoverage#getOriginalRuleset <em>Original Ruleset</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getClaimResponseCoverage()
@@ -85,30 +84,56 @@ public interface ClaimResponseCoverage extends BackboneElement {
 	void setFocal(org.hl7.fhir.Boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Coverage</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Coverage Identifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Reference to the program or plan identification, underwriter or payor.
+	 * Reference to the program or plan identification, underwriter or payor. (choose any one of coverage*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Coverage</em>' containment reference.
-	 * @see #setCoverage(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getClaimResponseCoverage_Coverage()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='coverage' namespace='##targetNamespace'"
+	 * @return the value of the '<em>Coverage Identifier</em>' containment reference.
+	 * @see #setCoverageIdentifier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseCoverage_CoverageIdentifier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='coverageIdentifier' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getCoverage();
+	Identifier getCoverageIdentifier();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseCoverage#getCoverage <em>Coverage</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseCoverage#getCoverageIdentifier <em>Coverage Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Coverage</em>' containment reference.
-	 * @see #getCoverage()
+	 * @param value the new value of the '<em>Coverage Identifier</em>' containment reference.
+	 * @see #getCoverageIdentifier()
 	 * @generated
 	 */
-	void setCoverage(Reference value);
+	void setCoverageIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Coverage Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Reference to the program or plan identification, underwriter or payor. (choose any one of coverage*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Coverage Reference</em>' containment reference.
+	 * @see #setCoverageReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseCoverage_CoverageReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='coverageReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getCoverageReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseCoverage#getCoverageReference <em>Coverage Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Coverage Reference</em>' containment reference.
+	 * @see #getCoverageReference()
+	 * @generated
+	 */
+	void setCoverageReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Business Arrangement</b></em>' containment reference.
@@ -135,32 +160,6 @@ public interface ClaimResponseCoverage extends BackboneElement {
 	 * @generated
 	 */
 	void setBusinessArrangement(org.hl7.fhir.String value);
-
-	/**
-	 * Returns the value of the '<em><b>Relationship</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The relationship of the patient to the subscriber.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Relationship</em>' containment reference.
-	 * @see #setRelationship(Coding)
-	 * @see org.hl7.fhir.FhirPackage#getClaimResponseCoverage_Relationship()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='relationship' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Coding getRelationship();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseCoverage#getRelationship <em>Relationship</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Relationship</em>' containment reference.
-	 * @see #getRelationship()
-	 * @generated
-	 */
-	void setRelationship(Coding value);
 
 	/**
 	 * Returns the value of the '<em><b>Pre Auth Ref</b></em>' containment reference list.
@@ -203,31 +202,5 @@ public interface ClaimResponseCoverage extends BackboneElement {
 	 * @generated
 	 */
 	void setClaimResponse(Reference value);
-
-	/**
-	 * Returns the value of the '<em><b>Original Ruleset</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The style (standard) and version of the original material which was converted into this resource.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Original Ruleset</em>' containment reference.
-	 * @see #setOriginalRuleset(Coding)
-	 * @see org.hl7.fhir.FhirPackage#getClaimResponseCoverage_OriginalRuleset()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='originalRuleset' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Coding getOriginalRuleset();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseCoverage#getOriginalRuleset <em>Original Ruleset</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Original Ruleset</em>' containment reference.
-	 * @see #getOriginalRuleset()
-	 * @generated
-	 */
-	void setOriginalRuleset(Coding value);
 
 } // ClaimResponseCoverage

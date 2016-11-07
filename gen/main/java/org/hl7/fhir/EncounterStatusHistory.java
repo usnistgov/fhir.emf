@@ -30,16 +30,16 @@ public interface EncounterStatusHistory extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * planned | arrived | in-progress | onleave | finished | cancelled.
+	 * planned | arrived | in-progress | onleave | finished | cancelled | entered-in-error.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(EncounterState)
+	 * @see #setStatus(EncounterStatus)
 	 * @see org.hl7.fhir.FhirPackage#getEncounterStatusHistory_Status()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EncounterState getStatus();
+	EncounterStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.EncounterStatusHistory#getStatus <em>Status</em>}' containment reference.
@@ -49,7 +49,7 @@ public interface EncounterStatusHistory extends BackboneElement {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(EncounterState value);
+	void setStatus(EncounterStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Period</b></em>' containment reference.

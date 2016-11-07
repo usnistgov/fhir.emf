@@ -10,10 +10,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.MedicationContent;
+import org.hl7.fhir.Quantity;
 import org.hl7.fhir.Reference;
-import org.hl7.fhir.SimpleQuantity;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +24,8 @@ import org.hl7.fhir.SimpleQuantity;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.MedicationContentImpl#getItem <em>Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationContentImpl#getItemCodeableConcept <em>Item Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationContentImpl#getItemReference <em>Item Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationContentImpl#getAmount <em>Amount</em>}</li>
  * </ul>
  *
@@ -31,14 +33,24 @@ import org.hl7.fhir.SimpleQuantity;
  */
 public class MedicationContentImpl extends BackboneElementImpl implements MedicationContent {
 	/**
-	 * The cached value of the '{@link #getItem() <em>Item</em>}' containment reference.
+	 * The cached value of the '{@link #getItemCodeableConcept() <em>Item Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItem()
+	 * @see #getItemCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference item;
+	protected CodeableConcept itemCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getItemReference() <em>Item Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItemReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference itemReference;
 
 	/**
 	 * The cached value of the '{@link #getAmount() <em>Amount</em>}' containment reference.
@@ -48,7 +60,7 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity amount;
+	protected Quantity amount;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,8 +86,8 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getItem() {
-		return item;
+	public CodeableConcept getItemCodeableConcept() {
+		return itemCodeableConcept;
 	}
 
 	/**
@@ -83,11 +95,11 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetItem(Reference newItem, NotificationChain msgs) {
-		Reference oldItem = item;
-		item = newItem;
+	public NotificationChain basicSetItemCodeableConcept(CodeableConcept newItemCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldItemCodeableConcept = itemCodeableConcept;
+		itemCodeableConcept = newItemCodeableConcept;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_CONTENT__ITEM, oldItem, newItem);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT, oldItemCodeableConcept, newItemCodeableConcept);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -98,18 +110,18 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setItem(Reference newItem) {
-		if (newItem != item) {
+	public void setItemCodeableConcept(CodeableConcept newItemCodeableConcept) {
+		if (newItemCodeableConcept != itemCodeableConcept) {
 			NotificationChain msgs = null;
-			if (item != null)
-				msgs = ((InternalEObject)item).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_CONTENT__ITEM, null, msgs);
-			if (newItem != null)
-				msgs = ((InternalEObject)newItem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_CONTENT__ITEM, null, msgs);
-			msgs = basicSetItem(newItem, msgs);
+			if (itemCodeableConcept != null)
+				msgs = ((InternalEObject)itemCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT, null, msgs);
+			if (newItemCodeableConcept != null)
+				msgs = ((InternalEObject)newItemCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetItemCodeableConcept(newItemCodeableConcept, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_CONTENT__ITEM, newItem, newItem));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT, newItemCodeableConcept, newItemCodeableConcept));
 	}
 
 	/**
@@ -117,7 +129,50 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getAmount() {
+	public Reference getItemReference() {
+		return itemReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetItemReference(Reference newItemReference, NotificationChain msgs) {
+		Reference oldItemReference = itemReference;
+		itemReference = newItemReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE, oldItemReference, newItemReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setItemReference(Reference newItemReference) {
+		if (newItemReference != itemReference) {
+			NotificationChain msgs = null;
+			if (itemReference != null)
+				msgs = ((InternalEObject)itemReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE, null, msgs);
+			if (newItemReference != null)
+				msgs = ((InternalEObject)newItemReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE, null, msgs);
+			msgs = basicSetItemReference(newItemReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE, newItemReference, newItemReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Quantity getAmount() {
 		return amount;
 	}
 
@@ -126,8 +181,8 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAmount(SimpleQuantity newAmount, NotificationChain msgs) {
-		SimpleQuantity oldAmount = amount;
+	public NotificationChain basicSetAmount(Quantity newAmount, NotificationChain msgs) {
+		Quantity oldAmount = amount;
 		amount = newAmount;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_CONTENT__AMOUNT, oldAmount, newAmount);
@@ -141,7 +196,7 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAmount(SimpleQuantity newAmount) {
+	public void setAmount(Quantity newAmount) {
 		if (newAmount != amount) {
 			NotificationChain msgs = null;
 			if (amount != null)
@@ -163,8 +218,10 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.MEDICATION_CONTENT__ITEM:
-				return basicSetItem(null, msgs);
+			case FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT:
+				return basicSetItemCodeableConcept(null, msgs);
+			case FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE:
+				return basicSetItemReference(null, msgs);
 			case FhirPackage.MEDICATION_CONTENT__AMOUNT:
 				return basicSetAmount(null, msgs);
 		}
@@ -179,8 +236,10 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.MEDICATION_CONTENT__ITEM:
-				return getItem();
+			case FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT:
+				return getItemCodeableConcept();
+			case FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE:
+				return getItemReference();
 			case FhirPackage.MEDICATION_CONTENT__AMOUNT:
 				return getAmount();
 		}
@@ -195,11 +254,14 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.MEDICATION_CONTENT__ITEM:
-				setItem((Reference)newValue);
+			case FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT:
+				setItemCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE:
+				setItemReference((Reference)newValue);
 				return;
 			case FhirPackage.MEDICATION_CONTENT__AMOUNT:
-				setAmount((SimpleQuantity)newValue);
+				setAmount((Quantity)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -213,11 +275,14 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.MEDICATION_CONTENT__ITEM:
-				setItem((Reference)null);
+			case FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT:
+				setItemCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE:
+				setItemReference((Reference)null);
 				return;
 			case FhirPackage.MEDICATION_CONTENT__AMOUNT:
-				setAmount((SimpleQuantity)null);
+				setAmount((Quantity)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -231,8 +296,10 @@ public class MedicationContentImpl extends BackboneElementImpl implements Medica
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.MEDICATION_CONTENT__ITEM:
-				return item != null;
+			case FhirPackage.MEDICATION_CONTENT__ITEM_CODEABLE_CONCEPT:
+				return itemCodeableConcept != null;
+			case FhirPackage.MEDICATION_CONTENT__ITEM_REFERENCE:
+				return itemReference != null;
 			case FhirPackage.MEDICATION_CONTENT__AMOUNT:
 				return amount != null;
 		}

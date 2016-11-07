@@ -31,26 +31,14 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	ACTIVE(0, "active", "active"),
 
 	/**
-	 * The '<em><b>Unconfirmed</b></em>' literal object.
+	 * The '<em><b>Active Confirmed</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #UNCONFIRMED_VALUE
+	 * @see #ACTIVE_CONFIRMED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	UNCONFIRMED(1, "unconfirmed", "unconfirmed"),
-
-	/**
-	 * The '<em><b>Confirmed</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CONFIRMED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	CONFIRMED(2, "confirmed", "confirmed"),
-
-	/**
+	ACTIVE_CONFIRMED(1, "activeConfirmed", "active-confirmed"), /**
 	 * The '<em><b>Inactive</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +46,7 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INACTIVE(3, "inactive", "inactive"),
+	INACTIVE(2, "inactive", "inactive"),
 
 	/**
 	 * The '<em><b>Resolved</b></em>' literal object.
@@ -68,7 +56,7 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RESOLVED(4, "resolved", "resolved"),
+	RESOLVED(3, "resolved", "resolved"),
 
 	/**
 	 * The '<em><b>Refuted</b></em>' literal object.
@@ -78,7 +66,7 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REFUTED(5, "refuted", "refuted"),
+	REFUTED(4, "refuted", "refuted"),
 
 	/**
 	 * The '<em><b>Entered In Error</b></em>' literal object.
@@ -88,14 +76,14 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ENTERED_IN_ERROR(6, "enteredInError", "entered-in-error");
+	ENTERED_IN_ERROR(5, "enteredInError", "entered-in-error");
 
 	/**
 	 * The '<em><b>Active</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An active record of a reaction to the identified Substance.
+	 * Active
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
@@ -105,88 +93,74 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	public static final int ACTIVE_VALUE = 0;
 
 	/**
-	 * The '<em><b>Unconfirmed</b></em>' literal value.
+	 * The '<em><b>Active Confirmed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A low level of certainty about the propensity for a reaction to the identified Substance.
+	 * Active Confirmed
 	 * <!-- end-model-doc -->
-	 * @see #UNCONFIRMED
-	 * @model name="unconfirmed"
+	 * @see #ACTIVE_CONFIRMED
+	 * @model name="activeConfirmed" literal="active-confirmed"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int UNCONFIRMED_VALUE = 1;
-
-	/**
-	 * The '<em><b>Confirmed</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A high level of certainty about the propensity for a reaction to the identified Substance, which may include clinical evidence by testing or rechallenge.
-	 * <!-- end-model-doc -->
-	 * @see #CONFIRMED
-	 * @model name="confirmed"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONFIRMED_VALUE = 2;
+	public static final int ACTIVE_CONFIRMED_VALUE = 1;
 
 	/**
 	 * The '<em><b>Inactive</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An inactive record of a reaction to the identified Substance.
+	 * Inactive
 	 * <!-- end-model-doc -->
 	 * @see #INACTIVE
 	 * @model name="inactive"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INACTIVE_VALUE = 3;
+	public static final int INACTIVE_VALUE = 2;
 
 	/**
 	 * The '<em><b>Resolved</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A reaction to the identified Substance has been clinically reassessed by testing or rechallenge and considered to be resolved.
+	 * Resolved
 	 * <!-- end-model-doc -->
 	 * @see #RESOLVED
 	 * @model name="resolved"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RESOLVED_VALUE = 4;
+	public static final int RESOLVED_VALUE = 3;
 
 	/**
 	 * The '<em><b>Refuted</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A propensity for a reaction to the identified Substance has been disproven with a high level of clinical certainty, which may include testing or rechallenge, and is refuted.
+	 * Refuted
 	 * <!-- end-model-doc -->
 	 * @see #REFUTED
 	 * @model name="refuted"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REFUTED_VALUE = 5;
+	public static final int REFUTED_VALUE = 4;
 
 	/**
 	 * The '<em><b>Entered In Error</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The statement was entered in error and is not valid.
+	 * Entered In Error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ENTERED_IN_ERROR_VALUE = 6;
+	public static final int ENTERED_IN_ERROR_VALUE = 5;
 
 	/**
 	 * An array of all the '<em><b>Allergy Intolerance Status List</b></em>' enumerators.
@@ -197,8 +171,7 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	private static final AllergyIntoleranceStatusList[] VALUES_ARRAY =
 		new AllergyIntoleranceStatusList[] {
 			ACTIVE,
-			UNCONFIRMED,
-			CONFIRMED,
+			ACTIVE_CONFIRMED,
 			INACTIVE,
 			RESOLVED,
 			REFUTED,
@@ -260,8 +233,7 @@ public enum AllergyIntoleranceStatusList implements Enumerator {
 	public static AllergyIntoleranceStatusList get(int value) {
 		switch (value) {
 			case ACTIVE_VALUE: return ACTIVE;
-			case UNCONFIRMED_VALUE: return UNCONFIRMED;
-			case CONFIRMED_VALUE: return CONFIRMED;
+			case ACTIVE_CONFIRMED_VALUE: return ACTIVE_CONFIRMED;
 			case INACTIVE_VALUE: return INACTIVE;
 			case RESOLVED_VALUE: return RESOLVED;
 			case REFUTED_VALUE: return REFUTED;

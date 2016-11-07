@@ -34,13 +34,13 @@ public interface OperationDefinitionBinding extends BackboneElement {
 	 * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Strength</em>' containment reference.
-	 * @see #setStrength(Code)
+	 * @see #setStrength(BindingStrength)
 	 * @see org.hl7.fhir.FhirPackage#getOperationDefinitionBinding_Strength()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='strength' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getStrength();
+	BindingStrength getStrength();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.OperationDefinitionBinding#getStrength <em>Strength</em>}' containment reference.
@@ -50,7 +50,7 @@ public interface OperationDefinitionBinding extends BackboneElement {
 	 * @see #getStrength()
 	 * @generated
 	 */
-	void setStrength(Code value);
+	void setStrength(BindingStrength value);
 
 	/**
 	 * Returns the value of the '<em><b>Value Set Uri</b></em>' containment reference.

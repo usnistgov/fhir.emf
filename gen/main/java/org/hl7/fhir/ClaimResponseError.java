@@ -110,7 +110,7 @@ public interface ClaimResponseError extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An error code,froma specified code system, which details why the claim could not be adjudicated.
+	 * An error code,from a specified code system, which details why the claim could not be adjudicated.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code</em>' containment reference.
 	 * @see #setCode(Coding)

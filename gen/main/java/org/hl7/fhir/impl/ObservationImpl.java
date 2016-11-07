@@ -66,7 +66,7 @@ import org.hl7.fhir.Time;
  *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getValuePeriod <em>Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getDataAbsentReason <em>Data Absent Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getInterpretation <em>Interpretation</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getComments <em>Comments</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getComment <em>Comment</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getBodySite <em>Body Site</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ObservationImpl#getSpecimen <em>Specimen</em>}</li>
@@ -100,14 +100,14 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 	protected ObservationStatus status;
 
 	/**
-	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference.
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCategory()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept category;
+	protected EList<CodeableConcept> category;
 
 	/**
 	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
@@ -300,14 +300,14 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 	protected CodeableConcept interpretation;
 
 	/**
-	 * The cached value of the '{@link #getComments() <em>Comments</em>}' containment reference.
+	 * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComments()
+	 * @see #getComment()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String comments;
+	protected org.hl7.fhir.String comment;
 
 	/**
 	 * The cached value of the '{@link #getBodySite() <em>Body Site</em>}' containment reference.
@@ -458,42 +458,11 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getCategory() {
+	public EList<CodeableConcept> getCategory() {
+		if (category == null) {
+			category = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.OBSERVATION__CATEGORY);
+		}
 		return category;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCategory(CodeableConcept newCategory, NotificationChain msgs) {
-		CodeableConcept oldCategory = category;
-		category = newCategory;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION__CATEGORY, oldCategory, newCategory);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCategory(CodeableConcept newCategory) {
-		if (newCategory != category) {
-			NotificationChain msgs = null;
-			if (category != null)
-				msgs = ((InternalEObject)category).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION__CATEGORY, null, msgs);
-			if (newCategory != null)
-				msgs = ((InternalEObject)newCategory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION__CATEGORY, null, msgs);
-			msgs = basicSetCategory(newCategory, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION__CATEGORY, newCategory, newCategory));
 	}
 
 	/**
@@ -1287,8 +1256,8 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getComments() {
-		return comments;
+	public org.hl7.fhir.String getComment() {
+		return comment;
 	}
 
 	/**
@@ -1296,11 +1265,11 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetComments(org.hl7.fhir.String newComments, NotificationChain msgs) {
-		org.hl7.fhir.String oldComments = comments;
-		comments = newComments;
+	public NotificationChain basicSetComment(org.hl7.fhir.String newComment, NotificationChain msgs) {
+		org.hl7.fhir.String oldComment = comment;
+		comment = newComment;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION__COMMENTS, oldComments, newComments);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION__COMMENT, oldComment, newComment);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -1311,18 +1280,18 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setComments(org.hl7.fhir.String newComments) {
-		if (newComments != comments) {
+	public void setComment(org.hl7.fhir.String newComment) {
+		if (newComment != comment) {
 			NotificationChain msgs = null;
-			if (comments != null)
-				msgs = ((InternalEObject)comments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION__COMMENTS, null, msgs);
-			if (newComments != null)
-				msgs = ((InternalEObject)newComments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION__COMMENTS, null, msgs);
-			msgs = basicSetComments(newComments, msgs);
+			if (comment != null)
+				msgs = ((InternalEObject)comment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION__COMMENT, null, msgs);
+			if (newComment != null)
+				msgs = ((InternalEObject)newComment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OBSERVATION__COMMENT, null, msgs);
+			msgs = basicSetComment(newComment, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION__COMMENTS, newComments, newComments));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.OBSERVATION__COMMENT, newComment, newComment));
 	}
 
 	/**
@@ -1546,7 +1515,7 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 			case FhirPackage.OBSERVATION__STATUS:
 				return basicSetStatus(null, msgs);
 			case FhirPackage.OBSERVATION__CATEGORY:
-				return basicSetCategory(null, msgs);
+				return ((InternalEList<?>)getCategory()).basicRemove(otherEnd, msgs);
 			case FhirPackage.OBSERVATION__CODE:
 				return basicSetCode(null, msgs);
 			case FhirPackage.OBSERVATION__SUBJECT:
@@ -1585,8 +1554,8 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 				return basicSetDataAbsentReason(null, msgs);
 			case FhirPackage.OBSERVATION__INTERPRETATION:
 				return basicSetInterpretation(null, msgs);
-			case FhirPackage.OBSERVATION__COMMENTS:
-				return basicSetComments(null, msgs);
+			case FhirPackage.OBSERVATION__COMMENT:
+				return basicSetComment(null, msgs);
 			case FhirPackage.OBSERVATION__BODY_SITE:
 				return basicSetBodySite(null, msgs);
 			case FhirPackage.OBSERVATION__METHOD:
@@ -1657,8 +1626,8 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 				return getDataAbsentReason();
 			case FhirPackage.OBSERVATION__INTERPRETATION:
 				return getInterpretation();
-			case FhirPackage.OBSERVATION__COMMENTS:
-				return getComments();
+			case FhirPackage.OBSERVATION__COMMENT:
+				return getComment();
 			case FhirPackage.OBSERVATION__BODY_SITE:
 				return getBodySite();
 			case FhirPackage.OBSERVATION__METHOD:
@@ -1694,7 +1663,8 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 				setStatus((ObservationStatus)newValue);
 				return;
 			case FhirPackage.OBSERVATION__CATEGORY:
-				setCategory((CodeableConcept)newValue);
+				getCategory().clear();
+				getCategory().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
 			case FhirPackage.OBSERVATION__CODE:
 				setCode((CodeableConcept)newValue);
@@ -1754,8 +1724,8 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 			case FhirPackage.OBSERVATION__INTERPRETATION:
 				setInterpretation((CodeableConcept)newValue);
 				return;
-			case FhirPackage.OBSERVATION__COMMENTS:
-				setComments((org.hl7.fhir.String)newValue);
+			case FhirPackage.OBSERVATION__COMMENT:
+				setComment((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.OBSERVATION__BODY_SITE:
 				setBodySite((CodeableConcept)newValue);
@@ -1800,7 +1770,7 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 				setStatus((ObservationStatus)null);
 				return;
 			case FhirPackage.OBSERVATION__CATEGORY:
-				setCategory((CodeableConcept)null);
+				getCategory().clear();
 				return;
 			case FhirPackage.OBSERVATION__CODE:
 				setCode((CodeableConcept)null);
@@ -1859,8 +1829,8 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 			case FhirPackage.OBSERVATION__INTERPRETATION:
 				setInterpretation((CodeableConcept)null);
 				return;
-			case FhirPackage.OBSERVATION__COMMENTS:
-				setComments((org.hl7.fhir.String)null);
+			case FhirPackage.OBSERVATION__COMMENT:
+				setComment((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.OBSERVATION__BODY_SITE:
 				setBodySite((CodeableConcept)null);
@@ -1900,7 +1870,7 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 			case FhirPackage.OBSERVATION__STATUS:
 				return status != null;
 			case FhirPackage.OBSERVATION__CATEGORY:
-				return category != null;
+				return category != null && !category.isEmpty();
 			case FhirPackage.OBSERVATION__CODE:
 				return code != null;
 			case FhirPackage.OBSERVATION__SUBJECT:
@@ -1939,8 +1909,8 @@ public class ObservationImpl extends DomainResourceImpl implements Observation {
 				return dataAbsentReason != null;
 			case FhirPackage.OBSERVATION__INTERPRETATION:
 				return interpretation != null;
-			case FhirPackage.OBSERVATION__COMMENTS:
-				return comments != null;
+			case FhirPackage.OBSERVATION__COMMENT:
+				return comment != null;
 			case FhirPackage.OBSERVATION__BODY_SITE:
 				return bodySite != null;
 			case FhirPackage.OBSERVATION__METHOD:

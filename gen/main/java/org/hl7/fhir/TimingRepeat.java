@@ -17,19 +17,21 @@ package org.hl7.fhir;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.TimingRepeat#getBoundsQuantity <em>Bounds Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.TimingRepeat#getBoundsDuration <em>Bounds Duration</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getBoundsRange <em>Bounds Range</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getBoundsPeriod <em>Bounds Period</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getCount <em>Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.TimingRepeat#getCountMax <em>Count Max</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getDurationMax <em>Duration Max</em>}</li>
- *   <li>{@link org.hl7.fhir.TimingRepeat#getDurationUnits <em>Duration Units</em>}</li>
+ *   <li>{@link org.hl7.fhir.TimingRepeat#getDurationUnit <em>Duration Unit</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getFrequency <em>Frequency</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getFrequencyMax <em>Frequency Max</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getPeriod <em>Period</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getPeriodMax <em>Period Max</em>}</li>
- *   <li>{@link org.hl7.fhir.TimingRepeat#getPeriodUnits <em>Period Units</em>}</li>
+ *   <li>{@link org.hl7.fhir.TimingRepeat#getPeriodUnit <em>Period Unit</em>}</li>
  *   <li>{@link org.hl7.fhir.TimingRepeat#getWhen <em>When</em>}</li>
+ *   <li>{@link org.hl7.fhir.TimingRepeat#getOffset <em>Offset</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getTimingRepeat()
@@ -38,30 +40,30 @@ package org.hl7.fhir;
  */
 public interface TimingRepeat extends Element {
 	/**
-	 * Returns the value of the '<em><b>Bounds Quantity</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Bounds Duration</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule. (choose any one of bounds*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Bounds Quantity</em>' containment reference.
-	 * @see #setBoundsQuantity(Duration)
-	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_BoundsQuantity()
+	 * @return the value of the '<em>Bounds Duration</em>' containment reference.
+	 * @see #setBoundsDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_BoundsDuration()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='boundsQuantity' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='boundsDuration' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Duration getBoundsQuantity();
+	Duration getBoundsDuration();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getBoundsQuantity <em>Bounds Quantity</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getBoundsDuration <em>Bounds Duration</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bounds Quantity</em>' containment reference.
-	 * @see #getBoundsQuantity()
+	 * @param value the new value of the '<em>Bounds Duration</em>' containment reference.
+	 * @see #getBoundsDuration()
 	 * @generated
 	 */
-	void setBoundsQuantity(Duration value);
+	void setBoundsDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Bounds Range</b></em>' containment reference.
@@ -142,6 +144,32 @@ public interface TimingRepeat extends Element {
 	void setCount(org.hl7.fhir.Integer value);
 
 	/**
+	 * Returns the value of the '<em><b>Count Max</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A maximum value for the count of the desired repetitions (e.g. do something 6-8 times).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Count Max</em>' containment reference.
+	 * @see #setCountMax(org.hl7.fhir.Integer)
+	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_CountMax()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='countMax' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.Integer getCountMax();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getCountMax <em>Count Max</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Count Max</em>' containment reference.
+	 * @see #getCountMax()
+	 * @generated
+	 */
+	void setCountMax(org.hl7.fhir.Integer value);
+
+	/**
 	 * Returns the value of the '<em><b>Duration</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,30 +222,30 @@ public interface TimingRepeat extends Element {
 	void setDurationMax(Decimal value);
 
 	/**
-	 * Returns the value of the '<em><b>Duration Units</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Duration Unit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The units of time for the duration, in UCUM units.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Duration Units</em>' containment reference.
-	 * @see #setDurationUnits(UnitsOfTime)
-	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_DurationUnits()
+	 * @return the value of the '<em>Duration Unit</em>' containment reference.
+	 * @see #setDurationUnit(UnitsOfTime)
+	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_DurationUnit()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='durationUnits' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='durationUnit' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	UnitsOfTime getDurationUnits();
+	UnitsOfTime getDurationUnit();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getDurationUnits <em>Duration Units</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getDurationUnit <em>Duration Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Duration Units</em>' containment reference.
-	 * @see #getDurationUnits()
+	 * @param value the new value of the '<em>Duration Unit</em>' containment reference.
+	 * @see #getDurationUnit()
 	 * @generated
 	 */
-	void setDurationUnits(UnitsOfTime value);
+	void setDurationUnit(UnitsOfTime value);
 
 	/**
 	 * Returns the value of the '<em><b>Frequency</b></em>' containment reference.
@@ -324,30 +352,30 @@ public interface TimingRepeat extends Element {
 	void setPeriodMax(Decimal value);
 
 	/**
-	 * Returns the value of the '<em><b>Period Units</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Period Unit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The units of time for the period in UCUM units.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Period Units</em>' containment reference.
-	 * @see #setPeriodUnits(UnitsOfTime)
-	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_PeriodUnits()
+	 * @return the value of the '<em>Period Unit</em>' containment reference.
+	 * @see #setPeriodUnit(UnitsOfTime)
+	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_PeriodUnit()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='periodUnits' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='periodUnit' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	UnitsOfTime getPeriodUnits();
+	UnitsOfTime getPeriodUnit();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getPeriodUnits <em>Period Units</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getPeriodUnit <em>Period Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Period Units</em>' containment reference.
-	 * @see #getPeriodUnits()
+	 * @param value the new value of the '<em>Period Unit</em>' containment reference.
+	 * @see #getPeriodUnit()
 	 * @generated
 	 */
-	void setPeriodUnits(UnitsOfTime value);
+	void setPeriodUnit(UnitsOfTime value);
 
 	/**
 	 * Returns the value of the '<em><b>When</b></em>' containment reference.
@@ -374,5 +402,31 @@ public interface TimingRepeat extends Element {
 	 * @generated
 	 */
 	void setWhen(EventTiming value);
+
+	/**
+	 * Returns the value of the '<em><b>Offset</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Offset</em>' containment reference.
+	 * @see #setOffset(UnsignedInt)
+	 * @see org.hl7.fhir.FhirPackage#getTimingRepeat_Offset()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='offset' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	UnsignedInt getOffset();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.TimingRepeat#getOffset <em>Offset</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Offset</em>' containment reference.
+	 * @see #getOffset()
+	 * @generated
+	 */
+	void setOffset(UnsignedInt value);
 
 } // TimingRepeat

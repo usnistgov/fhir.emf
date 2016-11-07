@@ -58,14 +58,22 @@ public enum ProvenanceEntityRoleList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SOURCE(3, "source", "source");
+	SOURCE(3, "source", "source"), /**
+	 * The '<em><b>Removal</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REMOVAL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	REMOVAL(4, "removal", "removal");
 
 	/**
 	 * The '<em><b>Derivation</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a preexisting entity.
+	 * Derivation
 	 * <!-- end-model-doc -->
 	 * @see #DERIVATION
 	 * @model name="derivation"
@@ -79,7 +87,7 @@ public enum ProvenanceEntityRoleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A derivation for which the resulting entity is a revised version of some original.
+	 * Revision
 	 * <!-- end-model-doc -->
 	 * @see #REVISION
 	 * @model name="revision"
@@ -93,7 +101,7 @@ public enum ProvenanceEntityRoleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The repeat of (some or all of) an entity, such as text or image, by someone who may or may not be its original author.
+	 * Quotation
 	 * <!-- end-model-doc -->
 	 * @see #QUOTATION
 	 * @model name="quotation"
@@ -107,7 +115,7 @@ public enum ProvenanceEntityRoleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight.
+	 * Source
 	 * <!-- end-model-doc -->
 	 * @see #SOURCE
 	 * @model name="source"
@@ -115,6 +123,20 @@ public enum ProvenanceEntityRoleList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int SOURCE_VALUE = 3;
+
+	/**
+	 * The '<em><b>Removal</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Removal
+	 * <!-- end-model-doc -->
+	 * @see #REMOVAL
+	 * @model name="removal"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REMOVAL_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Provenance Entity Role List</b></em>' enumerators.
@@ -128,6 +150,7 @@ public enum ProvenanceEntityRoleList implements Enumerator {
 			REVISION,
 			QUOTATION,
 			SOURCE,
+			REMOVAL,
 		};
 
 	/**
@@ -188,6 +211,7 @@ public enum ProvenanceEntityRoleList implements Enumerator {
 			case REVISION_VALUE: return REVISION;
 			case QUOTATION_VALUE: return QUOTATION;
 			case SOURCE_VALUE: return SOURCE;
+			case REMOVAL_VALUE: return REMOVAL;
 		}
 		return null;
 	}

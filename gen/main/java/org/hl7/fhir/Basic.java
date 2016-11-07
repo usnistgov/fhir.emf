@@ -21,8 +21,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Basic#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.Basic#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.Basic#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.Basic#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.hl7.fhir.Basic#getCreated <em>Created</em>}</li>
+ *   <li>{@link org.hl7.fhir.Basic#getAuthor <em>Author</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getBasic()

@@ -75,7 +75,7 @@ public enum MedicationAdministrationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The administration has started but has not yet completed.
+	 * In Progress
 	 * <!-- end-model-doc -->
 	 * @see #IN_PROGRESS
 	 * @model name="inProgress" literal="in-progress"
@@ -89,7 +89,7 @@ public enum MedicationAdministrationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called "suspended".
+	 * On Hold
 	 * <!-- end-model-doc -->
 	 * @see #ON_HOLD
 	 * @model name="onHold" literal="on-hold"
@@ -103,7 +103,7 @@ public enum MedicationAdministrationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All actions that are implied by the administration have occurred.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -117,7 +117,7 @@ public enum MedicationAdministrationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The administration was entered in error and therefore nullified.
+	 * Entered in Error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
@@ -131,7 +131,7 @@ public enum MedicationAdministrationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions implied by the administration have been permanently halted, before all of them occurred.
+	 * Stopped
 	 * <!-- end-model-doc -->
 	 * @see #STOPPED
 	 * @model name="stopped"

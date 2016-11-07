@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.EnrollmentRequest;
+import org.hl7.fhir.EnrollmentRequestStatus;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Reference;
@@ -33,15 +34,19 @@ import org.hl7.fhir.Reference;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getRuleset <em>Ruleset</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getOriginalRuleset <em>Original Ruleset</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getCreated <em>Created</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getProvider <em>Provider</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getOrganization <em>Organization</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getSubject <em>Subject</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getInsurerIdentifier <em>Insurer Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getInsurerReference <em>Insurer Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getProviderIdentifier <em>Provider Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getProviderReference <em>Provider Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getOrganizationIdentifier <em>Organization Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getOrganizationReference <em>Organization Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getSubjectIdentifier <em>Subject Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getSubjectReference <em>Subject Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getCoverage <em>Coverage</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.EnrollmentRequestImpl#getRelationship <em>Relationship</em>}</li>
  * </ul>
  *
  * @generated
@@ -56,6 +61,16 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * @ordered
 	 */
 	protected EList<Identifier> identifier;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected EnrollmentRequestStatus status;
 
 	/**
 	 * The cached value of the '{@link #getRuleset() <em>Ruleset</em>}' containment reference.
@@ -88,44 +103,84 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	protected DateTime created;
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
+	 * The cached value of the '{@link #getInsurerIdentifier() <em>Insurer Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTarget()
+	 * @see #getInsurerIdentifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference target;
+	protected Identifier insurerIdentifier;
 
 	/**
-	 * The cached value of the '{@link #getProvider() <em>Provider</em>}' containment reference.
+	 * The cached value of the '{@link #getInsurerReference() <em>Insurer Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProvider()
+	 * @see #getInsurerReference()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference provider;
+	protected Reference insurerReference;
 
 	/**
-	 * The cached value of the '{@link #getOrganization() <em>Organization</em>}' containment reference.
+	 * The cached value of the '{@link #getProviderIdentifier() <em>Provider Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrganization()
+	 * @see #getProviderIdentifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference organization;
+	protected Identifier providerIdentifier;
 
 	/**
-	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference.
+	 * The cached value of the '{@link #getProviderReference() <em>Provider Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSubject()
+	 * @see #getProviderReference()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference subject;
+	protected Reference providerReference;
+
+	/**
+	 * The cached value of the '{@link #getOrganizationIdentifier() <em>Organization Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrganizationIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier organizationIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getOrganizationReference() <em>Organization Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrganizationReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference organizationReference;
+
+	/**
+	 * The cached value of the '{@link #getSubjectIdentifier() <em>Subject Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubjectIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier subjectIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getSubjectReference() <em>Subject Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubjectReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference subjectReference;
 
 	/**
 	 * The cached value of the '{@link #getCoverage() <em>Coverage</em>}' containment reference.
@@ -136,16 +191,6 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * @ordered
 	 */
 	protected Reference coverage;
-
-	/**
-	 * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelationship()
-	 * @generated
-	 * @ordered
-	 */
-	protected Coding relationship;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,6 +221,49 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 			identifier = new EObjectContainmentEList<Identifier>(Identifier.class, this, FhirPackage.ENROLLMENT_REQUEST__IDENTIFIER);
 		}
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnrollmentRequestStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatus(EnrollmentRequestStatus newStatus, NotificationChain msgs) {
+		EnrollmentRequestStatus oldStatus = status;
+		status = newStatus;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__STATUS, oldStatus, newStatus);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatus(EnrollmentRequestStatus newStatus) {
+		if (newStatus != status) {
+			NotificationChain msgs = null;
+			if (status != null)
+				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__STATUS, null, msgs);
+			if (newStatus != null)
+				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__STATUS, null, msgs);
+			msgs = basicSetStatus(newStatus, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__STATUS, newStatus, newStatus));
 	}
 
 	/**
@@ -312,8 +400,8 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getTarget() {
-		return target;
+	public Identifier getInsurerIdentifier() {
+		return insurerIdentifier;
 	}
 
 	/**
@@ -321,11 +409,11 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTarget(Reference newTarget, NotificationChain msgs) {
-		Reference oldTarget = target;
-		target = newTarget;
+	public NotificationChain basicSetInsurerIdentifier(Identifier newInsurerIdentifier, NotificationChain msgs) {
+		Identifier oldInsurerIdentifier = insurerIdentifier;
+		insurerIdentifier = newInsurerIdentifier;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__TARGET, oldTarget, newTarget);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER, oldInsurerIdentifier, newInsurerIdentifier);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -336,18 +424,18 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTarget(Reference newTarget) {
-		if (newTarget != target) {
+	public void setInsurerIdentifier(Identifier newInsurerIdentifier) {
+		if (newInsurerIdentifier != insurerIdentifier) {
 			NotificationChain msgs = null;
-			if (target != null)
-				msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__TARGET, null, msgs);
-			if (newTarget != null)
-				msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__TARGET, null, msgs);
-			msgs = basicSetTarget(newTarget, msgs);
+			if (insurerIdentifier != null)
+				msgs = ((InternalEObject)insurerIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER, null, msgs);
+			if (newInsurerIdentifier != null)
+				msgs = ((InternalEObject)newInsurerIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER, null, msgs);
+			msgs = basicSetInsurerIdentifier(newInsurerIdentifier, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__TARGET, newTarget, newTarget));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER, newInsurerIdentifier, newInsurerIdentifier));
 	}
 
 	/**
@@ -355,8 +443,8 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getProvider() {
-		return provider;
+	public Reference getInsurerReference() {
+		return insurerReference;
 	}
 
 	/**
@@ -364,11 +452,11 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetProvider(Reference newProvider, NotificationChain msgs) {
-		Reference oldProvider = provider;
-		provider = newProvider;
+	public NotificationChain basicSetInsurerReference(Reference newInsurerReference, NotificationChain msgs) {
+		Reference oldInsurerReference = insurerReference;
+		insurerReference = newInsurerReference;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__PROVIDER, oldProvider, newProvider);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE, oldInsurerReference, newInsurerReference);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -379,18 +467,18 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProvider(Reference newProvider) {
-		if (newProvider != provider) {
+	public void setInsurerReference(Reference newInsurerReference) {
+		if (newInsurerReference != insurerReference) {
 			NotificationChain msgs = null;
-			if (provider != null)
-				msgs = ((InternalEObject)provider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__PROVIDER, null, msgs);
-			if (newProvider != null)
-				msgs = ((InternalEObject)newProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__PROVIDER, null, msgs);
-			msgs = basicSetProvider(newProvider, msgs);
+			if (insurerReference != null)
+				msgs = ((InternalEObject)insurerReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE, null, msgs);
+			if (newInsurerReference != null)
+				msgs = ((InternalEObject)newInsurerReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE, null, msgs);
+			msgs = basicSetInsurerReference(newInsurerReference, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__PROVIDER, newProvider, newProvider));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE, newInsurerReference, newInsurerReference));
 	}
 
 	/**
@@ -398,8 +486,8 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getOrganization() {
-		return organization;
+	public Identifier getProviderIdentifier() {
+		return providerIdentifier;
 	}
 
 	/**
@@ -407,11 +495,11 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOrganization(Reference newOrganization, NotificationChain msgs) {
-		Reference oldOrganization = organization;
-		organization = newOrganization;
+	public NotificationChain basicSetProviderIdentifier(Identifier newProviderIdentifier, NotificationChain msgs) {
+		Identifier oldProviderIdentifier = providerIdentifier;
+		providerIdentifier = newProviderIdentifier;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION, oldOrganization, newOrganization);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER, oldProviderIdentifier, newProviderIdentifier);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -422,18 +510,18 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOrganization(Reference newOrganization) {
-		if (newOrganization != organization) {
+	public void setProviderIdentifier(Identifier newProviderIdentifier) {
+		if (newProviderIdentifier != providerIdentifier) {
 			NotificationChain msgs = null;
-			if (organization != null)
-				msgs = ((InternalEObject)organization).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION, null, msgs);
-			if (newOrganization != null)
-				msgs = ((InternalEObject)newOrganization).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION, null, msgs);
-			msgs = basicSetOrganization(newOrganization, msgs);
+			if (providerIdentifier != null)
+				msgs = ((InternalEObject)providerIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER, null, msgs);
+			if (newProviderIdentifier != null)
+				msgs = ((InternalEObject)newProviderIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER, null, msgs);
+			msgs = basicSetProviderIdentifier(newProviderIdentifier, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION, newOrganization, newOrganization));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER, newProviderIdentifier, newProviderIdentifier));
 	}
 
 	/**
@@ -441,8 +529,8 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getSubject() {
-		return subject;
+	public Reference getProviderReference() {
+		return providerReference;
 	}
 
 	/**
@@ -450,11 +538,11 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSubject(Reference newSubject, NotificationChain msgs) {
-		Reference oldSubject = subject;
-		subject = newSubject;
+	public NotificationChain basicSetProviderReference(Reference newProviderReference, NotificationChain msgs) {
+		Reference oldProviderReference = providerReference;
+		providerReference = newProviderReference;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__SUBJECT, oldSubject, newSubject);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE, oldProviderReference, newProviderReference);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -465,18 +553,190 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubject(Reference newSubject) {
-		if (newSubject != subject) {
+	public void setProviderReference(Reference newProviderReference) {
+		if (newProviderReference != providerReference) {
 			NotificationChain msgs = null;
-			if (subject != null)
-				msgs = ((InternalEObject)subject).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__SUBJECT, null, msgs);
-			if (newSubject != null)
-				msgs = ((InternalEObject)newSubject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__SUBJECT, null, msgs);
-			msgs = basicSetSubject(newSubject, msgs);
+			if (providerReference != null)
+				msgs = ((InternalEObject)providerReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE, null, msgs);
+			if (newProviderReference != null)
+				msgs = ((InternalEObject)newProviderReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE, null, msgs);
+			msgs = basicSetProviderReference(newProviderReference, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__SUBJECT, newSubject, newSubject));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE, newProviderReference, newProviderReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Identifier getOrganizationIdentifier() {
+		return organizationIdentifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOrganizationIdentifier(Identifier newOrganizationIdentifier, NotificationChain msgs) {
+		Identifier oldOrganizationIdentifier = organizationIdentifier;
+		organizationIdentifier = newOrganizationIdentifier;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER, oldOrganizationIdentifier, newOrganizationIdentifier);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrganizationIdentifier(Identifier newOrganizationIdentifier) {
+		if (newOrganizationIdentifier != organizationIdentifier) {
+			NotificationChain msgs = null;
+			if (organizationIdentifier != null)
+				msgs = ((InternalEObject)organizationIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER, null, msgs);
+			if (newOrganizationIdentifier != null)
+				msgs = ((InternalEObject)newOrganizationIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER, null, msgs);
+			msgs = basicSetOrganizationIdentifier(newOrganizationIdentifier, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER, newOrganizationIdentifier, newOrganizationIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getOrganizationReference() {
+		return organizationReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOrganizationReference(Reference newOrganizationReference, NotificationChain msgs) {
+		Reference oldOrganizationReference = organizationReference;
+		organizationReference = newOrganizationReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE, oldOrganizationReference, newOrganizationReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrganizationReference(Reference newOrganizationReference) {
+		if (newOrganizationReference != organizationReference) {
+			NotificationChain msgs = null;
+			if (organizationReference != null)
+				msgs = ((InternalEObject)organizationReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE, null, msgs);
+			if (newOrganizationReference != null)
+				msgs = ((InternalEObject)newOrganizationReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE, null, msgs);
+			msgs = basicSetOrganizationReference(newOrganizationReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE, newOrganizationReference, newOrganizationReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Identifier getSubjectIdentifier() {
+		return subjectIdentifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSubjectIdentifier(Identifier newSubjectIdentifier, NotificationChain msgs) {
+		Identifier oldSubjectIdentifier = subjectIdentifier;
+		subjectIdentifier = newSubjectIdentifier;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER, oldSubjectIdentifier, newSubjectIdentifier);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubjectIdentifier(Identifier newSubjectIdentifier) {
+		if (newSubjectIdentifier != subjectIdentifier) {
+			NotificationChain msgs = null;
+			if (subjectIdentifier != null)
+				msgs = ((InternalEObject)subjectIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER, null, msgs);
+			if (newSubjectIdentifier != null)
+				msgs = ((InternalEObject)newSubjectIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER, null, msgs);
+			msgs = basicSetSubjectIdentifier(newSubjectIdentifier, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER, newSubjectIdentifier, newSubjectIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getSubjectReference() {
+		return subjectReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSubjectReference(Reference newSubjectReference, NotificationChain msgs) {
+		Reference oldSubjectReference = subjectReference;
+		subjectReference = newSubjectReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE, oldSubjectReference, newSubjectReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubjectReference(Reference newSubjectReference) {
+		if (newSubjectReference != subjectReference) {
+			NotificationChain msgs = null;
+			if (subjectReference != null)
+				msgs = ((InternalEObject)subjectReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE, null, msgs);
+			if (newSubjectReference != null)
+				msgs = ((InternalEObject)newSubjectReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE, null, msgs);
+			msgs = basicSetSubjectReference(newSubjectReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE, newSubjectReference, newSubjectReference));
 	}
 
 	/**
@@ -527,72 +787,37 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Coding getRelationship() {
-		return relationship;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRelationship(Coding newRelationship, NotificationChain msgs) {
-		Coding oldRelationship = relationship;
-		relationship = newRelationship;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP, oldRelationship, newRelationship);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRelationship(Coding newRelationship) {
-		if (newRelationship != relationship) {
-			NotificationChain msgs = null;
-			if (relationship != null)
-				msgs = ((InternalEObject)relationship).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP, null, msgs);
-			if (newRelationship != null)
-				msgs = ((InternalEObject)newRelationship).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP, null, msgs);
-			msgs = basicSetRelationship(newRelationship, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP, newRelationship, newRelationship));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FhirPackage.ENROLLMENT_REQUEST__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__STATUS:
+				return basicSetStatus(null, msgs);
 			case FhirPackage.ENROLLMENT_REQUEST__RULESET:
 				return basicSetRuleset(null, msgs);
 			case FhirPackage.ENROLLMENT_REQUEST__ORIGINAL_RULESET:
 				return basicSetOriginalRuleset(null, msgs);
 			case FhirPackage.ENROLLMENT_REQUEST__CREATED:
 				return basicSetCreated(null, msgs);
-			case FhirPackage.ENROLLMENT_REQUEST__TARGET:
-				return basicSetTarget(null, msgs);
-			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER:
-				return basicSetProvider(null, msgs);
-			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION:
-				return basicSetOrganization(null, msgs);
-			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT:
-				return basicSetSubject(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER:
+				return basicSetInsurerIdentifier(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE:
+				return basicSetInsurerReference(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER:
+				return basicSetProviderIdentifier(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE:
+				return basicSetProviderReference(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER:
+				return basicSetOrganizationIdentifier(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE:
+				return basicSetOrganizationReference(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER:
+				return basicSetSubjectIdentifier(null, msgs);
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE:
+				return basicSetSubjectReference(null, msgs);
 			case FhirPackage.ENROLLMENT_REQUEST__COVERAGE:
 				return basicSetCoverage(null, msgs);
-			case FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP:
-				return basicSetRelationship(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -607,24 +832,32 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 		switch (featureID) {
 			case FhirPackage.ENROLLMENT_REQUEST__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.ENROLLMENT_REQUEST__STATUS:
+				return getStatus();
 			case FhirPackage.ENROLLMENT_REQUEST__RULESET:
 				return getRuleset();
 			case FhirPackage.ENROLLMENT_REQUEST__ORIGINAL_RULESET:
 				return getOriginalRuleset();
 			case FhirPackage.ENROLLMENT_REQUEST__CREATED:
 				return getCreated();
-			case FhirPackage.ENROLLMENT_REQUEST__TARGET:
-				return getTarget();
-			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER:
-				return getProvider();
-			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION:
-				return getOrganization();
-			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT:
-				return getSubject();
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER:
+				return getInsurerIdentifier();
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE:
+				return getInsurerReference();
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER:
+				return getProviderIdentifier();
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE:
+				return getProviderReference();
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER:
+				return getOrganizationIdentifier();
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE:
+				return getOrganizationReference();
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER:
+				return getSubjectIdentifier();
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE:
+				return getSubjectReference();
 			case FhirPackage.ENROLLMENT_REQUEST__COVERAGE:
 				return getCoverage();
-			case FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP:
-				return getRelationship();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -642,6 +875,9 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
 				return;
+			case FhirPackage.ENROLLMENT_REQUEST__STATUS:
+				setStatus((EnrollmentRequestStatus)newValue);
+				return;
 			case FhirPackage.ENROLLMENT_REQUEST__RULESET:
 				setRuleset((Coding)newValue);
 				return;
@@ -651,23 +887,32 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 			case FhirPackage.ENROLLMENT_REQUEST__CREATED:
 				setCreated((DateTime)newValue);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__TARGET:
-				setTarget((Reference)newValue);
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER:
+				setInsurerIdentifier((Identifier)newValue);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER:
-				setProvider((Reference)newValue);
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE:
+				setInsurerReference((Reference)newValue);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION:
-				setOrganization((Reference)newValue);
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER:
+				setProviderIdentifier((Identifier)newValue);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT:
-				setSubject((Reference)newValue);
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE:
+				setProviderReference((Reference)newValue);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER:
+				setOrganizationIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE:
+				setOrganizationReference((Reference)newValue);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER:
+				setSubjectIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE:
+				setSubjectReference((Reference)newValue);
 				return;
 			case FhirPackage.ENROLLMENT_REQUEST__COVERAGE:
 				setCoverage((Reference)newValue);
-				return;
-			case FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP:
-				setRelationship((Coding)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -684,6 +929,9 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 			case FhirPackage.ENROLLMENT_REQUEST__IDENTIFIER:
 				getIdentifier().clear();
 				return;
+			case FhirPackage.ENROLLMENT_REQUEST__STATUS:
+				setStatus((EnrollmentRequestStatus)null);
+				return;
 			case FhirPackage.ENROLLMENT_REQUEST__RULESET:
 				setRuleset((Coding)null);
 				return;
@@ -693,23 +941,32 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 			case FhirPackage.ENROLLMENT_REQUEST__CREATED:
 				setCreated((DateTime)null);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__TARGET:
-				setTarget((Reference)null);
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER:
+				setInsurerIdentifier((Identifier)null);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER:
-				setProvider((Reference)null);
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE:
+				setInsurerReference((Reference)null);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION:
-				setOrganization((Reference)null);
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER:
+				setProviderIdentifier((Identifier)null);
 				return;
-			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT:
-				setSubject((Reference)null);
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE:
+				setProviderReference((Reference)null);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER:
+				setOrganizationIdentifier((Identifier)null);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE:
+				setOrganizationReference((Reference)null);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER:
+				setSubjectIdentifier((Identifier)null);
+				return;
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE:
+				setSubjectReference((Reference)null);
 				return;
 			case FhirPackage.ENROLLMENT_REQUEST__COVERAGE:
 				setCoverage((Reference)null);
-				return;
-			case FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP:
-				setRelationship((Coding)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -725,24 +982,32 @@ public class EnrollmentRequestImpl extends DomainResourceImpl implements Enrollm
 		switch (featureID) {
 			case FhirPackage.ENROLLMENT_REQUEST__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.ENROLLMENT_REQUEST__STATUS:
+				return status != null;
 			case FhirPackage.ENROLLMENT_REQUEST__RULESET:
 				return ruleset != null;
 			case FhirPackage.ENROLLMENT_REQUEST__ORIGINAL_RULESET:
 				return originalRuleset != null;
 			case FhirPackage.ENROLLMENT_REQUEST__CREATED:
 				return created != null;
-			case FhirPackage.ENROLLMENT_REQUEST__TARGET:
-				return target != null;
-			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER:
-				return provider != null;
-			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION:
-				return organization != null;
-			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT:
-				return subject != null;
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_IDENTIFIER:
+				return insurerIdentifier != null;
+			case FhirPackage.ENROLLMENT_REQUEST__INSURER_REFERENCE:
+				return insurerReference != null;
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_IDENTIFIER:
+				return providerIdentifier != null;
+			case FhirPackage.ENROLLMENT_REQUEST__PROVIDER_REFERENCE:
+				return providerReference != null;
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_IDENTIFIER:
+				return organizationIdentifier != null;
+			case FhirPackage.ENROLLMENT_REQUEST__ORGANIZATION_REFERENCE:
+				return organizationReference != null;
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_IDENTIFIER:
+				return subjectIdentifier != null;
+			case FhirPackage.ENROLLMENT_REQUEST__SUBJECT_REFERENCE:
+				return subjectReference != null;
 			case FhirPackage.ENROLLMENT_REQUEST__COVERAGE:
 				return coverage != null;
-			case FhirPackage.ENROLLMENT_REQUEST__RELATIONSHIP:
-				return relationship != null;
 		}
 		return super.eIsSet(featureID);
 	}

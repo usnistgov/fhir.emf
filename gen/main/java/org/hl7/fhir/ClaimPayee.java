@@ -17,9 +17,9 @@ package org.hl7.fhir;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.ClaimPayee#getType <em>Type</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimPayee#getProvider <em>Provider</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimPayee#getOrganization <em>Organization</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimPayee#getPerson <em>Person</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimPayee#getResourceType <em>Resource Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimPayee#getPartyIdentifier <em>Party Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimPayee#getPartyReference <em>Party Reference</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getClaimPayee()
@@ -32,12 +32,12 @@ public interface ClaimPayee extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Party to be reimbursed: Subscriber, provider, other.
+	 * Type of Party to be reimbursed: Subscriber, provider, other.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getClaimPayee_Type()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -54,81 +54,81 @@ public interface ClaimPayee extends BackboneElement {
 	void setType(Coding value);
 
 	/**
-	 * Returns the value of the '<em><b>Provider</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Resource Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The provider who is to be reimbursed for the claim (the party to whom any benefit is assigned).
+	 * organization | patient | practitioner | relatedperson.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Provider</em>' containment reference.
-	 * @see #setProvider(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getClaimPayee_Provider()
+	 * @return the value of the '<em>Resource Type</em>' containment reference.
+	 * @see #setResourceType(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimPayee_ResourceType()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='provider' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='resourceType' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getProvider();
+	Coding getResourceType();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimPayee#getProvider <em>Provider</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimPayee#getResourceType <em>Resource Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Provider</em>' containment reference.
-	 * @see #getProvider()
+	 * @param value the new value of the '<em>Resource Type</em>' containment reference.
+	 * @see #getResourceType()
 	 * @generated
 	 */
-	void setProvider(Reference value);
+	void setResourceType(Coding value);
 
 	/**
-	 * Returns the value of the '<em><b>Organization</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Party Identifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The organization who is to be reimbursed for the claim (the party to whom any benefit is assigned).
+	 * Party to be reimbursed: Subscriber, provider, other. (choose any one of party*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Organization</em>' containment reference.
-	 * @see #setOrganization(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getClaimPayee_Organization()
+	 * @return the value of the '<em>Party Identifier</em>' containment reference.
+	 * @see #setPartyIdentifier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getClaimPayee_PartyIdentifier()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='organization' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='partyIdentifier' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getOrganization();
+	Identifier getPartyIdentifier();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimPayee#getOrganization <em>Organization</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimPayee#getPartyIdentifier <em>Party Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Organization</em>' containment reference.
-	 * @see #getOrganization()
+	 * @param value the new value of the '<em>Party Identifier</em>' containment reference.
+	 * @see #getPartyIdentifier()
 	 * @generated
 	 */
-	void setOrganization(Reference value);
+	void setPartyIdentifier(Identifier value);
 
 	/**
-	 * Returns the value of the '<em><b>Person</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Party Reference</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The person other than the subscriber who is to be reimbursed for the claim (the party to whom any benefit is assigned).
+	 * Party to be reimbursed: Subscriber, provider, other. (choose any one of party*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Person</em>' containment reference.
-	 * @see #setPerson(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getClaimPayee_Person()
+	 * @return the value of the '<em>Party Reference</em>' containment reference.
+	 * @see #setPartyReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getClaimPayee_PartyReference()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='person' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='partyReference' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getPerson();
+	Reference getPartyReference();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimPayee#getPerson <em>Person</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimPayee#getPartyReference <em>Party Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Person</em>' containment reference.
-	 * @see #getPerson()
+	 * @param value the new value of the '<em>Party Reference</em>' containment reference.
+	 * @see #getPartyReference()
 	 * @generated
 	 */
-	void setPerson(Reference value);
+	void setPartyReference(Reference value);
 
 } // ClaimPayee

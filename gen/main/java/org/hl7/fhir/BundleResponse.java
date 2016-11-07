@@ -20,6 +20,7 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.BundleResponse#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.BundleResponse#getEtag <em>Etag</em>}</li>
  *   <li>{@link org.hl7.fhir.BundleResponse#getLastModified <em>Last Modified</em>}</li>
+ *   <li>{@link org.hl7.fhir.BundleResponse#getOutcome <em>Outcome</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getBundleResponse()
@@ -32,7 +33,7 @@ public interface BundleResponse extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The status code returned by processing this entry.
+	 * The status code returned by processing this entry. The status SHALL start with a 3 digit HTTP code (e.g. 404) and may contain the standard HTTP description associated with the status code.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
 	 * @see #setStatus(org.hl7.fhir.String)
@@ -130,5 +131,31 @@ public interface BundleResponse extends BackboneElement {
 	 * @generated
 	 */
 	void setLastModified(Instant value);
+
+	/**
+	 * Returns the value of the '<em><b>Outcome</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Outcome</em>' containment reference.
+	 * @see #setOutcome(ResourceContainer)
+	 * @see org.hl7.fhir.FhirPackage#getBundleResponse_Outcome()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='outcome' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	ResourceContainer getOutcome();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.BundleResponse#getOutcome <em>Outcome</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Outcome</em>' containment reference.
+	 * @see #getOutcome()
+	 * @generated
+	 */
+	void setOutcome(ResourceContainer value);
 
 } // BundleResponse

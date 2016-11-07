@@ -31,16 +31,6 @@ public enum ReferralStatusList implements Enumerator {
 	DRAFT(0, "draft", "draft"),
 
 	/**
-	 * The '<em><b>Requested</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #REQUESTED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	REQUESTED(1, "requested", "requested"),
-
-	/**
 	 * The '<em><b>Active</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48,7 +38,7 @@ public enum ReferralStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ACTIVE(2, "active", "active"),
+	ACTIVE(1, "active", "active"),
 
 	/**
 	 * The '<em><b>Cancelled</b></em>' literal object.
@@ -58,27 +48,7 @@ public enum ReferralStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CANCELLED(3, "cancelled", "cancelled"),
-
-	/**
-	 * The '<em><b>Accepted</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ACCEPTED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ACCEPTED(4, "accepted", "accepted"),
-
-	/**
-	 * The '<em><b>Rejected</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #REJECTED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	REJECTED(5, "rejected", "rejected"),
+	CANCELLED(2, "cancelled", "cancelled"),
 
 	/**
 	 * The '<em><b>Completed</b></em>' literal object.
@@ -88,14 +58,22 @@ public enum ReferralStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	COMPLETED(6, "completed", "completed");
+	COMPLETED(3, "completed", "completed"), /**
+	 * The '<em><b>Entered In Error</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENTERED_IN_ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENTERED_IN_ERROR(4, "enteredInError", "entered-in-error");
 
 	/**
 	 * The '<em><b>Draft</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A draft referral that has yet to be send.
+	 * Draft
 	 * <!-- end-model-doc -->
 	 * @see #DRAFT
 	 * @model name="draft"
@@ -105,88 +83,60 @@ public enum ReferralStatusList implements Enumerator {
 	public static final int DRAFT_VALUE = 0;
 
 	/**
-	 * The '<em><b>Requested</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The referral has been transmitted, but not yet acknowledged by the recipient.
-	 * <!-- end-model-doc -->
-	 * @see #REQUESTED
-	 * @model name="requested"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REQUESTED_VALUE = 1;
-
-	/**
 	 * The '<em><b>Active</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The referral has been acknowledged by the recipient, and is in the process of being actioned.
+	 * Active
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ACTIVE_VALUE = 2;
+	public static final int ACTIVE_VALUE = 1;
 
 	/**
 	 * The '<em><b>Cancelled</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The referral has been cancelled without being completed. For example it is no longer needed.
+	 * Cancelled
 	 * <!-- end-model-doc -->
 	 * @see #CANCELLED
 	 * @model name="cancelled"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CANCELLED_VALUE = 3;
-
-	/**
-	 * The '<em><b>Accepted</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The recipient has agreed to deliver the care requested by the referral.
-	 * <!-- end-model-doc -->
-	 * @see #ACCEPTED
-	 * @model name="accepted"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ACCEPTED_VALUE = 4;
-
-	/**
-	 * The '<em><b>Rejected</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The recipient has declined to accept the referral.
-	 * <!-- end-model-doc -->
-	 * @see #REJECTED
-	 * @model name="rejected"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REJECTED_VALUE = 5;
+	public static final int CANCELLED_VALUE = 2;
 
 	/**
 	 * The '<em><b>Completed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The referral has been completely actioned.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int COMPLETED_VALUE = 6;
+	public static final int COMPLETED_VALUE = 3;
+
+	/**
+	 * The '<em><b>Entered In Error</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Entered in Error
+	 * <!-- end-model-doc -->
+	 * @see #ENTERED_IN_ERROR
+	 * @model name="enteredInError" literal="entered-in-error"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENTERED_IN_ERROR_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Referral Status List</b></em>' enumerators.
@@ -197,12 +147,10 @@ public enum ReferralStatusList implements Enumerator {
 	private static final ReferralStatusList[] VALUES_ARRAY =
 		new ReferralStatusList[] {
 			DRAFT,
-			REQUESTED,
 			ACTIVE,
 			CANCELLED,
-			ACCEPTED,
-			REJECTED,
 			COMPLETED,
+			ENTERED_IN_ERROR,
 		};
 
 	/**
@@ -260,12 +208,10 @@ public enum ReferralStatusList implements Enumerator {
 	public static ReferralStatusList get(int value) {
 		switch (value) {
 			case DRAFT_VALUE: return DRAFT;
-			case REQUESTED_VALUE: return REQUESTED;
 			case ACTIVE_VALUE: return ACTIVE;
 			case CANCELLED_VALUE: return CANCELLED;
-			case ACCEPTED_VALUE: return ACCEPTED;
-			case REJECTED_VALUE: return REJECTED;
 			case COMPLETED_VALUE: return COMPLETED;
+			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
 		}
 		return null;
 	}

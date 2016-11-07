@@ -145,7 +145,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 200.
+	 * okay
 	 * <!-- end-model-doc -->
 	 * @see #OKAY
 	 * @model name="okay"
@@ -159,7 +159,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 201.
+	 * created
 	 * <!-- end-model-doc -->
 	 * @see #CREATED
 	 * @model name="created"
@@ -173,7 +173,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 204.
+	 * noContent
 	 * <!-- end-model-doc -->
 	 * @see #NO_CONTENT
 	 * @model name="noContent"
@@ -187,7 +187,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 304.
+	 * notModified
 	 * <!-- end-model-doc -->
 	 * @see #NOT_MODIFIED
 	 * @model name="notModified"
@@ -201,7 +201,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 400.
+	 * bad
 	 * <!-- end-model-doc -->
 	 * @see #BAD
 	 * @model name="bad"
@@ -215,7 +215,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 403.
+	 * forbidden
 	 * <!-- end-model-doc -->
 	 * @see #FORBIDDEN
 	 * @model name="forbidden"
@@ -229,7 +229,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 404.
+	 * notFound
 	 * <!-- end-model-doc -->
 	 * @see #NOT_FOUND
 	 * @model name="notFound"
@@ -243,7 +243,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 405.
+	 * methodNotAllowed
 	 * <!-- end-model-doc -->
 	 * @see #METHOD_NOT_ALLOWED
 	 * @model name="methodNotAllowed"
@@ -257,7 +257,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 409.
+	 * conflict
 	 * <!-- end-model-doc -->
 	 * @see #CONFLICT
 	 * @model name="conflict"
@@ -271,7 +271,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 410.
+	 * gone
 	 * <!-- end-model-doc -->
 	 * @see #GONE
 	 * @model name="gone"
@@ -285,7 +285,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 412.
+	 * preconditionFailed
 	 * <!-- end-model-doc -->
 	 * @see #PRECONDITION_FAILED
 	 * @model name="preconditionFailed"
@@ -299,7 +299,7 @@ public enum AssertionResponseTypesList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Response code is 422.
+	 * unprocessable
 	 * <!-- end-model-doc -->
 	 * @see #UNPROCESSABLE
 	 * @model name="unprocessable"

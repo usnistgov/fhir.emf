@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.AppointmentResponse;
+import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Instant;
-import org.hl7.fhir.ParticipantStatus;
 import org.hl7.fhir.Reference;
 
 /**
@@ -114,7 +114,7 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 	 * @generated
 	 * @ordered
 	 */
-	protected ParticipantStatus participantStatus;
+	protected Code participantStatus;
 
 	/**
 	 * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
@@ -346,7 +346,7 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParticipantStatus getParticipantStatus() {
+	public Code getParticipantStatus() {
 		return participantStatus;
 	}
 
@@ -355,8 +355,8 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParticipantStatus(ParticipantStatus newParticipantStatus, NotificationChain msgs) {
-		ParticipantStatus oldParticipantStatus = participantStatus;
+	public NotificationChain basicSetParticipantStatus(Code newParticipantStatus, NotificationChain msgs) {
+		Code oldParticipantStatus = participantStatus;
 		participantStatus = newParticipantStatus;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_STATUS, oldParticipantStatus, newParticipantStatus);
@@ -370,7 +370,7 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParticipantStatus(ParticipantStatus newParticipantStatus) {
+	public void setParticipantStatus(Code newParticipantStatus) {
 		if (newParticipantStatus != participantStatus) {
 			NotificationChain msgs = null;
 			if (participantStatus != null)
@@ -513,7 +513,7 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				setActor((Reference)newValue);
 				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_STATUS:
-				setParticipantStatus((ParticipantStatus)newValue);
+				setParticipantStatus((Code)newValue);
 				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__COMMENT:
 				setComment((org.hl7.fhir.String)newValue);
@@ -549,7 +549,7 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				setActor((Reference)null);
 				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_STATUS:
-				setParticipantStatus((ParticipantStatus)null);
+				setParticipantStatus((Code)null);
 				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__COMMENT:
 				setComment((org.hl7.fhir.String)null);

@@ -268,30 +268,20 @@ public interface DiagnosticReport extends DomainResource {
 	void setIssued(Instant value);
 
 	/**
-	 * Returns the value of the '<em><b>Performer</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Performer</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The diagnostic service that is responsible for issuing the report.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Performer</em>' containment reference.
-	 * @see #setPerformer(Reference)
+	 * @return the value of the '<em>Performer</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getDiagnosticReport_Performer()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='performer' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getPerformer();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.DiagnosticReport#getPerformer <em>Performer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Performer</em>' containment reference.
-	 * @see #getPerformer()
-	 * @generated
-	 */
-	void setPerformer(Reference value);
+	EList<Reference> getPerformer();
 
 	/**
 	 * Returns the value of the '<em><b>Request</b></em>' containment reference list.
@@ -378,7 +368,7 @@ public interface DiagnosticReport extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Concise and clinically contextualized narrative interpretation of the diagnostic report.
+	 * Concise and clinically contextualized impression / summary of the diagnostic report.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Conclusion</em>' containment reference.
 	 * @see #setConclusion(org.hl7.fhir.String)

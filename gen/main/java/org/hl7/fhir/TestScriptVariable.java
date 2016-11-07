@@ -17,6 +17,7 @@ package org.hl7.fhir;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.TestScriptVariable#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.TestScriptVariable#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptVariable#getHeaderField <em>Header Field</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptVariable#getPath <em>Path</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptVariable#getSourceId <em>Source Id</em>}</li>
@@ -52,6 +53,32 @@ public interface TestScriptVariable extends BackboneElement {
 	 * @generated
 	 */
 	void setName(org.hl7.fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A default, hard-coded, or user-defined value for this variable.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Default Value</em>' containment reference.
+	 * @see #setDefaultValue(org.hl7.fhir.String)
+	 * @see org.hl7.fhir.FhirPackage#getTestScriptVariable_DefaultValue()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='defaultValue' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.String getDefaultValue();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.TestScriptVariable#getDefaultValue <em>Default Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Value</em>' containment reference.
+	 * @see #getDefaultValue()
+	 * @generated
+	 */
+	void setDefaultValue(org.hl7.fhir.String value);
 
 	/**
 	 * Returns the value of the '<em><b>Header Field</b></em>' containment reference.

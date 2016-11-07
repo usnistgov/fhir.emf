@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.Attachment;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Contract;
-import org.hl7.fhir.ContractActor;
+import org.hl7.fhir.ContractAgent;
 import org.hl7.fhir.ContractFriendly;
 import org.hl7.fhir.ContractLegal;
 import org.hl7.fhir.ContractRule;
@@ -45,15 +45,16 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getIssued <em>Issued</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getApplies <em>Applies</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getSubject <em>Subject</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ContractImpl#getTopic <em>Topic</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getAuthority <em>Authority</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getDomain <em>Domain</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getSubType <em>Sub Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getAction <em>Action</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getActionReason <em>Action Reason</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ContractImpl#getActor <em>Actor</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ContractImpl#getValuedItem <em>Valued Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ContractImpl#getAgent <em>Agent</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getSigner <em>Signer</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ContractImpl#getValuedItem <em>Valued Item</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getTerm <em>Term</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getBindingAttachment <em>Binding Attachment</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractImpl#getBindingReference <em>Binding Reference</em>}</li>
@@ -104,6 +105,16 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 	 * @ordered
 	 */
 	protected EList<Reference> subject;
+
+	/**
+	 * The cached value of the '{@link #getTopic() <em>Topic</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTopic()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> topic;
 
 	/**
 	 * The cached value of the '{@link #getAuthority() <em>Authority</em>}' containment reference list.
@@ -166,24 +177,14 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 	protected EList<CodeableConcept> actionReason;
 
 	/**
-	 * The cached value of the '{@link #getActor() <em>Actor</em>}' containment reference list.
+	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActor()
+	 * @see #getAgent()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ContractActor> actor;
-
-	/**
-	 * The cached value of the '{@link #getValuedItem() <em>Valued Item</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValuedItem()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ContractValuedItem> valuedItem;
+	protected EList<ContractAgent> agent;
 
 	/**
 	 * The cached value of the '{@link #getSigner() <em>Signer</em>}' containment reference list.
@@ -194,6 +195,16 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 	 * @ordered
 	 */
 	protected EList<ContractSigner> signer;
+
+	/**
+	 * The cached value of the '{@link #getValuedItem() <em>Valued Item</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValuedItem()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ContractValuedItem> valuedItem;
 
 	/**
 	 * The cached value of the '{@link #getTerm() <em>Term</em>}' containment reference list.
@@ -420,6 +431,18 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Reference> getTopic() {
+		if (topic == null) {
+			topic = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.CONTRACT__TOPIC);
+		}
+		return topic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Reference> getAuthority() {
 		if (authority == null) {
 			authority = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.CONTRACT__AUTHORITY);
@@ -523,11 +546,11 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ContractActor> getActor() {
-		if (actor == null) {
-			actor = new EObjectContainmentEList<ContractActor>(ContractActor.class, this, FhirPackage.CONTRACT__ACTOR);
+	public EList<ContractAgent> getAgent() {
+		if (agent == null) {
+			agent = new EObjectContainmentEList<ContractAgent>(ContractAgent.class, this, FhirPackage.CONTRACT__AGENT);
 		}
-		return actor;
+		return agent;
 	}
 
 	/**
@@ -704,6 +727,8 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				return basicSetApplies(null, msgs);
 			case FhirPackage.CONTRACT__SUBJECT:
 				return ((InternalEList<?>)getSubject()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CONTRACT__TOPIC:
+				return ((InternalEList<?>)getTopic()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT__AUTHORITY:
 				return ((InternalEList<?>)getAuthority()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT__DOMAIN:
@@ -716,12 +741,12 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				return ((InternalEList<?>)getAction()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT__ACTION_REASON:
 				return ((InternalEList<?>)getActionReason()).basicRemove(otherEnd, msgs);
-			case FhirPackage.CONTRACT__ACTOR:
-				return ((InternalEList<?>)getActor()).basicRemove(otherEnd, msgs);
-			case FhirPackage.CONTRACT__VALUED_ITEM:
-				return ((InternalEList<?>)getValuedItem()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CONTRACT__AGENT:
+				return ((InternalEList<?>)getAgent()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT__SIGNER:
 				return ((InternalEList<?>)getSigner()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CONTRACT__VALUED_ITEM:
+				return ((InternalEList<?>)getValuedItem()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT__TERM:
 				return ((InternalEList<?>)getTerm()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT__BINDING_ATTACHMENT:
@@ -754,6 +779,8 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				return getApplies();
 			case FhirPackage.CONTRACT__SUBJECT:
 				return getSubject();
+			case FhirPackage.CONTRACT__TOPIC:
+				return getTopic();
 			case FhirPackage.CONTRACT__AUTHORITY:
 				return getAuthority();
 			case FhirPackage.CONTRACT__DOMAIN:
@@ -766,12 +793,12 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				return getAction();
 			case FhirPackage.CONTRACT__ACTION_REASON:
 				return getActionReason();
-			case FhirPackage.CONTRACT__ACTOR:
-				return getActor();
-			case FhirPackage.CONTRACT__VALUED_ITEM:
-				return getValuedItem();
+			case FhirPackage.CONTRACT__AGENT:
+				return getAgent();
 			case FhirPackage.CONTRACT__SIGNER:
 				return getSigner();
+			case FhirPackage.CONTRACT__VALUED_ITEM:
+				return getValuedItem();
 			case FhirPackage.CONTRACT__TERM:
 				return getTerm();
 			case FhirPackage.CONTRACT__BINDING_ATTACHMENT:
@@ -810,6 +837,10 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				getSubject().clear();
 				getSubject().addAll((Collection<? extends Reference>)newValue);
 				return;
+			case FhirPackage.CONTRACT__TOPIC:
+				getTopic().clear();
+				getTopic().addAll((Collection<? extends Reference>)newValue);
+				return;
 			case FhirPackage.CONTRACT__AUTHORITY:
 				getAuthority().clear();
 				getAuthority().addAll((Collection<? extends Reference>)newValue);
@@ -833,17 +864,17 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				getActionReason().clear();
 				getActionReason().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
-			case FhirPackage.CONTRACT__ACTOR:
-				getActor().clear();
-				getActor().addAll((Collection<? extends ContractActor>)newValue);
-				return;
-			case FhirPackage.CONTRACT__VALUED_ITEM:
-				getValuedItem().clear();
-				getValuedItem().addAll((Collection<? extends ContractValuedItem>)newValue);
+			case FhirPackage.CONTRACT__AGENT:
+				getAgent().clear();
+				getAgent().addAll((Collection<? extends ContractAgent>)newValue);
 				return;
 			case FhirPackage.CONTRACT__SIGNER:
 				getSigner().clear();
 				getSigner().addAll((Collection<? extends ContractSigner>)newValue);
+				return;
+			case FhirPackage.CONTRACT__VALUED_ITEM:
+				getValuedItem().clear();
+				getValuedItem().addAll((Collection<? extends ContractValuedItem>)newValue);
 				return;
 			case FhirPackage.CONTRACT__TERM:
 				getTerm().clear();
@@ -891,6 +922,9 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 			case FhirPackage.CONTRACT__SUBJECT:
 				getSubject().clear();
 				return;
+			case FhirPackage.CONTRACT__TOPIC:
+				getTopic().clear();
+				return;
 			case FhirPackage.CONTRACT__AUTHORITY:
 				getAuthority().clear();
 				return;
@@ -909,14 +943,14 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 			case FhirPackage.CONTRACT__ACTION_REASON:
 				getActionReason().clear();
 				return;
-			case FhirPackage.CONTRACT__ACTOR:
-				getActor().clear();
-				return;
-			case FhirPackage.CONTRACT__VALUED_ITEM:
-				getValuedItem().clear();
+			case FhirPackage.CONTRACT__AGENT:
+				getAgent().clear();
 				return;
 			case FhirPackage.CONTRACT__SIGNER:
 				getSigner().clear();
+				return;
+			case FhirPackage.CONTRACT__VALUED_ITEM:
+				getValuedItem().clear();
 				return;
 			case FhirPackage.CONTRACT__TERM:
 				getTerm().clear();
@@ -956,6 +990,8 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				return applies != null;
 			case FhirPackage.CONTRACT__SUBJECT:
 				return subject != null && !subject.isEmpty();
+			case FhirPackage.CONTRACT__TOPIC:
+				return topic != null && !topic.isEmpty();
 			case FhirPackage.CONTRACT__AUTHORITY:
 				return authority != null && !authority.isEmpty();
 			case FhirPackage.CONTRACT__DOMAIN:
@@ -968,12 +1004,12 @@ public class ContractImpl extends DomainResourceImpl implements Contract {
 				return action != null && !action.isEmpty();
 			case FhirPackage.CONTRACT__ACTION_REASON:
 				return actionReason != null && !actionReason.isEmpty();
-			case FhirPackage.CONTRACT__ACTOR:
-				return actor != null && !actor.isEmpty();
-			case FhirPackage.CONTRACT__VALUED_ITEM:
-				return valuedItem != null && !valuedItem.isEmpty();
+			case FhirPackage.CONTRACT__AGENT:
+				return agent != null && !agent.isEmpty();
 			case FhirPackage.CONTRACT__SIGNER:
 				return signer != null && !signer.isEmpty();
+			case FhirPackage.CONTRACT__VALUED_ITEM:
+				return valuedItem != null && !valuedItem.isEmpty();
 			case FhirPackage.CONTRACT__TERM:
 				return term != null && !term.isEmpty();
 			case FhirPackage.CONTRACT__BINDING_ATTACHMENT:

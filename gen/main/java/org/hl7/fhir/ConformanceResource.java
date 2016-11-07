@@ -19,11 +19,13 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getProfile <em>Profile</em>}</li>
+ *   <li>{@link org.hl7.fhir.ConformanceResource#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getInteraction <em>Interaction</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getVersioning <em>Versioning</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getReadHistory <em>Read History</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getUpdateCreate <em>Update Create</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getConditionalCreate <em>Conditional Create</em>}</li>
+ *   <li>{@link org.hl7.fhir.ConformanceResource#getConditionalRead <em>Conditional Read</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getConditionalUpdate <em>Conditional Update</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getConditionalDelete <em>Conditional Delete</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceResource#getSearchInclude <em>Search Include</em>}</li>
@@ -87,6 +89,32 @@ public interface ConformanceResource extends BackboneElement {
 	 * @generated
 	 */
 	void setProfile(Reference value);
+
+	/**
+	 * Returns the value of the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Additional information about the resource type is used by the system.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Documentation</em>' containment reference.
+	 * @see #setDocumentation(Markdown)
+	 * @see org.hl7.fhir.FhirPackage#getConformanceResource_Documentation()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='documentation' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Markdown getDocumentation();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ConformanceResource#getDocumentation <em>Documentation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Documentation</em>' containment reference.
+	 * @see #getDocumentation()
+	 * @generated
+	 */
+	void setDocumentation(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Interaction</b></em>' containment reference list.
@@ -207,6 +235,32 @@ public interface ConformanceResource extends BackboneElement {
 	 * @generated
 	 */
 	void setConditionalCreate(org.hl7.fhir.Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Conditional Read</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A code that indicates how the server supports conditional read.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Conditional Read</em>' containment reference.
+	 * @see #setConditionalRead(ConditionalReadStatus)
+	 * @see org.hl7.fhir.FhirPackage#getConformanceResource_ConditionalRead()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='conditionalRead' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	ConditionalReadStatus getConditionalRead();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ConformanceResource#getConditionalRead <em>Conditional Read</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Conditional Read</em>' containment reference.
+	 * @see #getConditionalRead()
+	 * @generated
+	 */
+	void setConditionalRead(ConditionalReadStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Conditional Update</b></em>' containment reference.

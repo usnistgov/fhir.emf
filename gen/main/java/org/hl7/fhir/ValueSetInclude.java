@@ -82,7 +82,7 @@ public interface ValueSetInclude extends BackboneElement {
 
 	/**
 	 * Returns the value of the '<em><b>Concept</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.ValueSetConcept1}.
+	 * The list contents are of type {@link org.hl7.fhir.ValueSetConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -94,7 +94,7 @@ public interface ValueSetInclude extends BackboneElement {
 	 *        extendedMetaData="kind='element' name='concept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<ValueSetConcept1> getConcept();
+	EList<ValueSetConcept> getConcept();
 
 	/**
 	 * Returns the value of the '<em><b>Filter</b></em>' containment reference list.

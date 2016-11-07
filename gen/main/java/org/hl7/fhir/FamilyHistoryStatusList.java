@@ -65,7 +65,7 @@ public enum FamilyHistoryStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some health information is known and captured, but not complete - see notes for details.
+	 * Partial
 	 * <!-- end-model-doc -->
 	 * @see #PARTIAL
 	 * @model name="partial"
@@ -79,7 +79,7 @@ public enum FamilyHistoryStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All relevant health information is known and captured.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -93,7 +93,7 @@ public enum FamilyHistoryStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This instance should not have been part of this patient's medical record.
+	 * Entered in error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
@@ -107,7 +107,7 @@ public enum FamilyHistoryStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Health information for this individual is unavailable/unknown.
+	 * Health unknown
 	 * <!-- end-model-doc -->
 	 * @see #HEALTH_UNKNOWN
 	 * @model name="healthUnknown" literal="health-unknown"

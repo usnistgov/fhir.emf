@@ -45,7 +45,7 @@ public enum AllergyIntoleranceTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A propensity for hypersensitivity reaction(s) to a substance.  These reactions are most typically type I hypersensitivity, plus other "allergy-like" reactions, including pseudoallergy.
+	 * Allergy
 	 * <!-- end-model-doc -->
 	 * @see #ALLERGY
 	 * @model name="allergy"
@@ -59,7 +59,7 @@ public enum AllergyIntoleranceTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A propensity for adverse reactions to a substance that is not judged to be allergic or "allergy-like".  These reactions are typically (but not necessarily) non-immune.  They are to some degree idiosyncratic and/or individually specific (i.e. are not a reaction that is expected to occur with most or all patients given similar circumstances).
+	 * Intolerance
 	 * <!-- end-model-doc -->
 	 * @see #INTOLERANCE
 	 * @model name="intolerance"

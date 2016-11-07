@@ -75,7 +75,7 @@ public enum CommunicationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The communication transmission is ongoing.
+	 * In Progress
 	 * <!-- end-model-doc -->
 	 * @see #IN_PROGRESS
 	 * @model name="inProgress" literal="in-progress"
@@ -89,7 +89,7 @@ public enum CommunicationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The message transmission is complete, i.e., delivered to the recipient's destination.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -103,7 +103,7 @@ public enum CommunicationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The communication transmission has been held by originating system/user request.
+	 * Suspended
 	 * <!-- end-model-doc -->
 	 * @see #SUSPENDED
 	 * @model name="suspended"
@@ -117,7 +117,7 @@ public enum CommunicationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The receiving system has declined to accept the message.
+	 * Rejected
 	 * <!-- end-model-doc -->
 	 * @see #REJECTED
 	 * @model name="rejected"
@@ -131,7 +131,7 @@ public enum CommunicationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * There was a failure in transmitting the message out.
+	 * Failed
 	 * <!-- end-model-doc -->
 	 * @see #FAILED
 	 * @model name="failed"

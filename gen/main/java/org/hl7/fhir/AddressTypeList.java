@@ -55,7 +55,7 @@ public enum AddressTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Mailing addresses - PO Boxes and care-of addresses.
+	 * Postal
 	 * <!-- end-model-doc -->
 	 * @see #POSTAL
 	 * @model name="postal"
@@ -69,7 +69,7 @@ public enum AddressTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A physical address that can be visited.
+	 * Physical
 	 * <!-- end-model-doc -->
 	 * @see #PHYSICAL
 	 * @model name="physical"
@@ -83,7 +83,7 @@ public enum AddressTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An address that is both physical and postal.
+	 * Postal & Physical
 	 * <!-- end-model-doc -->
 	 * @see #BOTH
 	 * @model name="both"

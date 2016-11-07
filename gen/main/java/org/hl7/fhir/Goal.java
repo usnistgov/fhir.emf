@@ -23,13 +23,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Goal#getStartDate <em>Start Date</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getStartCodeableConcept <em>Start Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getTargetDate <em>Target Date</em>}</li>
- *   <li>{@link org.hl7.fhir.Goal#getTargetQuantity <em>Target Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.Goal#getTargetDuration <em>Target Duration</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getStatusDate <em>Status Date</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getStatusReason <em>Status Reason</em>}</li>
- *   <li>{@link org.hl7.fhir.Goal#getAuthor <em>Author</em>}</li>
+ *   <li>{@link org.hl7.fhir.Goal#getExpressedBy <em>Expressed By</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.hl7.fhir.Goal#getNote <em>Note</em>}</li>
@@ -162,30 +162,30 @@ public interface Goal extends DomainResource {
 	void setTargetDate(Date value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Quantity</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Target Duration</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates either the date or the duration after start by which the goal should be met. (choose any one of target*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Target Quantity</em>' containment reference.
-	 * @see #setTargetQuantity(Duration)
-	 * @see org.hl7.fhir.FhirPackage#getGoal_TargetQuantity()
+	 * @return the value of the '<em>Target Duration</em>' containment reference.
+	 * @see #setTargetDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getGoal_TargetDuration()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='targetQuantity' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='targetDuration' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Duration getTargetQuantity();
+	Duration getTargetDuration();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Goal#getTargetQuantity <em>Target Quantity</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.Goal#getTargetDuration <em>Target Duration</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Quantity</em>' containment reference.
-	 * @see #getTargetQuantity()
+	 * @param value the new value of the '<em>Target Duration</em>' containment reference.
+	 * @see #getTargetDuration()
 	 * @generated
 	 */
-	void setTargetQuantity(Duration value);
+	void setTargetDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Category</b></em>' containment reference list.
@@ -208,16 +208,16 @@ public interface Goal extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Human-readable description of a specific desired objective of care.
+	 * Code and/or human-readable description of a specific desired objective of care.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
-	 * @see #setDescription(org.hl7.fhir.String)
+	 * @see #setDescription(CodeableConcept)
 	 * @see org.hl7.fhir.FhirPackage#getGoal_Description()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getDescription();
+	CodeableConcept getDescription();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Goal#getDescription <em>Description</em>}' containment reference.
@@ -227,7 +227,7 @@ public interface Goal extends DomainResource {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(org.hl7.fhir.String value);
+	void setDescription(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
@@ -282,56 +282,46 @@ public interface Goal extends DomainResource {
 	void setStatusDate(Date value);
 
 	/**
-	 * Returns the value of the '<em><b>Status Reason</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Status Reason</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Captures the reason for the current status.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Status Reason</em>' containment reference.
-	 * @see #setStatusReason(CodeableConcept)
+	 * @return the value of the '<em>Status Reason</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getGoal_StatusReason()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='statusReason' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getStatusReason();
+	EList<CodeableConcept> getStatusReason();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Goal#getStatusReason <em>Status Reason</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status Reason</em>' containment reference.
-	 * @see #getStatusReason()
-	 * @generated
-	 */
-	void setStatusReason(CodeableConcept value);
-
-	/**
-	 * Returns the value of the '<em><b>Author</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Expressed By</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates whose goal this is - patient goal, practitioner goal, etc.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Author</em>' containment reference.
-	 * @see #setAuthor(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getGoal_Author()
+	 * @return the value of the '<em>Expressed By</em>' containment reference.
+	 * @see #setExpressedBy(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getGoal_ExpressedBy()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='author' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='expressedBy' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getAuthor();
+	Reference getExpressedBy();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Goal#getAuthor <em>Author</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.Goal#getExpressedBy <em>Expressed By</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Author</em>' containment reference.
-	 * @see #getAuthor()
+	 * @param value the new value of the '<em>Expressed By</em>' containment reference.
+	 * @see #getExpressedBy()
 	 * @generated
 	 */
-	void setAuthor(Reference value);
+	void setExpressedBy(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' containment reference.
@@ -397,7 +387,7 @@ public interface Goal extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the change (or lack of change) at the point where the goal was deepmed to be cancelled or achieved.
+	 * Identifies the change (or lack of change) at the point where the goal was deemed to be cancelled or achieved.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outcome</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getGoal_Outcome()

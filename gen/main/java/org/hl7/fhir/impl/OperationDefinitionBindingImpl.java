@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.hl7.fhir.Code;
+import org.hl7.fhir.BindingStrength;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.OperationDefinitionBinding;
 import org.hl7.fhir.Reference;
@@ -40,7 +40,7 @@ public class OperationDefinitionBindingImpl extends BackboneElementImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Code strength;
+	protected BindingStrength strength;
 
 	/**
 	 * The cached value of the '{@link #getValueSetUri() <em>Value Set Uri</em>}' containment reference.
@@ -86,7 +86,7 @@ public class OperationDefinitionBindingImpl extends BackboneElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getStrength() {
+	public BindingStrength getStrength() {
 		return strength;
 	}
 
@@ -95,8 +95,8 @@ public class OperationDefinitionBindingImpl extends BackboneElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStrength(Code newStrength, NotificationChain msgs) {
-		Code oldStrength = strength;
+	public NotificationChain basicSetStrength(BindingStrength newStrength, NotificationChain msgs) {
+		BindingStrength oldStrength = strength;
 		strength = newStrength;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OPERATION_DEFINITION_BINDING__STRENGTH, oldStrength, newStrength);
@@ -110,7 +110,7 @@ public class OperationDefinitionBindingImpl extends BackboneElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStrength(Code newStrength) {
+	public void setStrength(BindingStrength newStrength) {
 		if (newStrength != strength) {
 			NotificationChain msgs = null;
 			if (strength != null)
@@ -255,7 +255,7 @@ public class OperationDefinitionBindingImpl extends BackboneElementImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FhirPackage.OPERATION_DEFINITION_BINDING__STRENGTH:
-				setStrength((Code)newValue);
+				setStrength((BindingStrength)newValue);
 				return;
 			case FhirPackage.OPERATION_DEFINITION_BINDING__VALUE_SET_URI:
 				setValueSetUri((Uri)newValue);
@@ -276,7 +276,7 @@ public class OperationDefinitionBindingImpl extends BackboneElementImpl implemen
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FhirPackage.OPERATION_DEFINITION_BINDING__STRENGTH:
-				setStrength((Code)null);
+				setStrength((BindingStrength)null);
 				return;
 			case FhirPackage.OPERATION_DEFINITION_BINDING__VALUE_SET_URI:
 				setValueSetUri((Uri)null);

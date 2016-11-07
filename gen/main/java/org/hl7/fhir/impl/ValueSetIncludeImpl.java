@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Uri;
-import org.hl7.fhir.ValueSetConcept1;
+import org.hl7.fhir.ValueSetConcept;
 import org.hl7.fhir.ValueSetFilter;
 import org.hl7.fhir.ValueSetInclude;
 
@@ -68,7 +68,7 @@ public class ValueSetIncludeImpl extends BackboneElementImpl implements ValueSet
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ValueSetConcept1> concept;
+	protected EList<ValueSetConcept> concept;
 
 	/**
 	 * The cached value of the '{@link #getFilter() <em>Filter</em>}' containment reference list.
@@ -190,9 +190,9 @@ public class ValueSetIncludeImpl extends BackboneElementImpl implements ValueSet
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ValueSetConcept1> getConcept() {
+	public EList<ValueSetConcept> getConcept() {
 		if (concept == null) {
-			concept = new EObjectContainmentEList<ValueSetConcept1>(ValueSetConcept1.class, this, FhirPackage.VALUE_SET_INCLUDE__CONCEPT);
+			concept = new EObjectContainmentEList<ValueSetConcept>(ValueSetConcept.class, this, FhirPackage.VALUE_SET_INCLUDE__CONCEPT);
 		}
 		return concept;
 	}
@@ -266,7 +266,7 @@ public class ValueSetIncludeImpl extends BackboneElementImpl implements ValueSet
 				return;
 			case FhirPackage.VALUE_SET_INCLUDE__CONCEPT:
 				getConcept().clear();
-				getConcept().addAll((Collection<? extends ValueSetConcept1>)newValue);
+				getConcept().addAll((Collection<? extends ValueSetConcept>)newValue);
 				return;
 			case FhirPackage.VALUE_SET_INCLUDE__FILTER:
 				getFilter().clear();

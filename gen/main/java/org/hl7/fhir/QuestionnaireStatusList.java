@@ -55,7 +55,7 @@ public enum QuestionnaireStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This Questionnaire is not ready for official use.
+	 * Draft
 	 * <!-- end-model-doc -->
 	 * @see #DRAFT
 	 * @model name="draft"
@@ -69,7 +69,7 @@ public enum QuestionnaireStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This Questionnaire is ready for use.
+	 * Published
 	 * <!-- end-model-doc -->
 	 * @see #PUBLISHED
 	 * @model name="published"
@@ -83,7 +83,7 @@ public enum QuestionnaireStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This Questionnaire should no longer be used to gather data.
+	 * Retired
 	 * <!-- end-model-doc -->
 	 * @see #RETIRED
 	 * @model name="retired"

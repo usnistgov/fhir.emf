@@ -20,17 +20,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Coding;
+import org.hl7.fhir.ConformanceResourceStatus;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.ExtensionContext;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Id;
 import org.hl7.fhir.Identifier;
+import org.hl7.fhir.Markdown;
 import org.hl7.fhir.StructureDefinition;
 import org.hl7.fhir.StructureDefinitionContact;
 import org.hl7.fhir.StructureDefinitionDifferential;
 import org.hl7.fhir.StructureDefinitionKind;
 import org.hl7.fhir.StructureDefinitionMapping;
 import org.hl7.fhir.StructureDefinitionSnapshot;
+import org.hl7.fhir.TypeDerivationRule;
 import org.hl7.fhir.Uri;
 
 /**
@@ -59,11 +62,12 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getFhirVersion <em>Fhir Version</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getMapping <em>Mapping</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getConstrainedType <em>Constrained Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getContextType <em>Context Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getContext <em>Context</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getBase <em>Base</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getBaseDefinition <em>Base Definition</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getDerivation <em>Derivation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getSnapshot <em>Snapshot</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.StructureDefinitionImpl#getDifferential <em>Differential</em>}</li>
  * </ul>
@@ -129,7 +133,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * @generated
 	 * @ordered
 	 */
-	protected Code status;
+	protected ConformanceResourceStatus status;
 
 	/**
 	 * The cached value of the '{@link #getExperimental() <em>Experimental</em>}' containment reference.
@@ -179,7 +183,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String description;
+	protected Markdown description;
 
 	/**
 	 * The cached value of the '{@link #getUseContext() <em>Use Context</em>}' containment reference list.
@@ -199,7 +203,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String requirements;
+	protected Markdown requirements;
 
 	/**
 	 * The cached value of the '{@link #getCopyright() <em>Copyright</em>}' containment reference.
@@ -252,16 +256,6 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	protected StructureDefinitionKind kind;
 
 	/**
-	 * The cached value of the '{@link #getConstrainedType() <em>Constrained Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConstrainedType()
-	 * @generated
-	 * @ordered
-	 */
-	protected Code constrainedType;
-
-	/**
 	 * The cached value of the '{@link #getAbstract() <em>Abstract</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -292,14 +286,34 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	protected EList<org.hl7.fhir.String> context;
 
 	/**
-	 * The cached value of the '{@link #getBase() <em>Base</em>}' containment reference.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBase()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected Uri base;
+	protected Code type;
+
+	/**
+	 * The cached value of the '{@link #getBaseDefinition() <em>Base Definition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBaseDefinition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Uri baseDefinition;
+
+	/**
+	 * The cached value of the '{@link #getDerivation() <em>Derivation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDerivation()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypeDerivationRule derivation;
 
 	/**
 	 * The cached value of the '{@link #getSnapshot() <em>Snapshot</em>}' containment reference.
@@ -529,7 +543,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getStatus() {
+	public ConformanceResourceStatus getStatus() {
 		return status;
 	}
 
@@ -538,8 +552,8 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStatus(Code newStatus, NotificationChain msgs) {
-		Code oldStatus = status;
+	public NotificationChain basicSetStatus(ConformanceResourceStatus newStatus, NotificationChain msgs) {
+		ConformanceResourceStatus oldStatus = status;
 		status = newStatus;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__STATUS, oldStatus, newStatus);
@@ -553,7 +567,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStatus(Code newStatus) {
+	public void setStatus(ConformanceResourceStatus newStatus) {
 		if (newStatus != status) {
 			NotificationChain msgs = null;
 			if (status != null)
@@ -713,7 +727,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getDescription() {
+	public Markdown getDescription() {
 		return description;
 	}
 
@@ -722,8 +736,8 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDescription(org.hl7.fhir.String newDescription, NotificationChain msgs) {
-		org.hl7.fhir.String oldDescription = description;
+	public NotificationChain basicSetDescription(Markdown newDescription, NotificationChain msgs) {
+		Markdown oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__DESCRIPTION, oldDescription, newDescription);
@@ -737,7 +751,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescription(org.hl7.fhir.String newDescription) {
+	public void setDescription(Markdown newDescription) {
 		if (newDescription != description) {
 			NotificationChain msgs = null;
 			if (description != null)
@@ -768,7 +782,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getRequirements() {
+	public Markdown getRequirements() {
 		return requirements;
 	}
 
@@ -777,8 +791,8 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRequirements(org.hl7.fhir.String newRequirements, NotificationChain msgs) {
-		org.hl7.fhir.String oldRequirements = requirements;
+	public NotificationChain basicSetRequirements(Markdown newRequirements, NotificationChain msgs) {
+		Markdown oldRequirements = requirements;
 		requirements = newRequirements;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__REQUIREMENTS, oldRequirements, newRequirements);
@@ -792,7 +806,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRequirements(org.hl7.fhir.String newRequirements) {
+	public void setRequirements(Markdown newRequirements) {
 		if (newRequirements != requirements) {
 			NotificationChain msgs = null;
 			if (requirements != null)
@@ -964,49 +978,6 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getConstrainedType() {
-		return constrainedType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetConstrainedType(Code newConstrainedType, NotificationChain msgs) {
-		Code oldConstrainedType = constrainedType;
-		constrainedType = newConstrainedType;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE, oldConstrainedType, newConstrainedType);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConstrainedType(Code newConstrainedType) {
-		if (newConstrainedType != constrainedType) {
-			NotificationChain msgs = null;
-			if (constrainedType != null)
-				msgs = ((InternalEObject)constrainedType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE, null, msgs);
-			if (newConstrainedType != null)
-				msgs = ((InternalEObject)newConstrainedType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE, null, msgs);
-			msgs = basicSetConstrainedType(newConstrainedType, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE, newConstrainedType, newConstrainedType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public org.hl7.fhir.Boolean getAbstract() {
 		return abstract_;
 	}
@@ -1105,8 +1076,8 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uri getBase() {
-		return base;
+	public Code getType() {
+		return type;
 	}
 
 	/**
@@ -1114,11 +1085,11 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBase(Uri newBase, NotificationChain msgs) {
-		Uri oldBase = base;
-		base = newBase;
+	public NotificationChain basicSetType(Code newType, NotificationChain msgs) {
+		Code oldType = type;
+		type = newType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__BASE, oldBase, newBase);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__TYPE, oldType, newType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -1129,18 +1100,104 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBase(Uri newBase) {
-		if (newBase != base) {
+	public void setType(Code newType) {
+		if (newType != type) {
 			NotificationChain msgs = null;
-			if (base != null)
-				msgs = ((InternalEObject)base).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__BASE, null, msgs);
-			if (newBase != null)
-				msgs = ((InternalEObject)newBase).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__BASE, null, msgs);
-			msgs = basicSetBase(newBase, msgs);
+			if (type != null)
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__BASE, newBase, newBase));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__TYPE, newType, newType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Uri getBaseDefinition() {
+		return baseDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBaseDefinition(Uri newBaseDefinition, NotificationChain msgs) {
+		Uri oldBaseDefinition = baseDefinition;
+		baseDefinition = newBaseDefinition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION, oldBaseDefinition, newBaseDefinition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBaseDefinition(Uri newBaseDefinition) {
+		if (newBaseDefinition != baseDefinition) {
+			NotificationChain msgs = null;
+			if (baseDefinition != null)
+				msgs = ((InternalEObject)baseDefinition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION, null, msgs);
+			if (newBaseDefinition != null)
+				msgs = ((InternalEObject)newBaseDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION, null, msgs);
+			msgs = basicSetBaseDefinition(newBaseDefinition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION, newBaseDefinition, newBaseDefinition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeDerivationRule getDerivation() {
+		return derivation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDerivation(TypeDerivationRule newDerivation, NotificationChain msgs) {
+		TypeDerivationRule oldDerivation = derivation;
+		derivation = newDerivation;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__DERIVATION, oldDerivation, newDerivation);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDerivation(TypeDerivationRule newDerivation) {
+		if (newDerivation != derivation) {
+			NotificationChain msgs = null;
+			if (derivation != null)
+				msgs = ((InternalEObject)derivation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__DERIVATION, null, msgs);
+			if (newDerivation != null)
+				msgs = ((InternalEObject)newDerivation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.STRUCTURE_DEFINITION__DERIVATION, null, msgs);
+			msgs = basicSetDerivation(newDerivation, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.STRUCTURE_DEFINITION__DERIVATION, newDerivation, newDerivation));
 	}
 
 	/**
@@ -1273,16 +1330,18 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				return ((InternalEList<?>)getMapping()).basicRemove(otherEnd, msgs);
 			case FhirPackage.STRUCTURE_DEFINITION__KIND:
 				return basicSetKind(null, msgs);
-			case FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE:
-				return basicSetConstrainedType(null, msgs);
 			case FhirPackage.STRUCTURE_DEFINITION__ABSTRACT:
 				return basicSetAbstract(null, msgs);
 			case FhirPackage.STRUCTURE_DEFINITION__CONTEXT_TYPE:
 				return basicSetContextType(null, msgs);
 			case FhirPackage.STRUCTURE_DEFINITION__CONTEXT:
 				return ((InternalEList<?>)getContext()).basicRemove(otherEnd, msgs);
-			case FhirPackage.STRUCTURE_DEFINITION__BASE:
-				return basicSetBase(null, msgs);
+			case FhirPackage.STRUCTURE_DEFINITION__TYPE:
+				return basicSetType(null, msgs);
+			case FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION:
+				return basicSetBaseDefinition(null, msgs);
+			case FhirPackage.STRUCTURE_DEFINITION__DERIVATION:
+				return basicSetDerivation(null, msgs);
 			case FhirPackage.STRUCTURE_DEFINITION__SNAPSHOT:
 				return basicSetSnapshot(null, msgs);
 			case FhirPackage.STRUCTURE_DEFINITION__DIFFERENTIAL:
@@ -1335,16 +1394,18 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				return getMapping();
 			case FhirPackage.STRUCTURE_DEFINITION__KIND:
 				return getKind();
-			case FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE:
-				return getConstrainedType();
 			case FhirPackage.STRUCTURE_DEFINITION__ABSTRACT:
 				return getAbstract();
 			case FhirPackage.STRUCTURE_DEFINITION__CONTEXT_TYPE:
 				return getContextType();
 			case FhirPackage.STRUCTURE_DEFINITION__CONTEXT:
 				return getContext();
-			case FhirPackage.STRUCTURE_DEFINITION__BASE:
-				return getBase();
+			case FhirPackage.STRUCTURE_DEFINITION__TYPE:
+				return getType();
+			case FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION:
+				return getBaseDefinition();
+			case FhirPackage.STRUCTURE_DEFINITION__DERIVATION:
+				return getDerivation();
 			case FhirPackage.STRUCTURE_DEFINITION__SNAPSHOT:
 				return getSnapshot();
 			case FhirPackage.STRUCTURE_DEFINITION__DIFFERENTIAL:
@@ -1379,7 +1440,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				setDisplay((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__STATUS:
-				setStatus((Code)newValue);
+				setStatus((ConformanceResourceStatus)newValue);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__EXPERIMENTAL:
 				setExperimental((org.hl7.fhir.Boolean)newValue);
@@ -1395,14 +1456,14 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				setDate((DateTime)newValue);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__DESCRIPTION:
-				setDescription((org.hl7.fhir.String)newValue);
+				setDescription((Markdown)newValue);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__USE_CONTEXT:
 				getUseContext().clear();
 				getUseContext().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__REQUIREMENTS:
-				setRequirements((org.hl7.fhir.String)newValue);
+				setRequirements((Markdown)newValue);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__COPYRIGHT:
 				setCopyright((org.hl7.fhir.String)newValue);
@@ -1421,9 +1482,6 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 			case FhirPackage.STRUCTURE_DEFINITION__KIND:
 				setKind((StructureDefinitionKind)newValue);
 				return;
-			case FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE:
-				setConstrainedType((Code)newValue);
-				return;
 			case FhirPackage.STRUCTURE_DEFINITION__ABSTRACT:
 				setAbstract((org.hl7.fhir.Boolean)newValue);
 				return;
@@ -1434,8 +1492,14 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				getContext().clear();
 				getContext().addAll((Collection<? extends org.hl7.fhir.String>)newValue);
 				return;
-			case FhirPackage.STRUCTURE_DEFINITION__BASE:
-				setBase((Uri)newValue);
+			case FhirPackage.STRUCTURE_DEFINITION__TYPE:
+				setType((Code)newValue);
+				return;
+			case FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION:
+				setBaseDefinition((Uri)newValue);
+				return;
+			case FhirPackage.STRUCTURE_DEFINITION__DERIVATION:
+				setDerivation((TypeDerivationRule)newValue);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__SNAPSHOT:
 				setSnapshot((StructureDefinitionSnapshot)newValue);
@@ -1471,7 +1535,7 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				setDisplay((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__STATUS:
-				setStatus((Code)null);
+				setStatus((ConformanceResourceStatus)null);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__EXPERIMENTAL:
 				setExperimental((org.hl7.fhir.Boolean)null);
@@ -1486,13 +1550,13 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				setDate((DateTime)null);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__DESCRIPTION:
-				setDescription((org.hl7.fhir.String)null);
+				setDescription((Markdown)null);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__USE_CONTEXT:
 				getUseContext().clear();
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__REQUIREMENTS:
-				setRequirements((org.hl7.fhir.String)null);
+				setRequirements((Markdown)null);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__COPYRIGHT:
 				setCopyright((org.hl7.fhir.String)null);
@@ -1509,9 +1573,6 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 			case FhirPackage.STRUCTURE_DEFINITION__KIND:
 				setKind((StructureDefinitionKind)null);
 				return;
-			case FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE:
-				setConstrainedType((Code)null);
-				return;
 			case FhirPackage.STRUCTURE_DEFINITION__ABSTRACT:
 				setAbstract((org.hl7.fhir.Boolean)null);
 				return;
@@ -1521,8 +1582,14 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 			case FhirPackage.STRUCTURE_DEFINITION__CONTEXT:
 				getContext().clear();
 				return;
-			case FhirPackage.STRUCTURE_DEFINITION__BASE:
-				setBase((Uri)null);
+			case FhirPackage.STRUCTURE_DEFINITION__TYPE:
+				setType((Code)null);
+				return;
+			case FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION:
+				setBaseDefinition((Uri)null);
+				return;
+			case FhirPackage.STRUCTURE_DEFINITION__DERIVATION:
+				setDerivation((TypeDerivationRule)null);
 				return;
 			case FhirPackage.STRUCTURE_DEFINITION__SNAPSHOT:
 				setSnapshot((StructureDefinitionSnapshot)null);
@@ -1578,16 +1645,18 @@ public class StructureDefinitionImpl extends DomainResourceImpl implements Struc
 				return mapping != null && !mapping.isEmpty();
 			case FhirPackage.STRUCTURE_DEFINITION__KIND:
 				return kind != null;
-			case FhirPackage.STRUCTURE_DEFINITION__CONSTRAINED_TYPE:
-				return constrainedType != null;
 			case FhirPackage.STRUCTURE_DEFINITION__ABSTRACT:
 				return abstract_ != null;
 			case FhirPackage.STRUCTURE_DEFINITION__CONTEXT_TYPE:
 				return contextType != null;
 			case FhirPackage.STRUCTURE_DEFINITION__CONTEXT:
 				return context != null && !context.isEmpty();
-			case FhirPackage.STRUCTURE_DEFINITION__BASE:
-				return base != null;
+			case FhirPackage.STRUCTURE_DEFINITION__TYPE:
+				return type != null;
+			case FhirPackage.STRUCTURE_DEFINITION__BASE_DEFINITION:
+				return baseDefinition != null;
+			case FhirPackage.STRUCTURE_DEFINITION__DERIVATION:
+				return derivation != null;
 			case FhirPackage.STRUCTURE_DEFINITION__SNAPSHOT:
 				return snapshot != null;
 			case FhirPackage.STRUCTURE_DEFINITION__DIFFERENTIAL:

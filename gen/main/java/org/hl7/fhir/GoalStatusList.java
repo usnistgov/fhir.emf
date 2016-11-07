@@ -108,14 +108,38 @@ public enum GoalStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CANCELLED(8, "cancelled", "cancelled");
+	CANCELLED(8, "cancelled", "cancelled"), /**
+	 * The '<em><b>On Target</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ON_TARGET_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ON_TARGET(9, "onTarget", "on-target"), /**
+	 * The '<em><b>Ahead Of Target</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #AHEAD_OF_TARGET_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	AHEAD_OF_TARGET(10, "aheadOfTarget", "ahead-of-target"), /**
+	 * The '<em><b>Behind Target</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BEHIND_TARGET_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BEHIND_TARGET(11, "behindTarget", "behind-target");
 
 	/**
 	 * The '<em><b>Proposed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A goal is proposed for this patient
+	 * Proposed
 	 * <!-- end-model-doc -->
 	 * @see #PROPOSED
 	 * @model name="proposed"
@@ -129,7 +153,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A goal is planned for this patient
+	 * Planned
 	 * <!-- end-model-doc -->
 	 * @see #PLANNED
 	 * @model name="planned"
@@ -143,7 +167,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A proposed goal was accepted
+	 * Accepted
 	 * <!-- end-model-doc -->
 	 * @see #ACCEPTED
 	 * @model name="accepted"
@@ -157,7 +181,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A proposed goal was rejected
+	 * Rejected
 	 * <!-- end-model-doc -->
 	 * @see #REJECTED
 	 * @model name="rejected"
@@ -171,7 +195,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The goal is being sought but has not yet been reached.  (Also applies if goal was reached in the past but there has been regression and goal is being sought again)
+	 * In Progress
 	 * <!-- end-model-doc -->
 	 * @see #IN_PROGRESS
 	 * @model name="inProgress" literal="in-progress"
@@ -185,7 +209,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The goal has been met and no further action is needed
+	 * Achieved
 	 * <!-- end-model-doc -->
 	 * @see #ACHIEVED
 	 * @model name="achieved"
@@ -199,7 +223,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The goal has been met, but ongoing activity is needed to sustain the goal objective
+	 * Sustaining
 	 * <!-- end-model-doc -->
 	 * @see #SUSTAINING
 	 * @model name="sustaining"
@@ -213,7 +237,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The goal remains a long term objective but is no longer being actively pursued for a temporary period of time.
+	 * On Hold
 	 * <!-- end-model-doc -->
 	 * @see #ON_HOLD
 	 * @model name="onHold" literal="on-hold"
@@ -227,7 +251,7 @@ public enum GoalStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The goal is no longer being sought
+	 * Cancelled
 	 * <!-- end-model-doc -->
 	 * @see #CANCELLED
 	 * @model name="cancelled"
@@ -235,6 +259,48 @@ public enum GoalStatusList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int CANCELLED_VALUE = 8;
+
+	/**
+	 * The '<em><b>On Target</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * On Target
+	 * <!-- end-model-doc -->
+	 * @see #ON_TARGET
+	 * @model name="onTarget" literal="on-target"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ON_TARGET_VALUE = 9;
+
+	/**
+	 * The '<em><b>Ahead Of Target</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Ahead of Target
+	 * <!-- end-model-doc -->
+	 * @see #AHEAD_OF_TARGET
+	 * @model name="aheadOfTarget" literal="ahead-of-target"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AHEAD_OF_TARGET_VALUE = 10;
+
+	/**
+	 * The '<em><b>Behind Target</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Behind Target
+	 * <!-- end-model-doc -->
+	 * @see #BEHIND_TARGET
+	 * @model name="behindTarget" literal="behind-target"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BEHIND_TARGET_VALUE = 11;
 
 	/**
 	 * An array of all the '<em><b>Goal Status List</b></em>' enumerators.
@@ -253,6 +319,9 @@ public enum GoalStatusList implements Enumerator {
 			SUSTAINING,
 			ON_HOLD,
 			CANCELLED,
+			ON_TARGET,
+			AHEAD_OF_TARGET,
+			BEHIND_TARGET,
 		};
 
 	/**
@@ -318,6 +387,9 @@ public enum GoalStatusList implements Enumerator {
 			case SUSTAINING_VALUE: return SUSTAINING;
 			case ON_HOLD_VALUE: return ON_HOLD;
 			case CANCELLED_VALUE: return CANCELLED;
+			case ON_TARGET_VALUE: return ON_TARGET;
+			case AHEAD_OF_TARGET_VALUE: return AHEAD_OF_TARGET;
+			case BEHIND_TARGET_VALUE: return BEHIND_TARGET;
 		}
 		return null;
 	}

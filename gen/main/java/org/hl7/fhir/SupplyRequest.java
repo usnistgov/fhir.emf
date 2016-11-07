@@ -24,7 +24,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.SupplyRequest#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyRequest#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyRequest#getKind <em>Kind</em>}</li>
- *   <li>{@link org.hl7.fhir.SupplyRequest#getOrderedItem <em>Ordered Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.SupplyRequest#getOrderedItemCodeableConcept <em>Ordered Item Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.SupplyRequest#getOrderedItemReference <em>Ordered Item Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyRequest#getSupplier <em>Supplier</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyRequest#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyRequest#getReasonReference <em>Reason Reference</em>}</li>
@@ -193,30 +194,56 @@ public interface SupplyRequest extends DomainResource {
 	void setKind(CodeableConcept value);
 
 	/**
-	 * Returns the value of the '<em><b>Ordered Item</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Ordered Item Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The item that is requested to be supplied.
+	 * The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list. (choose any one of orderedItem*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Ordered Item</em>' containment reference.
-	 * @see #setOrderedItem(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getSupplyRequest_OrderedItem()
+	 * @return the value of the '<em>Ordered Item Codeable Concept</em>' containment reference.
+	 * @see #setOrderedItemCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getSupplyRequest_OrderedItemCodeableConcept()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='orderedItem' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='orderedItemCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getOrderedItem();
+	CodeableConcept getOrderedItemCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.SupplyRequest#getOrderedItem <em>Ordered Item</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.SupplyRequest#getOrderedItemCodeableConcept <em>Ordered Item Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ordered Item</em>' containment reference.
-	 * @see #getOrderedItem()
+	 * @param value the new value of the '<em>Ordered Item Codeable Concept</em>' containment reference.
+	 * @see #getOrderedItemCodeableConcept()
 	 * @generated
 	 */
-	void setOrderedItem(Reference value);
+	void setOrderedItemCodeableConcept(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Ordered Item Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list. (choose any one of orderedItem*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Ordered Item Reference</em>' containment reference.
+	 * @see #setOrderedItemReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getSupplyRequest_OrderedItemReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='orderedItemReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getOrderedItemReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.SupplyRequest#getOrderedItemReference <em>Ordered Item Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ordered Item Reference</em>' containment reference.
+	 * @see #getOrderedItemReference()
+	 * @generated
+	 */
+	void setOrderedItemReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Supplier</b></em>' containment reference list.

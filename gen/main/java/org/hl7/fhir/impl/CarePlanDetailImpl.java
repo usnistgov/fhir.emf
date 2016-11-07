@@ -22,8 +22,8 @@ import org.hl7.fhir.CarePlanDetail;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Period;
+import org.hl7.fhir.Quantity;
 import org.hl7.fhir.Reference;
-import org.hl7.fhir.SimpleQuantity;
 import org.hl7.fhir.Timing;
 
 /**
@@ -35,6 +35,7 @@ import org.hl7.fhir.Timing;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getReasonCode <em>Reason Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getReasonReference <em>Reason Reference</em>}</li>
@@ -66,6 +67,16 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * @ordered
 	 */
 	protected CodeableConcept category;
+
+	/**
+	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefinition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference definition;
 
 	/**
 	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
@@ -215,7 +226,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity dailyAmount;
+	protected Quantity dailyAmount;
 
 	/**
 	 * The cached value of the '{@link #getQuantity() <em>Quantity</em>}' containment reference.
@@ -225,7 +236,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity quantity;
+	protected Quantity quantity;
 
 	/**
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference.
@@ -297,6 +308,49 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__CATEGORY, newCategory, newCategory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getDefinition() {
+		return definition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefinition(Reference newDefinition, NotificationChain msgs) {
+		Reference oldDefinition = definition;
+		definition = newDefinition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__DEFINITION, oldDefinition, newDefinition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefinition(Reference newDefinition) {
+		if (newDefinition != definition) {
+			NotificationChain msgs = null;
+			if (definition != null)
+				msgs = ((InternalEObject)definition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__DEFINITION, null, msgs);
+			if (newDefinition != null)
+				msgs = ((InternalEObject)newDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__DEFINITION, null, msgs);
+			msgs = basicSetDefinition(newDefinition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__DEFINITION, newDefinition, newDefinition));
 	}
 
 	/**
@@ -782,7 +836,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getDailyAmount() {
+	public Quantity getDailyAmount() {
 		return dailyAmount;
 	}
 
@@ -791,8 +845,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDailyAmount(SimpleQuantity newDailyAmount, NotificationChain msgs) {
-		SimpleQuantity oldDailyAmount = dailyAmount;
+	public NotificationChain basicSetDailyAmount(Quantity newDailyAmount, NotificationChain msgs) {
+		Quantity oldDailyAmount = dailyAmount;
 		dailyAmount = newDailyAmount;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT, oldDailyAmount, newDailyAmount);
@@ -806,7 +860,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDailyAmount(SimpleQuantity newDailyAmount) {
+	public void setDailyAmount(Quantity newDailyAmount) {
 		if (newDailyAmount != dailyAmount) {
 			NotificationChain msgs = null;
 			if (dailyAmount != null)
@@ -825,7 +879,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getQuantity() {
+	public Quantity getQuantity() {
 		return quantity;
 	}
 
@@ -834,8 +888,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetQuantity(SimpleQuantity newQuantity, NotificationChain msgs) {
-		SimpleQuantity oldQuantity = quantity;
+	public NotificationChain basicSetQuantity(Quantity newQuantity, NotificationChain msgs) {
+		Quantity oldQuantity = quantity;
 		quantity = newQuantity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__QUANTITY, oldQuantity, newQuantity);
@@ -849,7 +903,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQuantity(SimpleQuantity newQuantity) {
+	public void setQuantity(Quantity newQuantity) {
 		if (newQuantity != quantity) {
 			NotificationChain msgs = null;
 			if (quantity != null)
@@ -916,6 +970,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_DETAIL__CATEGORY:
 				return basicSetCategory(null, msgs);
+			case FhirPackage.CARE_PLAN_DETAIL__DEFINITION:
+				return basicSetDefinition(null, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				return basicSetCode(null, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:
@@ -964,6 +1020,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_DETAIL__CATEGORY:
 				return getCategory();
+			case FhirPackage.CARE_PLAN_DETAIL__DEFINITION:
+				return getDefinition();
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				return getCode();
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:
@@ -1014,6 +1072,9 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 			case FhirPackage.CARE_PLAN_DETAIL__CATEGORY:
 				setCategory((CodeableConcept)newValue);
 				return;
+			case FhirPackage.CARE_PLAN_DETAIL__DEFINITION:
+				setDefinition((Reference)newValue);
+				return;
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				setCode((CodeableConcept)newValue);
 				return;
@@ -1061,10 +1122,10 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				setProductReference((Reference)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT:
-				setDailyAmount((SimpleQuantity)newValue);
+				setDailyAmount((Quantity)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__QUANTITY:
-				setQuantity((SimpleQuantity)newValue);
+				setQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)newValue);
@@ -1083,6 +1144,9 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_DETAIL__CATEGORY:
 				setCategory((CodeableConcept)null);
+				return;
+			case FhirPackage.CARE_PLAN_DETAIL__DEFINITION:
+				setDefinition((Reference)null);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				setCode((CodeableConcept)null);
@@ -1127,10 +1191,10 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				setProductReference((Reference)null);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT:
-				setDailyAmount((SimpleQuantity)null);
+				setDailyAmount((Quantity)null);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__QUANTITY:
-				setQuantity((SimpleQuantity)null);
+				setQuantity((Quantity)null);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)null);
@@ -1149,6 +1213,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_DETAIL__CATEGORY:
 				return category != null;
+			case FhirPackage.CARE_PLAN_DETAIL__DEFINITION:
+				return definition != null;
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				return code != null;
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:

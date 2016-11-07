@@ -85,7 +85,7 @@ public interface ElementDefinitionBinding extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. (choose any one of valueSet*, but only one)
+	 * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri. (choose any one of valueSet*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value Set Uri</em>' containment reference.
 	 * @see #setValueSetUri(Uri)
@@ -111,7 +111,7 @@ public interface ElementDefinitionBinding extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. (choose any one of valueSet*, but only one)
+	 * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri. (choose any one of valueSet*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value Set Reference</em>' containment reference.
 	 * @see #setValueSetReference(Reference)

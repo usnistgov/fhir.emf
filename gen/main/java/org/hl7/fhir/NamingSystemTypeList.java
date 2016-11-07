@@ -55,7 +55,7 @@ public enum NamingSystemTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The naming system is used to define concepts and symbols to represent those concepts; e.g. UCUM, LOINC, NDC code, local lab codes, etc.
+	 * Code System
 	 * <!-- end-model-doc -->
 	 * @see #CODESYSTEM
 	 * @model name="codesystem"
@@ -69,7 +69,7 @@ public enum NamingSystemTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The naming system is used to manage identifiers (e.g. license numbers, order numbers, etc.).
+	 * Identifier
 	 * <!-- end-model-doc -->
 	 * @see #IDENTIFIER
 	 * @model name="identifier"
@@ -83,7 +83,7 @@ public enum NamingSystemTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The naming system is used as the root for other identifiers and naming systems.
+	 * Root
 	 * <!-- end-model-doc -->
 	 * @see #ROOT
 	 * @model name="root"

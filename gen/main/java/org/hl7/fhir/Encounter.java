@@ -33,6 +33,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Encounter#getLength <em>Length</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getIndication <em>Indication</em>}</li>
+ *   <li>{@link org.hl7.fhir.Encounter#getAccount <em>Account</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getHospitalization <em>Hospitalization</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getServiceProvider <em>Service Provider</em>}</li>
@@ -65,16 +66,16 @@ public interface Encounter extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * planned | arrived | in-progress | onleave | finished | cancelled.
+	 * planned | arrived | in-progress | onleave | finished | cancelled | entered-in-error.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(EncounterState)
+	 * @see #setStatus(EncounterStatus)
 	 * @see org.hl7.fhir.FhirPackage#getEncounter_Status()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EncounterState getStatus();
+	EncounterStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Encounter#getStatus <em>Status</em>}' containment reference.
@@ -84,7 +85,7 @@ public interface Encounter extends DomainResource {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(EncounterState value);
+	void setStatus(EncounterStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Status History</b></em>' containment reference list.
@@ -110,13 +111,13 @@ public interface Encounter extends DomainResource {
 	 * inpatient | outpatient | ambulatory | emergency +.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' containment reference.
-	 * @see #setClass(EncounterClass)
+	 * @see #setClass(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getEncounter_Class()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='class' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EncounterClass getClass_();
+	Coding getClass_();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Encounter#getClass_ <em>Class</em>}' containment reference.
@@ -126,7 +127,7 @@ public interface Encounter extends DomainResource {
 	 * @see #getClass_()
 	 * @generated
 	 */
-	void setClass(EncounterClass value);
+	void setClass(Coding value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference list.
@@ -353,6 +354,22 @@ public interface Encounter extends DomainResource {
 	 * @generated
 	 */
 	EList<Reference> getIndication();
+
+	/**
+	 * Returns the value of the '<em><b>Account</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The set of accounts that may be used for billing for this Encounter.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Account</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getEncounter_Account()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='account' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getAccount();
 
 	/**
 	 * Returns the value of the '<em><b>Hospitalization</b></em>' containment reference.

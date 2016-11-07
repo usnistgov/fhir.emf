@@ -33,6 +33,7 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.TestScriptCapabilityImpl#getRequired <em>Required</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptCapabilityImpl#getValidated <em>Validated</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptCapabilityImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.TestScriptCapabilityImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptCapabilityImpl#getDestination <em>Destination</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptCapabilityImpl#getLink <em>Link</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptCapabilityImpl#getConformance <em>Conformance</em>}</li>
@@ -70,6 +71,16 @@ public class TestScriptCapabilityImpl extends BackboneElementImpl implements Tes
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String description;
+
+	/**
+	 * The cached value of the '{@link #getOrigin() <em>Origin</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrigin()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.hl7.fhir.Integer> origin;
 
 	/**
 	 * The cached value of the '{@link #getDestination() <em>Destination</em>}' containment reference.
@@ -254,6 +265,18 @@ public class TestScriptCapabilityImpl extends BackboneElementImpl implements Tes
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<org.hl7.fhir.Integer> getOrigin() {
+		if (origin == null) {
+			origin = new EObjectContainmentEList<org.hl7.fhir.Integer>(org.hl7.fhir.Integer.class, this, FhirPackage.TEST_SCRIPT_CAPABILITY__ORIGIN);
+		}
+		return origin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.hl7.fhir.Integer getDestination() {
 		return destination;
 	}
@@ -361,6 +384,8 @@ public class TestScriptCapabilityImpl extends BackboneElementImpl implements Tes
 				return basicSetValidated(null, msgs);
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESCRIPTION:
 				return basicSetDescription(null, msgs);
+			case FhirPackage.TEST_SCRIPT_CAPABILITY__ORIGIN:
+				return ((InternalEList<?>)getOrigin()).basicRemove(otherEnd, msgs);
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESTINATION:
 				return basicSetDestination(null, msgs);
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__LINK:
@@ -385,6 +410,8 @@ public class TestScriptCapabilityImpl extends BackboneElementImpl implements Tes
 				return getValidated();
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESCRIPTION:
 				return getDescription();
+			case FhirPackage.TEST_SCRIPT_CAPABILITY__ORIGIN:
+				return getOrigin();
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESTINATION:
 				return getDestination();
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__LINK:
@@ -412,6 +439,10 @@ public class TestScriptCapabilityImpl extends BackboneElementImpl implements Tes
 				return;
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.TEST_SCRIPT_CAPABILITY__ORIGIN:
+				getOrigin().clear();
+				getOrigin().addAll((Collection<? extends org.hl7.fhir.Integer>)newValue);
 				return;
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESTINATION:
 				setDestination((org.hl7.fhir.Integer)newValue);
@@ -444,6 +475,9 @@ public class TestScriptCapabilityImpl extends BackboneElementImpl implements Tes
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)null);
 				return;
+			case FhirPackage.TEST_SCRIPT_CAPABILITY__ORIGIN:
+				getOrigin().clear();
+				return;
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESTINATION:
 				setDestination((org.hl7.fhir.Integer)null);
 				return;
@@ -471,6 +505,8 @@ public class TestScriptCapabilityImpl extends BackboneElementImpl implements Tes
 				return validated != null;
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESCRIPTION:
 				return description != null;
+			case FhirPackage.TEST_SCRIPT_CAPABILITY__ORIGIN:
+				return origin != null && !origin.isEmpty();
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__DESTINATION:
 				return destination != null;
 			case FhirPackage.TEST_SCRIPT_CAPABILITY__LINK:

@@ -2,18 +2,23 @@
  */
 package org.hl7.fhir.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.ContractSigner;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Reference;
+import org.hl7.fhir.Signature;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,14 +57,14 @@ public class ContractSignerImpl extends BackboneElementImpl implements ContractS
 	protected Reference party;
 
 	/**
-	 * The cached value of the '{@link #getSignature() <em>Signature</em>}' containment reference.
+	 * The cached value of the '{@link #getSignature() <em>Signature</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSignature()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String signature;
+	protected EList<Signature> signature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,42 +176,11 @@ public class ContractSignerImpl extends BackboneElementImpl implements ContractS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getSignature() {
+	public EList<Signature> getSignature() {
+		if (signature == null) {
+			signature = new EObjectContainmentEList<Signature>(Signature.class, this, FhirPackage.CONTRACT_SIGNER__SIGNATURE);
+		}
 		return signature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSignature(org.hl7.fhir.String newSignature, NotificationChain msgs) {
-		org.hl7.fhir.String oldSignature = signature;
-		signature = newSignature;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONTRACT_SIGNER__SIGNATURE, oldSignature, newSignature);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSignature(org.hl7.fhir.String newSignature) {
-		if (newSignature != signature) {
-			NotificationChain msgs = null;
-			if (signature != null)
-				msgs = ((InternalEObject)signature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONTRACT_SIGNER__SIGNATURE, null, msgs);
-			if (newSignature != null)
-				msgs = ((InternalEObject)newSignature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONTRACT_SIGNER__SIGNATURE, null, msgs);
-			msgs = basicSetSignature(newSignature, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONTRACT_SIGNER__SIGNATURE, newSignature, newSignature));
 	}
 
 	/**
@@ -222,7 +196,7 @@ public class ContractSignerImpl extends BackboneElementImpl implements ContractS
 			case FhirPackage.CONTRACT_SIGNER__PARTY:
 				return basicSetParty(null, msgs);
 			case FhirPackage.CONTRACT_SIGNER__SIGNATURE:
-				return basicSetSignature(null, msgs);
+				return ((InternalEList<?>)getSignature()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -250,6 +224,7 @@ public class ContractSignerImpl extends BackboneElementImpl implements ContractS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -260,7 +235,8 @@ public class ContractSignerImpl extends BackboneElementImpl implements ContractS
 				setParty((Reference)newValue);
 				return;
 			case FhirPackage.CONTRACT_SIGNER__SIGNATURE:
-				setSignature((org.hl7.fhir.String)newValue);
+				getSignature().clear();
+				getSignature().addAll((Collection<? extends Signature>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -281,7 +257,7 @@ public class ContractSignerImpl extends BackboneElementImpl implements ContractS
 				setParty((Reference)null);
 				return;
 			case FhirPackage.CONTRACT_SIGNER__SIGNATURE:
-				setSignature((org.hl7.fhir.String)null);
+				getSignature().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -300,7 +276,7 @@ public class ContractSignerImpl extends BackboneElementImpl implements ContractS
 			case FhirPackage.CONTRACT_SIGNER__PARTY:
 				return party != null;
 			case FhirPackage.CONTRACT_SIGNER__SIGNATURE:
-				return signature != null;
+				return signature != null && !signature.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

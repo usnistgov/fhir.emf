@@ -17,8 +17,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.hl7.fhir.ClaimResponseDetail1#getRevenue <em>Revenue</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseDetail1#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseDetail1#getService <em>Service</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseDetail1#getModifier <em>Modifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseDetail1#getFee <em>Fee</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseDetail1#getNoteNumber <em>Note Number</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseDetail1#getAdjudication <em>Adjudication</em>}</li>
  * </ul>
  *
@@ -27,6 +31,58 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ClaimResponseDetail1 extends BackboneElement {
+	/**
+	 * Returns the value of the '<em><b>Revenue</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The type of reveneu or cost center providing the product and/or service.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Revenue</em>' containment reference.
+	 * @see #setRevenue(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseDetail1_Revenue()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='revenue' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Coding getRevenue();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseDetail1#getRevenue <em>Revenue</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Revenue</em>' containment reference.
+	 * @see #getRevenue()
+	 * @generated
+	 */
+	void setRevenue(Coding value);
+
+	/**
+	 * Returns the value of the '<em><b>Category</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Health Care Service Type Codes  to identify the classification of service or benefits.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Category</em>' containment reference.
+	 * @see #setCategory(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseDetail1_Category()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='category' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Coding getCategory();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseDetail1#getCategory <em>Category</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Category</em>' containment reference.
+	 * @see #getCategory()
+	 * @generated
+	 */
+	void setCategory(Coding value);
+
 	/**
 	 * Returns the value of the '<em><b>Service</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -37,7 +93,7 @@ public interface ClaimResponseDetail1 extends BackboneElement {
 	 * @return the value of the '<em>Service</em>' containment reference.
 	 * @see #setService(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getClaimResponseDetail1_Service()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='service' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -52,6 +108,22 @@ public interface ClaimResponseDetail1 extends BackboneElement {
 	 * @generated
 	 */
 	void setService(Coding value);
+
+	/**
+	 * Returns the value of the '<em><b>Modifier</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Modifier</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseDetail1_Modifier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='modifier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Coding> getModifier();
 
 	/**
 	 * Returns the value of the '<em><b>Fee</b></em>' containment reference.
@@ -80,8 +152,24 @@ public interface ClaimResponseDetail1 extends BackboneElement {
 	void setFee(Money value);
 
 	/**
+	 * Returns the value of the '<em><b>Note Number</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.PositiveInt}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of note references to the notes provided below.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Note Number</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseDetail1_NoteNumber()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='noteNumber' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<PositiveInt> getNoteNumber();
+
+	/**
 	 * Returns the value of the '<em><b>Adjudication</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.ClaimResponseAdjudication4}.
+	 * The list contents are of type {@link org.hl7.fhir.ClaimResponseAdjudication}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -93,6 +181,6 @@ public interface ClaimResponseDetail1 extends BackboneElement {
 	 *        extendedMetaData="kind='element' name='adjudication' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<ClaimResponseAdjudication4> getAdjudication();
+	EList<ClaimResponseAdjudication> getAdjudication();
 
 } // ClaimResponseDetail1

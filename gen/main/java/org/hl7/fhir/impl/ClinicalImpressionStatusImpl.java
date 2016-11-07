@@ -34,7 +34,7 @@ public class ClinicalImpressionStatusImpl extends ElementImpl implements Clinica
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ClinicalImpressionStatusList VALUE_EDEFAULT = ClinicalImpressionStatusList.IN_PROGRESS;
+	protected static final ClinicalImpressionStatusList VALUE_EDEFAULT = ClinicalImpressionStatusList.DRAFT;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

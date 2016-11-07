@@ -33,7 +33,7 @@ public interface ValueSetCompose extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.uri.
+	 * Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.url.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Import</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getValueSetCompose_Import()

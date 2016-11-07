@@ -34,7 +34,7 @@ public class AllergyIntoleranceCriticalityImpl extends ElementImpl implements Al
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AllergyIntoleranceCriticalityList VALUE_EDEFAULT = AllergyIntoleranceCriticalityList.CRITL;
+	protected static final AllergyIntoleranceCriticalityList VALUE_EDEFAULT = AllergyIntoleranceCriticalityList.LOW;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

@@ -23,7 +23,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.SupplyDelivery#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyDelivery#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyDelivery#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.SupplyDelivery#getSuppliedItem <em>Supplied Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.SupplyDelivery#getSuppliedItemCodeableConcept <em>Supplied Item Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.SupplyDelivery#getSuppliedItemReference <em>Supplied Item Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyDelivery#getSupplier <em>Supplier</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyDelivery#getWhenPrepared <em>When Prepared</em>}</li>
  *   <li>{@link org.hl7.fhir.SupplyDelivery#getTime <em>Time</em>}</li>
@@ -148,13 +149,13 @@ public interface SupplyDelivery extends DomainResource {
 	 * The amount of supply that has been dispensed. Includes unit of measure.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Quantity</em>' containment reference.
-	 * @see #setQuantity(SimpleQuantity)
+	 * @see #setQuantity(Quantity)
 	 * @see org.hl7.fhir.FhirPackage#getSupplyDelivery_Quantity()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='quantity' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getQuantity();
+	Quantity getQuantity();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.SupplyDelivery#getQuantity <em>Quantity</em>}' containment reference.
@@ -164,33 +165,59 @@ public interface SupplyDelivery extends DomainResource {
 	 * @see #getQuantity()
 	 * @generated
 	 */
-	void setQuantity(SimpleQuantity value);
+	void setQuantity(Quantity value);
 
 	/**
-	 * Returns the value of the '<em><b>Supplied Item</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Supplied Item Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.
+	 * Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list. (choose any one of suppliedItem*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Supplied Item</em>' containment reference.
-	 * @see #setSuppliedItem(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getSupplyDelivery_SuppliedItem()
+	 * @return the value of the '<em>Supplied Item Codeable Concept</em>' containment reference.
+	 * @see #setSuppliedItemCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getSupplyDelivery_SuppliedItemCodeableConcept()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='suppliedItem' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='suppliedItemCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getSuppliedItem();
+	CodeableConcept getSuppliedItemCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.SupplyDelivery#getSuppliedItem <em>Supplied Item</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.SupplyDelivery#getSuppliedItemCodeableConcept <em>Supplied Item Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Supplied Item</em>' containment reference.
-	 * @see #getSuppliedItem()
+	 * @param value the new value of the '<em>Supplied Item Codeable Concept</em>' containment reference.
+	 * @see #getSuppliedItemCodeableConcept()
 	 * @generated
 	 */
-	void setSuppliedItem(Reference value);
+	void setSuppliedItemCodeableConcept(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Supplied Item Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list. (choose any one of suppliedItem*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Supplied Item Reference</em>' containment reference.
+	 * @see #setSuppliedItemReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getSupplyDelivery_SuppliedItemReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='suppliedItemReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getSuppliedItemReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.SupplyDelivery#getSuppliedItemReference <em>Supplied Item Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Supplied Item Reference</em>' containment reference.
+	 * @see #getSuppliedItemReference()
+	 * @generated
+	 */
+	void setSuppliedItemReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Supplier</b></em>' containment reference.

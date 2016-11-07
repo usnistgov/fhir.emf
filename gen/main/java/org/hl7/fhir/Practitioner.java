@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Practitioner#getGender <em>Gender</em>}</li>
  *   <li>{@link org.hl7.fhir.Practitioner#getBirthDate <em>Birth Date</em>}</li>
  *   <li>{@link org.hl7.fhir.Practitioner#getPhoto <em>Photo</em>}</li>
- *   <li>{@link org.hl7.fhir.Practitioner#getPractitionerRole <em>Practitioner Role</em>}</li>
+ *   <li>{@link org.hl7.fhir.Practitioner#getRole <em>Role</em>}</li>
  *   <li>{@link org.hl7.fhir.Practitioner#getQualification <em>Qualification</em>}</li>
  *   <li>{@link org.hl7.fhir.Practitioner#getCommunication <em>Communication</em>}</li>
  * </ul>
@@ -79,30 +79,20 @@ public interface Practitioner extends DomainResource {
 	void setActive(org.hl7.fhir.Boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Name</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.HumanName}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A name associated with the person.
+	 * The name(s) associated with the practitioner.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Name</em>' containment reference.
-	 * @see #setName(HumanName)
+	 * @return the value of the '<em>Name</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getPractitioner_Name()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='name' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	HumanName getName();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Practitioner#getName <em>Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' containment reference.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(HumanName value);
+	EList<HumanName> getName();
 
 	/**
 	 * Returns the value of the '<em><b>Telecom</b></em>' containment reference list.
@@ -126,7 +116,8 @@ public interface Practitioner extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The postal address where the practitioner can be found or visited or to which mail can be delivered.
+	 * Address(es) of the practitioner that are not role specific (typically home address). 
+	 * Work addresses are not typically entered in this property as they are usually role dependent.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Address</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getPractitioner_Address()
@@ -144,13 +135,13 @@ public interface Practitioner extends DomainResource {
 	 * Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Gender</em>' containment reference.
-	 * @see #setGender(Code)
+	 * @see #setGender(AdministrativeGender)
 	 * @see org.hl7.fhir.FhirPackage#getPractitioner_Gender()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='gender' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getGender();
+	AdministrativeGender getGender();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Practitioner#getGender <em>Gender</em>}' containment reference.
@@ -160,7 +151,7 @@ public interface Practitioner extends DomainResource {
 	 * @see #getGender()
 	 * @generated
 	 */
-	void setGender(Code value);
+	void setGender(AdministrativeGender value);
 
 	/**
 	 * Returns the value of the '<em><b>Birth Date</b></em>' containment reference.
@@ -205,20 +196,20 @@ public interface Practitioner extends DomainResource {
 	EList<Attachment> getPhoto();
 
 	/**
-	 * Returns the value of the '<em><b>Practitioner Role</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.PractitionerPractitionerRole}.
+	 * Returns the value of the '<em><b>Role</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.PractitionerRole1}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The list of roles/organizations that the practitioner is associated with.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Practitioner Role</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getPractitioner_PractitionerRole()
+	 * @return the value of the '<em>Role</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getPractitioner_Role()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='practitionerRole' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='role' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<PractitionerPractitionerRole> getPractitionerRole();
+	EList<PractitionerRole1> getRole();
 
 	/**
 	 * Returns the value of the '<em><b>Qualification</b></em>' containment reference list.

@@ -21,6 +21,7 @@ import org.hl7.fhir.Code;
 import org.hl7.fhir.ConformanceSearchParam;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.SearchModifierCode;
+import org.hl7.fhir.SearchParamType;
 import org.hl7.fhir.Uri;
 
 /**
@@ -71,7 +72,7 @@ public class ConformanceSearchParamImpl extends BackboneElementImpl implements C
 	 * @generated
 	 * @ordered
 	 */
-	protected Code type;
+	protected SearchParamType type;
 
 	/**
 	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' containment reference.
@@ -223,7 +224,7 @@ public class ConformanceSearchParamImpl extends BackboneElementImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getType() {
+	public SearchParamType getType() {
 		return type;
 	}
 
@@ -232,8 +233,8 @@ public class ConformanceSearchParamImpl extends BackboneElementImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(Code newType, NotificationChain msgs) {
-		Code oldType = type;
+	public NotificationChain basicSetType(SearchParamType newType, NotificationChain msgs) {
+		SearchParamType oldType = type;
 		type = newType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONFORMANCE_SEARCH_PARAM__TYPE, oldType, newType);
@@ -247,7 +248,7 @@ public class ConformanceSearchParamImpl extends BackboneElementImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(Code newType) {
+	public void setType(SearchParamType newType) {
 		if (newType != type) {
 			NotificationChain msgs = null;
 			if (type != null)
@@ -408,7 +409,7 @@ public class ConformanceSearchParamImpl extends BackboneElementImpl implements C
 				setDefinition((Uri)newValue);
 				return;
 			case FhirPackage.CONFORMANCE_SEARCH_PARAM__TYPE:
-				setType((Code)newValue);
+				setType((SearchParamType)newValue);
 				return;
 			case FhirPackage.CONFORMANCE_SEARCH_PARAM__DOCUMENTATION:
 				setDocumentation((org.hl7.fhir.String)newValue);
@@ -444,7 +445,7 @@ public class ConformanceSearchParamImpl extends BackboneElementImpl implements C
 				setDefinition((Uri)null);
 				return;
 			case FhirPackage.CONFORMANCE_SEARCH_PARAM__TYPE:
-				setType((Code)null);
+				setType((SearchParamType)null);
 				return;
 			case FhirPackage.CONFORMANCE_SEARCH_PARAM__DOCUMENTATION:
 				setDocumentation((org.hl7.fhir.String)null);

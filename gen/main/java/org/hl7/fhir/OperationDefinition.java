@@ -24,14 +24,15 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.OperationDefinition#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getKind <em>Kind</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getExperimental <em>Experimental</em>}</li>
+ *   <li>{@link org.hl7.fhir.OperationDefinition#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getPublisher <em>Publisher</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getContact <em>Contact</em>}</li>
- *   <li>{@link org.hl7.fhir.OperationDefinition#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.hl7.fhir.OperationDefinition#getUseContext <em>Use Context</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getIdempotent <em>Idempotent</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getCode <em>Code</em>}</li>
- *   <li>{@link org.hl7.fhir.OperationDefinition#getNotes <em>Notes</em>}</li>
+ *   <li>{@link org.hl7.fhir.OperationDefinition#getComment <em>Comment</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getBase <em>Base</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getSystem <em>System</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinition#getType <em>Type</em>}</li>
@@ -130,13 +131,13 @@ public interface OperationDefinition extends DomainResource {
 	 * The status of the profile.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(Code)
+	 * @see #setStatus(ConformanceResourceStatus)
 	 * @see org.hl7.fhir.FhirPackage#getOperationDefinition_Status()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getStatus();
+	ConformanceResourceStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.OperationDefinition#getStatus <em>Status</em>}' containment reference.
@@ -146,7 +147,7 @@ public interface OperationDefinition extends DomainResource {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(Code value);
+	void setStatus(ConformanceResourceStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' containment reference.
@@ -276,13 +277,13 @@ public interface OperationDefinition extends DomainResource {
 	 * A free text natural language description of the profile and its use.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
-	 * @see #setDescription(org.hl7.fhir.String)
+	 * @see #setDescription(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getOperationDefinition_Description()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getDescription();
+	Markdown getDescription();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.OperationDefinition#getDescription <em>Description</em>}' containment reference.
@@ -292,7 +293,23 @@ public interface OperationDefinition extends DomainResource {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(org.hl7.fhir.String value);
+	void setDescription(Markdown value);
+
+	/**
+	 * Returns the value of the '<em><b>Use Context</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of operation definitions.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Use Context</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getOperationDefinition_UseContext()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='useContext' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CodeableConcept> getUseContext();
 
 	/**
 	 * Returns the value of the '<em><b>Requirements</b></em>' containment reference.
@@ -302,13 +319,13 @@ public interface OperationDefinition extends DomainResource {
 	 * Explains why this operation definition is needed and why it's been constrained as it has.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Requirements</em>' containment reference.
-	 * @see #setRequirements(org.hl7.fhir.String)
+	 * @see #setRequirements(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getOperationDefinition_Requirements()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='requirements' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getRequirements();
+	Markdown getRequirements();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.OperationDefinition#getRequirements <em>Requirements</em>}' containment reference.
@@ -318,7 +335,7 @@ public interface OperationDefinition extends DomainResource {
 	 * @see #getRequirements()
 	 * @generated
 	 */
-	void setRequirements(org.hl7.fhir.String value);
+	void setRequirements(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Idempotent</b></em>' containment reference.
@@ -373,30 +390,30 @@ public interface OperationDefinition extends DomainResource {
 	void setCode(Code value);
 
 	/**
-	 * Returns the value of the '<em><b>Notes</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Comment</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Additional information about how to use this operation or named query.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Notes</em>' containment reference.
-	 * @see #setNotes(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getOperationDefinition_Notes()
+	 * @return the value of the '<em>Comment</em>' containment reference.
+	 * @see #setComment(org.hl7.fhir.String)
+	 * @see org.hl7.fhir.FhirPackage#getOperationDefinition_Comment()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='notes' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='comment' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getNotes();
+	org.hl7.fhir.String getComment();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.OperationDefinition#getNotes <em>Notes</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.OperationDefinition#getComment <em>Comment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Notes</em>' containment reference.
-	 * @see #getNotes()
+	 * @param value the new value of the '<em>Comment</em>' containment reference.
+	 * @see #getComment()
 	 * @generated
 	 */
-	void setNotes(org.hl7.fhir.String value);
+	void setComment(org.hl7.fhir.String value);
 
 	/**
 	 * Returns the value of the '<em><b>Base</b></em>' containment reference.

@@ -2,14 +2,18 @@
  */
 package org.hl7.fhir.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.ClaimDiagnosis;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
@@ -25,6 +29,8 @@ import org.hl7.fhir.PositiveInt;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ClaimDiagnosisImpl#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimDiagnosisImpl#getDiagnosis <em>Diagnosis</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimDiagnosisImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimDiagnosisImpl#getDrg <em>Drg</em>}</li>
  * </ul>
  *
  * @generated
@@ -49,6 +55,26 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 	 * @ordered
 	 */
 	protected Coding diagnosis;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Coding> type;
+
+	/**
+	 * The cached value of the '{@link #getDrg() <em>Drg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDrg()
+	 * @generated
+	 * @ordered
+	 */
+	protected Coding drg;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,6 +186,61 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Coding> getType() {
+		if (type == null) {
+			type = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.CLAIM_DIAGNOSIS__TYPE);
+		}
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Coding getDrg() {
+		return drg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDrg(Coding newDrg, NotificationChain msgs) {
+		Coding oldDrg = drg;
+		drg = newDrg;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_DIAGNOSIS__DRG, oldDrg, newDrg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDrg(Coding newDrg) {
+		if (newDrg != drg) {
+			NotificationChain msgs = null;
+			if (drg != null)
+				msgs = ((InternalEObject)drg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_DIAGNOSIS__DRG, null, msgs);
+			if (newDrg != null)
+				msgs = ((InternalEObject)newDrg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_DIAGNOSIS__DRG, null, msgs);
+			msgs = basicSetDrg(newDrg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_DIAGNOSIS__DRG, newDrg, newDrg));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -167,6 +248,10 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 				return basicSetSequence(null, msgs);
 			case FhirPackage.CLAIM_DIAGNOSIS__DIAGNOSIS:
 				return basicSetDiagnosis(null, msgs);
+			case FhirPackage.CLAIM_DIAGNOSIS__TYPE:
+				return ((InternalEList<?>)getType()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CLAIM_DIAGNOSIS__DRG:
+				return basicSetDrg(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -183,6 +268,10 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 				return getSequence();
 			case FhirPackage.CLAIM_DIAGNOSIS__DIAGNOSIS:
 				return getDiagnosis();
+			case FhirPackage.CLAIM_DIAGNOSIS__TYPE:
+				return getType();
+			case FhirPackage.CLAIM_DIAGNOSIS__DRG:
+				return getDrg();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -192,6 +281,7 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -200,6 +290,13 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 				return;
 			case FhirPackage.CLAIM_DIAGNOSIS__DIAGNOSIS:
 				setDiagnosis((Coding)newValue);
+				return;
+			case FhirPackage.CLAIM_DIAGNOSIS__TYPE:
+				getType().clear();
+				getType().addAll((Collection<? extends Coding>)newValue);
+				return;
+			case FhirPackage.CLAIM_DIAGNOSIS__DRG:
+				setDrg((Coding)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,6 +316,12 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 			case FhirPackage.CLAIM_DIAGNOSIS__DIAGNOSIS:
 				setDiagnosis((Coding)null);
 				return;
+			case FhirPackage.CLAIM_DIAGNOSIS__TYPE:
+				getType().clear();
+				return;
+			case FhirPackage.CLAIM_DIAGNOSIS__DRG:
+				setDrg((Coding)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -235,6 +338,10 @@ public class ClaimDiagnosisImpl extends BackboneElementImpl implements ClaimDiag
 				return sequence != null;
 			case FhirPackage.CLAIM_DIAGNOSIS__DIAGNOSIS:
 				return diagnosis != null;
+			case FhirPackage.CLAIM_DIAGNOSIS__TYPE:
+				return type != null && !type.isEmpty();
+			case FhirPackage.CLAIM_DIAGNOSIS__DRG:
+				return drg != null;
 		}
 		return super.eIsSet(featureID);
 	}

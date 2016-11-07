@@ -17,16 +17,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.MedicationDispense;
 import org.hl7.fhir.MedicationDispenseDosageInstruction;
+import org.hl7.fhir.MedicationDispenseEventHistory;
 import org.hl7.fhir.MedicationDispenseStatus;
 import org.hl7.fhir.MedicationDispenseSubstitution;
+import org.hl7.fhir.Quantity;
 import org.hl7.fhir.Reference;
-import org.hl7.fhir.SimpleQuantity;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,14 +40,15 @@ import org.hl7.fhir.SimpleQuantity;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getMedicationCodeableConcept <em>Medication Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getMedicationReference <em>Medication Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getDispenser <em>Dispenser</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getDispensingOrganization <em>Dispensing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getAuthorizingPrescription <em>Authorizing Prescription</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getDaysSupply <em>Days Supply</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getMedicationCodeableConcept <em>Medication Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getMedicationReference <em>Medication Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getWhenPrepared <em>When Prepared</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getWhenHandedOver <em>When Handed Over</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getDestination <em>Destination</em>}</li>
@@ -53,6 +56,7 @@ import org.hl7.fhir.SimpleQuantity;
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getNote <em>Note</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getDosageInstruction <em>Dosage Instruction</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getSubstitution <em>Substitution</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationDispenseImpl#getEventHistory <em>Event History</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +83,26 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	protected MedicationDispenseStatus status;
 
 	/**
+	 * The cached value of the '{@link #getMedicationCodeableConcept() <em>Medication Codeable Concept</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMedicationCodeableConcept()
+	 * @generated
+	 * @ordered
+	 */
+	protected CodeableConcept medicationCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getMedicationReference() <em>Medication Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMedicationReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference medicationReference;
+
+	/**
 	 * The cached value of the '{@link #getPatient() <em>Patient</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -97,6 +121,16 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * @ordered
 	 */
 	protected Reference dispenser;
+
+	/**
+	 * The cached value of the '{@link #getDispensingOrganization() <em>Dispensing Organization</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDispensingOrganization()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference dispensingOrganization;
 
 	/**
 	 * The cached value of the '{@link #getAuthorizingPrescription() <em>Authorizing Prescription</em>}' containment reference list.
@@ -126,7 +160,7 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity quantity;
+	protected Quantity quantity;
 
 	/**
 	 * The cached value of the '{@link #getDaysSupply() <em>Days Supply</em>}' containment reference.
@@ -136,27 +170,7 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity daysSupply;
-
-	/**
-	 * The cached value of the '{@link #getMedicationCodeableConcept() <em>Medication Codeable Concept</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMedicationCodeableConcept()
-	 * @generated
-	 * @ordered
-	 */
-	protected CodeableConcept medicationCodeableConcept;
-
-	/**
-	 * The cached value of the '{@link #getMedicationReference() <em>Medication Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMedicationReference()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference medicationReference;
+	protected Quantity daysSupply;
 
 	/**
 	 * The cached value of the '{@link #getWhenPrepared() <em>When Prepared</em>}' containment reference.
@@ -199,14 +213,14 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	protected EList<Reference> receiver;
 
 	/**
-	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference.
+	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNote()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String note;
+	protected EList<Annotation> note;
 
 	/**
 	 * The cached value of the '{@link #getDosageInstruction() <em>Dosage Instruction</em>}' containment reference list.
@@ -227,6 +241,16 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * @ordered
 	 */
 	protected MedicationDispenseSubstitution substitution;
+
+	/**
+	 * The cached value of the '{@link #getEventHistory() <em>Event History</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEventHistory()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MedicationDispenseEventHistory> eventHistory;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -424,6 +448,49 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Reference getDispensingOrganization() {
+		return dispensingOrganization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDispensingOrganization(Reference newDispensingOrganization, NotificationChain msgs) {
+		Reference oldDispensingOrganization = dispensingOrganization;
+		dispensingOrganization = newDispensingOrganization;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION, oldDispensingOrganization, newDispensingOrganization);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDispensingOrganization(Reference newDispensingOrganization) {
+		if (newDispensingOrganization != dispensingOrganization) {
+			NotificationChain msgs = null;
+			if (dispensingOrganization != null)
+				msgs = ((InternalEObject)dispensingOrganization).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION, null, msgs);
+			if (newDispensingOrganization != null)
+				msgs = ((InternalEObject)newDispensingOrganization).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION, null, msgs);
+			msgs = basicSetDispensingOrganization(newDispensingOrganization, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION, newDispensingOrganization, newDispensingOrganization));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Reference> getAuthorizingPrescription() {
 		if (authorizingPrescription == null) {
 			authorizingPrescription = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.MEDICATION_DISPENSE__AUTHORIZING_PRESCRIPTION);
@@ -479,7 +546,7 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getQuantity() {
+	public Quantity getQuantity() {
 		return quantity;
 	}
 
@@ -488,8 +555,8 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetQuantity(SimpleQuantity newQuantity, NotificationChain msgs) {
-		SimpleQuantity oldQuantity = quantity;
+	public NotificationChain basicSetQuantity(Quantity newQuantity, NotificationChain msgs) {
+		Quantity oldQuantity = quantity;
 		quantity = newQuantity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE__QUANTITY, oldQuantity, newQuantity);
@@ -503,7 +570,7 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQuantity(SimpleQuantity newQuantity) {
+	public void setQuantity(Quantity newQuantity) {
 		if (newQuantity != quantity) {
 			NotificationChain msgs = null;
 			if (quantity != null)
@@ -522,7 +589,7 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getDaysSupply() {
+	public Quantity getDaysSupply() {
 		return daysSupply;
 	}
 
@@ -531,8 +598,8 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDaysSupply(SimpleQuantity newDaysSupply, NotificationChain msgs) {
-		SimpleQuantity oldDaysSupply = daysSupply;
+	public NotificationChain basicSetDaysSupply(Quantity newDaysSupply, NotificationChain msgs) {
+		Quantity oldDaysSupply = daysSupply;
 		daysSupply = newDaysSupply;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE__DAYS_SUPPLY, oldDaysSupply, newDaysSupply);
@@ -546,7 +613,7 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDaysSupply(SimpleQuantity newDaysSupply) {
+	public void setDaysSupply(Quantity newDaysSupply) {
 		if (newDaysSupply != daysSupply) {
 			NotificationChain msgs = null;
 			if (daysSupply != null)
@@ -792,42 +859,11 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNote() {
+	public EList<Annotation> getNote() {
+		if (note == null) {
+			note = new EObjectContainmentEList<Annotation>(Annotation.class, this, FhirPackage.MEDICATION_DISPENSE__NOTE);
+		}
 		return note;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNote(org.hl7.fhir.String newNote, NotificationChain msgs) {
-		org.hl7.fhir.String oldNote = note;
-		note = newNote;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE__NOTE, oldNote, newNote);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNote(org.hl7.fhir.String newNote) {
-		if (newNote != note) {
-			NotificationChain msgs = null;
-			if (note != null)
-				msgs = ((InternalEObject)note).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE__NOTE, null, msgs);
-			if (newNote != null)
-				msgs = ((InternalEObject)newNote).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE__NOTE, null, msgs);
-			msgs = basicSetNote(newNote, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE__NOTE, newNote, newNote));
 	}
 
 	/**
@@ -890,6 +926,18 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<MedicationDispenseEventHistory> getEventHistory() {
+		if (eventHistory == null) {
+			eventHistory = new EObjectContainmentEList<MedicationDispenseEventHistory>(MedicationDispenseEventHistory.class, this, FhirPackage.MEDICATION_DISPENSE__EVENT_HISTORY);
+		}
+		return eventHistory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -897,10 +945,16 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return basicSetIdentifier(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__STATUS:
 				return basicSetStatus(null, msgs);
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
+				return basicSetMedicationCodeableConcept(null, msgs);
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
+				return basicSetMedicationReference(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__PATIENT:
 				return basicSetPatient(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__DISPENSER:
 				return basicSetDispenser(null, msgs);
+			case FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION:
+				return basicSetDispensingOrganization(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__AUTHORIZING_PRESCRIPTION:
 				return ((InternalEList<?>)getAuthorizingPrescription()).basicRemove(otherEnd, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__TYPE:
@@ -909,10 +963,6 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return basicSetQuantity(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__DAYS_SUPPLY:
 				return basicSetDaysSupply(null, msgs);
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
-				return basicSetMedicationCodeableConcept(null, msgs);
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
-				return basicSetMedicationReference(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_PREPARED:
 				return basicSetWhenPrepared(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_HANDED_OVER:
@@ -922,11 +972,13 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 			case FhirPackage.MEDICATION_DISPENSE__RECEIVER:
 				return ((InternalEList<?>)getReceiver()).basicRemove(otherEnd, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__NOTE:
-				return basicSetNote(null, msgs);
+				return ((InternalEList<?>)getNote()).basicRemove(otherEnd, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__DOSAGE_INSTRUCTION:
 				return ((InternalEList<?>)getDosageInstruction()).basicRemove(otherEnd, msgs);
 			case FhirPackage.MEDICATION_DISPENSE__SUBSTITUTION:
 				return basicSetSubstitution(null, msgs);
+			case FhirPackage.MEDICATION_DISPENSE__EVENT_HISTORY:
+				return ((InternalEList<?>)getEventHistory()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -943,10 +995,16 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return getIdentifier();
 			case FhirPackage.MEDICATION_DISPENSE__STATUS:
 				return getStatus();
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
+				return getMedicationCodeableConcept();
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
+				return getMedicationReference();
 			case FhirPackage.MEDICATION_DISPENSE__PATIENT:
 				return getPatient();
 			case FhirPackage.MEDICATION_DISPENSE__DISPENSER:
 				return getDispenser();
+			case FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION:
+				return getDispensingOrganization();
 			case FhirPackage.MEDICATION_DISPENSE__AUTHORIZING_PRESCRIPTION:
 				return getAuthorizingPrescription();
 			case FhirPackage.MEDICATION_DISPENSE__TYPE:
@@ -955,10 +1013,6 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return getQuantity();
 			case FhirPackage.MEDICATION_DISPENSE__DAYS_SUPPLY:
 				return getDaysSupply();
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
-				return getMedicationCodeableConcept();
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
-				return getMedicationReference();
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_PREPARED:
 				return getWhenPrepared();
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_HANDED_OVER:
@@ -973,6 +1027,8 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return getDosageInstruction();
 			case FhirPackage.MEDICATION_DISPENSE__SUBSTITUTION:
 				return getSubstitution();
+			case FhirPackage.MEDICATION_DISPENSE__EVENT_HISTORY:
+				return getEventHistory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -992,11 +1048,20 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 			case FhirPackage.MEDICATION_DISPENSE__STATUS:
 				setStatus((MedicationDispenseStatus)newValue);
 				return;
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
+				setMedicationCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
+				setMedicationReference((Reference)newValue);
+				return;
 			case FhirPackage.MEDICATION_DISPENSE__PATIENT:
 				setPatient((Reference)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__DISPENSER:
 				setDispenser((Reference)newValue);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION:
+				setDispensingOrganization((Reference)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__AUTHORIZING_PRESCRIPTION:
 				getAuthorizingPrescription().clear();
@@ -1006,16 +1071,10 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				setType((CodeableConcept)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__QUANTITY:
-				setQuantity((SimpleQuantity)newValue);
+				setQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__DAYS_SUPPLY:
-				setDaysSupply((SimpleQuantity)newValue);
-				return;
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
-				setMedicationCodeableConcept((CodeableConcept)newValue);
-				return;
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
-				setMedicationReference((Reference)newValue);
+				setDaysSupply((Quantity)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_PREPARED:
 				setWhenPrepared((DateTime)newValue);
@@ -1031,7 +1090,8 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				getReceiver().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__NOTE:
-				setNote((org.hl7.fhir.String)newValue);
+				getNote().clear();
+				getNote().addAll((Collection<? extends Annotation>)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__DOSAGE_INSTRUCTION:
 				getDosageInstruction().clear();
@@ -1039,6 +1099,10 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__SUBSTITUTION:
 				setSubstitution((MedicationDispenseSubstitution)newValue);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE__EVENT_HISTORY:
+				getEventHistory().clear();
+				getEventHistory().addAll((Collection<? extends MedicationDispenseEventHistory>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1058,11 +1122,20 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 			case FhirPackage.MEDICATION_DISPENSE__STATUS:
 				setStatus((MedicationDispenseStatus)null);
 				return;
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
+				setMedicationCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
+				setMedicationReference((Reference)null);
+				return;
 			case FhirPackage.MEDICATION_DISPENSE__PATIENT:
 				setPatient((Reference)null);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__DISPENSER:
 				setDispenser((Reference)null);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION:
+				setDispensingOrganization((Reference)null);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__AUTHORIZING_PRESCRIPTION:
 				getAuthorizingPrescription().clear();
@@ -1071,16 +1144,10 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				setType((CodeableConcept)null);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__QUANTITY:
-				setQuantity((SimpleQuantity)null);
+				setQuantity((Quantity)null);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__DAYS_SUPPLY:
-				setDaysSupply((SimpleQuantity)null);
-				return;
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
-				setMedicationCodeableConcept((CodeableConcept)null);
-				return;
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
-				setMedicationReference((Reference)null);
+				setDaysSupply((Quantity)null);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_PREPARED:
 				setWhenPrepared((DateTime)null);
@@ -1095,13 +1162,16 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				getReceiver().clear();
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__NOTE:
-				setNote((org.hl7.fhir.String)null);
+				getNote().clear();
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__DOSAGE_INSTRUCTION:
 				getDosageInstruction().clear();
 				return;
 			case FhirPackage.MEDICATION_DISPENSE__SUBSTITUTION:
 				setSubstitution((MedicationDispenseSubstitution)null);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE__EVENT_HISTORY:
+				getEventHistory().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -1119,10 +1189,16 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return identifier != null;
 			case FhirPackage.MEDICATION_DISPENSE__STATUS:
 				return status != null;
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
+				return medicationCodeableConcept != null;
+			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
+				return medicationReference != null;
 			case FhirPackage.MEDICATION_DISPENSE__PATIENT:
 				return patient != null;
 			case FhirPackage.MEDICATION_DISPENSE__DISPENSER:
 				return dispenser != null;
+			case FhirPackage.MEDICATION_DISPENSE__DISPENSING_ORGANIZATION:
+				return dispensingOrganization != null;
 			case FhirPackage.MEDICATION_DISPENSE__AUTHORIZING_PRESCRIPTION:
 				return authorizingPrescription != null && !authorizingPrescription.isEmpty();
 			case FhirPackage.MEDICATION_DISPENSE__TYPE:
@@ -1131,10 +1207,6 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 				return quantity != null;
 			case FhirPackage.MEDICATION_DISPENSE__DAYS_SUPPLY:
 				return daysSupply != null;
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_CODEABLE_CONCEPT:
-				return medicationCodeableConcept != null;
-			case FhirPackage.MEDICATION_DISPENSE__MEDICATION_REFERENCE:
-				return medicationReference != null;
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_PREPARED:
 				return whenPrepared != null;
 			case FhirPackage.MEDICATION_DISPENSE__WHEN_HANDED_OVER:
@@ -1144,11 +1216,13 @@ public class MedicationDispenseImpl extends DomainResourceImpl implements Medica
 			case FhirPackage.MEDICATION_DISPENSE__RECEIVER:
 				return receiver != null && !receiver.isEmpty();
 			case FhirPackage.MEDICATION_DISPENSE__NOTE:
-				return note != null;
+				return note != null && !note.isEmpty();
 			case FhirPackage.MEDICATION_DISPENSE__DOSAGE_INSTRUCTION:
 				return dosageInstruction != null && !dosageInstruction.isEmpty();
 			case FhirPackage.MEDICATION_DISPENSE__SUBSTITUTION:
 				return substitution != null;
+			case FhirPackage.MEDICATION_DISPENSE__EVENT_HISTORY:
+				return eventHistory != null && !eventHistory.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

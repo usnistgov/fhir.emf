@@ -19,18 +19,21 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Communication#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getCategory <em>Category</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getSender <em>Sender</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getRecipient <em>Recipient</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getPayload <em>Payload</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getMedium <em>Medium</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getBasedOn <em>Based On</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getParent <em>Parent</em>}</li>
  *   <li>{@link org.hl7.fhir.Communication#getStatus <em>Status</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getEncounter <em>Encounter</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getMedium <em>Medium</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getSubject <em>Subject</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getTopic <em>Topic</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getContext <em>Context</em>}</li>
  *   <li>{@link org.hl7.fhir.Communication#getSent <em>Sent</em>}</li>
  *   <li>{@link org.hl7.fhir.Communication#getReceived <em>Received</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getSender <em>Sender</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getRecipient <em>Recipient</em>}</li>
  *   <li>{@link org.hl7.fhir.Communication#getReason <em>Reason</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.Communication#getRequestDetail <em>Request Detail</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getPayload <em>Payload</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getNote <em>Note</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getCommunication()
@@ -53,6 +56,38 @@ public interface Communication extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Based On</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An order, proposal or plan fulfilled in whole or in part by this Communication.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Based On</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getCommunication_BasedOn()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='basedOn' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getBasedOn();
+
+	/**
+	 * Returns the value of the '<em><b>Parent</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Part of this action.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Parent</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getCommunication_Parent()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='parent' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getParent();
 
 	/**
 	 * Returns the value of the '<em><b>Category</b></em>' containment reference.
@@ -139,6 +174,22 @@ public interface Communication extends DomainResource {
 	EList<CommunicationPayload> getPayload();
 
 	/**
+	 * Returns the value of the '<em><b>Note</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Annotation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Additional notes or commentary about the communication by the sender, receiver or other interested parties.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Note</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getCommunication_Note()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Annotation> getNote();
+
+	/**
 	 * Returns the value of the '<em><b>Medium</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
@@ -179,32 +230,6 @@ public interface Communication extends DomainResource {
 	 * @generated
 	 */
 	void setStatus(CommunicationStatus value);
-
-	/**
-	 * Returns the value of the '<em><b>Encounter</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The encounter within which the communication was sent.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Encounter</em>' containment reference.
-	 * @see #setEncounter(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getCommunication_Encounter()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='encounter' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Reference getEncounter();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Communication#getEncounter <em>Encounter</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Encounter</em>' containment reference.
-	 * @see #getEncounter()
-	 * @generated
-	 */
-	void setEncounter(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Sent</b></em>' containment reference.
@@ -301,29 +326,45 @@ public interface Communication extends DomainResource {
 	void setSubject(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Request Detail</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Topic</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The communication request that was responsible for producing this communication.
+	 * The resources which were responsible for or related to producing this communication.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Request Detail</em>' containment reference.
-	 * @see #setRequestDetail(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getCommunication_RequestDetail()
+	 * @return the value of the '<em>Topic</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getCommunication_Topic()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='requestDetail' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='topic' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getRequestDetail();
+	EList<Reference> getTopic();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Communication#getRequestDetail <em>Request Detail</em>}' containment reference.
+	 * Returns the value of the '<em><b>Context</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Request Detail</em>' containment reference.
-	 * @see #getRequestDetail()
+	 * <!-- begin-model-doc -->
+	 * The encounter within which the communication was sent.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Context</em>' containment reference.
+	 * @see #setContext(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getCommunication_Context()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='context' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	void setRequestDetail(Reference value);
+	Reference getContext();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Communication#getContext <em>Context</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Context</em>' containment reference.
+	 * @see #getContext()
+	 * @generated
+	 */
+	void setContext(Reference value);
 
 } // Communication

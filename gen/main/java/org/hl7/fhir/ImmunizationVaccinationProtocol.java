@@ -42,7 +42,7 @@ public interface ImmunizationVaccinationProtocol extends BackboneElement {
 	 * @return the value of the '<em>Dose Sequence</em>' containment reference.
 	 * @see #setDoseSequence(PositiveInt)
 	 * @see org.hl7.fhir.FhirPackage#getImmunizationVaccinationProtocol_DoseSequence()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='doseSequence' namespace='##targetNamespace'"
 	 * @generated
 	 */

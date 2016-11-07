@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Patient#getContact <em>Contact</em>}</li>
  *   <li>{@link org.hl7.fhir.Patient#getAnimal <em>Animal</em>}</li>
  *   <li>{@link org.hl7.fhir.Patient#getCommunication <em>Communication</em>}</li>
- *   <li>{@link org.hl7.fhir.Patient#getCareProvider <em>Care Provider</em>}</li>
+ *   <li>{@link org.hl7.fhir.Patient#getGeneralPractitioner <em>General Practitioner</em>}</li>
  *   <li>{@link org.hl7.fhir.Patient#getManagingOrganization <em>Managing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.Patient#getLink <em>Link</em>}</li>
  * </ul>
@@ -126,13 +126,13 @@ public interface Patient extends DomainResource {
 	 * Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Gender</em>' containment reference.
-	 * @see #setGender(Code)
+	 * @see #setGender(AdministrativeGender)
 	 * @see org.hl7.fhir.FhirPackage#getPatient_Gender()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='gender' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getGender();
+	AdministrativeGender getGender();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Patient#getGender <em>Gender</em>}' containment reference.
@@ -142,7 +142,7 @@ public interface Patient extends DomainResource {
 	 * @see #getGender()
 	 * @generated
 	 */
-	void setGender(Code value);
+	void setGender(AdministrativeGender value);
 
 	/**
 	 * Returns the value of the '<em><b>Birth Date</b></em>' containment reference.
@@ -269,7 +269,7 @@ public interface Patient extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates whether the patient is part of a multiple or indicates the actual birth order. (choose any one of multipleBirth*, but only one)
+	 * Indicates whether the patient is part of a multiple (bool) or indicates the actual birth order (integer). (choose any one of multipleBirth*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Multiple Birth Boolean</em>' containment reference.
 	 * @see #setMultipleBirthBoolean(org.hl7.fhir.Boolean)
@@ -295,7 +295,7 @@ public interface Patient extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates whether the patient is part of a multiple or indicates the actual birth order. (choose any one of multipleBirth*, but only one)
+	 * Indicates whether the patient is part of a multiple (bool) or indicates the actual birth order (integer). (choose any one of multipleBirth*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Multiple Birth Integer</em>' containment reference.
 	 * @see #setMultipleBirthInteger(org.hl7.fhir.Integer)
@@ -391,20 +391,20 @@ public interface Patient extends DomainResource {
 	EList<PatientCommunication> getCommunication();
 
 	/**
-	 * Returns the value of the '<em><b>Care Provider</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>General Practitioner</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Patient's nominated care provider.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Care Provider</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getPatient_CareProvider()
+	 * @return the value of the '<em>General Practitioner</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getPatient_GeneralPractitioner()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='careProvider' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='generalPractitioner' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<Reference> getCareProvider();
+	EList<Reference> getGeneralPractitioner();
 
 	/**
 	 * Returns the value of the '<em><b>Managing Organization</b></em>' containment reference.

@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Ratio;
 import org.hl7.fhir.Reference;
@@ -24,7 +25,8 @@ import org.hl7.fhir.SubstanceIngredient;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.SubstanceIngredientImpl#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.SubstanceIngredientImpl#getSubstance <em>Substance</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SubstanceIngredientImpl#getSubstanceCodeableConcept <em>Substance Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SubstanceIngredientImpl#getSubstanceReference <em>Substance Reference</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,14 +43,24 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 	protected Ratio quantity;
 
 	/**
-	 * The cached value of the '{@link #getSubstance() <em>Substance</em>}' containment reference.
+	 * The cached value of the '{@link #getSubstanceCodeableConcept() <em>Substance Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSubstance()
+	 * @see #getSubstanceCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference substance;
+	protected CodeableConcept substanceCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getSubstanceReference() <em>Substance Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubstanceReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference substanceReference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,8 +129,8 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getSubstance() {
-		return substance;
+	public CodeableConcept getSubstanceCodeableConcept() {
+		return substanceCodeableConcept;
 	}
 
 	/**
@@ -126,11 +138,11 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSubstance(Reference newSubstance, NotificationChain msgs) {
-		Reference oldSubstance = substance;
-		substance = newSubstance;
+	public NotificationChain basicSetSubstanceCodeableConcept(CodeableConcept newSubstanceCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldSubstanceCodeableConcept = substanceCodeableConcept;
+		substanceCodeableConcept = newSubstanceCodeableConcept;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE, oldSubstance, newSubstance);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT, oldSubstanceCodeableConcept, newSubstanceCodeableConcept);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -141,18 +153,61 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubstance(Reference newSubstance) {
-		if (newSubstance != substance) {
+	public void setSubstanceCodeableConcept(CodeableConcept newSubstanceCodeableConcept) {
+		if (newSubstanceCodeableConcept != substanceCodeableConcept) {
 			NotificationChain msgs = null;
-			if (substance != null)
-				msgs = ((InternalEObject)substance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE, null, msgs);
-			if (newSubstance != null)
-				msgs = ((InternalEObject)newSubstance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE, null, msgs);
-			msgs = basicSetSubstance(newSubstance, msgs);
+			if (substanceCodeableConcept != null)
+				msgs = ((InternalEObject)substanceCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT, null, msgs);
+			if (newSubstanceCodeableConcept != null)
+				msgs = ((InternalEObject)newSubstanceCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetSubstanceCodeableConcept(newSubstanceCodeableConcept, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE, newSubstance, newSubstance));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT, newSubstanceCodeableConcept, newSubstanceCodeableConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getSubstanceReference() {
+		return substanceReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSubstanceReference(Reference newSubstanceReference, NotificationChain msgs) {
+		Reference oldSubstanceReference = substanceReference;
+		substanceReference = newSubstanceReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE, oldSubstanceReference, newSubstanceReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubstanceReference(Reference newSubstanceReference) {
+		if (newSubstanceReference != substanceReference) {
+			NotificationChain msgs = null;
+			if (substanceReference != null)
+				msgs = ((InternalEObject)substanceReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE, null, msgs);
+			if (newSubstanceReference != null)
+				msgs = ((InternalEObject)newSubstanceReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE, null, msgs);
+			msgs = basicSetSubstanceReference(newSubstanceReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE, newSubstanceReference, newSubstanceReference));
 	}
 
 	/**
@@ -165,8 +220,10 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 		switch (featureID) {
 			case FhirPackage.SUBSTANCE_INGREDIENT__QUANTITY:
 				return basicSetQuantity(null, msgs);
-			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE:
-				return basicSetSubstance(null, msgs);
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT:
+				return basicSetSubstanceCodeableConcept(null, msgs);
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE:
+				return basicSetSubstanceReference(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -181,8 +238,10 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 		switch (featureID) {
 			case FhirPackage.SUBSTANCE_INGREDIENT__QUANTITY:
 				return getQuantity();
-			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE:
-				return getSubstance();
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT:
+				return getSubstanceCodeableConcept();
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE:
+				return getSubstanceReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -198,8 +257,11 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 			case FhirPackage.SUBSTANCE_INGREDIENT__QUANTITY:
 				setQuantity((Ratio)newValue);
 				return;
-			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE:
-				setSubstance((Reference)newValue);
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT:
+				setSubstanceCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE:
+				setSubstanceReference((Reference)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -216,8 +278,11 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 			case FhirPackage.SUBSTANCE_INGREDIENT__QUANTITY:
 				setQuantity((Ratio)null);
 				return;
-			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE:
-				setSubstance((Reference)null);
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT:
+				setSubstanceCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE:
+				setSubstanceReference((Reference)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -233,8 +298,10 @@ public class SubstanceIngredientImpl extends BackboneElementImpl implements Subs
 		switch (featureID) {
 			case FhirPackage.SUBSTANCE_INGREDIENT__QUANTITY:
 				return quantity != null;
-			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE:
-				return substance != null;
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_CODEABLE_CONCEPT:
+				return substanceCodeableConcept != null;
+			case FhirPackage.SUBSTANCE_INGREDIENT__SUBSTANCE_REFERENCE:
+				return substanceReference != null;
 		}
 		return super.eIsSet(featureID);
 	}

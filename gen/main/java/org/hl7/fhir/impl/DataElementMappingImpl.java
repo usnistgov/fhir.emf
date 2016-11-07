@@ -26,7 +26,7 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.DataElementMappingImpl#getIdentity <em>Identity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DataElementMappingImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DataElementMappingImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DataElementMappingImpl#getComments <em>Comments</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DataElementMappingImpl#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,14 +63,14 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 	protected org.hl7.fhir.String name;
 
 	/**
-	 * The cached value of the '{@link #getComments() <em>Comments</em>}' containment reference.
+	 * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComments()
+	 * @see #getComment()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String comments;
+	protected org.hl7.fhir.String comment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -225,8 +225,8 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getComments() {
-		return comments;
+	public org.hl7.fhir.String getComment() {
+		return comment;
 	}
 
 	/**
@@ -234,11 +234,11 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetComments(org.hl7.fhir.String newComments, NotificationChain msgs) {
-		org.hl7.fhir.String oldComments = comments;
-		comments = newComments;
+	public NotificationChain basicSetComment(org.hl7.fhir.String newComment, NotificationChain msgs) {
+		org.hl7.fhir.String oldComment = comment;
+		comment = newComment;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS, oldComments, newComments);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DATA_ELEMENT_MAPPING__COMMENT, oldComment, newComment);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -249,18 +249,18 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setComments(org.hl7.fhir.String newComments) {
-		if (newComments != comments) {
+	public void setComment(org.hl7.fhir.String newComment) {
+		if (newComment != comment) {
 			NotificationChain msgs = null;
-			if (comments != null)
-				msgs = ((InternalEObject)comments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS, null, msgs);
-			if (newComments != null)
-				msgs = ((InternalEObject)newComments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS, null, msgs);
-			msgs = basicSetComments(newComments, msgs);
+			if (comment != null)
+				msgs = ((InternalEObject)comment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DATA_ELEMENT_MAPPING__COMMENT, null, msgs);
+			if (newComment != null)
+				msgs = ((InternalEObject)newComment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DATA_ELEMENT_MAPPING__COMMENT, null, msgs);
+			msgs = basicSetComment(newComment, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS, newComments, newComments));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DATA_ELEMENT_MAPPING__COMMENT, newComment, newComment));
 	}
 
 	/**
@@ -277,8 +277,8 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 				return basicSetUri(null, msgs);
 			case FhirPackage.DATA_ELEMENT_MAPPING__NAME:
 				return basicSetName(null, msgs);
-			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS:
-				return basicSetComments(null, msgs);
+			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENT:
+				return basicSetComment(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -297,8 +297,8 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 				return getUri();
 			case FhirPackage.DATA_ELEMENT_MAPPING__NAME:
 				return getName();
-			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS:
-				return getComments();
+			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENT:
+				return getComment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -320,8 +320,8 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 			case FhirPackage.DATA_ELEMENT_MAPPING__NAME:
 				setName((org.hl7.fhir.String)newValue);
 				return;
-			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS:
-				setComments((org.hl7.fhir.String)newValue);
+			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENT:
+				setComment((org.hl7.fhir.String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -344,8 +344,8 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 			case FhirPackage.DATA_ELEMENT_MAPPING__NAME:
 				setName((org.hl7.fhir.String)null);
 				return;
-			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS:
-				setComments((org.hl7.fhir.String)null);
+			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENT:
+				setComment((org.hl7.fhir.String)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -365,8 +365,8 @@ public class DataElementMappingImpl extends BackboneElementImpl implements DataE
 				return uri != null;
 			case FhirPackage.DATA_ELEMENT_MAPPING__NAME:
 				return name != null;
-			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENTS:
-				return comments != null;
+			case FhirPackage.DATA_ELEMENT_MAPPING__COMMENT:
+				return comment != null;
 		}
 		return super.eIsSet(featureID);
 	}

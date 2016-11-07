@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.hl7.fhir.AuditEventAgentNetworkType;
 import org.hl7.fhir.AuditEventNetwork;
-import org.hl7.fhir.AuditEventParticipantNetworkType;
 import org.hl7.fhir.FhirPackage;
 
 /**
@@ -47,7 +47,7 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	 * @generated
 	 * @ordered
 	 */
-	protected AuditEventParticipantNetworkType type;
+	protected AuditEventAgentNetworkType type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +116,7 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AuditEventParticipantNetworkType getType() {
+	public AuditEventAgentNetworkType getType() {
 		return type;
 	}
 
@@ -125,8 +125,8 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(AuditEventParticipantNetworkType newType, NotificationChain msgs) {
-		AuditEventParticipantNetworkType oldType = type;
+	public NotificationChain basicSetType(AuditEventAgentNetworkType newType, NotificationChain msgs) {
+		AuditEventAgentNetworkType oldType = type;
 		type = newType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_NETWORK__TYPE, oldType, newType);
@@ -140,7 +140,7 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(AuditEventParticipantNetworkType newType) {
+	public void setType(AuditEventAgentNetworkType newType) {
 		if (newType != type) {
 			NotificationChain msgs = null;
 			if (type != null)
@@ -198,7 +198,7 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 				setAddress((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_NETWORK__TYPE:
-				setType((AuditEventParticipantNetworkType)newValue);
+				setType((AuditEventAgentNetworkType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -216,7 +216,7 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 				setAddress((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_NETWORK__TYPE:
-				setType((AuditEventParticipantNetworkType)null);
+				setType((AuditEventAgentNetworkType)null);
 				return;
 		}
 		super.eUnset(featureID);

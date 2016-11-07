@@ -117,14 +117,14 @@ public class AllergyIntoleranceReactionImpl extends BackboneElementImpl implemen
 	protected CodeableConcept exposureRoute;
 
 	/**
-	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference.
+	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNote()
 	 * @generated
 	 * @ordered
 	 */
-	protected Annotation note;
+	protected EList<Annotation> note;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -420,42 +420,11 @@ public class AllergyIntoleranceReactionImpl extends BackboneElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Annotation getNote() {
+	public EList<Annotation> getNote() {
+		if (note == null) {
+			note = new EObjectContainmentEList<Annotation>(Annotation.class, this, FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE);
+		}
 		return note;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNote(Annotation newNote, NotificationChain msgs) {
-		Annotation oldNote = note;
-		note = newNote;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE, oldNote, newNote);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNote(Annotation newNote) {
-		if (newNote != note) {
-			NotificationChain msgs = null;
-			if (note != null)
-				msgs = ((InternalEObject)note).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE, null, msgs);
-			if (newNote != null)
-				msgs = ((InternalEObject)newNote).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE, null, msgs);
-			msgs = basicSetNote(newNote, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE, newNote, newNote));
 	}
 
 	/**
@@ -481,7 +450,7 @@ public class AllergyIntoleranceReactionImpl extends BackboneElementImpl implemen
 			case FhirPackage.ALLERGY_INTOLERANCE_REACTION__EXPOSURE_ROUTE:
 				return basicSetExposureRoute(null, msgs);
 			case FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE:
-				return basicSetNote(null, msgs);
+				return ((InternalEList<?>)getNote()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -546,7 +515,8 @@ public class AllergyIntoleranceReactionImpl extends BackboneElementImpl implemen
 				setExposureRoute((CodeableConcept)newValue);
 				return;
 			case FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE:
-				setNote((Annotation)newValue);
+				getNote().clear();
+				getNote().addAll((Collection<? extends Annotation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -582,7 +552,7 @@ public class AllergyIntoleranceReactionImpl extends BackboneElementImpl implemen
 				setExposureRoute((CodeableConcept)null);
 				return;
 			case FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE:
-				setNote((Annotation)null);
+				getNote().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -611,7 +581,7 @@ public class AllergyIntoleranceReactionImpl extends BackboneElementImpl implemen
 			case FhirPackage.ALLERGY_INTOLERANCE_REACTION__EXPOSURE_ROUTE:
 				return exposureRoute != null;
 			case FhirPackage.ALLERGY_INTOLERANCE_REACTION__NOTE:
-				return note != null;
+				return note != null && !note.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

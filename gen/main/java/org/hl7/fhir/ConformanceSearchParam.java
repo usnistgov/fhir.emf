@@ -91,13 +91,13 @@ public interface ConformanceSearchParam extends BackboneElement {
 	 * The type of value a search parameter refers to, and how the content is interpreted.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(Code)
+	 * @see #setType(SearchParamType)
 	 * @see org.hl7.fhir.FhirPackage#getConformanceSearchParam_Type()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getType();
+	SearchParamType getType();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ConformanceSearchParam#getType <em>Type</em>}' containment reference.
@@ -107,7 +107,7 @@ public interface ConformanceSearchParam extends BackboneElement {
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(Code value);
+	void setType(SearchParamType value);
 
 	/**
 	 * Returns the value of the '<em><b>Documentation</b></em>' containment reference.

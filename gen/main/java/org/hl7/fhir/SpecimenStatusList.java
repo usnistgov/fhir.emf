@@ -65,7 +65,7 @@ public enum SpecimenStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The physical specimen is present and in good condition.
+	 * Available
 	 * <!-- end-model-doc -->
 	 * @see #AVAILABLE
 	 * @model name="available"
@@ -79,7 +79,7 @@ public enum SpecimenStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * There is no physical specimen because it is either lost, destroyed or consumed.
+	 * Unavailable
 	 * <!-- end-model-doc -->
 	 * @see #UNAVAILABLE
 	 * @model name="unavailable"
@@ -93,7 +93,7 @@ public enum SpecimenStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The specimen cannot be used because of a quality issue such as a broken container, contamination, or too old.
+	 * Unsatisfactory
 	 * <!-- end-model-doc -->
 	 * @see #UNSATISFACTORY
 	 * @model name="unsatisfactory"
@@ -107,7 +107,7 @@ public enum SpecimenStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The specimen was entered in error and therefore nullified.
+	 * Entered-in-error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"

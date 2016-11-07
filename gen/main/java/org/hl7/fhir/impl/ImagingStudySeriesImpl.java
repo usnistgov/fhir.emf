@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.ImagingStudyBaseLocation1;
 import org.hl7.fhir.ImagingStudyInstance;
 import org.hl7.fhir.ImagingStudySeries;
 import org.hl7.fhir.InstanceAvailability;
 import org.hl7.fhir.Oid;
 import org.hl7.fhir.UnsignedInt;
-import org.hl7.fhir.Uri;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,13 +35,13 @@ import org.hl7.fhir.Uri;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getUid <em>Uid</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getModality <em>Modality</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getUid <em>Uid</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getNumberOfInstances <em>Number Of Instances</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getAvailability <em>Availability</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getUrl <em>Url</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getBaseLocation <em>Base Location</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getBodySite <em>Body Site</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getLaterality <em>Laterality</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImagingStudySeriesImpl#getStarted <em>Started</em>}</li>
@@ -51,6 +51,16 @@ import org.hl7.fhir.Uri;
  * @generated
  */
 public class ImagingStudySeriesImpl extends BackboneElementImpl implements ImagingStudySeries {
+	/**
+	 * The cached value of the '{@link #getUid() <em>Uid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid uid;
+
 	/**
 	 * The cached value of the '{@link #getNumber() <em>Number</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -70,16 +80,6 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	 * @ordered
 	 */
 	protected Coding modality;
-
-	/**
-	 * The cached value of the '{@link #getUid() <em>Uid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Oid uid;
 
 	/**
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference.
@@ -112,14 +112,14 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	protected InstanceAvailability availability;
 
 	/**
-	 * The cached value of the '{@link #getUrl() <em>Url</em>}' containment reference.
+	 * The cached value of the '{@link #getBaseLocation() <em>Base Location</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUrl()
+	 * @see #getBaseLocation()
 	 * @generated
 	 * @ordered
 	 */
-	protected Uri url;
+	protected EList<ImagingStudyBaseLocation1> baseLocation;
 
 	/**
 	 * The cached value of the '{@link #getBodySite() <em>Body Site</em>}' containment reference.
@@ -443,42 +443,11 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uri getUrl() {
-		return url;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetUrl(Uri newUrl, NotificationChain msgs) {
-		Uri oldUrl = url;
-		url = newUrl;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMAGING_STUDY_SERIES__URL, oldUrl, newUrl);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<ImagingStudyBaseLocation1> getBaseLocation() {
+		if (baseLocation == null) {
+			baseLocation = new EObjectContainmentEList<ImagingStudyBaseLocation1>(ImagingStudyBaseLocation1.class, this, FhirPackage.IMAGING_STUDY_SERIES__BASE_LOCATION);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUrl(Uri newUrl) {
-		if (newUrl != url) {
-			NotificationChain msgs = null;
-			if (url != null)
-				msgs = ((InternalEObject)url).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMAGING_STUDY_SERIES__URL, null, msgs);
-			if (newUrl != null)
-				msgs = ((InternalEObject)newUrl).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMAGING_STUDY_SERIES__URL, null, msgs);
-			msgs = basicSetUrl(newUrl, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMAGING_STUDY_SERIES__URL, newUrl, newUrl));
+		return baseLocation;
 	}
 
 	/**
@@ -630,20 +599,20 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case FhirPackage.IMAGING_STUDY_SERIES__UID:
+				return basicSetUid(null, msgs);
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER:
 				return basicSetNumber(null, msgs);
 			case FhirPackage.IMAGING_STUDY_SERIES__MODALITY:
 				return basicSetModality(null, msgs);
-			case FhirPackage.IMAGING_STUDY_SERIES__UID:
-				return basicSetUid(null, msgs);
 			case FhirPackage.IMAGING_STUDY_SERIES__DESCRIPTION:
 				return basicSetDescription(null, msgs);
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER_OF_INSTANCES:
 				return basicSetNumberOfInstances(null, msgs);
 			case FhirPackage.IMAGING_STUDY_SERIES__AVAILABILITY:
 				return basicSetAvailability(null, msgs);
-			case FhirPackage.IMAGING_STUDY_SERIES__URL:
-				return basicSetUrl(null, msgs);
+			case FhirPackage.IMAGING_STUDY_SERIES__BASE_LOCATION:
+				return ((InternalEList<?>)getBaseLocation()).basicRemove(otherEnd, msgs);
 			case FhirPackage.IMAGING_STUDY_SERIES__BODY_SITE:
 				return basicSetBodySite(null, msgs);
 			case FhirPackage.IMAGING_STUDY_SERIES__LATERALITY:
@@ -664,20 +633,20 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case FhirPackage.IMAGING_STUDY_SERIES__UID:
+				return getUid();
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER:
 				return getNumber();
 			case FhirPackage.IMAGING_STUDY_SERIES__MODALITY:
 				return getModality();
-			case FhirPackage.IMAGING_STUDY_SERIES__UID:
-				return getUid();
 			case FhirPackage.IMAGING_STUDY_SERIES__DESCRIPTION:
 				return getDescription();
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER_OF_INSTANCES:
 				return getNumberOfInstances();
 			case FhirPackage.IMAGING_STUDY_SERIES__AVAILABILITY:
 				return getAvailability();
-			case FhirPackage.IMAGING_STUDY_SERIES__URL:
-				return getUrl();
+			case FhirPackage.IMAGING_STUDY_SERIES__BASE_LOCATION:
+				return getBaseLocation();
 			case FhirPackage.IMAGING_STUDY_SERIES__BODY_SITE:
 				return getBodySite();
 			case FhirPackage.IMAGING_STUDY_SERIES__LATERALITY:
@@ -699,14 +668,14 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case FhirPackage.IMAGING_STUDY_SERIES__UID:
+				setUid((Oid)newValue);
+				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER:
 				setNumber((UnsignedInt)newValue);
 				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__MODALITY:
 				setModality((Coding)newValue);
-				return;
-			case FhirPackage.IMAGING_STUDY_SERIES__UID:
-				setUid((Oid)newValue);
 				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)newValue);
@@ -717,8 +686,9 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 			case FhirPackage.IMAGING_STUDY_SERIES__AVAILABILITY:
 				setAvailability((InstanceAvailability)newValue);
 				return;
-			case FhirPackage.IMAGING_STUDY_SERIES__URL:
-				setUrl((Uri)newValue);
+			case FhirPackage.IMAGING_STUDY_SERIES__BASE_LOCATION:
+				getBaseLocation().clear();
+				getBaseLocation().addAll((Collection<? extends ImagingStudyBaseLocation1>)newValue);
 				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__BODY_SITE:
 				setBodySite((Coding)newValue);
@@ -745,14 +715,14 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case FhirPackage.IMAGING_STUDY_SERIES__UID:
+				setUid((Oid)null);
+				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER:
 				setNumber((UnsignedInt)null);
 				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__MODALITY:
 				setModality((Coding)null);
-				return;
-			case FhirPackage.IMAGING_STUDY_SERIES__UID:
-				setUid((Oid)null);
 				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)null);
@@ -763,8 +733,8 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 			case FhirPackage.IMAGING_STUDY_SERIES__AVAILABILITY:
 				setAvailability((InstanceAvailability)null);
 				return;
-			case FhirPackage.IMAGING_STUDY_SERIES__URL:
-				setUrl((Uri)null);
+			case FhirPackage.IMAGING_STUDY_SERIES__BASE_LOCATION:
+				getBaseLocation().clear();
 				return;
 			case FhirPackage.IMAGING_STUDY_SERIES__BODY_SITE:
 				setBodySite((Coding)null);
@@ -790,20 +760,20 @@ public class ImagingStudySeriesImpl extends BackboneElementImpl implements Imagi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case FhirPackage.IMAGING_STUDY_SERIES__UID:
+				return uid != null;
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER:
 				return number != null;
 			case FhirPackage.IMAGING_STUDY_SERIES__MODALITY:
 				return modality != null;
-			case FhirPackage.IMAGING_STUDY_SERIES__UID:
-				return uid != null;
 			case FhirPackage.IMAGING_STUDY_SERIES__DESCRIPTION:
 				return description != null;
 			case FhirPackage.IMAGING_STUDY_SERIES__NUMBER_OF_INSTANCES:
 				return numberOfInstances != null;
 			case FhirPackage.IMAGING_STUDY_SERIES__AVAILABILITY:
 				return availability != null;
-			case FhirPackage.IMAGING_STUDY_SERIES__URL:
-				return url != null;
+			case FhirPackage.IMAGING_STUDY_SERIES__BASE_LOCATION:
+				return baseLocation != null && !baseLocation.isEmpty();
 			case FhirPackage.IMAGING_STUDY_SERIES__BODY_SITE:
 				return bodySite != null;
 			case FhirPackage.IMAGING_STUDY_SERIES__LATERALITY:

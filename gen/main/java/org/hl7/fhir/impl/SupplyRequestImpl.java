@@ -40,7 +40,8 @@ import org.hl7.fhir.SupplyRequestWhen;
  *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getOrderedItem <em>Ordered Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getOrderedItemCodeableConcept <em>Ordered Item Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getOrderedItemReference <em>Ordered Item Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getSupplier <em>Supplier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyRequestImpl#getReasonReference <em>Reason Reference</em>}</li>
@@ -111,14 +112,24 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 	protected CodeableConcept kind;
 
 	/**
-	 * The cached value of the '{@link #getOrderedItem() <em>Ordered Item</em>}' containment reference.
+	 * The cached value of the '{@link #getOrderedItemCodeableConcept() <em>Ordered Item Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrderedItem()
+	 * @see #getOrderedItemCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference orderedItem;
+	protected CodeableConcept orderedItemCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getOrderedItemReference() <em>Ordered Item Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrderedItemReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference orderedItemReference;
 
 	/**
 	 * The cached value of the '{@link #getSupplier() <em>Supplier</em>}' containment reference list.
@@ -442,8 +453,8 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getOrderedItem() {
-		return orderedItem;
+	public CodeableConcept getOrderedItemCodeableConcept() {
+		return orderedItemCodeableConcept;
 	}
 
 	/**
@@ -451,11 +462,11 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOrderedItem(Reference newOrderedItem, NotificationChain msgs) {
-		Reference oldOrderedItem = orderedItem;
-		orderedItem = newOrderedItem;
+	public NotificationChain basicSetOrderedItemCodeableConcept(CodeableConcept newOrderedItemCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldOrderedItemCodeableConcept = orderedItemCodeableConcept;
+		orderedItemCodeableConcept = newOrderedItemCodeableConcept;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM, oldOrderedItem, newOrderedItem);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT, oldOrderedItemCodeableConcept, newOrderedItemCodeableConcept);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -466,18 +477,61 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOrderedItem(Reference newOrderedItem) {
-		if (newOrderedItem != orderedItem) {
+	public void setOrderedItemCodeableConcept(CodeableConcept newOrderedItemCodeableConcept) {
+		if (newOrderedItemCodeableConcept != orderedItemCodeableConcept) {
 			NotificationChain msgs = null;
-			if (orderedItem != null)
-				msgs = ((InternalEObject)orderedItem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM, null, msgs);
-			if (newOrderedItem != null)
-				msgs = ((InternalEObject)newOrderedItem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM, null, msgs);
-			msgs = basicSetOrderedItem(newOrderedItem, msgs);
+			if (orderedItemCodeableConcept != null)
+				msgs = ((InternalEObject)orderedItemCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT, null, msgs);
+			if (newOrderedItemCodeableConcept != null)
+				msgs = ((InternalEObject)newOrderedItemCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetOrderedItemCodeableConcept(newOrderedItemCodeableConcept, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM, newOrderedItem, newOrderedItem));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT, newOrderedItemCodeableConcept, newOrderedItemCodeableConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getOrderedItemReference() {
+		return orderedItemReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOrderedItemReference(Reference newOrderedItemReference, NotificationChain msgs) {
+		Reference oldOrderedItemReference = orderedItemReference;
+		orderedItemReference = newOrderedItemReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE, oldOrderedItemReference, newOrderedItemReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrderedItemReference(Reference newOrderedItemReference) {
+		if (newOrderedItemReference != orderedItemReference) {
+			NotificationChain msgs = null;
+			if (orderedItemReference != null)
+				msgs = ((InternalEObject)orderedItemReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE, null, msgs);
+			if (newOrderedItemReference != null)
+				msgs = ((InternalEObject)newOrderedItemReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE, null, msgs);
+			msgs = basicSetOrderedItemReference(newOrderedItemReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE, newOrderedItemReference, newOrderedItemReference));
 	}
 
 	/**
@@ -641,8 +695,10 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 				return basicSetStatus(null, msgs);
 			case FhirPackage.SUPPLY_REQUEST__KIND:
 				return basicSetKind(null, msgs);
-			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM:
-				return basicSetOrderedItem(null, msgs);
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT:
+				return basicSetOrderedItemCodeableConcept(null, msgs);
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE:
+				return basicSetOrderedItemReference(null, msgs);
 			case FhirPackage.SUPPLY_REQUEST__SUPPLIER:
 				return ((InternalEList<?>)getSupplier()).basicRemove(otherEnd, msgs);
 			case FhirPackage.SUPPLY_REQUEST__REASON_CODEABLE_CONCEPT:
@@ -675,8 +731,10 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 				return getStatus();
 			case FhirPackage.SUPPLY_REQUEST__KIND:
 				return getKind();
-			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM:
-				return getOrderedItem();
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT:
+				return getOrderedItemCodeableConcept();
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE:
+				return getOrderedItemReference();
 			case FhirPackage.SUPPLY_REQUEST__SUPPLIER:
 				return getSupplier();
 			case FhirPackage.SUPPLY_REQUEST__REASON_CODEABLE_CONCEPT:
@@ -716,8 +774,11 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 			case FhirPackage.SUPPLY_REQUEST__KIND:
 				setKind((CodeableConcept)newValue);
 				return;
-			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM:
-				setOrderedItem((Reference)newValue);
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT:
+				setOrderedItemCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE:
+				setOrderedItemReference((Reference)newValue);
 				return;
 			case FhirPackage.SUPPLY_REQUEST__SUPPLIER:
 				getSupplier().clear();
@@ -762,8 +823,11 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 			case FhirPackage.SUPPLY_REQUEST__KIND:
 				setKind((CodeableConcept)null);
 				return;
-			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM:
-				setOrderedItem((Reference)null);
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT:
+				setOrderedItemCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE:
+				setOrderedItemReference((Reference)null);
 				return;
 			case FhirPackage.SUPPLY_REQUEST__SUPPLIER:
 				getSupplier().clear();
@@ -801,8 +865,10 @@ public class SupplyRequestImpl extends DomainResourceImpl implements SupplyReque
 				return status != null;
 			case FhirPackage.SUPPLY_REQUEST__KIND:
 				return kind != null;
-			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM:
-				return orderedItem != null;
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_CODEABLE_CONCEPT:
+				return orderedItemCodeableConcept != null;
+			case FhirPackage.SUPPLY_REQUEST__ORDERED_ITEM_REFERENCE:
+				return orderedItemReference != null;
 			case FhirPackage.SUPPLY_REQUEST__SUPPLIER:
 				return supplier != null && !supplier.isEmpty();
 			case FhirPackage.SUPPLY_REQUEST__REASON_CODEABLE_CONCEPT:

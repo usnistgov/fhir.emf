@@ -19,7 +19,7 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.DataElementMapping#getIdentity <em>Identity</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElementMapping#getUri <em>Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElementMapping#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.DataElementMapping#getComments <em>Comments</em>}</li>
+ *   <li>{@link org.hl7.fhir.DataElementMapping#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getDataElementMapping()
@@ -106,29 +106,29 @@ public interface DataElementMapping extends BackboneElement {
 	void setName(org.hl7.fhir.String value);
 
 	/**
-	 * Returns the value of the '<em><b>Comments</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Comment</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Comments</em>' containment reference.
-	 * @see #setComments(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getDataElementMapping_Comments()
+	 * @return the value of the '<em>Comment</em>' containment reference.
+	 * @see #setComment(org.hl7.fhir.String)
+	 * @see org.hl7.fhir.FhirPackage#getDataElementMapping_Comment()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='comments' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='comment' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getComments();
+	org.hl7.fhir.String getComment();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.DataElementMapping#getComments <em>Comments</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.DataElementMapping#getComment <em>Comment</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Comments</em>' containment reference.
-	 * @see #getComments()
+	 * @param value the new value of the '<em>Comment</em>' containment reference.
+	 * @see #getComment()
 	 * @generated
 	 */
-	void setComments(org.hl7.fhir.String value);
+	void setComment(org.hl7.fhir.String value);
 
 } // DataElementMapping

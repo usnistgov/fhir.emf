@@ -16,7 +16,8 @@ package org.hl7.fhir;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.ClinicalImpressionFinding#getItem <em>Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClinicalImpressionFinding#getItemCodeableConcept <em>Item Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClinicalImpressionFinding#getItemReference <em>Item Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ClinicalImpressionFinding#getCause <em>Cause</em>}</li>
  * </ul>
  *
@@ -26,30 +27,56 @@ package org.hl7.fhir;
  */
 public interface ClinicalImpressionFinding extends BackboneElement {
 	/**
-	 * Returns the value of the '<em><b>Item</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Item Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specific text of code for finding or diagnosis.
+	 * Specific text, code or reference for finding or diagnosis, which may include ruled-out or resolved conditions. (choose any one of item*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Item</em>' containment reference.
-	 * @see #setItem(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getClinicalImpressionFinding_Item()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='item' namespace='##targetNamespace'"
+	 * @return the value of the '<em>Item Codeable Concept</em>' containment reference.
+	 * @see #setItemCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getClinicalImpressionFinding_ItemCodeableConcept()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='itemCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getItem();
+	CodeableConcept getItemCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClinicalImpressionFinding#getItem <em>Item</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ClinicalImpressionFinding#getItemCodeableConcept <em>Item Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Item</em>' containment reference.
-	 * @see #getItem()
+	 * @param value the new value of the '<em>Item Codeable Concept</em>' containment reference.
+	 * @see #getItemCodeableConcept()
 	 * @generated
 	 */
-	void setItem(CodeableConcept value);
+	void setItemCodeableConcept(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Item Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specific text, code or reference for finding or diagnosis, which may include ruled-out or resolved conditions. (choose any one of item*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Item Reference</em>' containment reference.
+	 * @see #setItemReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getClinicalImpressionFinding_ItemReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='itemReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getItemReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClinicalImpressionFinding#getItemReference <em>Item Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Item Reference</em>' containment reference.
+	 * @see #getItemReference()
+	 * @generated
+	 */
+	void setItemReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Cause</b></em>' containment reference.

@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.CodeableConcept;
+import org.hl7.fhir.Coding;
 import org.hl7.fhir.Duration;
 import org.hl7.fhir.Encounter;
-import org.hl7.fhir.EncounterClass;
 import org.hl7.fhir.EncounterHospitalization;
 import org.hl7.fhir.EncounterLocation;
 import org.hl7.fhir.EncounterParticipant;
-import org.hl7.fhir.EncounterState;
+import org.hl7.fhir.EncounterStatus;
 import org.hl7.fhir.EncounterStatusHistory;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
@@ -54,6 +54,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.EncounterImpl#getLength <em>Length</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EncounterImpl#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EncounterImpl#getIndication <em>Indication</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EncounterImpl#getAccount <em>Account</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EncounterImpl#getHospitalization <em>Hospitalization</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EncounterImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EncounterImpl#getServiceProvider <em>Service Provider</em>}</li>
@@ -81,7 +82,7 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * @generated
 	 * @ordered
 	 */
-	protected EncounterState status;
+	protected EncounterStatus status;
 
 	/**
 	 * The cached value of the '{@link #getStatusHistory() <em>Status History</em>}' containment reference list.
@@ -101,7 +102,7 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * @generated
 	 * @ordered
 	 */
-	protected EncounterClass class_;
+	protected Coding class_;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference list.
@@ -214,6 +215,16 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	protected EList<Reference> indication;
 
 	/**
+	 * The cached value of the '{@link #getAccount() <em>Account</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAccount()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> account;
+
+	/**
 	 * The cached value of the '{@link #getHospitalization() <em>Hospitalization</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -289,7 +300,7 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EncounterState getStatus() {
+	public EncounterStatus getStatus() {
 		return status;
 	}
 
@@ -298,8 +309,8 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStatus(EncounterState newStatus, NotificationChain msgs) {
-		EncounterState oldStatus = status;
+	public NotificationChain basicSetStatus(EncounterStatus newStatus, NotificationChain msgs) {
+		EncounterStatus oldStatus = status;
 		status = newStatus;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENCOUNTER__STATUS, oldStatus, newStatus);
@@ -313,7 +324,7 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStatus(EncounterState newStatus) {
+	public void setStatus(EncounterStatus newStatus) {
 		if (newStatus != status) {
 			NotificationChain msgs = null;
 			if (status != null)
@@ -344,7 +355,7 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EncounterClass getClass_() {
+	public Coding getClass_() {
 		return class_;
 	}
 
@@ -353,8 +364,8 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetClass(EncounterClass newClass, NotificationChain msgs) {
-		EncounterClass oldClass = class_;
+	public NotificationChain basicSetClass(Coding newClass, NotificationChain msgs) {
+		Coding oldClass = class_;
 		class_ = newClass;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENCOUNTER__CLASS, oldClass, newClass);
@@ -368,7 +379,7 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setClass(EncounterClass newClass) {
+	public void setClass(Coding newClass) {
 		if (newClass != class_) {
 			NotificationChain msgs = null;
 			if (class_ != null)
@@ -674,6 +685,18 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Reference> getAccount() {
+		if (account == null) {
+			account = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.ENCOUNTER__ACCOUNT);
+		}
+		return account;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EncounterHospitalization getHospitalization() {
 		return hospitalization;
 	}
@@ -848,6 +871,8 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 				return ((InternalEList<?>)getReason()).basicRemove(otherEnd, msgs);
 			case FhirPackage.ENCOUNTER__INDICATION:
 				return ((InternalEList<?>)getIndication()).basicRemove(otherEnd, msgs);
+			case FhirPackage.ENCOUNTER__ACCOUNT:
+				return ((InternalEList<?>)getAccount()).basicRemove(otherEnd, msgs);
 			case FhirPackage.ENCOUNTER__HOSPITALIZATION:
 				return basicSetHospitalization(null, msgs);
 			case FhirPackage.ENCOUNTER__LOCATION:
@@ -898,6 +923,8 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 				return getReason();
 			case FhirPackage.ENCOUNTER__INDICATION:
 				return getIndication();
+			case FhirPackage.ENCOUNTER__ACCOUNT:
+				return getAccount();
 			case FhirPackage.ENCOUNTER__HOSPITALIZATION:
 				return getHospitalization();
 			case FhirPackage.ENCOUNTER__LOCATION:
@@ -924,14 +951,14 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
 				return;
 			case FhirPackage.ENCOUNTER__STATUS:
-				setStatus((EncounterState)newValue);
+				setStatus((EncounterStatus)newValue);
 				return;
 			case FhirPackage.ENCOUNTER__STATUS_HISTORY:
 				getStatusHistory().clear();
 				getStatusHistory().addAll((Collection<? extends EncounterStatusHistory>)newValue);
 				return;
 			case FhirPackage.ENCOUNTER__CLASS:
-				setClass((EncounterClass)newValue);
+				setClass((Coding)newValue);
 				return;
 			case FhirPackage.ENCOUNTER__TYPE:
 				getType().clear();
@@ -972,6 +999,10 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 				getIndication().clear();
 				getIndication().addAll((Collection<? extends Reference>)newValue);
 				return;
+			case FhirPackage.ENCOUNTER__ACCOUNT:
+				getAccount().clear();
+				getAccount().addAll((Collection<? extends Reference>)newValue);
+				return;
 			case FhirPackage.ENCOUNTER__HOSPITALIZATION:
 				setHospitalization((EncounterHospitalization)newValue);
 				return;
@@ -1001,13 +1032,13 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 				getIdentifier().clear();
 				return;
 			case FhirPackage.ENCOUNTER__STATUS:
-				setStatus((EncounterState)null);
+				setStatus((EncounterStatus)null);
 				return;
 			case FhirPackage.ENCOUNTER__STATUS_HISTORY:
 				getStatusHistory().clear();
 				return;
 			case FhirPackage.ENCOUNTER__CLASS:
-				setClass((EncounterClass)null);
+				setClass((Coding)null);
 				return;
 			case FhirPackage.ENCOUNTER__TYPE:
 				getType().clear();
@@ -1041,6 +1072,9 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 				return;
 			case FhirPackage.ENCOUNTER__INDICATION:
 				getIndication().clear();
+				return;
+			case FhirPackage.ENCOUNTER__ACCOUNT:
+				getAccount().clear();
 				return;
 			case FhirPackage.ENCOUNTER__HOSPITALIZATION:
 				setHospitalization((EncounterHospitalization)null);
@@ -1096,6 +1130,8 @@ public class EncounterImpl extends DomainResourceImpl implements Encounter {
 				return reason != null && !reason.isEmpty();
 			case FhirPackage.ENCOUNTER__INDICATION:
 				return indication != null && !indication.isEmpty();
+			case FhirPackage.ENCOUNTER__ACCOUNT:
+				return account != null && !account.isEmpty();
 			case FhirPackage.ENCOUNTER__HOSPITALIZATION:
 				return hospitalization != null;
 			case FhirPackage.ENCOUNTER__LOCATION:

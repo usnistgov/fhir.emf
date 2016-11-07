@@ -16,7 +16,8 @@ package org.hl7.fhir;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.MedicationIngredient#getItem <em>Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationIngredient#getItemCodeableConcept <em>Item Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationIngredient#getItemReference <em>Item Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationIngredient#getAmount <em>Amount</em>}</li>
  * </ul>
  *
@@ -26,37 +27,63 @@ package org.hl7.fhir;
  */
 public interface MedicationIngredient extends BackboneElement {
 	/**
-	 * Returns the value of the '<em><b>Item</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Item Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The actual ingredient - either a substance (simple ingredient) or another medication.
+	 * The actual ingredient - either a substance (simple ingredient) or another medication. (choose any one of item*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Item</em>' containment reference.
-	 * @see #setItem(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getMedicationIngredient_Item()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='item' namespace='##targetNamespace'"
+	 * @return the value of the '<em>Item Codeable Concept</em>' containment reference.
+	 * @see #setItemCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationIngredient_ItemCodeableConcept()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='itemCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getItem();
+	CodeableConcept getItemCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MedicationIngredient#getItem <em>Item</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationIngredient#getItemCodeableConcept <em>Item Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Item</em>' containment reference.
-	 * @see #getItem()
+	 * @param value the new value of the '<em>Item Codeable Concept</em>' containment reference.
+	 * @see #getItemCodeableConcept()
 	 * @generated
 	 */
-	void setItem(Reference value);
+	void setItemCodeableConcept(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Item Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The actual ingredient - either a substance (simple ingredient) or another medication. (choose any one of item*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Item Reference</em>' containment reference.
+	 * @see #setItemReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationIngredient_ItemReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='itemReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getItemReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationIngredient#getItemReference <em>Item Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Item Reference</em>' containment reference.
+	 * @see #getItemReference()
+	 * @generated
+	 */
+	void setItemReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Amount</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.
+	 * Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Amount</em>' containment reference.
 	 * @see #setAmount(Ratio)

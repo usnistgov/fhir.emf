@@ -21,76 +21,72 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum AllergyIntoleranceCriticalityList implements Enumerator {
 	/**
-	 * The '<em><b>CRITL</b></em>' literal object.
+	 * The '<em><b>Low</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CRITL_VALUE
+	 * @see #LOW_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CRITL(0, "CRITL", "CRITL"),
-
-	/**
-	 * The '<em><b>CRITH</b></em>' literal object.
+	LOW(0, "low", "low"), /**
+	 * The '<em><b>High</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CRITH_VALUE
+	 * @see #HIGH_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CRITH(1, "CRITH", "CRITH"),
-
-	/**
-	 * The '<em><b>CRITU</b></em>' literal object.
+	HIGH(1, "high", "high"), /**
+	 * The '<em><b>Unable To Assess</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CRITU_VALUE
+	 * @see #UNABLE_TO_ASSESS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CRITU(2, "CRITU", "CRITU");
+	UNABLE_TO_ASSESS(2, "unableToAssess", "unable-to-assess");
 
 	/**
-	 * The '<em><b>CRITL</b></em>' literal value.
+	 * The '<em><b>Low</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The potential clinical impact of a future reaction is estimated as low risk: exposure to substance is unlikely to result in a life threatening or organ system threatening outcome. Future exposure to the Substance is considered a relative contra-indication.
+	 * Low Risk
 	 * <!-- end-model-doc -->
-	 * @see #CRITL
-	 * @model
+	 * @see #LOW
+	 * @model name="low"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CRITL_VALUE = 0;
+	public static final int LOW_VALUE = 0;
 
 	/**
-	 * The '<em><b>CRITH</b></em>' literal value.
+	 * The '<em><b>High</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The potential clinical impact of a future reaction is estimated as high risk: exposure to substance may result in a life threatening or organ system threatening outcome. Future exposure to the Substance may be considered an absolute contra-indication.
+	 * High Risk
 	 * <!-- end-model-doc -->
-	 * @see #CRITH
-	 * @model
+	 * @see #HIGH
+	 * @model name="high"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CRITH_VALUE = 1;
+	public static final int HIGH_VALUE = 1;
 
 	/**
-	 * The '<em><b>CRITU</b></em>' literal value.
+	 * The '<em><b>Unable To Assess</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Unable to assess the potential clinical impact with the information available.
+	 * Unable to Assess Risk
 	 * <!-- end-model-doc -->
-	 * @see #CRITU
-	 * @model
+	 * @see #UNABLE_TO_ASSESS
+	 * @model name="unableToAssess" literal="unable-to-assess"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CRITU_VALUE = 2;
+	public static final int UNABLE_TO_ASSESS_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Allergy Intolerance Criticality List</b></em>' enumerators.
@@ -100,9 +96,9 @@ public enum AllergyIntoleranceCriticalityList implements Enumerator {
 	 */
 	private static final AllergyIntoleranceCriticalityList[] VALUES_ARRAY =
 		new AllergyIntoleranceCriticalityList[] {
-			CRITL,
-			CRITH,
-			CRITU,
+			LOW,
+			HIGH,
+			UNABLE_TO_ASSESS,
 		};
 
 	/**
@@ -159,9 +155,9 @@ public enum AllergyIntoleranceCriticalityList implements Enumerator {
 	 */
 	public static AllergyIntoleranceCriticalityList get(int value) {
 		switch (value) {
-			case CRITL_VALUE: return CRITL;
-			case CRITH_VALUE: return CRITH;
-			case CRITU_VALUE: return CRITU;
+			case LOW_VALUE: return LOW;
+			case HIGH_VALUE: return HIGH;
+			case UNABLE_TO_ASSESS_VALUE: return UNABLE_TO_ASSESS;
 		}
 		return null;
 	}

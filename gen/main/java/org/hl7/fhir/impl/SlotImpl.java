@@ -34,9 +34,12 @@ import org.hl7.fhir.SlotStatus;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.SlotImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.SlotImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SlotImpl#getServiceCategory <em>Service Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SlotImpl#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SlotImpl#getSpecialty <em>Specialty</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SlotImpl#getAppointmentType <em>Appointment Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SlotImpl#getSchedule <em>Schedule</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.SlotImpl#getFreeBusyType <em>Free Busy Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SlotImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SlotImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SlotImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SlotImpl#getOverbooked <em>Overbooked</em>}</li>
@@ -57,14 +60,44 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	protected EList<Identifier> identifier;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * The cached value of the '{@link #getServiceCategory() <em>Service Category</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getServiceCategory()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept type;
+	protected CodeableConcept serviceCategory;
+
+	/**
+	 * The cached value of the '{@link #getServiceType() <em>Service Type</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getServiceType()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CodeableConcept> serviceType;
+
+	/**
+	 * The cached value of the '{@link #getSpecialty() <em>Specialty</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecialty()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CodeableConcept> specialty;
+
+	/**
+	 * The cached value of the '{@link #getAppointmentType() <em>Appointment Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppointmentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected CodeableConcept appointmentType;
 
 	/**
 	 * The cached value of the '{@link #getSchedule() <em>Schedule</em>}' containment reference.
@@ -77,14 +110,14 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	protected Reference schedule;
 
 	/**
-	 * The cached value of the '{@link #getFreeBusyType() <em>Free Busy Type</em>}' containment reference.
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFreeBusyType()
+	 * @see #getStatus()
 	 * @generated
 	 * @ordered
 	 */
-	protected SlotStatus freeBusyType;
+	protected SlotStatus status;
 
 	/**
 	 * The cached value of the '{@link #getStart() <em>Start</em>}' containment reference.
@@ -162,8 +195,8 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getType() {
-		return type;
+	public CodeableConcept getServiceCategory() {
+		return serviceCategory;
 	}
 
 	/**
@@ -171,11 +204,11 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(CodeableConcept newType, NotificationChain msgs) {
-		CodeableConcept oldType = type;
-		type = newType;
+	public NotificationChain basicSetServiceCategory(CodeableConcept newServiceCategory, NotificationChain msgs) {
+		CodeableConcept oldServiceCategory = serviceCategory;
+		serviceCategory = newServiceCategory;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__SERVICE_CATEGORY, oldServiceCategory, newServiceCategory);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -186,18 +219,85 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(CodeableConcept newType) {
-		if (newType != type) {
+	public void setServiceCategory(CodeableConcept newServiceCategory) {
+		if (newServiceCategory != serviceCategory) {
 			NotificationChain msgs = null;
-			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__TYPE, null, msgs);
-			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__TYPE, null, msgs);
-			msgs = basicSetType(newType, msgs);
+			if (serviceCategory != null)
+				msgs = ((InternalEObject)serviceCategory).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__SERVICE_CATEGORY, null, msgs);
+			if (newServiceCategory != null)
+				msgs = ((InternalEObject)newServiceCategory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__SERVICE_CATEGORY, null, msgs);
+			msgs = basicSetServiceCategory(newServiceCategory, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__SERVICE_CATEGORY, newServiceCategory, newServiceCategory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CodeableConcept> getServiceType() {
+		if (serviceType == null) {
+			serviceType = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.SLOT__SERVICE_TYPE);
+		}
+		return serviceType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CodeableConcept> getSpecialty() {
+		if (specialty == null) {
+			specialty = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.SLOT__SPECIALTY);
+		}
+		return specialty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CodeableConcept getAppointmentType() {
+		return appointmentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAppointmentType(CodeableConcept newAppointmentType, NotificationChain msgs) {
+		CodeableConcept oldAppointmentType = appointmentType;
+		appointmentType = newAppointmentType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__APPOINTMENT_TYPE, oldAppointmentType, newAppointmentType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAppointmentType(CodeableConcept newAppointmentType) {
+		if (newAppointmentType != appointmentType) {
+			NotificationChain msgs = null;
+			if (appointmentType != null)
+				msgs = ((InternalEObject)appointmentType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__APPOINTMENT_TYPE, null, msgs);
+			if (newAppointmentType != null)
+				msgs = ((InternalEObject)newAppointmentType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__APPOINTMENT_TYPE, null, msgs);
+			msgs = basicSetAppointmentType(newAppointmentType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__APPOINTMENT_TYPE, newAppointmentType, newAppointmentType));
 	}
 
 	/**
@@ -248,8 +348,8 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SlotStatus getFreeBusyType() {
-		return freeBusyType;
+	public SlotStatus getStatus() {
+		return status;
 	}
 
 	/**
@@ -257,11 +357,11 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFreeBusyType(SlotStatus newFreeBusyType, NotificationChain msgs) {
-		SlotStatus oldFreeBusyType = freeBusyType;
-		freeBusyType = newFreeBusyType;
+	public NotificationChain basicSetStatus(SlotStatus newStatus, NotificationChain msgs) {
+		SlotStatus oldStatus = status;
+		status = newStatus;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__FREE_BUSY_TYPE, oldFreeBusyType, newFreeBusyType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__STATUS, oldStatus, newStatus);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -272,18 +372,18 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFreeBusyType(SlotStatus newFreeBusyType) {
-		if (newFreeBusyType != freeBusyType) {
+	public void setStatus(SlotStatus newStatus) {
+		if (newStatus != status) {
 			NotificationChain msgs = null;
-			if (freeBusyType != null)
-				msgs = ((InternalEObject)freeBusyType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__FREE_BUSY_TYPE, null, msgs);
-			if (newFreeBusyType != null)
-				msgs = ((InternalEObject)newFreeBusyType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__FREE_BUSY_TYPE, null, msgs);
-			msgs = basicSetFreeBusyType(newFreeBusyType, msgs);
+			if (status != null)
+				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__STATUS, null, msgs);
+			if (newStatus != null)
+				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SLOT__STATUS, null, msgs);
+			msgs = basicSetStatus(newStatus, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__FREE_BUSY_TYPE, newFreeBusyType, newFreeBusyType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SLOT__STATUS, newStatus, newStatus));
 	}
 
 	/**
@@ -468,12 +568,18 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 		switch (featureID) {
 			case FhirPackage.SLOT__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
-			case FhirPackage.SLOT__TYPE:
-				return basicSetType(null, msgs);
+			case FhirPackage.SLOT__SERVICE_CATEGORY:
+				return basicSetServiceCategory(null, msgs);
+			case FhirPackage.SLOT__SERVICE_TYPE:
+				return ((InternalEList<?>)getServiceType()).basicRemove(otherEnd, msgs);
+			case FhirPackage.SLOT__SPECIALTY:
+				return ((InternalEList<?>)getSpecialty()).basicRemove(otherEnd, msgs);
+			case FhirPackage.SLOT__APPOINTMENT_TYPE:
+				return basicSetAppointmentType(null, msgs);
 			case FhirPackage.SLOT__SCHEDULE:
 				return basicSetSchedule(null, msgs);
-			case FhirPackage.SLOT__FREE_BUSY_TYPE:
-				return basicSetFreeBusyType(null, msgs);
+			case FhirPackage.SLOT__STATUS:
+				return basicSetStatus(null, msgs);
 			case FhirPackage.SLOT__START:
 				return basicSetStart(null, msgs);
 			case FhirPackage.SLOT__END:
@@ -496,12 +602,18 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 		switch (featureID) {
 			case FhirPackage.SLOT__IDENTIFIER:
 				return getIdentifier();
-			case FhirPackage.SLOT__TYPE:
-				return getType();
+			case FhirPackage.SLOT__SERVICE_CATEGORY:
+				return getServiceCategory();
+			case FhirPackage.SLOT__SERVICE_TYPE:
+				return getServiceType();
+			case FhirPackage.SLOT__SPECIALTY:
+				return getSpecialty();
+			case FhirPackage.SLOT__APPOINTMENT_TYPE:
+				return getAppointmentType();
 			case FhirPackage.SLOT__SCHEDULE:
 				return getSchedule();
-			case FhirPackage.SLOT__FREE_BUSY_TYPE:
-				return getFreeBusyType();
+			case FhirPackage.SLOT__STATUS:
+				return getStatus();
 			case FhirPackage.SLOT__START:
 				return getStart();
 			case FhirPackage.SLOT__END:
@@ -527,14 +639,25 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
 				return;
-			case FhirPackage.SLOT__TYPE:
-				setType((CodeableConcept)newValue);
+			case FhirPackage.SLOT__SERVICE_CATEGORY:
+				setServiceCategory((CodeableConcept)newValue);
+				return;
+			case FhirPackage.SLOT__SERVICE_TYPE:
+				getServiceType().clear();
+				getServiceType().addAll((Collection<? extends CodeableConcept>)newValue);
+				return;
+			case FhirPackage.SLOT__SPECIALTY:
+				getSpecialty().clear();
+				getSpecialty().addAll((Collection<? extends CodeableConcept>)newValue);
+				return;
+			case FhirPackage.SLOT__APPOINTMENT_TYPE:
+				setAppointmentType((CodeableConcept)newValue);
 				return;
 			case FhirPackage.SLOT__SCHEDULE:
 				setSchedule((Reference)newValue);
 				return;
-			case FhirPackage.SLOT__FREE_BUSY_TYPE:
-				setFreeBusyType((SlotStatus)newValue);
+			case FhirPackage.SLOT__STATUS:
+				setStatus((SlotStatus)newValue);
 				return;
 			case FhirPackage.SLOT__START:
 				setStart((Instant)newValue);
@@ -563,14 +686,23 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 			case FhirPackage.SLOT__IDENTIFIER:
 				getIdentifier().clear();
 				return;
-			case FhirPackage.SLOT__TYPE:
-				setType((CodeableConcept)null);
+			case FhirPackage.SLOT__SERVICE_CATEGORY:
+				setServiceCategory((CodeableConcept)null);
+				return;
+			case FhirPackage.SLOT__SERVICE_TYPE:
+				getServiceType().clear();
+				return;
+			case FhirPackage.SLOT__SPECIALTY:
+				getSpecialty().clear();
+				return;
+			case FhirPackage.SLOT__APPOINTMENT_TYPE:
+				setAppointmentType((CodeableConcept)null);
 				return;
 			case FhirPackage.SLOT__SCHEDULE:
 				setSchedule((Reference)null);
 				return;
-			case FhirPackage.SLOT__FREE_BUSY_TYPE:
-				setFreeBusyType((SlotStatus)null);
+			case FhirPackage.SLOT__STATUS:
+				setStatus((SlotStatus)null);
 				return;
 			case FhirPackage.SLOT__START:
 				setStart((Instant)null);
@@ -598,12 +730,18 @@ public class SlotImpl extends DomainResourceImpl implements Slot {
 		switch (featureID) {
 			case FhirPackage.SLOT__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
-			case FhirPackage.SLOT__TYPE:
-				return type != null;
+			case FhirPackage.SLOT__SERVICE_CATEGORY:
+				return serviceCategory != null;
+			case FhirPackage.SLOT__SERVICE_TYPE:
+				return serviceType != null && !serviceType.isEmpty();
+			case FhirPackage.SLOT__SPECIALTY:
+				return specialty != null && !specialty.isEmpty();
+			case FhirPackage.SLOT__APPOINTMENT_TYPE:
+				return appointmentType != null;
 			case FhirPackage.SLOT__SCHEDULE:
 				return schedule != null;
-			case FhirPackage.SLOT__FREE_BUSY_TYPE:
-				return freeBusyType != null;
+			case FhirPackage.SLOT__STATUS:
+				return status != null;
 			case FhirPackage.SLOT__START:
 				return start != null;
 			case FhirPackage.SLOT__END:

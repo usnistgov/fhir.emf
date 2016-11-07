@@ -125,7 +125,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has been proposed.
+	 * Proposed
 	 * <!-- end-model-doc -->
 	 * @see #PROPOSED
 	 * @model name="proposed"
@@ -139,7 +139,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request is in preliminary form, prior to being requested.
+	 * Draft
 	 * <!-- end-model-doc -->
 	 * @see #DRAFT
 	 * @model name="draft"
@@ -153,7 +153,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has been placed.
+	 * Requested
 	 * <!-- end-model-doc -->
 	 * @see #REQUESTED
 	 * @model name="requested"
@@ -167,7 +167,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The receiving system has received the request but not yet decided whether it will be performed.
+	 * Received
 	 * <!-- end-model-doc -->
 	 * @see #RECEIVED
 	 * @model name="received"
@@ -181,7 +181,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The receiving system has accepted the request, but work has not yet commenced.
+	 * Accepted
 	 * <!-- end-model-doc -->
 	 * @see #ACCEPTED
 	 * @model name="accepted"
@@ -195,7 +195,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The work to fulfill the request is happening.
+	 * In Progress
 	 * <!-- end-model-doc -->
 	 * @see #IN_PROGRESS
 	 * @model name="inProgress" literal="in-progress"
@@ -209,7 +209,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The work has been completed, the report(s) released, and no further work is planned.
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -223,7 +223,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has been held by originating system/user request.
+	 * Suspended
 	 * <!-- end-model-doc -->
 	 * @see #SUSPENDED
 	 * @model name="suspended"
@@ -237,7 +237,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The receiving system has declined to fulfill the request.
+	 * Rejected
 	 * <!-- end-model-doc -->
 	 * @see #REJECTED
 	 * @model name="rejected"
@@ -251,7 +251,7 @@ public enum ProcedureRequestStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request was attempted, but due to some procedural error, it could not be completed.
+	 * Aborted
 	 * <!-- end-model-doc -->
 	 * @see #ABORTED
 	 * @model name="aborted"

@@ -22,6 +22,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Signature#getWhen <em>When</em>}</li>
  *   <li>{@link org.hl7.fhir.Signature#getWhoUri <em>Who Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.Signature#getWhoReference <em>Who Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.Signature#getOnBehalfOfUri <em>On Behalf Of Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.Signature#getOnBehalfOfReference <em>On Behalf Of Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.Signature#getContentType <em>Content Type</em>}</li>
  *   <li>{@link org.hl7.fhir.Signature#getBlob <em>Blob</em>}</li>
  * </ul>
@@ -78,7 +80,7 @@ public interface Signature extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key). (choose any one of who*, but only one)
+	 * A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key). (choose any one of who*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Who Uri</em>' containment reference.
 	 * @see #setWhoUri(Uri)
@@ -104,7 +106,7 @@ public interface Signature extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key). (choose any one of who*, but only one)
+	 * A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key). (choose any one of who*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Who Reference</em>' containment reference.
 	 * @see #setWhoReference(Reference)
@@ -126,16 +128,68 @@ public interface Signature extends Element {
 	void setWhoReference(Reference value);
 
 	/**
+	 * Returns the value of the '<em><b>On Behalf Of Uri</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A reference to an application-usable description of the identity that is represented by the signature. (choose any one of onBehalfOf*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>On Behalf Of Uri</em>' containment reference.
+	 * @see #setOnBehalfOfUri(Uri)
+	 * @see org.hl7.fhir.FhirPackage#getSignature_OnBehalfOfUri()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='onBehalfOfUri' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Uri getOnBehalfOfUri();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Signature#getOnBehalfOfUri <em>On Behalf Of Uri</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>On Behalf Of Uri</em>' containment reference.
+	 * @see #getOnBehalfOfUri()
+	 * @generated
+	 */
+	void setOnBehalfOfUri(Uri value);
+
+	/**
+	 * Returns the value of the '<em><b>On Behalf Of Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A reference to an application-usable description of the identity that is represented by the signature. (choose any one of onBehalfOf*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>On Behalf Of Reference</em>' containment reference.
+	 * @see #setOnBehalfOfReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getSignature_OnBehalfOfReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='onBehalfOfReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getOnBehalfOfReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Signature#getOnBehalfOfReference <em>On Behalf Of Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>On Behalf Of Reference</em>' containment reference.
+	 * @see #getOnBehalfOfReference()
+	 * @generated
+	 */
+	void setOnBehalfOfReference(Reference value);
+
+	/**
 	 * Returns the value of the '<em><b>Content Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature.
+	 * A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Content Type</em>' containment reference.
 	 * @see #setContentType(Code)
 	 * @see org.hl7.fhir.FhirPackage#getSignature_ContentType()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='contentType' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -156,12 +210,12 @@ public interface Signature extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The base64 encoding of the Signature content.
+	 * The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Blob</em>' containment reference.
 	 * @see #setBlob(Base64Binary)
 	 * @see org.hl7.fhir.FhirPackage#getSignature_Blob()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='blob' namespace='##targetNamespace'"
 	 * @generated
 	 */

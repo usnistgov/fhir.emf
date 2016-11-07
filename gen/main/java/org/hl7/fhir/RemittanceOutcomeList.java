@@ -38,14 +38,22 @@ public enum RemittanceOutcomeList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ERROR(1, "error", "error");
+	ERROR(1, "error", "error"), /**
+	 * The '<em><b>Partial</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PARTIAL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PARTIAL(2, "partial", "partial");
 
 	/**
 	 * The '<em><b>Complete</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The processing completed without errors.
+	 * Processing Complete
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETE
 	 * @model name="complete"
@@ -59,7 +67,7 @@ public enum RemittanceOutcomeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The processing identified errors.
+	 * Error
 	 * <!-- end-model-doc -->
 	 * @see #ERROR
 	 * @model name="error"
@@ -67,6 +75,20 @@ public enum RemittanceOutcomeList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int ERROR_VALUE = 1;
+
+	/**
+	 * The '<em><b>Partial</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Partial Processing
+	 * <!-- end-model-doc -->
+	 * @see #PARTIAL
+	 * @model name="partial"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PARTIAL_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Remittance Outcome List</b></em>' enumerators.
@@ -78,6 +100,7 @@ public enum RemittanceOutcomeList implements Enumerator {
 		new RemittanceOutcomeList[] {
 			COMPLETE,
 			ERROR,
+			PARTIAL,
 		};
 
 	/**
@@ -136,6 +159,7 @@ public enum RemittanceOutcomeList implements Enumerator {
 		switch (value) {
 			case COMPLETE_VALUE: return COMPLETE;
 			case ERROR_VALUE: return ERROR;
+			case PARTIAL_VALUE: return PARTIAL;
 		}
 		return null;
 	}

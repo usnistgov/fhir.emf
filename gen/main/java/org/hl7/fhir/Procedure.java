@@ -26,8 +26,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Procedure#getNotPerformed <em>Not Performed</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getReasonNotPerformed <em>Reason Not Performed</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getBodySite <em>Body Site</em>}</li>
- *   <li>{@link org.hl7.fhir.Procedure#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getReasonReference <em>Reason Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.Procedure#getReasonCode <em>Reason Code</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getPerformer <em>Performer</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getPerformedDateTime <em>Performed Date Time</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getPerformedPeriod <em>Performed Period</em>}</li>
@@ -40,7 +40,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Procedure#getRequest <em>Request</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getNotes <em>Notes</em>}</li>
  *   <li>{@link org.hl7.fhir.Procedure#getFocalDevice <em>Focal Device</em>}</li>
- *   <li>{@link org.hl7.fhir.Procedure#getUsed <em>Used</em>}</li>
+ *   <li>{@link org.hl7.fhir.Procedure#getUsedReference <em>Used Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.Procedure#getUsedCode <em>Used Code</em>}</li>
+ *   <li>{@link org.hl7.fhir.Procedure#getComponent <em>Component</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getProcedure()
@@ -227,56 +229,36 @@ public interface Procedure extends DomainResource {
 	EList<CodeableConcept> getBodySite();
 
 	/**
-	 * Returns the value of the '<em><b>Reason Codeable Concept</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Reason Reference</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text. (choose any one of reason*, but only one)
+	 * The condition that is the reason why the procedure was performed.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Reason Codeable Concept</em>' containment reference.
-	 * @see #setReasonCodeableConcept(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getProcedure_ReasonCodeableConcept()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='reasonCodeableConcept' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	CodeableConcept getReasonCodeableConcept();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Procedure#getReasonCodeableConcept <em>Reason Codeable Concept</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reason Codeable Concept</em>' containment reference.
-	 * @see #getReasonCodeableConcept()
-	 * @generated
-	 */
-	void setReasonCodeableConcept(CodeableConcept value);
-
-	/**
-	 * Returns the value of the '<em><b>Reason Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text. (choose any one of reason*, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Reason Reference</em>' containment reference.
-	 * @see #setReasonReference(Reference)
+	 * @return the value of the '<em>Reason Reference</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getProcedure_ReasonReference()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='reasonReference' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getReasonReference();
+	EList<Reference> getReasonReference();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Procedure#getReasonReference <em>Reason Reference</em>}' containment reference.
+	 * Returns the value of the '<em><b>Reason Code</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reason Reference</em>' containment reference.
-	 * @see #getReasonReference()
+	 * <!-- begin-model-doc -->
+	 * The coded reason why the procedure was performed. This may be coded entity of some type, or may simply be present as text.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Reason Code</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getProcedure_ReasonCode()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='reasonCode' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	void setReasonReference(Reference value);
+	EList<CodeableConcept> getReasonCode();
 
 	/**
 	 * Returns the value of the '<em><b>Performer</b></em>' containment reference list.
@@ -531,19 +513,51 @@ public interface Procedure extends DomainResource {
 	EList<ProcedureFocalDevice> getFocalDevice();
 
 	/**
-	 * Returns the value of the '<em><b>Used</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Used Reference</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Identifies medications, devices and any other substance used as part of the procedure.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Used</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getProcedure_Used()
+	 * @return the value of the '<em>Used Reference</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getProcedure_UsedReference()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='used' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='usedReference' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<Reference> getUsed();
+	EList<Reference> getUsedReference();
+
+	/**
+	 * Returns the value of the '<em><b>Used Code</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifies coded items that were used as part of the procedure.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Used Code</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getProcedure_UsedCode()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='usedCode' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CodeableConcept> getUsedCode();
+
+	/**
+	 * Returns the value of the '<em><b>Component</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifies medication administrations, other procedures or observations that are related to this procedure.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Component</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getProcedure_Component()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='component' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getComponent();
 
 } // Procedure

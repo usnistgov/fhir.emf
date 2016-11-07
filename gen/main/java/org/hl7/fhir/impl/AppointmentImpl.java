@@ -21,6 +21,7 @@ import org.hl7.fhir.Appointment;
 import org.hl7.fhir.AppointmentParticipant;
 import org.hl7.fhir.AppointmentStatus;
 import org.hl7.fhir.CodeableConcept;
+import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Instant;
@@ -38,7 +39,10 @@ import org.hl7.fhir.UnsignedInt;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getServiceCategory <em>Service Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getSpecialty <em>Specialty</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getAppointmentType <em>Appointment Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getDescription <em>Description</em>}</li>
@@ -46,6 +50,7 @@ import org.hl7.fhir.UnsignedInt;
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getMinutesDuration <em>Minutes Duration</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getSlot <em>Slot</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getCreated <em>Created</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getComment <em>Comment</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getParticipant <em>Participant</em>}</li>
  * </ul>
@@ -74,14 +79,44 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	protected AppointmentStatus status;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * The cached value of the '{@link #getServiceCategory() <em>Service Category</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getServiceCategory()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept type;
+	protected CodeableConcept serviceCategory;
+
+	/**
+	 * The cached value of the '{@link #getServiceType() <em>Service Type</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getServiceType()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CodeableConcept> serviceType;
+
+	/**
+	 * The cached value of the '{@link #getSpecialty() <em>Specialty</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecialty()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CodeableConcept> specialty;
+
+	/**
+	 * The cached value of the '{@link #getAppointmentType() <em>Appointment Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppointmentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected CodeableConcept appointmentType;
 
 	/**
 	 * The cached value of the '{@link #getReason() <em>Reason</em>}' containment reference.
@@ -152,6 +187,16 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * @ordered
 	 */
 	protected EList<Reference> slot;
+
+	/**
+	 * The cached value of the '{@link #getCreated() <em>Created</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreated()
+	 * @generated
+	 * @ordered
+	 */
+	protected DateTime created;
 
 	/**
 	 * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
@@ -252,8 +297,8 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getType() {
-		return type;
+	public CodeableConcept getServiceCategory() {
+		return serviceCategory;
 	}
 
 	/**
@@ -261,11 +306,11 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(CodeableConcept newType, NotificationChain msgs) {
-		CodeableConcept oldType = type;
-		type = newType;
+	public NotificationChain basicSetServiceCategory(CodeableConcept newServiceCategory, NotificationChain msgs) {
+		CodeableConcept oldServiceCategory = serviceCategory;
+		serviceCategory = newServiceCategory;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__SERVICE_CATEGORY, oldServiceCategory, newServiceCategory);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -276,18 +321,85 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(CodeableConcept newType) {
-		if (newType != type) {
+	public void setServiceCategory(CodeableConcept newServiceCategory) {
+		if (newServiceCategory != serviceCategory) {
 			NotificationChain msgs = null;
-			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__TYPE, null, msgs);
-			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__TYPE, null, msgs);
-			msgs = basicSetType(newType, msgs);
+			if (serviceCategory != null)
+				msgs = ((InternalEObject)serviceCategory).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__SERVICE_CATEGORY, null, msgs);
+			if (newServiceCategory != null)
+				msgs = ((InternalEObject)newServiceCategory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__SERVICE_CATEGORY, null, msgs);
+			msgs = basicSetServiceCategory(newServiceCategory, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__SERVICE_CATEGORY, newServiceCategory, newServiceCategory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CodeableConcept> getServiceType() {
+		if (serviceType == null) {
+			serviceType = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.APPOINTMENT__SERVICE_TYPE);
+		}
+		return serviceType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CodeableConcept> getSpecialty() {
+		if (specialty == null) {
+			specialty = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.APPOINTMENT__SPECIALTY);
+		}
+		return specialty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CodeableConcept getAppointmentType() {
+		return appointmentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAppointmentType(CodeableConcept newAppointmentType, NotificationChain msgs) {
+		CodeableConcept oldAppointmentType = appointmentType;
+		appointmentType = newAppointmentType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__APPOINTMENT_TYPE, oldAppointmentType, newAppointmentType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAppointmentType(CodeableConcept newAppointmentType) {
+		if (newAppointmentType != appointmentType) {
+			NotificationChain msgs = null;
+			if (appointmentType != null)
+				msgs = ((InternalEObject)appointmentType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__APPOINTMENT_TYPE, null, msgs);
+			if (newAppointmentType != null)
+				msgs = ((InternalEObject)newAppointmentType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__APPOINTMENT_TYPE, null, msgs);
+			msgs = basicSetAppointmentType(newAppointmentType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__APPOINTMENT_TYPE, newAppointmentType, newAppointmentType));
 	}
 
 	/**
@@ -565,6 +677,49 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DateTime getCreated() {
+		return created;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCreated(DateTime newCreated, NotificationChain msgs) {
+		DateTime oldCreated = created;
+		created = newCreated;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__CREATED, oldCreated, newCreated);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCreated(DateTime newCreated) {
+		if (newCreated != created) {
+			NotificationChain msgs = null;
+			if (created != null)
+				msgs = ((InternalEObject)created).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__CREATED, null, msgs);
+			if (newCreated != null)
+				msgs = ((InternalEObject)newCreated).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__CREATED, null, msgs);
+			msgs = basicSetCreated(newCreated, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__CREATED, newCreated, newCreated));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.hl7.fhir.String getComment() {
 		return comment;
 	}
@@ -627,8 +782,14 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
 			case FhirPackage.APPOINTMENT__STATUS:
 				return basicSetStatus(null, msgs);
-			case FhirPackage.APPOINTMENT__TYPE:
-				return basicSetType(null, msgs);
+			case FhirPackage.APPOINTMENT__SERVICE_CATEGORY:
+				return basicSetServiceCategory(null, msgs);
+			case FhirPackage.APPOINTMENT__SERVICE_TYPE:
+				return ((InternalEList<?>)getServiceType()).basicRemove(otherEnd, msgs);
+			case FhirPackage.APPOINTMENT__SPECIALTY:
+				return ((InternalEList<?>)getSpecialty()).basicRemove(otherEnd, msgs);
+			case FhirPackage.APPOINTMENT__APPOINTMENT_TYPE:
+				return basicSetAppointmentType(null, msgs);
 			case FhirPackage.APPOINTMENT__REASON:
 				return basicSetReason(null, msgs);
 			case FhirPackage.APPOINTMENT__PRIORITY:
@@ -643,6 +804,8 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return basicSetMinutesDuration(null, msgs);
 			case FhirPackage.APPOINTMENT__SLOT:
 				return ((InternalEList<?>)getSlot()).basicRemove(otherEnd, msgs);
+			case FhirPackage.APPOINTMENT__CREATED:
+				return basicSetCreated(null, msgs);
 			case FhirPackage.APPOINTMENT__COMMENT:
 				return basicSetComment(null, msgs);
 			case FhirPackage.APPOINTMENT__PARTICIPANT:
@@ -663,8 +826,14 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return getIdentifier();
 			case FhirPackage.APPOINTMENT__STATUS:
 				return getStatus();
-			case FhirPackage.APPOINTMENT__TYPE:
-				return getType();
+			case FhirPackage.APPOINTMENT__SERVICE_CATEGORY:
+				return getServiceCategory();
+			case FhirPackage.APPOINTMENT__SERVICE_TYPE:
+				return getServiceType();
+			case FhirPackage.APPOINTMENT__SPECIALTY:
+				return getSpecialty();
+			case FhirPackage.APPOINTMENT__APPOINTMENT_TYPE:
+				return getAppointmentType();
 			case FhirPackage.APPOINTMENT__REASON:
 				return getReason();
 			case FhirPackage.APPOINTMENT__PRIORITY:
@@ -679,6 +848,8 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return getMinutesDuration();
 			case FhirPackage.APPOINTMENT__SLOT:
 				return getSlot();
+			case FhirPackage.APPOINTMENT__CREATED:
+				return getCreated();
 			case FhirPackage.APPOINTMENT__COMMENT:
 				return getComment();
 			case FhirPackage.APPOINTMENT__PARTICIPANT:
@@ -703,8 +874,19 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 			case FhirPackage.APPOINTMENT__STATUS:
 				setStatus((AppointmentStatus)newValue);
 				return;
-			case FhirPackage.APPOINTMENT__TYPE:
-				setType((CodeableConcept)newValue);
+			case FhirPackage.APPOINTMENT__SERVICE_CATEGORY:
+				setServiceCategory((CodeableConcept)newValue);
+				return;
+			case FhirPackage.APPOINTMENT__SERVICE_TYPE:
+				getServiceType().clear();
+				getServiceType().addAll((Collection<? extends CodeableConcept>)newValue);
+				return;
+			case FhirPackage.APPOINTMENT__SPECIALTY:
+				getSpecialty().clear();
+				getSpecialty().addAll((Collection<? extends CodeableConcept>)newValue);
+				return;
+			case FhirPackage.APPOINTMENT__APPOINTMENT_TYPE:
+				setAppointmentType((CodeableConcept)newValue);
 				return;
 			case FhirPackage.APPOINTMENT__REASON:
 				setReason((CodeableConcept)newValue);
@@ -727,6 +909,9 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 			case FhirPackage.APPOINTMENT__SLOT:
 				getSlot().clear();
 				getSlot().addAll((Collection<? extends Reference>)newValue);
+				return;
+			case FhirPackage.APPOINTMENT__CREATED:
+				setCreated((DateTime)newValue);
 				return;
 			case FhirPackage.APPOINTMENT__COMMENT:
 				setComment((org.hl7.fhir.String)newValue);
@@ -753,8 +938,17 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 			case FhirPackage.APPOINTMENT__STATUS:
 				setStatus((AppointmentStatus)null);
 				return;
-			case FhirPackage.APPOINTMENT__TYPE:
-				setType((CodeableConcept)null);
+			case FhirPackage.APPOINTMENT__SERVICE_CATEGORY:
+				setServiceCategory((CodeableConcept)null);
+				return;
+			case FhirPackage.APPOINTMENT__SERVICE_TYPE:
+				getServiceType().clear();
+				return;
+			case FhirPackage.APPOINTMENT__SPECIALTY:
+				getSpecialty().clear();
+				return;
+			case FhirPackage.APPOINTMENT__APPOINTMENT_TYPE:
+				setAppointmentType((CodeableConcept)null);
 				return;
 			case FhirPackage.APPOINTMENT__REASON:
 				setReason((CodeableConcept)null);
@@ -776,6 +970,9 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return;
 			case FhirPackage.APPOINTMENT__SLOT:
 				getSlot().clear();
+				return;
+			case FhirPackage.APPOINTMENT__CREATED:
+				setCreated((DateTime)null);
 				return;
 			case FhirPackage.APPOINTMENT__COMMENT:
 				setComment((org.hl7.fhir.String)null);
@@ -799,8 +996,14 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return identifier != null && !identifier.isEmpty();
 			case FhirPackage.APPOINTMENT__STATUS:
 				return status != null;
-			case FhirPackage.APPOINTMENT__TYPE:
-				return type != null;
+			case FhirPackage.APPOINTMENT__SERVICE_CATEGORY:
+				return serviceCategory != null;
+			case FhirPackage.APPOINTMENT__SERVICE_TYPE:
+				return serviceType != null && !serviceType.isEmpty();
+			case FhirPackage.APPOINTMENT__SPECIALTY:
+				return specialty != null && !specialty.isEmpty();
+			case FhirPackage.APPOINTMENT__APPOINTMENT_TYPE:
+				return appointmentType != null;
 			case FhirPackage.APPOINTMENT__REASON:
 				return reason != null;
 			case FhirPackage.APPOINTMENT__PRIORITY:
@@ -815,6 +1018,8 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return minutesDuration != null;
 			case FhirPackage.APPOINTMENT__SLOT:
 				return slot != null && !slot.isEmpty();
+			case FhirPackage.APPOINTMENT__CREATED:
+				return created != null;
 			case FhirPackage.APPOINTMENT__COMMENT:
 				return comment != null;
 			case FhirPackage.APPOINTMENT__PARTICIPANT:

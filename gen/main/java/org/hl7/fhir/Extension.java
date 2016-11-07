@@ -18,38 +18,42 @@ import java.lang.String;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.Extension#getValueBoolean <em>Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueInteger <em>Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueDecimal <em>Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueBase64Binary <em>Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueInstant <em>Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueString <em>Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueUri <em>Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueBoolean <em>Value Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueCode <em>Value Code</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueDate <em>Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueDateTime <em>Value Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueTime <em>Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueCode <em>Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueOid <em>Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueUuid <em>Value Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueDecimal <em>Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueId <em>Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueUnsignedInt <em>Value Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValuePositiveInt <em>Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueInstant <em>Value Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueInteger <em>Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueMarkdown <em>Value Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueOid <em>Value Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValuePositiveInt <em>Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueString <em>Value String</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueTime <em>Value Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueUnsignedInt <em>Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueUri <em>Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueAddress <em>Value Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueAge <em>Value Age</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueAnnotation <em>Value Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueAttachment <em>Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueIdentifier <em>Value Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueCodeableConcept <em>Value Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueCoding <em>Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueContactPoint <em>Value Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueCount <em>Value Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueDistance <em>Value Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueDuration <em>Value Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueHumanName <em>Value Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueIdentifier <em>Value Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValueMoney <em>Value Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.Extension#getValuePeriod <em>Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueQuantity <em>Value Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueRange <em>Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValuePeriod <em>Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueRatio <em>Value Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueReference <em>Value Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueSampledData <em>Value Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueSignature <em>Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueHumanName <em>Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueAddress <em>Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.Extension#getValueContactPoint <em>Value Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueTiming <em>Value Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getValueMeta <em>Value Meta</em>}</li>
  *   <li>{@link org.hl7.fhir.Extension#getUrl <em>Url</em>}</li>
@@ -373,32 +377,6 @@ public interface Extension extends Element {
 	void setValueOid(Oid value);
 
 	/**
-	 * Returns the value of the '<em><b>Value Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list). (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Value Uuid</em>' containment reference.
-	 * @see #setValueUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getExtension_ValueUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='valueUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getValueUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Extension#getValueUuid <em>Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Uuid</em>' containment reference.
-	 * @see #getValueUuid()
-	 * @generated
-	 */
-	void setValueUuid(Uuid value);
-
-	/**
 	 * Returns the value of the '<em><b>Value Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -579,6 +557,32 @@ public interface Extension extends Element {
 	 * @generated
 	 */
 	void setValueIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Money</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Money</em>' containment reference.
+	 * @see #setValueMoney(Money)
+	 * @see org.hl7.fhir.FhirPackage#getExtension_ValueMoney()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueMoney' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Money getValueMoney();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Extension#getValueMoney <em>Value Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Money</em>' containment reference.
+	 * @see #getValueMoney()
+	 * @generated
+	 */
+	void setValueMoney(Money value);
 
 	/**
 	 * Returns the value of the '<em><b>Value Codeable Concept</b></em>' containment reference.
@@ -867,6 +871,32 @@ public interface Extension extends Element {
 	void setValueAddress(Address value);
 
 	/**
+	 * Returns the value of the '<em><b>Value Age</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Age</em>' containment reference.
+	 * @see #setValueAge(Age)
+	 * @see org.hl7.fhir.FhirPackage#getExtension_ValueAge()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueAge' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Age getValueAge();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Extension#getValueAge <em>Value Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Age</em>' containment reference.
+	 * @see #getValueAge()
+	 * @generated
+	 */
+	void setValueAge(Age value);
+
+	/**
 	 * Returns the value of the '<em><b>Value Contact Point</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -891,6 +921,84 @@ public interface Extension extends Element {
 	 * @generated
 	 */
 	void setValueContactPoint(ContactPoint value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Count</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Count</em>' containment reference.
+	 * @see #setValueCount(Count)
+	 * @see org.hl7.fhir.FhirPackage#getExtension_ValueCount()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueCount' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Count getValueCount();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Extension#getValueCount <em>Value Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Count</em>' containment reference.
+	 * @see #getValueCount()
+	 * @generated
+	 */
+	void setValueCount(Count value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Distance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Distance</em>' containment reference.
+	 * @see #setValueDistance(Distance)
+	 * @see org.hl7.fhir.FhirPackage#getExtension_ValueDistance()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueDistance' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Distance getValueDistance();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Extension#getValueDistance <em>Value Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Distance</em>' containment reference.
+	 * @see #getValueDistance()
+	 * @generated
+	 */
+	void setValueDistance(Distance value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Duration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Duration</em>' containment reference.
+	 * @see #setValueDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getExtension_ValueDuration()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueDuration' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Duration getValueDuration();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Extension#getValueDuration <em>Value Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Duration</em>' containment reference.
+	 * @see #getValueDuration()
+	 * @generated
+	 */
+	void setValueDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Value Timing</b></em>' containment reference.

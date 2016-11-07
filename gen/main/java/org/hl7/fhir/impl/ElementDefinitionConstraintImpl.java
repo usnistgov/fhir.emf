@@ -27,6 +27,7 @@ import org.hl7.fhir.Id;
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionConstraintImpl#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionConstraintImpl#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionConstraintImpl#getHuman <em>Human</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionConstraintImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionConstraintImpl#getXpath <em>Xpath</em>}</li>
  * </ul>
  *
@@ -72,6 +73,16 @@ public class ElementDefinitionConstraintImpl extends ElementImpl implements Elem
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String human;
+
+	/**
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.String expression;
 
 	/**
 	 * The cached value of the '{@link #getXpath() <em>Xpath</em>}' containment reference.
@@ -279,6 +290,49 @@ public class ElementDefinitionConstraintImpl extends ElementImpl implements Elem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.hl7.fhir.String getExpression() {
+		return expression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExpression(org.hl7.fhir.String newExpression, NotificationChain msgs) {
+		org.hl7.fhir.String oldExpression = expression;
+		expression = newExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION, oldExpression, newExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExpression(org.hl7.fhir.String newExpression) {
+		if (newExpression != expression) {
+			NotificationChain msgs = null;
+			if (expression != null)
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION, null, msgs);
+			if (newExpression != null)
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION, null, msgs);
+			msgs = basicSetExpression(newExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION, newExpression, newExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.hl7.fhir.String getXpath() {
 		return xpath;
 	}
@@ -333,6 +387,8 @@ public class ElementDefinitionConstraintImpl extends ElementImpl implements Elem
 				return basicSetSeverity(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__HUMAN:
 				return basicSetHuman(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION:
+				return basicSetExpression(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__XPATH:
 				return basicSetXpath(null, msgs);
 		}
@@ -355,6 +411,8 @@ public class ElementDefinitionConstraintImpl extends ElementImpl implements Elem
 				return getSeverity();
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__HUMAN:
 				return getHuman();
+			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION:
+				return getExpression();
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__XPATH:
 				return getXpath();
 		}
@@ -380,6 +438,9 @@ public class ElementDefinitionConstraintImpl extends ElementImpl implements Elem
 				return;
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__HUMAN:
 				setHuman((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION:
+				setExpression((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__XPATH:
 				setXpath((org.hl7.fhir.String)newValue);
@@ -408,6 +469,9 @@ public class ElementDefinitionConstraintImpl extends ElementImpl implements Elem
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__HUMAN:
 				setHuman((org.hl7.fhir.String)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION:
+				setExpression((org.hl7.fhir.String)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__XPATH:
 				setXpath((org.hl7.fhir.String)null);
 				return;
@@ -431,6 +495,8 @@ public class ElementDefinitionConstraintImpl extends ElementImpl implements Elem
 				return severity != null;
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__HUMAN:
 				return human != null;
+			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__EXPRESSION:
+				return expression != null;
 			case FhirPackage.ELEMENT_DEFINITION_CONSTRAINT__XPATH:
 				return xpath != null;
 		}

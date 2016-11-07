@@ -23,6 +23,7 @@ import org.hl7.fhir.OperationDefinitionBinding;
 import org.hl7.fhir.OperationDefinitionParameter;
 import org.hl7.fhir.OperationParameterUse;
 import org.hl7.fhir.Reference;
+import org.hl7.fhir.SearchParamType;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,6 +39,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.OperationDefinitionParameterImpl#getMax <em>Max</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.OperationDefinitionParameterImpl#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.OperationDefinitionParameterImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.OperationDefinitionParameterImpl#getSearchType <em>Search Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.OperationDefinitionParameterImpl#getProfile <em>Profile</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.OperationDefinitionParameterImpl#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.OperationDefinitionParameterImpl#getPart <em>Part</em>}</li>
@@ -105,6 +107,16 @@ public class OperationDefinitionParameterImpl extends BackboneElementImpl implem
 	 * @ordered
 	 */
 	protected Code type;
+
+	/**
+	 * The cached value of the '{@link #getSearchType() <em>Search Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSearchType()
+	 * @generated
+	 * @ordered
+	 */
+	protected SearchParamType searchType;
 
 	/**
 	 * The cached value of the '{@link #getProfile() <em>Profile</em>}' containment reference.
@@ -418,6 +430,49 @@ public class OperationDefinitionParameterImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SearchParamType getSearchType() {
+		return searchType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSearchType(SearchParamType newSearchType, NotificationChain msgs) {
+		SearchParamType oldSearchType = searchType;
+		searchType = newSearchType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE, oldSearchType, newSearchType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSearchType(SearchParamType newSearchType) {
+		if (newSearchType != searchType) {
+			NotificationChain msgs = null;
+			if (searchType != null)
+				msgs = ((InternalEObject)searchType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE, null, msgs);
+			if (newSearchType != null)
+				msgs = ((InternalEObject)newSearchType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE, null, msgs);
+			msgs = basicSetSearchType(newSearchType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE, newSearchType, newSearchType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Reference getProfile() {
 		return profile;
 	}
@@ -531,6 +586,8 @@ public class OperationDefinitionParameterImpl extends BackboneElementImpl implem
 				return basicSetDocumentation(null, msgs);
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__TYPE:
 				return basicSetType(null, msgs);
+			case FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE:
+				return basicSetSearchType(null, msgs);
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__PROFILE:
 				return basicSetProfile(null, msgs);
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__BINDING:
@@ -561,6 +618,8 @@ public class OperationDefinitionParameterImpl extends BackboneElementImpl implem
 				return getDocumentation();
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__TYPE:
 				return getType();
+			case FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE:
+				return getSearchType();
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__PROFILE:
 				return getProfile();
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__BINDING:
@@ -597,6 +656,9 @@ public class OperationDefinitionParameterImpl extends BackboneElementImpl implem
 				return;
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__TYPE:
 				setType((Code)newValue);
+				return;
+			case FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE:
+				setSearchType((SearchParamType)newValue);
 				return;
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__PROFILE:
 				setProfile((Reference)newValue);
@@ -638,6 +700,9 @@ public class OperationDefinitionParameterImpl extends BackboneElementImpl implem
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__TYPE:
 				setType((Code)null);
 				return;
+			case FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE:
+				setSearchType((SearchParamType)null);
+				return;
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__PROFILE:
 				setProfile((Reference)null);
 				return;
@@ -671,6 +736,8 @@ public class OperationDefinitionParameterImpl extends BackboneElementImpl implem
 				return documentation != null;
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__TYPE:
 				return type != null;
+			case FhirPackage.OPERATION_DEFINITION_PARAMETER__SEARCH_TYPE:
+				return searchType != null;
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__PROFILE:
 				return profile != null;
 			case FhirPackage.OPERATION_DEFINITION_PARAMETER__BINDING:

@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.hl7.fhir.FhirPackage;
-import org.hl7.fhir.GuideResourcePurpose;
 import org.hl7.fhir.ImplementationGuideResource;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.Uri;
@@ -24,7 +23,7 @@ import org.hl7.fhir.Uri;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.ImplementationGuideResourceImpl#getPurpose <em>Purpose</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ImplementationGuideResourceImpl#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImplementationGuideResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImplementationGuideResourceImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImplementationGuideResourceImpl#getAcronym <em>Acronym</em>}</li>
@@ -37,14 +36,14 @@ import org.hl7.fhir.Uri;
  */
 public class ImplementationGuideResourceImpl extends BackboneElementImpl implements ImplementationGuideResource {
 	/**
-	 * The cached value of the '{@link #getPurpose() <em>Purpose</em>}' containment reference.
+	 * The cached value of the '{@link #getExample() <em>Example</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPurpose()
+	 * @see #getExample()
 	 * @generated
 	 * @ordered
 	 */
-	protected GuideResourcePurpose purpose;
+	protected org.hl7.fhir.Boolean example;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
@@ -130,8 +129,8 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GuideResourcePurpose getPurpose() {
-		return purpose;
+	public org.hl7.fhir.Boolean getExample() {
+		return example;
 	}
 
 	/**
@@ -139,11 +138,11 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPurpose(GuideResourcePurpose newPurpose, NotificationChain msgs) {
-		GuideResourcePurpose oldPurpose = purpose;
-		purpose = newPurpose;
+	public NotificationChain basicSetExample(org.hl7.fhir.Boolean newExample, NotificationChain msgs) {
+		org.hl7.fhir.Boolean oldExample = example;
+		example = newExample;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE, oldPurpose, newPurpose);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE, oldExample, newExample);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -154,18 +153,18 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPurpose(GuideResourcePurpose newPurpose) {
-		if (newPurpose != purpose) {
+	public void setExample(org.hl7.fhir.Boolean newExample) {
+		if (newExample != example) {
 			NotificationChain msgs = null;
-			if (purpose != null)
-				msgs = ((InternalEObject)purpose).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE, null, msgs);
-			if (newPurpose != null)
-				msgs = ((InternalEObject)newPurpose).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE, null, msgs);
-			msgs = basicSetPurpose(newPurpose, msgs);
+			if (example != null)
+				msgs = ((InternalEObject)example).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE, null, msgs);
+			if (newExample != null)
+				msgs = ((InternalEObject)newExample).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE, null, msgs);
+			msgs = basicSetExample(newExample, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE, newPurpose, newPurpose));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE, newExample, newExample));
 	}
 
 	/**
@@ -434,8 +433,8 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE:
-				return basicSetPurpose(null, msgs);
+			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE:
+				return basicSetExample(null, msgs);
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__NAME:
 				return basicSetName(null, msgs);
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__DESCRIPTION:
@@ -460,8 +459,8 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE:
-				return getPurpose();
+			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE:
+				return getExample();
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__NAME:
 				return getName();
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__DESCRIPTION:
@@ -486,8 +485,8 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE:
-				setPurpose((GuideResourcePurpose)newValue);
+			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE:
+				setExample((org.hl7.fhir.Boolean)newValue);
 				return;
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__NAME:
 				setName((org.hl7.fhir.String)newValue);
@@ -519,8 +518,8 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE:
-				setPurpose((GuideResourcePurpose)null);
+			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE:
+				setExample((org.hl7.fhir.Boolean)null);
 				return;
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__NAME:
 				setName((org.hl7.fhir.String)null);
@@ -552,8 +551,8 @@ public class ImplementationGuideResourceImpl extends BackboneElementImpl impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__PURPOSE:
-				return purpose != null;
+			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__EXAMPLE:
+				return example != null;
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__NAME:
 				return name != null;
 			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE__DESCRIPTION:

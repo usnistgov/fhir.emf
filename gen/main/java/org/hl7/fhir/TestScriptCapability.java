@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.TestScriptCapability#getRequired <em>Required</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptCapability#getValidated <em>Validated</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptCapability#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.hl7.fhir.TestScriptCapability#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptCapability#getDestination <em>Destination</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptCapability#getLink <em>Link</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScriptCapability#getConformance <em>Conformance</em>}</li>
@@ -107,6 +108,22 @@ public interface TestScriptCapability extends BackboneElement {
 	 * @generated
 	 */
 	void setDescription(org.hl7.fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Origin</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Integer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Which origin server these requirements apply to.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Origin</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getTestScriptCapability_Origin()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='origin' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<org.hl7.fhir.Integer> getOrigin();
 
 	/**
 	 * Returns the value of the '<em><b>Destination</b></em>' containment reference.

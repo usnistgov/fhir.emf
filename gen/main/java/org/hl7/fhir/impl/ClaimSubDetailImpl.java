@@ -2,21 +2,26 @@
  */
 package org.hl7.fhir.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.ClaimSubDetail;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.Decimal;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Money;
 import org.hl7.fhir.PositiveInt;
-import org.hl7.fhir.SimpleQuantity;
+import org.hl7.fhir.Quantity;
+import org.hl7.fhir.Reference;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,8 +32,11 @@ import org.hl7.fhir.SimpleQuantity;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getSequence <em>Sequence</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getRevenue <em>Revenue</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getService <em>Service</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getProgramCode <em>Program Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getUnitPrice <em>Unit Price</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimSubDetailImpl#getFactor <em>Factor</em>}</li>
@@ -51,14 +59,24 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	protected PositiveInt sequence;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * The cached value of the '{@link #getRevenue() <em>Revenue</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getRevenue()
 	 * @generated
 	 * @ordered
 	 */
-	protected Coding type;
+	protected Coding revenue;
+
+	/**
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategory()
+	 * @generated
+	 * @ordered
+	 */
+	protected Coding category;
 
 	/**
 	 * The cached value of the '{@link #getService() <em>Service</em>}' containment reference.
@@ -71,6 +89,26 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	protected Coding service;
 
 	/**
+	 * The cached value of the '{@link #getModifier() <em>Modifier</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Coding> modifier;
+
+	/**
+	 * The cached value of the '{@link #getProgramCode() <em>Program Code</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProgramCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Coding> programCode;
+
+	/**
 	 * The cached value of the '{@link #getQuantity() <em>Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,7 +116,7 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity quantity;
+	protected Quantity quantity;
 
 	/**
 	 * The cached value of the '{@link #getUnitPrice() <em>Unit Price</em>}' containment reference.
@@ -121,14 +159,14 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	protected Money net;
 
 	/**
-	 * The cached value of the '{@link #getUdi() <em>Udi</em>}' containment reference.
+	 * The cached value of the '{@link #getUdi() <em>Udi</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getUdi()
 	 * @generated
 	 * @ordered
 	 */
-	protected Coding udi;
+	protected EList<Reference> udi;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,8 +235,8 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Coding getType() {
-		return type;
+	public Coding getRevenue() {
+		return revenue;
 	}
 
 	/**
@@ -206,11 +244,11 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(Coding newType, NotificationChain msgs) {
-		Coding oldType = type;
-		type = newType;
+	public NotificationChain basicSetRevenue(Coding newRevenue, NotificationChain msgs) {
+		Coding oldRevenue = revenue;
+		revenue = newRevenue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__REVENUE, oldRevenue, newRevenue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -221,18 +259,61 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(Coding newType) {
-		if (newType != type) {
+	public void setRevenue(Coding newRevenue) {
+		if (newRevenue != revenue) {
 			NotificationChain msgs = null;
-			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__TYPE, null, msgs);
-			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__TYPE, null, msgs);
-			msgs = basicSetType(newType, msgs);
+			if (revenue != null)
+				msgs = ((InternalEObject)revenue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__REVENUE, null, msgs);
+			if (newRevenue != null)
+				msgs = ((InternalEObject)newRevenue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__REVENUE, null, msgs);
+			msgs = basicSetRevenue(newRevenue, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__REVENUE, newRevenue, newRevenue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Coding getCategory() {
+		return category;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCategory(Coding newCategory, NotificationChain msgs) {
+		Coding oldCategory = category;
+		category = newCategory;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__CATEGORY, oldCategory, newCategory);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCategory(Coding newCategory) {
+		if (newCategory != category) {
+			NotificationChain msgs = null;
+			if (category != null)
+				msgs = ((InternalEObject)category).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__CATEGORY, null, msgs);
+			if (newCategory != null)
+				msgs = ((InternalEObject)newCategory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__CATEGORY, null, msgs);
+			msgs = basicSetCategory(newCategory, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__CATEGORY, newCategory, newCategory));
 	}
 
 	/**
@@ -283,7 +364,31 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getQuantity() {
+	public EList<Coding> getModifier() {
+		if (modifier == null) {
+			modifier = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.CLAIM_SUB_DETAIL__MODIFIER);
+		}
+		return modifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Coding> getProgramCode() {
+		if (programCode == null) {
+			programCode = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.CLAIM_SUB_DETAIL__PROGRAM_CODE);
+		}
+		return programCode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Quantity getQuantity() {
 		return quantity;
 	}
 
@@ -292,8 +397,8 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetQuantity(SimpleQuantity newQuantity, NotificationChain msgs) {
-		SimpleQuantity oldQuantity = quantity;
+	public NotificationChain basicSetQuantity(Quantity newQuantity, NotificationChain msgs) {
+		Quantity oldQuantity = quantity;
 		quantity = newQuantity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__QUANTITY, oldQuantity, newQuantity);
@@ -307,7 +412,7 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQuantity(SimpleQuantity newQuantity) {
+	public void setQuantity(Quantity newQuantity) {
 		if (newQuantity != quantity) {
 			NotificationChain msgs = null;
 			if (quantity != null)
@@ -498,42 +603,11 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Coding getUdi() {
+	public EList<Reference> getUdi() {
+		if (udi == null) {
+			udi = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.CLAIM_SUB_DETAIL__UDI);
+		}
 		return udi;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetUdi(Coding newUdi, NotificationChain msgs) {
-		Coding oldUdi = udi;
-		udi = newUdi;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__UDI, oldUdi, newUdi);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUdi(Coding newUdi) {
-		if (newUdi != udi) {
-			NotificationChain msgs = null;
-			if (udi != null)
-				msgs = ((InternalEObject)udi).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__UDI, null, msgs);
-			if (newUdi != null)
-				msgs = ((InternalEObject)newUdi).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_SUB_DETAIL__UDI, null, msgs);
-			msgs = basicSetUdi(newUdi, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_SUB_DETAIL__UDI, newUdi, newUdi));
 	}
 
 	/**
@@ -546,10 +620,16 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 		switch (featureID) {
 			case FhirPackage.CLAIM_SUB_DETAIL__SEQUENCE:
 				return basicSetSequence(null, msgs);
-			case FhirPackage.CLAIM_SUB_DETAIL__TYPE:
-				return basicSetType(null, msgs);
+			case FhirPackage.CLAIM_SUB_DETAIL__REVENUE:
+				return basicSetRevenue(null, msgs);
+			case FhirPackage.CLAIM_SUB_DETAIL__CATEGORY:
+				return basicSetCategory(null, msgs);
 			case FhirPackage.CLAIM_SUB_DETAIL__SERVICE:
 				return basicSetService(null, msgs);
+			case FhirPackage.CLAIM_SUB_DETAIL__MODIFIER:
+				return ((InternalEList<?>)getModifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CLAIM_SUB_DETAIL__PROGRAM_CODE:
+				return ((InternalEList<?>)getProgramCode()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CLAIM_SUB_DETAIL__QUANTITY:
 				return basicSetQuantity(null, msgs);
 			case FhirPackage.CLAIM_SUB_DETAIL__UNIT_PRICE:
@@ -561,7 +641,7 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 			case FhirPackage.CLAIM_SUB_DETAIL__NET:
 				return basicSetNet(null, msgs);
 			case FhirPackage.CLAIM_SUB_DETAIL__UDI:
-				return basicSetUdi(null, msgs);
+				return ((InternalEList<?>)getUdi()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -576,10 +656,16 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 		switch (featureID) {
 			case FhirPackage.CLAIM_SUB_DETAIL__SEQUENCE:
 				return getSequence();
-			case FhirPackage.CLAIM_SUB_DETAIL__TYPE:
-				return getType();
+			case FhirPackage.CLAIM_SUB_DETAIL__REVENUE:
+				return getRevenue();
+			case FhirPackage.CLAIM_SUB_DETAIL__CATEGORY:
+				return getCategory();
 			case FhirPackage.CLAIM_SUB_DETAIL__SERVICE:
 				return getService();
+			case FhirPackage.CLAIM_SUB_DETAIL__MODIFIER:
+				return getModifier();
+			case FhirPackage.CLAIM_SUB_DETAIL__PROGRAM_CODE:
+				return getProgramCode();
 			case FhirPackage.CLAIM_SUB_DETAIL__QUANTITY:
 				return getQuantity();
 			case FhirPackage.CLAIM_SUB_DETAIL__UNIT_PRICE:
@@ -601,20 +687,32 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FhirPackage.CLAIM_SUB_DETAIL__SEQUENCE:
 				setSequence((PositiveInt)newValue);
 				return;
-			case FhirPackage.CLAIM_SUB_DETAIL__TYPE:
-				setType((Coding)newValue);
+			case FhirPackage.CLAIM_SUB_DETAIL__REVENUE:
+				setRevenue((Coding)newValue);
+				return;
+			case FhirPackage.CLAIM_SUB_DETAIL__CATEGORY:
+				setCategory((Coding)newValue);
 				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__SERVICE:
 				setService((Coding)newValue);
 				return;
+			case FhirPackage.CLAIM_SUB_DETAIL__MODIFIER:
+				getModifier().clear();
+				getModifier().addAll((Collection<? extends Coding>)newValue);
+				return;
+			case FhirPackage.CLAIM_SUB_DETAIL__PROGRAM_CODE:
+				getProgramCode().clear();
+				getProgramCode().addAll((Collection<? extends Coding>)newValue);
+				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__QUANTITY:
-				setQuantity((SimpleQuantity)newValue);
+				setQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__UNIT_PRICE:
 				setUnitPrice((Money)newValue);
@@ -629,7 +727,8 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 				setNet((Money)newValue);
 				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__UDI:
-				setUdi((Coding)newValue);
+				getUdi().clear();
+				getUdi().addAll((Collection<? extends Reference>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -646,14 +745,23 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 			case FhirPackage.CLAIM_SUB_DETAIL__SEQUENCE:
 				setSequence((PositiveInt)null);
 				return;
-			case FhirPackage.CLAIM_SUB_DETAIL__TYPE:
-				setType((Coding)null);
+			case FhirPackage.CLAIM_SUB_DETAIL__REVENUE:
+				setRevenue((Coding)null);
+				return;
+			case FhirPackage.CLAIM_SUB_DETAIL__CATEGORY:
+				setCategory((Coding)null);
 				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__SERVICE:
 				setService((Coding)null);
 				return;
+			case FhirPackage.CLAIM_SUB_DETAIL__MODIFIER:
+				getModifier().clear();
+				return;
+			case FhirPackage.CLAIM_SUB_DETAIL__PROGRAM_CODE:
+				getProgramCode().clear();
+				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__QUANTITY:
-				setQuantity((SimpleQuantity)null);
+				setQuantity((Quantity)null);
 				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__UNIT_PRICE:
 				setUnitPrice((Money)null);
@@ -668,7 +776,7 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 				setNet((Money)null);
 				return;
 			case FhirPackage.CLAIM_SUB_DETAIL__UDI:
-				setUdi((Coding)null);
+				getUdi().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -684,10 +792,16 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 		switch (featureID) {
 			case FhirPackage.CLAIM_SUB_DETAIL__SEQUENCE:
 				return sequence != null;
-			case FhirPackage.CLAIM_SUB_DETAIL__TYPE:
-				return type != null;
+			case FhirPackage.CLAIM_SUB_DETAIL__REVENUE:
+				return revenue != null;
+			case FhirPackage.CLAIM_SUB_DETAIL__CATEGORY:
+				return category != null;
 			case FhirPackage.CLAIM_SUB_DETAIL__SERVICE:
 				return service != null;
+			case FhirPackage.CLAIM_SUB_DETAIL__MODIFIER:
+				return modifier != null && !modifier.isEmpty();
+			case FhirPackage.CLAIM_SUB_DETAIL__PROGRAM_CODE:
+				return programCode != null && !programCode.isEmpty();
 			case FhirPackage.CLAIM_SUB_DETAIL__QUANTITY:
 				return quantity != null;
 			case FhirPackage.CLAIM_SUB_DETAIL__UNIT_PRICE:
@@ -699,7 +813,7 @@ public class ClaimSubDetailImpl extends BackboneElementImpl implements ClaimSubD
 			case FhirPackage.CLAIM_SUB_DETAIL__NET:
 				return net != null;
 			case FhirPackage.CLAIM_SUB_DETAIL__UDI:
-				return udi != null;
+				return udi != null && !udi.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

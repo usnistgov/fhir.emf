@@ -105,7 +105,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - black.
+	 * Color Black
 	 * <!-- end-model-doc -->
 	 * @see #BLACK
 	 * @model name="black"
@@ -119,7 +119,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - red.
+	 * Color Red
 	 * <!-- end-model-doc -->
 	 * @see #RED
 	 * @model name="red"
@@ -133,7 +133,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - green.
+	 * Color Green
 	 * <!-- end-model-doc -->
 	 * @see #GREEN
 	 * @model name="green"
@@ -147,7 +147,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - yellow.
+	 * Color Yellow
 	 * <!-- end-model-doc -->
 	 * @see #YELLOW
 	 * @model name="yellow"
@@ -161,7 +161,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - blue.
+	 * Color Blue
 	 * <!-- end-model-doc -->
 	 * @see #BLUE
 	 * @model name="blue"
@@ -175,7 +175,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - magenta.
+	 * Color Magenta
 	 * <!-- end-model-doc -->
 	 * @see #MAGENTA
 	 * @model name="magenta"
@@ -189,7 +189,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - cyan.
+	 * Color Cyan
 	 * <!-- end-model-doc -->
 	 * @see #CYAN
 	 * @model name="cyan"
@@ -203,7 +203,7 @@ public enum DeviceMetricColorList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Color for representation - white.
+	 * Color White
 	 * <!-- end-model-doc -->
 	 * @see #WHITE
 	 * @model name="white"

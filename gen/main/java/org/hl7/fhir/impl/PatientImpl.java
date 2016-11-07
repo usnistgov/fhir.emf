@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.Address;
+import org.hl7.fhir.AdministrativeGender;
 import org.hl7.fhir.Attachment;
-import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.ContactPoint;
 import org.hl7.fhir.Date;
@@ -58,7 +58,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.PatientImpl#getContact <em>Contact</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.PatientImpl#getAnimal <em>Animal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.PatientImpl#getCommunication <em>Communication</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.PatientImpl#getCareProvider <em>Care Provider</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.PatientImpl#getGeneralPractitioner <em>General Practitioner</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.PatientImpl#getManagingOrganization <em>Managing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.PatientImpl#getLink <em>Link</em>}</li>
  * </ul>
@@ -114,7 +114,7 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 	 * @generated
 	 * @ordered
 	 */
-	protected Code gender;
+	protected AdministrativeGender gender;
 
 	/**
 	 * The cached value of the '{@link #getBirthDate() <em>Birth Date</em>}' containment reference.
@@ -227,14 +227,14 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 	protected EList<PatientCommunication> communication;
 
 	/**
-	 * The cached value of the '{@link #getCareProvider() <em>Care Provider</em>}' containment reference list.
+	 * The cached value of the '{@link #getGeneralPractitioner() <em>General Practitioner</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCareProvider()
+	 * @see #getGeneralPractitioner()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Reference> careProvider;
+	protected EList<Reference> generalPractitioner;
 
 	/**
 	 * The cached value of the '{@link #getManagingOrganization() <em>Managing Organization</em>}' containment reference.
@@ -359,7 +359,7 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getGender() {
+	public AdministrativeGender getGender() {
 		return gender;
 	}
 
@@ -368,8 +368,8 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGender(Code newGender, NotificationChain msgs) {
-		Code oldGender = gender;
+	public NotificationChain basicSetGender(AdministrativeGender newGender, NotificationChain msgs) {
+		AdministrativeGender oldGender = gender;
 		gender = newGender;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PATIENT__GENDER, oldGender, newGender);
@@ -383,7 +383,7 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGender(Code newGender) {
+	public void setGender(AdministrativeGender newGender) {
 		if (newGender != gender) {
 			NotificationChain msgs = null;
 			if (gender != null)
@@ -751,11 +751,11 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Reference> getCareProvider() {
-		if (careProvider == null) {
-			careProvider = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.PATIENT__CARE_PROVIDER);
+	public EList<Reference> getGeneralPractitioner() {
+		if (generalPractitioner == null) {
+			generalPractitioner = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.PATIENT__GENERAL_PRACTITIONER);
 		}
-		return careProvider;
+		return generalPractitioner;
 	}
 
 	/**
@@ -853,8 +853,8 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 				return basicSetAnimal(null, msgs);
 			case FhirPackage.PATIENT__COMMUNICATION:
 				return ((InternalEList<?>)getCommunication()).basicRemove(otherEnd, msgs);
-			case FhirPackage.PATIENT__CARE_PROVIDER:
-				return ((InternalEList<?>)getCareProvider()).basicRemove(otherEnd, msgs);
+			case FhirPackage.PATIENT__GENERAL_PRACTITIONER:
+				return ((InternalEList<?>)getGeneralPractitioner()).basicRemove(otherEnd, msgs);
 			case FhirPackage.PATIENT__MANAGING_ORGANIZATION:
 				return basicSetManagingOrganization(null, msgs);
 			case FhirPackage.PATIENT__LINK:
@@ -903,8 +903,8 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 				return getAnimal();
 			case FhirPackage.PATIENT__COMMUNICATION:
 				return getCommunication();
-			case FhirPackage.PATIENT__CARE_PROVIDER:
-				return getCareProvider();
+			case FhirPackage.PATIENT__GENERAL_PRACTITIONER:
+				return getGeneralPractitioner();
 			case FhirPackage.PATIENT__MANAGING_ORGANIZATION:
 				return getManagingOrganization();
 			case FhirPackage.PATIENT__LINK:
@@ -938,7 +938,7 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 				getTelecom().addAll((Collection<? extends ContactPoint>)newValue);
 				return;
 			case FhirPackage.PATIENT__GENDER:
-				setGender((Code)newValue);
+				setGender((AdministrativeGender)newValue);
 				return;
 			case FhirPackage.PATIENT__BIRTH_DATE:
 				setBirthDate((Date)newValue);
@@ -977,9 +977,9 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 				getCommunication().clear();
 				getCommunication().addAll((Collection<? extends PatientCommunication>)newValue);
 				return;
-			case FhirPackage.PATIENT__CARE_PROVIDER:
-				getCareProvider().clear();
-				getCareProvider().addAll((Collection<? extends Reference>)newValue);
+			case FhirPackage.PATIENT__GENERAL_PRACTITIONER:
+				getGeneralPractitioner().clear();
+				getGeneralPractitioner().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.PATIENT__MANAGING_ORGANIZATION:
 				setManagingOrganization((Reference)newValue);
@@ -1013,7 +1013,7 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 				getTelecom().clear();
 				return;
 			case FhirPackage.PATIENT__GENDER:
-				setGender((Code)null);
+				setGender((AdministrativeGender)null);
 				return;
 			case FhirPackage.PATIENT__BIRTH_DATE:
 				setBirthDate((Date)null);
@@ -1048,8 +1048,8 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 			case FhirPackage.PATIENT__COMMUNICATION:
 				getCommunication().clear();
 				return;
-			case FhirPackage.PATIENT__CARE_PROVIDER:
-				getCareProvider().clear();
+			case FhirPackage.PATIENT__GENERAL_PRACTITIONER:
+				getGeneralPractitioner().clear();
 				return;
 			case FhirPackage.PATIENT__MANAGING_ORGANIZATION:
 				setManagingOrganization((Reference)null);
@@ -1101,8 +1101,8 @@ public class PatientImpl extends DomainResourceImpl implements Patient {
 				return animal != null;
 			case FhirPackage.PATIENT__COMMUNICATION:
 				return communication != null && !communication.isEmpty();
-			case FhirPackage.PATIENT__CARE_PROVIDER:
-				return careProvider != null && !careProvider.isEmpty();
+			case FhirPackage.PATIENT__GENERAL_PRACTITIONER:
+				return generalPractitioner != null && !generalPractitioner.isEmpty();
 			case FhirPackage.PATIENT__MANAGING_ORGANIZATION:
 				return managingOrganization != null;
 			case FhirPackage.PATIENT__LINK:

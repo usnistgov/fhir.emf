@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.ConceptMapTarget#getCodeSystem <em>Code System</em>}</li>
  *   <li>{@link org.hl7.fhir.ConceptMapTarget#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ConceptMapTarget#getEquivalence <em>Equivalence</em>}</li>
  *   <li>{@link org.hl7.fhir.ConceptMapTarget#getComments <em>Comments</em>}</li>
@@ -30,32 +29,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ConceptMapTarget extends BackboneElement {
-	/**
-	 * Returns the value of the '<em><b>Code System</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An absolute URI that identifies the code system of the target code (if the target is a value set that cross code systems).
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Code System</em>' containment reference.
-	 * @see #setCodeSystem(Uri)
-	 * @see org.hl7.fhir.FhirPackage#getConceptMapTarget_CodeSystem()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='codeSystem' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uri getCodeSystem();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ConceptMapTarget#getCodeSystem <em>Code System</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Code System</em>' containment reference.
-	 * @see #getCodeSystem()
-	 * @generated
-	 */
-	void setCodeSystem(Uri value);
-
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -90,13 +63,13 @@ public interface ConceptMapTarget extends BackboneElement {
 	 * The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from target to source (e.g. the target is 'wider' than the source).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Equivalence</em>' containment reference.
-	 * @see #setEquivalence(Code)
+	 * @see #setEquivalence(ConceptMapEquivalence)
 	 * @see org.hl7.fhir.FhirPackage#getConceptMapTarget_Equivalence()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='equivalence' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getEquivalence();
+	ConceptMapEquivalence getEquivalence();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ConceptMapTarget#getEquivalence <em>Equivalence</em>}' containment reference.
@@ -106,7 +79,7 @@ public interface ConceptMapTarget extends BackboneElement {
 	 * @see #getEquivalence()
 	 * @generated
 	 */
-	void setEquivalence(Code value);
+	void setEquivalence(ConceptMapEquivalence value);
 
 	/**
 	 * Returns the value of the '<em><b>Comments</b></em>' containment reference.

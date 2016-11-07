@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.OperationDefinitionParameter#getMax <em>Max</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinitionParameter#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinitionParameter#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.OperationDefinitionParameter#getSearchType <em>Search Type</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinitionParameter#getProfile <em>Profile</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinitionParameter#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.OperationDefinitionParameter#getPart <em>Part</em>}</li>
@@ -190,6 +191,32 @@ public interface OperationDefinitionParameter extends BackboneElement {
 	void setType(Code value);
 
 	/**
+	 * Returns the value of the '<em><b>Search Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * How the parameter is understood as a search parameter. This is only used if the parameter type is 'string'.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Search Type</em>' containment reference.
+	 * @see #setSearchType(SearchParamType)
+	 * @see org.hl7.fhir.FhirPackage#getOperationDefinitionParameter_SearchType()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='searchType' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	SearchParamType getSearchType();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.OperationDefinitionParameter#getSearchType <em>Search Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Search Type</em>' containment reference.
+	 * @see #getSearchType()
+	 * @generated
+	 */
+	void setSearchType(SearchParamType value);
+
+	/**
 	 * Returns the value of the '<em><b>Profile</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -247,7 +274,7 @@ public interface OperationDefinitionParameter extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The parts of a Tuple Parameter.
+	 * The parts of a nested Parameter.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Part</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getOperationDefinitionParameter_Part()

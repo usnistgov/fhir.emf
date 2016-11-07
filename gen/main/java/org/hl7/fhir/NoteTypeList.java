@@ -55,7 +55,7 @@ public enum NoteTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Display the note.
+	 * Display
 	 * <!-- end-model-doc -->
 	 * @see #DISPLAY
 	 * @model name="display"
@@ -69,7 +69,7 @@ public enum NoteTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Print the note on the form.
+	 * Print (Form)
 	 * <!-- end-model-doc -->
 	 * @see #PRINT
 	 * @model name="print"
@@ -83,7 +83,7 @@ public enum NoteTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Print the note for the operator.
+	 * Print (Operator)
 	 * <!-- end-model-doc -->
 	 * @see #PRINTOPER
 	 * @model name="printoper"

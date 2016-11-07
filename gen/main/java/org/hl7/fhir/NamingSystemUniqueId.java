@@ -19,6 +19,7 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.NamingSystemUniqueId#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystemUniqueId#getValue <em>Value</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystemUniqueId#getPreferred <em>Preferred</em>}</li>
+ *   <li>{@link org.hl7.fhir.NamingSystemUniqueId#getComment <em>Comment</em>}</li>
  *   <li>{@link org.hl7.fhir.NamingSystemUniqueId#getPeriod <em>Period</em>}</li>
  * </ul>
  *
@@ -104,6 +105,32 @@ public interface NamingSystemUniqueId extends BackboneElement {
 	 * @generated
 	 */
 	void setPreferred(org.hl7.fhir.Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Comment</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Notes about the past or intended usage of this identifier.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Comment</em>' containment reference.
+	 * @see #setComment(org.hl7.fhir.String)
+	 * @see org.hl7.fhir.FhirPackage#getNamingSystemUniqueId_Comment()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='comment' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.String getComment();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.NamingSystemUniqueId#getComment <em>Comment</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Comment</em>' containment reference.
+	 * @see #getComment()
+	 * @generated
+	 */
+	void setComment(org.hl7.fhir.String value);
 
 	/**
 	 * Returns the value of the '<em><b>Period</b></em>' containment reference.

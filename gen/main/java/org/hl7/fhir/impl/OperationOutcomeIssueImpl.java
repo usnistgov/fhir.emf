@@ -36,6 +36,7 @@ import org.hl7.fhir.OperationOutcomeIssue;
  *   <li>{@link org.hl7.fhir.impl.OperationOutcomeIssueImpl#getDetails <em>Details</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.OperationOutcomeIssueImpl#getDiagnostics <em>Diagnostics</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.OperationOutcomeIssueImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.OperationOutcomeIssueImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +91,16 @@ public class OperationOutcomeIssueImpl extends BackboneElementImpl implements Op
 	 * @ordered
 	 */
 	protected EList<org.hl7.fhir.String> location;
+
+	/**
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.hl7.fhir.String> expression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,6 +310,18 @@ public class OperationOutcomeIssueImpl extends BackboneElementImpl implements Op
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<org.hl7.fhir.String> getExpression() {
+		if (expression == null) {
+			expression = new EObjectContainmentEList<org.hl7.fhir.String>(org.hl7.fhir.String.class, this, FhirPackage.OPERATION_OUTCOME_ISSUE__EXPRESSION);
+		}
+		return expression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -312,6 +335,8 @@ public class OperationOutcomeIssueImpl extends BackboneElementImpl implements Op
 				return basicSetDiagnostics(null, msgs);
 			case FhirPackage.OPERATION_OUTCOME_ISSUE__LOCATION:
 				return ((InternalEList<?>)getLocation()).basicRemove(otherEnd, msgs);
+			case FhirPackage.OPERATION_OUTCOME_ISSUE__EXPRESSION:
+				return ((InternalEList<?>)getExpression()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -334,6 +359,8 @@ public class OperationOutcomeIssueImpl extends BackboneElementImpl implements Op
 				return getDiagnostics();
 			case FhirPackage.OPERATION_OUTCOME_ISSUE__LOCATION:
 				return getLocation();
+			case FhirPackage.OPERATION_OUTCOME_ISSUE__EXPRESSION:
+				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -363,6 +390,10 @@ public class OperationOutcomeIssueImpl extends BackboneElementImpl implements Op
 				getLocation().clear();
 				getLocation().addAll((Collection<? extends org.hl7.fhir.String>)newValue);
 				return;
+			case FhirPackage.OPERATION_OUTCOME_ISSUE__EXPRESSION:
+				getExpression().clear();
+				getExpression().addAll((Collection<? extends org.hl7.fhir.String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -390,6 +421,9 @@ public class OperationOutcomeIssueImpl extends BackboneElementImpl implements Op
 			case FhirPackage.OPERATION_OUTCOME_ISSUE__LOCATION:
 				getLocation().clear();
 				return;
+			case FhirPackage.OPERATION_OUTCOME_ISSUE__EXPRESSION:
+				getExpression().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -412,6 +446,8 @@ public class OperationOutcomeIssueImpl extends BackboneElementImpl implements Op
 				return diagnostics != null;
 			case FhirPackage.OPERATION_OUTCOME_ISSUE__LOCATION:
 				return location != null && !location.isEmpty();
+			case FhirPackage.OPERATION_OUTCOME_ISSUE__EXPRESSION:
+				return expression != null && !expression.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

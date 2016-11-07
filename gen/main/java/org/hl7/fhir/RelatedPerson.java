@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.RelatedPerson#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.RelatedPerson#getActive <em>Active</em>}</li>
  *   <li>{@link org.hl7.fhir.RelatedPerson#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.RelatedPerson#getRelationship <em>Relationship</em>}</li>
  *   <li>{@link org.hl7.fhir.RelatedPerson#getName <em>Name</em>}</li>
@@ -50,6 +51,32 @@ public interface RelatedPerson extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Active</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Whether this related person record is in active use.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Active</em>' containment reference.
+	 * @see #setActive(org.hl7.fhir.Boolean)
+	 * @see org.hl7.fhir.FhirPackage#getRelatedPerson_Active()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='active' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.Boolean getActive();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.RelatedPerson#getActive <em>Active</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Active</em>' containment reference.
+	 * @see #getActive()
+	 * @generated
+	 */
+	void setActive(org.hl7.fhir.Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Patient</b></em>' containment reference.
@@ -104,30 +131,20 @@ public interface RelatedPerson extends DomainResource {
 	void setRelationship(CodeableConcept value);
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Name</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.HumanName}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A name associated with the person.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Name</em>' containment reference.
-	 * @see #setName(HumanName)
+	 * @return the value of the '<em>Name</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getRelatedPerson_Name()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='name' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	HumanName getName();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.RelatedPerson#getName <em>Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' containment reference.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(HumanName value);
+	EList<HumanName> getName();
 
 	/**
 	 * Returns the value of the '<em><b>Telecom</b></em>' containment reference list.
@@ -153,13 +170,13 @@ public interface RelatedPerson extends DomainResource {
 	 * Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Gender</em>' containment reference.
-	 * @see #setGender(Code)
+	 * @see #setGender(AdministrativeGender)
 	 * @see org.hl7.fhir.FhirPackage#getRelatedPerson_Gender()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='gender' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getGender();
+	AdministrativeGender getGender();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.RelatedPerson#getGender <em>Gender</em>}' containment reference.
@@ -169,7 +186,7 @@ public interface RelatedPerson extends DomainResource {
 	 * @see #getGender()
 	 * @generated
 	 */
-	void setGender(Code value);
+	void setGender(AdministrativeGender value);
 
 	/**
 	 * Returns the value of the '<em><b>Birth Date</b></em>' containment reference.

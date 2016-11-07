@@ -41,16 +41,6 @@ public enum ExtensionContextList implements Enumerator {
 	DATATYPE(1, "datatype", "datatype"),
 
 	/**
-	 * The '<em><b>Mapping</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MAPPING_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	MAPPING(2, "mapping", "mapping"),
-
-	/**
 	 * The '<em><b>Extension</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,14 +48,14 @@ public enum ExtensionContextList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	EXTENSION(3, "extension", "extension");
+	EXTENSION(2, "extension", "extension");
 
 	/**
 	 * The '<em><b>Resource</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The context is all elements matching a particular resource element path.
+	 * Resource
 	 * <!-- end-model-doc -->
 	 * @see #RESOURCE
 	 * @model name="resource"
@@ -79,7 +69,7 @@ public enum ExtensionContextList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The context is all nodes matching a particular data type element path (root or repeating element) or all elements referencing a particular primitive data type (expressed as the datatype name).
+	 * Datatype
 	 * <!-- end-model-doc -->
 	 * @see #DATATYPE
 	 * @model name="datatype"
@@ -89,32 +79,18 @@ public enum ExtensionContextList implements Enumerator {
 	public static final int DATATYPE_VALUE = 1;
 
 	/**
-	 * The '<em><b>Mapping</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The context is all nodes whose mapping to a specified reference model corresponds to a particular mapping structure.  The context identifies the mapping target. The mapping should clearly identify where such an extension could be used.
-	 * <!-- end-model-doc -->
-	 * @see #MAPPING
-	 * @model name="mapping"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MAPPING_VALUE = 2;
-
-	/**
 	 * The '<em><b>Extension</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The context is a particular extension from a particular profile, a uri that identifies the extension definition.
+	 * Extension
 	 * <!-- end-model-doc -->
 	 * @see #EXTENSION
 	 * @model name="extension"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EXTENSION_VALUE = 3;
+	public static final int EXTENSION_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Extension Context List</b></em>' enumerators.
@@ -126,7 +102,6 @@ public enum ExtensionContextList implements Enumerator {
 		new ExtensionContextList[] {
 			RESOURCE,
 			DATATYPE,
-			MAPPING,
 			EXTENSION,
 		};
 
@@ -186,7 +161,6 @@ public enum ExtensionContextList implements Enumerator {
 		switch (value) {
 			case RESOURCE_VALUE: return RESOURCE;
 			case DATATYPE_VALUE: return DATATYPE;
-			case MAPPING_VALUE: return MAPPING;
 			case EXTENSION_VALUE: return EXTENSION;
 		}
 		return null;

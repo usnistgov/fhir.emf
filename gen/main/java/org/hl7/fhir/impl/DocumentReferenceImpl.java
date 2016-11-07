@@ -16,14 +16,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.DocumentReference;
 import org.hl7.fhir.DocumentReferenceContent;
 import org.hl7.fhir.DocumentReferenceContext;
 import org.hl7.fhir.DocumentReferenceRelatesTo;
+import org.hl7.fhir.DocumentReferenceStatus;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Instant;
@@ -167,7 +166,7 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 	 * @generated
 	 * @ordered
 	 */
-	protected Code status;
+	protected DocumentReferenceStatus status;
 
 	/**
 	 * The cached value of the '{@link #getDocStatus() <em>Doc Status</em>}' containment reference.
@@ -621,7 +620,7 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getStatus() {
+	public DocumentReferenceStatus getStatus() {
 		return status;
 	}
 
@@ -630,8 +629,8 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStatus(Code newStatus, NotificationChain msgs) {
-		Code oldStatus = status;
+	public NotificationChain basicSetStatus(DocumentReferenceStatus newStatus, NotificationChain msgs) {
+		DocumentReferenceStatus oldStatus = status;
 		status = newStatus;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DOCUMENT_REFERENCE__STATUS, oldStatus, newStatus);
@@ -645,7 +644,7 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStatus(Code newStatus) {
+	public void setStatus(DocumentReferenceStatus newStatus) {
 		if (newStatus != status) {
 			NotificationChain msgs = null;
 			if (status != null)
@@ -958,7 +957,7 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 				setIndexed((Instant)newValue);
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__STATUS:
-				setStatus((Code)newValue);
+				setStatus((DocumentReferenceStatus)newValue);
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__DOC_STATUS:
 				setDocStatus((CodeableConcept)newValue);
@@ -1024,7 +1023,7 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 				setIndexed((Instant)null);
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__STATUS:
-				setStatus((Code)null);
+				setStatus((DocumentReferenceStatus)null);
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__DOC_STATUS:
 				setDocStatus((CodeableConcept)null);

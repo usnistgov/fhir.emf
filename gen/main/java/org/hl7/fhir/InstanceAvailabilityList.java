@@ -65,7 +65,7 @@ public enum InstanceAvailabilityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * 
+	 * Online
 	 * <!-- end-model-doc -->
 	 * @see #ONLINE
 	 * @model
@@ -79,7 +79,7 @@ public enum InstanceAvailabilityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * 
+	 * Offline
 	 * <!-- end-model-doc -->
 	 * @see #OFFLINE
 	 * @model
@@ -93,7 +93,7 @@ public enum InstanceAvailabilityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * 
+	 * Nearline
 	 * <!-- end-model-doc -->
 	 * @see #NEARLINE
 	 * @model
@@ -107,7 +107,7 @@ public enum InstanceAvailabilityList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * 
+	 * Unavailable
 	 * <!-- end-model-doc -->
 	 * @see #UNAVAILABLE
 	 * @model

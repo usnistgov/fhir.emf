@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.CarePlanActivity#getActionResulting <em>Action Resulting</em>}</li>
+ *   <li>{@link org.hl7.fhir.CarePlanActivity#getOutcome <em>Outcome</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanActivity#getProgress <em>Progress</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanActivity#getReference <em>Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanActivity#getDetail <em>Detail</em>}</li>
@@ -43,6 +44,32 @@ public interface CarePlanActivity extends BackboneElement {
 	 * @generated
 	 */
 	EList<Reference> getActionResulting();
+
+	/**
+	 * Returns the value of the '<em><b>Outcome</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Results of the careplan activity.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Outcome</em>' containment reference.
+	 * @see #setOutcome(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getCarePlanActivity_Outcome()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='outcome' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CodeableConcept getOutcome();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.CarePlanActivity#getOutcome <em>Outcome</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Outcome</em>' containment reference.
+	 * @see #getOutcome()
+	 * @generated
+	 */
+	void setOutcome(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Progress</b></em>' containment reference list.

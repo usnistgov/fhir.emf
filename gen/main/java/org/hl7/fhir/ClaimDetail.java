@@ -18,8 +18,11 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.ClaimDetail#getSequence <em>Sequence</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimDetail#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimDetail#getRevenue <em>Revenue</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimDetail#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimDetail#getService <em>Service</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimDetail#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimDetail#getProgramCode <em>Program Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimDetail#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimDetail#getUnitPrice <em>Unit Price</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimDetail#getFactor <em>Factor</em>}</li>
@@ -61,42 +64,68 @@ public interface ClaimDetail extends BackboneElement {
 	void setSequence(PositiveInt value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Revenue</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of product or service.
+	 * The type of reveneu or cost center providing the product and/or service.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(Coding)
-	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_Type()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 * @return the value of the '<em>Revenue</em>' containment reference.
+	 * @see #setRevenue(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_Revenue()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='revenue' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Coding getType();
+	Coding getRevenue();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimDetail#getType <em>Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimDetail#getRevenue <em>Revenue</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' containment reference.
-	 * @see #getType()
+	 * @param value the new value of the '<em>Revenue</em>' containment reference.
+	 * @see #getRevenue()
 	 * @generated
 	 */
-	void setType(Coding value);
+	void setRevenue(Coding value);
+
+	/**
+	 * Returns the value of the '<em><b>Category</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Health Care Service Type Codes  to identify the classification of service or benefits.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Category</em>' containment reference.
+	 * @see #setCategory(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_Category()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='category' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Coding getCategory();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimDetail#getCategory <em>Category</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Category</em>' containment reference.
+	 * @see #getCategory()
+	 * @generated
+	 */
+	void setCategory(Coding value);
 
 	/**
 	 * Returns the value of the '<em><b>Service</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.
+	 * If this is an actual service or product line, ie. not a Group, then use code to indicate the Professional Service or Product supplied (eg. CTP, HCPCS,USCLS,ICD10, NCPDP,DIN,ACHI,CCI). If a grouping item then use a group code to indicate the type of thing being grouped eg. 'glasses' or 'compound'.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Service</em>' containment reference.
 	 * @see #setService(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_Service()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='service' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -113,6 +142,38 @@ public interface ClaimDetail extends BackboneElement {
 	void setService(Coding value);
 
 	/**
+	 * Returns the value of the '<em><b>Modifier</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Modifier</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_Modifier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='modifier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Coding> getModifier();
+
+	/**
+	 * Returns the value of the '<em><b>Program Code</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * For programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Program Code</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_ProgramCode()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='programCode' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Coding> getProgramCode();
+
+	/**
 	 * Returns the value of the '<em><b>Quantity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -120,13 +181,13 @@ public interface ClaimDetail extends BackboneElement {
 	 * The number of repetitions of a service or product.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Quantity</em>' containment reference.
-	 * @see #setQuantity(SimpleQuantity)
+	 * @see #setQuantity(Quantity)
 	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_Quantity()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='quantity' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getQuantity();
+	Quantity getQuantity();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ClaimDetail#getQuantity <em>Quantity</em>}' containment reference.
@@ -136,7 +197,7 @@ public interface ClaimDetail extends BackboneElement {
 	 * @see #getQuantity()
 	 * @generated
 	 */
-	void setQuantity(SimpleQuantity value);
+	void setQuantity(Quantity value);
 
 	/**
 	 * Returns the value of the '<em><b>Unit Price</b></em>' containment reference.
@@ -221,7 +282,7 @@ public interface ClaimDetail extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+	 * The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Net</em>' containment reference.
 	 * @see #setNet(Money)
@@ -243,30 +304,20 @@ public interface ClaimDetail extends BackboneElement {
 	void setNet(Money value);
 
 	/**
-	 * Returns the value of the '<em><b>Udi</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Udi</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * List of Unique Device Identifiers associated with this line item.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Udi</em>' containment reference.
-	 * @see #setUdi(Coding)
+	 * @return the value of the '<em>Udi</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getClaimDetail_Udi()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='udi' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Coding getUdi();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ClaimDetail#getUdi <em>Udi</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Udi</em>' containment reference.
-	 * @see #getUdi()
-	 * @generated
-	 */
-	void setUdi(Coding value);
+	EList<Reference> getUdi();
 
 	/**
 	 * Returns the value of the '<em><b>Sub Detail</b></em>' containment reference list.

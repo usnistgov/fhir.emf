@@ -55,7 +55,7 @@ public enum ResourceVersionPolicyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * VersionId meta-property is not supported (server) or used (client).
+	 * No VersionId Support
 	 * <!-- end-model-doc -->
 	 * @see #NO_VERSION
 	 * @model name="noVersion" literal="no-version"
@@ -69,7 +69,7 @@ public enum ResourceVersionPolicyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * VersionId meta-property is supported (server) or used (client).
+	 * Versioned
 	 * <!-- end-model-doc -->
 	 * @see #VERSIONED
 	 * @model name="versioned"
@@ -83,7 +83,7 @@ public enum ResourceVersionPolicyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * VersionId is must be correct for updates (server) or will be specified (If-match header) for updates (client).
+	 * VersionId tracked fully
 	 * <!-- end-model-doc -->
 	 * @see #VERSIONED_UPDATE
 	 * @model name="versionedUpdate" literal="versioned-update"

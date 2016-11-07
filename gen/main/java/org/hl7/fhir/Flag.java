@@ -132,7 +132,7 @@ public interface Flag extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The patient, location, group , organization , or practitioner this is about record this flag is associated with.
+	 * The patient, location, group , organization , or practitioner, etc. this is about record this flag is associated with.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subject</em>' containment reference.
 	 * @see #setSubject(Reference)

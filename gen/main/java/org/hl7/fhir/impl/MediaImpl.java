@@ -35,12 +35,12 @@ import org.hl7.fhir.UnsignedInt;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.hl7.fhir.impl.MediaImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MediaImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MediaImpl#getSubtype <em>Subtype</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MediaImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MediaImpl#getView <em>View</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MediaImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MediaImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MediaImpl#getView <em>View</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MediaImpl#getDeviceName <em>Device Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MediaImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MediaImpl#getWidth <em>Width</em>}</li>
@@ -52,6 +52,16 @@ import org.hl7.fhir.UnsignedInt;
  * @generated
  */
 public class MediaImpl extends DomainResourceImpl implements Media {
+	/**
+	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Identifier> identifier;
+
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -73,14 +83,14 @@ public class MediaImpl extends DomainResourceImpl implements Media {
 	protected CodeableConcept subtype;
 
 	/**
-	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' containment reference list.
+	 * The cached value of the '{@link #getView() <em>View</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
+	 * @see #getView()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Identifier> identifier;
+	protected CodeableConcept view;
 
 	/**
 	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference.
@@ -101,16 +111,6 @@ public class MediaImpl extends DomainResourceImpl implements Media {
 	 * @ordered
 	 */
 	protected Reference operator;
-
-	/**
-	 * The cached value of the '{@link #getView() <em>View</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getView()
-	 * @generated
-	 * @ordered
-	 */
-	protected CodeableConcept view;
 
 	/**
 	 * The cached value of the '{@link #getDeviceName() <em>Device Name</em>}' containment reference.
@@ -684,18 +684,18 @@ public class MediaImpl extends DomainResourceImpl implements Media {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case FhirPackage.MEDIA__IDENTIFIER:
+				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
 			case FhirPackage.MEDIA__TYPE:
 				return basicSetType(null, msgs);
 			case FhirPackage.MEDIA__SUBTYPE:
 				return basicSetSubtype(null, msgs);
-			case FhirPackage.MEDIA__IDENTIFIER:
-				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.MEDIA__VIEW:
+				return basicSetView(null, msgs);
 			case FhirPackage.MEDIA__SUBJECT:
 				return basicSetSubject(null, msgs);
 			case FhirPackage.MEDIA__OPERATOR:
 				return basicSetOperator(null, msgs);
-			case FhirPackage.MEDIA__VIEW:
-				return basicSetView(null, msgs);
 			case FhirPackage.MEDIA__DEVICE_NAME:
 				return basicSetDeviceName(null, msgs);
 			case FhirPackage.MEDIA__HEIGHT:
@@ -720,18 +720,18 @@ public class MediaImpl extends DomainResourceImpl implements Media {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case FhirPackage.MEDIA__IDENTIFIER:
+				return getIdentifier();
 			case FhirPackage.MEDIA__TYPE:
 				return getType();
 			case FhirPackage.MEDIA__SUBTYPE:
 				return getSubtype();
-			case FhirPackage.MEDIA__IDENTIFIER:
-				return getIdentifier();
+			case FhirPackage.MEDIA__VIEW:
+				return getView();
 			case FhirPackage.MEDIA__SUBJECT:
 				return getSubject();
 			case FhirPackage.MEDIA__OPERATOR:
 				return getOperator();
-			case FhirPackage.MEDIA__VIEW:
-				return getView();
 			case FhirPackage.MEDIA__DEVICE_NAME:
 				return getDeviceName();
 			case FhirPackage.MEDIA__HEIGHT:
@@ -757,24 +757,24 @@ public class MediaImpl extends DomainResourceImpl implements Media {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case FhirPackage.MEDIA__IDENTIFIER:
+				getIdentifier().clear();
+				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
+				return;
 			case FhirPackage.MEDIA__TYPE:
 				setType((DigitalMediaType)newValue);
 				return;
 			case FhirPackage.MEDIA__SUBTYPE:
 				setSubtype((CodeableConcept)newValue);
 				return;
-			case FhirPackage.MEDIA__IDENTIFIER:
-				getIdentifier().clear();
-				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
+			case FhirPackage.MEDIA__VIEW:
+				setView((CodeableConcept)newValue);
 				return;
 			case FhirPackage.MEDIA__SUBJECT:
 				setSubject((Reference)newValue);
 				return;
 			case FhirPackage.MEDIA__OPERATOR:
 				setOperator((Reference)newValue);
-				return;
-			case FhirPackage.MEDIA__VIEW:
-				setView((CodeableConcept)newValue);
 				return;
 			case FhirPackage.MEDIA__DEVICE_NAME:
 				setDeviceName((org.hl7.fhir.String)newValue);
@@ -806,23 +806,23 @@ public class MediaImpl extends DomainResourceImpl implements Media {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case FhirPackage.MEDIA__IDENTIFIER:
+				getIdentifier().clear();
+				return;
 			case FhirPackage.MEDIA__TYPE:
 				setType((DigitalMediaType)null);
 				return;
 			case FhirPackage.MEDIA__SUBTYPE:
 				setSubtype((CodeableConcept)null);
 				return;
-			case FhirPackage.MEDIA__IDENTIFIER:
-				getIdentifier().clear();
+			case FhirPackage.MEDIA__VIEW:
+				setView((CodeableConcept)null);
 				return;
 			case FhirPackage.MEDIA__SUBJECT:
 				setSubject((Reference)null);
 				return;
 			case FhirPackage.MEDIA__OPERATOR:
 				setOperator((Reference)null);
-				return;
-			case FhirPackage.MEDIA__VIEW:
-				setView((CodeableConcept)null);
 				return;
 			case FhirPackage.MEDIA__DEVICE_NAME:
 				setDeviceName((org.hl7.fhir.String)null);
@@ -854,18 +854,18 @@ public class MediaImpl extends DomainResourceImpl implements Media {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case FhirPackage.MEDIA__IDENTIFIER:
+				return identifier != null && !identifier.isEmpty();
 			case FhirPackage.MEDIA__TYPE:
 				return type != null;
 			case FhirPackage.MEDIA__SUBTYPE:
 				return subtype != null;
-			case FhirPackage.MEDIA__IDENTIFIER:
-				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.MEDIA__VIEW:
+				return view != null;
 			case FhirPackage.MEDIA__SUBJECT:
 				return subject != null;
 			case FhirPackage.MEDIA__OPERATOR:
 				return operator != null;
-			case FhirPackage.MEDIA__VIEW:
-				return view != null;
 			case FhirPackage.MEDIA__DEVICE_NAME:
 				return deviceName != null;
 			case FhirPackage.MEDIA__HEIGHT:

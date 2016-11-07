@@ -55,7 +55,7 @@ public enum AllergyIntoleranceCertaintyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * There is a low level of clinical certainty that the reaction was caused by the identified Substance.
+	 * Unlikely
 	 * <!-- end-model-doc -->
 	 * @see #UNLIKELY
 	 * @model name="unlikely"
@@ -69,7 +69,7 @@ public enum AllergyIntoleranceCertaintyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * There is a high level of clinical certainty that the reaction was caused by the identified Substance.
+	 * Likely
 	 * <!-- end-model-doc -->
 	 * @see #LIKELY
 	 * @model name="likely"
@@ -83,7 +83,7 @@ public enum AllergyIntoleranceCertaintyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * There is a very high level of clinical certainty that the reaction was due to the identified Substance, which may include clinical evidence by testing or rechallenge.
+	 * Confirmed
 	 * <!-- end-model-doc -->
 	 * @see #CONFIRMED
 	 * @model name="confirmed"

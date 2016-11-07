@@ -34,7 +34,7 @@ public interface BundleRequest extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
+	 * The HTTP verb for this entry in either a change history, or a transaction/ transaction response.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Method</em>' containment reference.
 	 * @see #setMethod(HTTPVerb)

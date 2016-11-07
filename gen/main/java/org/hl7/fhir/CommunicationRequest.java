@@ -114,7 +114,7 @@ public interface CommunicationRequest extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The entity (e.g. person, organization, clinical information system, or device) which is the intended target of the communication.
+	 * The entity (e.g. person, organization, clinical information system, device, group, or care team) which is the intended target of the communication.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Recipient</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getCommunicationRequest_Recipient()

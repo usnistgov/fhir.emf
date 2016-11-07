@@ -21,12 +21,12 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.DataElement#getUrl <em>Url</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getVersion <em>Version</em>}</li>
- *   <li>{@link org.hl7.fhir.DataElement#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getExperimental <em>Experimental</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getPublisher <em>Publisher</em>}</li>
- *   <li>{@link org.hl7.fhir.DataElement#getContact <em>Contact</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getDate <em>Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.DataElement#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.DataElement#getContact <em>Contact</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getUseContext <em>Use Context</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getCopyright <em>Copyright</em>}</li>
  *   <li>{@link org.hl7.fhir.DataElement#getStringency <em>Stringency</em>}</li>
@@ -141,13 +141,13 @@ public interface DataElement extends DomainResource {
 	 * The status of the data element.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(Code)
+	 * @see #setStatus(ConformanceResourceStatus)
 	 * @see org.hl7.fhir.FhirPackage#getDataElement_Status()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getStatus();
+	ConformanceResourceStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.DataElement#getStatus <em>Status</em>}' containment reference.
@@ -157,7 +157,7 @@ public interface DataElement extends DomainResource {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(Code value);
+	void setStatus(ConformanceResourceStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Experimental</b></em>' containment reference.

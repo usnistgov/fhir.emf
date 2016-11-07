@@ -177,13 +177,13 @@ public interface AppointmentResponse extends DomainResource {
 	 * Participation status of the participant. When the status is declined or tentative if the start/end times are different to the appointment, then these times should be interpreted as a requested time change. When the status is accepted, the times can either be the time of the appointment (as a confirmation of the time) or can be empty.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Participant Status</em>' containment reference.
-	 * @see #setParticipantStatus(ParticipantStatus)
+	 * @see #setParticipantStatus(Code)
 	 * @see org.hl7.fhir.FhirPackage#getAppointmentResponse_ParticipantStatus()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='participantStatus' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	ParticipantStatus getParticipantStatus();
+	Code getParticipantStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AppointmentResponse#getParticipantStatus <em>Participant Status</em>}' containment reference.
@@ -193,7 +193,7 @@ public interface AppointmentResponse extends DomainResource {
 	 * @see #getParticipantStatus()
 	 * @generated
 	 */
-	void setParticipantStatus(ParticipantStatus value);
+	void setParticipantStatus(Code value);
 
 	/**
 	 * Returns the value of the '<em><b>Comment</b></em>' containment reference.

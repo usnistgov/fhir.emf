@@ -17,8 +17,8 @@ import org.hl7.fhir.Decimal;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Money;
+import org.hl7.fhir.Quantity;
 import org.hl7.fhir.Reference;
-import org.hl7.fhir.SimpleQuantity;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,7 +90,7 @@ public class ContractValuedItemImpl extends BackboneElementImpl implements Contr
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity quantity;
+	protected Quantity quantity;
 
 	/**
 	 * The cached value of the '{@link #getUnitPrice() <em>Unit Price</em>}' containment reference.
@@ -328,7 +328,7 @@ public class ContractValuedItemImpl extends BackboneElementImpl implements Contr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getQuantity() {
+	public Quantity getQuantity() {
 		return quantity;
 	}
 
@@ -337,8 +337,8 @@ public class ContractValuedItemImpl extends BackboneElementImpl implements Contr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetQuantity(SimpleQuantity newQuantity, NotificationChain msgs) {
-		SimpleQuantity oldQuantity = quantity;
+	public NotificationChain basicSetQuantity(Quantity newQuantity, NotificationChain msgs) {
+		Quantity oldQuantity = quantity;
 		quantity = newQuantity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONTRACT_VALUED_ITEM__QUANTITY, oldQuantity, newQuantity);
@@ -352,7 +352,7 @@ public class ContractValuedItemImpl extends BackboneElementImpl implements Contr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQuantity(SimpleQuantity newQuantity) {
+	public void setQuantity(Quantity newQuantity) {
 		if (newQuantity != quantity) {
 			NotificationChain msgs = null;
 			if (quantity != null)
@@ -619,7 +619,7 @@ public class ContractValuedItemImpl extends BackboneElementImpl implements Contr
 				setEffectiveTime((DateTime)newValue);
 				return;
 			case FhirPackage.CONTRACT_VALUED_ITEM__QUANTITY:
-				setQuantity((SimpleQuantity)newValue);
+				setQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.CONTRACT_VALUED_ITEM__UNIT_PRICE:
 				setUnitPrice((Money)newValue);
@@ -658,7 +658,7 @@ public class ContractValuedItemImpl extends BackboneElementImpl implements Contr
 				setEffectiveTime((DateTime)null);
 				return;
 			case FhirPackage.CONTRACT_VALUED_ITEM__QUANTITY:
-				setQuantity((SimpleQuantity)null);
+				setQuantity((Quantity)null);
 				return;
 			case FhirPackage.CONTRACT_VALUED_ITEM__UNIT_PRICE:
 				setUnitPrice((Money)null);

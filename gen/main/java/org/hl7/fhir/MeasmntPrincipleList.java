@@ -135,7 +135,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement principle isn't in the list.
+	 * MSP Other
 	 * <!-- end-model-doc -->
 	 * @see #OTHER
 	 * @model name="other"
@@ -149,7 +149,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the chemical principle.
+	 * MSP Chemical
 	 * <!-- end-model-doc -->
 	 * @see #CHEMICAL
 	 * @model name="chemical"
@@ -163,7 +163,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the electrical principle.
+	 * MSP Electrical
 	 * <!-- end-model-doc -->
 	 * @see #ELECTRICAL
 	 * @model name="electrical"
@@ -177,7 +177,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the impedance principle.
+	 * MSP Impedance
 	 * <!-- end-model-doc -->
 	 * @see #IMPEDANCE
 	 * @model name="impedance"
@@ -191,7 +191,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the nuclear principle.
+	 * MSP Nuclear
 	 * <!-- end-model-doc -->
 	 * @see #NUCLEAR
 	 * @model name="nuclear"
@@ -205,7 +205,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the optical principle.
+	 * MSP Optical
 	 * <!-- end-model-doc -->
 	 * @see #OPTICAL
 	 * @model name="optical"
@@ -219,7 +219,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the thermal principle.
+	 * MSP Thermal
 	 * <!-- end-model-doc -->
 	 * @see #THERMAL
 	 * @model name="thermal"
@@ -233,7 +233,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the biological principle.
+	 * MSP Biological
 	 * <!-- end-model-doc -->
 	 * @see #BIOLOGICAL
 	 * @model name="biological"
@@ -247,7 +247,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the mechanical principle.
+	 * MSP Mechanical
 	 * <!-- end-model-doc -->
 	 * @see #MECHANICAL
 	 * @model name="mechanical"
@@ -261,7 +261,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the acoustical principle.
+	 * MSP Acoustical
 	 * <!-- end-model-doc -->
 	 * @see #ACOUSTICAL
 	 * @model name="acoustical"
@@ -275,7 +275,7 @@ public enum MeasmntPrincipleList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Measurement is done using the manual principle.
+	 * MSP Manual
 	 * <!-- end-model-doc -->
 	 * @see #MANUAL
 	 * @model name="manual"

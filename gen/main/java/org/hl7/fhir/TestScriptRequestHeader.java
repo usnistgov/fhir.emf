@@ -56,7 +56,7 @@ public interface TestScriptRequestHeader extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value of the header e.g. "application/xml".
+	 * The value of the header e.g. "application/fhir+xml".
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(org.hl7.fhir.String)

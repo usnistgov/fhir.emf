@@ -95,7 +95,7 @@ public enum NameUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Known as/conventional/the one you normally use
+	 * Usual
 	 * <!-- end-model-doc -->
 	 * @see #USUAL
 	 * @model name="usual"
@@ -109,7 +109,7 @@ public enum NameUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
+	 * Official
 	 * <!-- end-model-doc -->
 	 * @see #OFFICIAL
 	 * @model name="official"
@@ -123,7 +123,7 @@ public enum NameUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A temporary name. Name.period can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.
+	 * Temp
 	 * <!-- end-model-doc -->
 	 * @see #TEMP
 	 * @model name="temp"
@@ -137,7 +137,7 @@ public enum NameUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A name that is used to address the person in an informal manner, but is not part of their formal or usual name
+	 * Nickname
 	 * <!-- end-model-doc -->
 	 * @see #NICKNAME
 	 * @model name="nickname"
@@ -151,7 +151,7 @@ public enum NameUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)
+	 * Anonymous
 	 * <!-- end-model-doc -->
 	 * @see #ANONYMOUS
 	 * @model name="anonymous"
@@ -165,7 +165,7 @@ public enum NameUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This name is no longer in use (or was never correct, but retained for records)
+	 * Old
 	 * <!-- end-model-doc -->
 	 * @see #OLD
 	 * @model name="old"
@@ -179,7 +179,7 @@ public enum NameUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person's name, nor should the maiden name be determined algorithmically.
+	 * Maiden
 	 * <!-- end-model-doc -->
 	 * @see #MAIDEN
 	 * @model name="maiden"

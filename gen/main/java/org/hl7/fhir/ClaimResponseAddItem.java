@@ -18,9 +18,12 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getSequenceLinkId <em>Sequence Link Id</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getRevenue <em>Revenue</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getService <em>Service</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getModifier <em>Modifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getFee <em>Fee</em>}</li>
- *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getNoteNumberLinkId <em>Note Number Link Id</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getNoteNumber <em>Note Number</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getAdjudication <em>Adjudication</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimResponseAddItem#getDetail <em>Detail</em>}</li>
  * </ul>
@@ -47,6 +50,58 @@ public interface ClaimResponseAddItem extends BackboneElement {
 	EList<PositiveInt> getSequenceLinkId();
 
 	/**
+	 * Returns the value of the '<em><b>Revenue</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The type of reveneu or cost center providing the product and/or service.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Revenue</em>' containment reference.
+	 * @see #setRevenue(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseAddItem_Revenue()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='revenue' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Coding getRevenue();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseAddItem#getRevenue <em>Revenue</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Revenue</em>' containment reference.
+	 * @see #getRevenue()
+	 * @generated
+	 */
+	void setRevenue(Coding value);
+
+	/**
+	 * Returns the value of the '<em><b>Category</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Health Care Service Type Codes  to identify the classification of service or benefits.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Category</em>' containment reference.
+	 * @see #setCategory(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseAddItem_Category()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='category' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Coding getCategory();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimResponseAddItem#getCategory <em>Category</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Category</em>' containment reference.
+	 * @see #getCategory()
+	 * @generated
+	 */
+	void setCategory(Coding value);
+
+	/**
 	 * Returns the value of the '<em><b>Service</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,7 +111,7 @@ public interface ClaimResponseAddItem extends BackboneElement {
 	 * @return the value of the '<em>Service</em>' containment reference.
 	 * @see #setService(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getClaimResponseAddItem_Service()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='service' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -71,6 +126,22 @@ public interface ClaimResponseAddItem extends BackboneElement {
 	 * @generated
 	 */
 	void setService(Coding value);
+
+	/**
+	 * Returns the value of the '<em><b>Modifier</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Modifier</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseAddItem_Modifier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='modifier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Coding> getModifier();
 
 	/**
 	 * Returns the value of the '<em><b>Fee</b></em>' containment reference.
@@ -99,24 +170,24 @@ public interface ClaimResponseAddItem extends BackboneElement {
 	void setFee(Money value);
 
 	/**
-	 * Returns the value of the '<em><b>Note Number Link Id</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Note Number</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.PositiveInt}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of note references to the notes provided below.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Note Number Link Id</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getClaimResponseAddItem_NoteNumberLinkId()
+	 * @return the value of the '<em>Note Number</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getClaimResponseAddItem_NoteNumber()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='noteNumberLinkId' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='noteNumber' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<PositiveInt> getNoteNumberLinkId();
+	EList<PositiveInt> getNoteNumber();
 
 	/**
 	 * Returns the value of the '<em><b>Adjudication</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.ClaimResponseAdjudication3}.
+	 * The list contents are of type {@link org.hl7.fhir.ClaimResponseAdjudication}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -128,7 +199,7 @@ public interface ClaimResponseAddItem extends BackboneElement {
 	 *        extendedMetaData="kind='element' name='adjudication' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<ClaimResponseAdjudication3> getAdjudication();
+	EList<ClaimResponseAdjudication> getAdjudication();
 
 	/**
 	 * Returns the value of the '<em><b>Detail</b></em>' containment reference list.

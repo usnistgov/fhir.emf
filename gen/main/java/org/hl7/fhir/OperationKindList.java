@@ -45,7 +45,7 @@ public enum OperationKindList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This operation is invoked as an operation.
+	 * Operation
 	 * <!-- end-model-doc -->
 	 * @see #OPERATION
 	 * @model name="operation"
@@ -59,7 +59,7 @@ public enum OperationKindList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This operation is a named query, invoked using the search mechanism.
+	 * Query
 	 * <!-- end-model-doc -->
 	 * @see #QUERY
 	 * @model name="query"

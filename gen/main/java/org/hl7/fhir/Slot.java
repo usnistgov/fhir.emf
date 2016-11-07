@@ -19,9 +19,12 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Slot#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.Slot#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Slot#getServiceCategory <em>Service Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.Slot#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Slot#getSpecialty <em>Specialty</em>}</li>
+ *   <li>{@link org.hl7.fhir.Slot#getAppointmentType <em>Appointment Type</em>}</li>
  *   <li>{@link org.hl7.fhir.Slot#getSchedule <em>Schedule</em>}</li>
- *   <li>{@link org.hl7.fhir.Slot#getFreeBusyType <em>Free Busy Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Slot#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.Slot#getStart <em>Start</em>}</li>
  *   <li>{@link org.hl7.fhir.Slot#getEnd <em>End</em>}</li>
  *   <li>{@link org.hl7.fhir.Slot#getOverbooked <em>Overbooked</em>}</li>
@@ -50,30 +53,88 @@ public interface Slot extends DomainResource {
 	EList<Identifier> getIdentifier();
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Service Category</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A broad categorisation of the service that is to be performed during this appointment.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Service Category</em>' containment reference.
+	 * @see #setServiceCategory(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getSlot_ServiceCategory()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='serviceCategory' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CodeableConcept getServiceCategory();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Slot#getServiceCategory <em>Service Category</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Service Category</em>' containment reference.
+	 * @see #getServiceCategory()
+	 * @generated
+	 */
+	void setServiceCategory(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Service Type</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getSlot_Type()
+	 * @return the value of the '<em>Service Type</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getSlot_ServiceType()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='serviceType' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getType();
+	EList<CodeableConcept> getServiceType();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Slot#getType <em>Type</em>}' containment reference.
+	 * Returns the value of the '<em><b>Specialty</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' containment reference.
-	 * @see #getType()
+	 * <!-- begin-model-doc -->
+	 * The specialty of a practitioner that would be required to perform the service requested in this appointment.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Specialty</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getSlot_Specialty()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='specialty' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	void setType(CodeableConcept value);
+	EList<CodeableConcept> getSpecialty();
+
+	/**
+	 * Returns the value of the '<em><b>Appointment Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The style of appointment or patient that has been booked in the slot (not service type).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Appointment Type</em>' containment reference.
+	 * @see #setAppointmentType(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getSlot_AppointmentType()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='appointmentType' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CodeableConcept getAppointmentType();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Slot#getAppointmentType <em>Appointment Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Appointment Type</em>' containment reference.
+	 * @see #getAppointmentType()
+	 * @generated
+	 */
+	void setAppointmentType(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Schedule</b></em>' containment reference.
@@ -102,30 +163,30 @@ public interface Slot extends DomainResource {
 	void setSchedule(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Free Busy Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * busy | free | busy-unavailable | busy-tentative.
+	 * busy | free | busy-unavailable | busy-tentative | entered-in-error.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Free Busy Type</em>' containment reference.
-	 * @see #setFreeBusyType(SlotStatus)
-	 * @see org.hl7.fhir.FhirPackage#getSlot_FreeBusyType()
+	 * @return the value of the '<em>Status</em>' containment reference.
+	 * @see #setStatus(SlotStatus)
+	 * @see org.hl7.fhir.FhirPackage#getSlot_Status()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='freeBusyType' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SlotStatus getFreeBusyType();
+	SlotStatus getStatus();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Slot#getFreeBusyType <em>Free Busy Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.Slot#getStatus <em>Status</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Free Busy Type</em>' containment reference.
-	 * @see #getFreeBusyType()
+	 * @param value the new value of the '<em>Status</em>' containment reference.
+	 * @see #getStatus()
 	 * @generated
 	 */
-	void setFreeBusyType(SlotStatus value);
+	void setStatus(SlotStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Start</b></em>' containment reference.

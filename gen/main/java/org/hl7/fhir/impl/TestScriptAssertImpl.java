@@ -18,6 +18,8 @@ import org.hl7.fhir.ContentType;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Id;
 import org.hl7.fhir.TestScriptAssert;
+import org.hl7.fhir.TestScriptRule2;
+import org.hl7.fhir.TestScriptRuleset1;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,9 +40,12 @@ import org.hl7.fhir.TestScriptAssert;
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getNavigationLinks <em>Navigation Links</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getRequestURL <em>Request URL</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getResource <em>Resource</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getResponse <em>Response</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getResponseCode <em>Response Code</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getRule <em>Rule</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getRuleset <em>Ruleset</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getSourceId <em>Source Id</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getValidateProfileId <em>Validate Profile Id</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptAssertImpl#getValue <em>Value</em>}</li>
@@ -161,6 +166,16 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 	protected org.hl7.fhir.String path;
 
 	/**
+	 * The cached value of the '{@link #getRequestURL() <em>Request URL</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequestURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.String requestURL;
+
+	/**
 	 * The cached value of the '{@link #getResource() <em>Resource</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -189,6 +204,26 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String responseCode;
+
+	/**
+	 * The cached value of the '{@link #getRule() <em>Rule</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRule()
+	 * @generated
+	 * @ordered
+	 */
+	protected TestScriptRule2 rule;
+
+	/**
+	 * The cached value of the '{@link #getRuleset() <em>Ruleset</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRuleset()
+	 * @generated
+	 * @ordered
+	 */
+	protected TestScriptRuleset1 ruleset;
 
 	/**
 	 * The cached value of the '{@link #getSourceId() <em>Source Id</em>}' containment reference.
@@ -727,6 +762,49 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.hl7.fhir.String getRequestURL() {
+		return requestURL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRequestURL(org.hl7.fhir.String newRequestURL, NotificationChain msgs) {
+		org.hl7.fhir.String oldRequestURL = requestURL;
+		requestURL = newRequestURL;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL, oldRequestURL, newRequestURL);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRequestURL(org.hl7.fhir.String newRequestURL) {
+		if (newRequestURL != requestURL) {
+			NotificationChain msgs = null;
+			if (requestURL != null)
+				msgs = ((InternalEObject)requestURL).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL, null, msgs);
+			if (newRequestURL != null)
+				msgs = ((InternalEObject)newRequestURL).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL, null, msgs);
+			msgs = basicSetRequestURL(newRequestURL, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL, newRequestURL, newRequestURL));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Code getResource() {
 		return resource;
 	}
@@ -849,6 +927,92 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE_CODE, newResponseCode, newResponseCode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestScriptRule2 getRule() {
+		return rule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRule(TestScriptRule2 newRule, NotificationChain msgs) {
+		TestScriptRule2 oldRule = rule;
+		rule = newRule;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_ASSERT__RULE, oldRule, newRule);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRule(TestScriptRule2 newRule) {
+		if (newRule != rule) {
+			NotificationChain msgs = null;
+			if (rule != null)
+				msgs = ((InternalEObject)rule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_ASSERT__RULE, null, msgs);
+			if (newRule != null)
+				msgs = ((InternalEObject)newRule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_ASSERT__RULE, null, msgs);
+			msgs = basicSetRule(newRule, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_ASSERT__RULE, newRule, newRule));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestScriptRuleset1 getRuleset() {
+		return ruleset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRuleset(TestScriptRuleset1 newRuleset, NotificationChain msgs) {
+		TestScriptRuleset1 oldRuleset = ruleset;
+		ruleset = newRuleset;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_ASSERT__RULESET, oldRuleset, newRuleset);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRuleset(TestScriptRuleset1 newRuleset) {
+		if (newRuleset != ruleset) {
+			NotificationChain msgs = null;
+			if (ruleset != null)
+				msgs = ((InternalEObject)ruleset).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_ASSERT__RULESET, null, msgs);
+			if (newRuleset != null)
+				msgs = ((InternalEObject)newRuleset).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_ASSERT__RULESET, null, msgs);
+			msgs = basicSetRuleset(newRuleset, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_ASSERT__RULESET, newRuleset, newRuleset));
 	}
 
 	/**
@@ -1053,12 +1217,18 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 				return basicSetOperator(null, msgs);
 			case FhirPackage.TEST_SCRIPT_ASSERT__PATH:
 				return basicSetPath(null, msgs);
+			case FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL:
+				return basicSetRequestURL(null, msgs);
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESOURCE:
 				return basicSetResource(null, msgs);
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE:
 				return basicSetResponse(null, msgs);
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE_CODE:
 				return basicSetResponseCode(null, msgs);
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULE:
+				return basicSetRule(null, msgs);
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULESET:
+				return basicSetRuleset(null, msgs);
 			case FhirPackage.TEST_SCRIPT_ASSERT__SOURCE_ID:
 				return basicSetSourceId(null, msgs);
 			case FhirPackage.TEST_SCRIPT_ASSERT__VALIDATE_PROFILE_ID:
@@ -1101,12 +1271,18 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 				return getOperator();
 			case FhirPackage.TEST_SCRIPT_ASSERT__PATH:
 				return getPath();
+			case FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL:
+				return getRequestURL();
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESOURCE:
 				return getResource();
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE:
 				return getResponse();
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE_CODE:
 				return getResponseCode();
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULE:
+				return getRule();
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULESET:
+				return getRuleset();
 			case FhirPackage.TEST_SCRIPT_ASSERT__SOURCE_ID:
 				return getSourceId();
 			case FhirPackage.TEST_SCRIPT_ASSERT__VALIDATE_PROFILE_ID:
@@ -1160,6 +1336,9 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 			case FhirPackage.TEST_SCRIPT_ASSERT__PATH:
 				setPath((org.hl7.fhir.String)newValue);
 				return;
+			case FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL:
+				setRequestURL((org.hl7.fhir.String)newValue);
+				return;
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESOURCE:
 				setResource((Code)newValue);
 				return;
@@ -1168,6 +1347,12 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 				return;
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE_CODE:
 				setResponseCode((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULE:
+				setRule((TestScriptRule2)newValue);
+				return;
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULESET:
+				setRuleset((TestScriptRuleset1)newValue);
 				return;
 			case FhirPackage.TEST_SCRIPT_ASSERT__SOURCE_ID:
 				setSourceId((Id)newValue);
@@ -1226,6 +1411,9 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 			case FhirPackage.TEST_SCRIPT_ASSERT__PATH:
 				setPath((org.hl7.fhir.String)null);
 				return;
+			case FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL:
+				setRequestURL((org.hl7.fhir.String)null);
+				return;
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESOURCE:
 				setResource((Code)null);
 				return;
@@ -1234,6 +1422,12 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 				return;
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE_CODE:
 				setResponseCode((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULE:
+				setRule((TestScriptRule2)null);
+				return;
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULESET:
+				setRuleset((TestScriptRuleset1)null);
 				return;
 			case FhirPackage.TEST_SCRIPT_ASSERT__SOURCE_ID:
 				setSourceId((Id)null);
@@ -1281,12 +1475,18 @@ public class TestScriptAssertImpl extends BackboneElementImpl implements TestScr
 				return operator != null;
 			case FhirPackage.TEST_SCRIPT_ASSERT__PATH:
 				return path != null;
+			case FhirPackage.TEST_SCRIPT_ASSERT__REQUEST_URL:
+				return requestURL != null;
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESOURCE:
 				return resource != null;
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE:
 				return response != null;
 			case FhirPackage.TEST_SCRIPT_ASSERT__RESPONSE_CODE:
 				return responseCode != null;
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULE:
+				return rule != null;
+			case FhirPackage.TEST_SCRIPT_ASSERT__RULESET:
+				return ruleset != null;
 			case FhirPackage.TEST_SCRIPT_ASSERT__SOURCE_ID:
 				return sourceId != null;
 			case FhirPackage.TEST_SCRIPT_ASSERT__VALIDATE_PROFILE_ID:

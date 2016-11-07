@@ -2,8 +2,6 @@
  */
 package org.hl7.fhir;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Imaging Study Instance</b></em>'.
@@ -17,12 +15,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.ImagingStudyInstance#getNumber <em>Number</em>}</li>
  *   <li>{@link org.hl7.fhir.ImagingStudyInstance#getUid <em>Uid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ImagingStudyInstance#getNumber <em>Number</em>}</li>
  *   <li>{@link org.hl7.fhir.ImagingStudyInstance#getSopClass <em>Sop Class</em>}</li>
- *   <li>{@link org.hl7.fhir.ImagingStudyInstance#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.ImagingStudyInstance#getTitle <em>Title</em>}</li>
- *   <li>{@link org.hl7.fhir.ImagingStudyInstance#getContent <em>Content</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getImagingStudyInstance()
@@ -109,32 +105,6 @@ public interface ImagingStudyInstance extends BackboneElement {
 	void setSopClass(Oid value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A human-friendly SOP Class name.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getImagingStudyInstance_Type()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	org.hl7.fhir.String getType();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ImagingStudyInstance#getType <em>Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' containment reference.
-	 * @see #getType()
-	 * @generated
-	 */
-	void setType(org.hl7.fhir.String value);
-
-	/**
 	 * Returns the value of the '<em><b>Title</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -159,21 +129,5 @@ public interface ImagingStudyInstance extends BackboneElement {
 	 * @generated
 	 */
 	void setTitle(org.hl7.fhir.String value);
-
-	/**
-	 * Returns the value of the '<em><b>Content</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.Attachment}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Content</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getImagingStudyInstance_Content()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='content' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	EList<Attachment> getContent();
 
 } // ImagingStudyInstance

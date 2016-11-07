@@ -2,6 +2,8 @@
  */
 package org.hl7.fhir;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +31,7 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getDoseQuantity <em>Dose Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getRateRatio <em>Rate Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getRateRange <em>Rate Range</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getRateQuantity <em>Rate Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getMaxDosePerPeriod <em>Max Dose Per Period</em>}</li>
  * </ul>
  *
@@ -64,37 +67,27 @@ public interface MedicationDispenseDosageInstruction extends BackboneElement {
 	void setText(org.hl7.fhir.String value);
 
 	/**
-	 * Returns the value of the '<em><b>Additional Instructions</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Additional Instructions</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Additional instructions such as "Swallow with plenty of water" which may or may not be coded.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Additional Instructions</em>' containment reference.
-	 * @see #setAdditionalInstructions(CodeableConcept)
+	 * @return the value of the '<em>Additional Instructions</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getMedicationDispenseDosageInstruction_AdditionalInstructions()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='additionalInstructions' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getAdditionalInstructions();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getAdditionalInstructions <em>Additional Instructions</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Additional Instructions</em>' containment reference.
-	 * @see #getAdditionalInstructions()
-	 * @generated
-	 */
-	void setAdditionalInstructions(CodeableConcept value);
+	EList<CodeableConcept> getAdditionalInstructions();
 
 	/**
 	 * Returns the value of the '<em><b>Timing</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions.  For example, "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
+	 * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions.  For example, "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Timing</em>' containment reference.
 	 * @see #setTiming(Timing)
@@ -309,13 +302,13 @@ public interface MedicationDispenseDosageInstruction extends BackboneElement {
 	 * The amount of therapeutic or other substance given at one administration event. (choose any one of dose*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Dose Quantity</em>' containment reference.
-	 * @see #setDoseQuantity(SimpleQuantity)
+	 * @see #setDoseQuantity(Quantity)
 	 * @see org.hl7.fhir.FhirPackage#getMedicationDispenseDosageInstruction_DoseQuantity()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='doseQuantity' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getDoseQuantity();
+	Quantity getDoseQuantity();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getDoseQuantity <em>Dose Quantity</em>}' containment reference.
@@ -325,14 +318,14 @@ public interface MedicationDispenseDosageInstruction extends BackboneElement {
 	 * @see #getDoseQuantity()
 	 * @generated
 	 */
-	void setDoseQuantity(SimpleQuantity value);
+	void setDoseQuantity(Quantity value);
 
 	/**
 	 * Returns the value of the '<em><b>Rate Ratio</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours. (choose any one of rate*, but only one)
+	 * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period. (choose any one of rate*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Rate Ratio</em>' containment reference.
 	 * @see #setRateRatio(Ratio)
@@ -358,7 +351,7 @@ public interface MedicationDispenseDosageInstruction extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours. (choose any one of rate*, but only one)
+	 * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period. (choose any one of rate*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Rate Range</em>' containment reference.
 	 * @see #setRateRange(Range)
@@ -378,6 +371,32 @@ public interface MedicationDispenseDosageInstruction extends BackboneElement {
 	 * @generated
 	 */
 	void setRateRange(Range value);
+
+	/**
+	 * Returns the value of the '<em><b>Rate Quantity</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period. (choose any one of rate*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Rate Quantity</em>' containment reference.
+	 * @see #setRateQuantity(Quantity)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationDispenseDosageInstruction_RateQuantity()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='rateQuantity' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Quantity getRateQuantity();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getRateQuantity <em>Rate Quantity</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rate Quantity</em>' containment reference.
+	 * @see #getRateQuantity()
+	 * @generated
+	 */
+	void setRateQuantity(Quantity value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Dose Per Period</b></em>' containment reference.

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.Address;
+import org.hl7.fhir.Age;
 import org.hl7.fhir.Annotation;
 import org.hl7.fhir.Attachment;
 import org.hl7.fhir.Base64Binary;
@@ -25,9 +26,12 @@ import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.ContactPoint;
+import org.hl7.fhir.Count;
 import org.hl7.fhir.Date;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.Decimal;
+import org.hl7.fhir.Distance;
+import org.hl7.fhir.Duration;
 import org.hl7.fhir.ElementDefinition;
 import org.hl7.fhir.ElementDefinitionBase;
 import org.hl7.fhir.ElementDefinitionBinding;
@@ -42,6 +46,7 @@ import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Instant;
 import org.hl7.fhir.Markdown;
 import org.hl7.fhir.Meta;
+import org.hl7.fhir.Money;
 import org.hl7.fhir.Oid;
 import org.hl7.fhir.Period;
 import org.hl7.fhir.PositiveInt;
@@ -56,7 +61,6 @@ import org.hl7.fhir.Time;
 import org.hl7.fhir.Timing;
 import org.hl7.fhir.UnsignedInt;
 import org.hl7.fhir.Uri;
-import org.hl7.fhir.Uuid;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,213 +84,179 @@ import org.hl7.fhir.Uuid;
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMin <em>Min</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMax <em>Max</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getBase <em>Base</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getContentReference <em>Content Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getNameReference <em>Name Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueBoolean <em>Default Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueInteger <em>Default Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueDecimal <em>Default Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueBase64Binary <em>Default Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueInstant <em>Default Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueString <em>Default Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueUri <em>Default Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueBoolean <em>Default Value Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueCode <em>Default Value Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueDate <em>Default Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueDateTime <em>Default Value Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueTime <em>Default Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueCode <em>Default Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueOid <em>Default Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueUuid <em>Default Value Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueDecimal <em>Default Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueId <em>Default Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueUnsignedInt <em>Default Value Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValuePositiveInt <em>Default Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueInstant <em>Default Value Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueInteger <em>Default Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueMarkdown <em>Default Value Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueOid <em>Default Value Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValuePositiveInt <em>Default Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueString <em>Default Value String</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueTime <em>Default Value Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueUnsignedInt <em>Default Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueUri <em>Default Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueAddress <em>Default Value Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueAge <em>Default Value Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueAnnotation <em>Default Value Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueAttachment <em>Default Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueIdentifier <em>Default Value Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueCodeableConcept <em>Default Value Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueCoding <em>Default Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueContactPoint <em>Default Value Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueCount <em>Default Value Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueDistance <em>Default Value Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueDuration <em>Default Value Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueHumanName <em>Default Value Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueIdentifier <em>Default Value Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueMoney <em>Default Value Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValuePeriod <em>Default Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueQuantity <em>Default Value Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueRange <em>Default Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValuePeriod <em>Default Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueRatio <em>Default Value Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueReference <em>Default Value Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueSampledData <em>Default Value Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueSignature <em>Default Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueHumanName <em>Default Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueAddress <em>Default Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueContactPoint <em>Default Value Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueTiming <em>Default Value Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getDefaultValueMeta <em>Default Value Meta</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMeaningWhenMissing <em>Meaning When Missing</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedBoolean <em>Fixed Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedInteger <em>Fixed Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedDecimal <em>Fixed Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedBase64Binary <em>Fixed Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedInstant <em>Fixed Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedString <em>Fixed String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedUri <em>Fixed Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedBoolean <em>Fixed Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedCode <em>Fixed Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedDate <em>Fixed Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedDateTime <em>Fixed Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedTime <em>Fixed Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedCode <em>Fixed Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedOid <em>Fixed Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedUuid <em>Fixed Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedDecimal <em>Fixed Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedId <em>Fixed Id</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedUnsignedInt <em>Fixed Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedPositiveInt <em>Fixed Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedInstant <em>Fixed Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedInteger <em>Fixed Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedMarkdown <em>Fixed Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedOid <em>Fixed Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedPositiveInt <em>Fixed Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedString <em>Fixed String</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedTime <em>Fixed Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedUnsignedInt <em>Fixed Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedUri <em>Fixed Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedAddress <em>Fixed Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedAge <em>Fixed Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedAnnotation <em>Fixed Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedAttachment <em>Fixed Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedIdentifier <em>Fixed Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedCodeableConcept <em>Fixed Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedCoding <em>Fixed Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedContactPoint <em>Fixed Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedCount <em>Fixed Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedDistance <em>Fixed Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedDuration <em>Fixed Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedHumanName <em>Fixed Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedIdentifier <em>Fixed Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedMoney <em>Fixed Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedPeriod <em>Fixed Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedQuantity <em>Fixed Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedRange <em>Fixed Range</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedPeriod <em>Fixed Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedRatio <em>Fixed Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedReference <em>Fixed Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedSampledData <em>Fixed Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedSignature <em>Fixed Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedHumanName <em>Fixed Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedAddress <em>Fixed Address</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedContactPoint <em>Fixed Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedTiming <em>Fixed Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getFixedMeta <em>Fixed Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternBoolean <em>Pattern Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternInteger <em>Pattern Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternDecimal <em>Pattern Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternBase64Binary <em>Pattern Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternInstant <em>Pattern Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternString <em>Pattern String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternUri <em>Pattern Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternBoolean <em>Pattern Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternCode <em>Pattern Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternDate <em>Pattern Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternDateTime <em>Pattern Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternTime <em>Pattern Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternCode <em>Pattern Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternOid <em>Pattern Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternUuid <em>Pattern Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternDecimal <em>Pattern Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternId <em>Pattern Id</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternUnsignedInt <em>Pattern Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternPositiveInt <em>Pattern Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternInstant <em>Pattern Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternInteger <em>Pattern Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternMarkdown <em>Pattern Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternOid <em>Pattern Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternPositiveInt <em>Pattern Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternString <em>Pattern String</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternTime <em>Pattern Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternUnsignedInt <em>Pattern Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternUri <em>Pattern Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternAddress <em>Pattern Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternAge <em>Pattern Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternAnnotation <em>Pattern Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternAttachment <em>Pattern Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternIdentifier <em>Pattern Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternCodeableConcept <em>Pattern Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternCoding <em>Pattern Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternContactPoint <em>Pattern Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternCount <em>Pattern Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternDistance <em>Pattern Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternDuration <em>Pattern Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternHumanName <em>Pattern Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternIdentifier <em>Pattern Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternMoney <em>Pattern Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternPeriod <em>Pattern Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternQuantity <em>Pattern Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternRange <em>Pattern Range</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternPeriod <em>Pattern Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternRatio <em>Pattern Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternReference <em>Pattern Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternSampledData <em>Pattern Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternSignature <em>Pattern Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternHumanName <em>Pattern Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternAddress <em>Pattern Address</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternContactPoint <em>Pattern Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternTiming <em>Pattern Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getPatternMeta <em>Pattern Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleBoolean <em>Example Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleInteger <em>Example Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleDecimal <em>Example Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleBase64Binary <em>Example Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleInstant <em>Example Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleString <em>Example String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleUri <em>Example Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleBoolean <em>Example Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleCode <em>Example Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleDate <em>Example Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleDateTime <em>Example Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleTime <em>Example Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleCode <em>Example Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleOid <em>Example Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleUuid <em>Example Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleDecimal <em>Example Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleId <em>Example Id</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleUnsignedInt <em>Example Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExamplePositiveInt <em>Example Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleInstant <em>Example Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleInteger <em>Example Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleMarkdown <em>Example Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleOid <em>Example Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExamplePositiveInt <em>Example Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleString <em>Example String</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleTime <em>Example Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleUnsignedInt <em>Example Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleUri <em>Example Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleAddress <em>Example Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleAge <em>Example Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleAnnotation <em>Example Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleAttachment <em>Example Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleIdentifier <em>Example Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleCodeableConcept <em>Example Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleCoding <em>Example Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleContactPoint <em>Example Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleCount <em>Example Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleDistance <em>Example Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleDuration <em>Example Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleHumanName <em>Example Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleIdentifier <em>Example Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleMoney <em>Example Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExamplePeriod <em>Example Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleQuantity <em>Example Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleRange <em>Example Range</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExamplePeriod <em>Example Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleRatio <em>Example Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleReference <em>Example Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleSampledData <em>Example Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleSignature <em>Example Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleHumanName <em>Example Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleAddress <em>Example Address</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleContactPoint <em>Example Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleTiming <em>Example Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getExampleMeta <em>Example Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueBoolean <em>Min Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueInteger <em>Min Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueDecimal <em>Min Value Decimal</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueBase64Binary <em>Min Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueInstant <em>Min Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueString <em>Min Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueUri <em>Min Value Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueDate <em>Min Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueDateTime <em>Min Value Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueInstant <em>Min Value Instant</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueTime <em>Min Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueCode <em>Min Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueOid <em>Min Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueUuid <em>Min Value Uuid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueId <em>Min Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueUnsignedInt <em>Min Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueDecimal <em>Min Value Decimal</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueInteger <em>Min Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValuePositiveInt <em>Min Value Positive Int</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueMarkdown <em>Min Value Markdown</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueAnnotation <em>Min Value Annotation</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueAttachment <em>Min Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueIdentifier <em>Min Value Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueCodeableConcept <em>Min Value Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueCoding <em>Min Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueUnsignedInt <em>Min Value Unsigned Int</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueQuantity <em>Min Value Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueRange <em>Min Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValuePeriod <em>Min Value Period</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueRatio <em>Min Value Ratio</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueReference <em>Min Value Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueSampledData <em>Min Value Sampled Data</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueSignature <em>Min Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueHumanName <em>Min Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueAddress <em>Min Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueContactPoint <em>Min Value Contact Point</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueTiming <em>Min Value Timing</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMinValueMeta <em>Min Value Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueBoolean <em>Max Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueInteger <em>Max Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueDecimal <em>Max Value Decimal</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueBase64Binary <em>Max Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueInstant <em>Max Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueString <em>Max Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueUri <em>Max Value Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueDate <em>Max Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueDateTime <em>Max Value Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueInstant <em>Max Value Instant</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueTime <em>Max Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueCode <em>Max Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueOid <em>Max Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueUuid <em>Max Value Uuid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueId <em>Max Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueUnsignedInt <em>Max Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueDecimal <em>Max Value Decimal</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueInteger <em>Max Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValuePositiveInt <em>Max Value Positive Int</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueMarkdown <em>Max Value Markdown</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueAnnotation <em>Max Value Annotation</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueAttachment <em>Max Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueIdentifier <em>Max Value Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueCodeableConcept <em>Max Value Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueCoding <em>Max Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueUnsignedInt <em>Max Value Unsigned Int</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueQuantity <em>Max Value Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueRange <em>Max Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValuePeriod <em>Max Value Period</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueRatio <em>Max Value Ratio</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueReference <em>Max Value Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueSampledData <em>Max Value Sampled Data</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueSignature <em>Max Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueHumanName <em>Max Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueAddress <em>Max Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueContactPoint <em>Max Value Contact Point</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueTiming <em>Max Value Timing</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxValueMeta <em>Max Value Meta</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getMaxLength <em>Max Length</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ElementDefinitionImpl#getConstraint <em>Constraint</em>}</li>
@@ -441,6 +411,16 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected ElementDefinitionBase base;
 
 	/**
+	 * The cached value of the '{@link #getContentReference() <em>Content Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContentReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Uri contentReference;
+
+	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -449,46 +429,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected EList<ElementDefinitionType> type;
-
-	/**
-	 * The cached value of the '{@link #getNameReference() <em>Name Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNameReference()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.String nameReference;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueBoolean() <em>Default Value Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueBoolean()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Boolean defaultValueBoolean;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueInteger() <em>Default Value Integer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueInteger()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Integer defaultValueInteger;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueDecimal() <em>Default Value Decimal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueDecimal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Decimal defaultValueDecimal;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValueBase64Binary() <em>Default Value Base64 Binary</em>}' containment reference.
@@ -501,34 +441,24 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Base64Binary defaultValueBase64Binary;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValueInstant() <em>Default Value Instant</em>}' containment reference.
+	 * The cached value of the '{@link #getDefaultValueBoolean() <em>Default Value Boolean</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueInstant()
+	 * @see #getDefaultValueBoolean()
 	 * @generated
 	 * @ordered
 	 */
-	protected Instant defaultValueInstant;
+	protected org.hl7.fhir.Boolean defaultValueBoolean;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValueString() <em>Default Value String</em>}' containment reference.
+	 * The cached value of the '{@link #getDefaultValueCode() <em>Default Value Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueString()
+	 * @see #getDefaultValueCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String defaultValueString;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueUri() <em>Default Value Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri defaultValueUri;
+	protected Code defaultValueCode;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValueDate() <em>Default Value Date</em>}' containment reference.
@@ -551,44 +481,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected DateTime defaultValueDateTime;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValueTime() <em>Default Value Time</em>}' containment reference.
+	 * The cached value of the '{@link #getDefaultValueDecimal() <em>Default Value Decimal</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueTime()
+	 * @see #getDefaultValueDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time defaultValueTime;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueCode() <em>Default Value Code</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueCode()
-	 * @generated
-	 * @ordered
-	 */
-	protected Code defaultValueCode;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueOid() <em>Default Value Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueOid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Oid defaultValueOid;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueUuid() <em>Default Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uuid defaultValueUuid;
+	protected Decimal defaultValueDecimal;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValueId() <em>Default Value Id</em>}' containment reference.
@@ -601,14 +501,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Id defaultValueId;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValueUnsignedInt() <em>Default Value Unsigned Int</em>}' containment reference.
+	 * The cached value of the '{@link #getDefaultValueInstant() <em>Default Value Instant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueUnsignedInt()
+	 * @see #getDefaultValueInstant()
 	 * @generated
 	 * @ordered
 	 */
-	protected UnsignedInt defaultValueUnsignedInt;
+	protected Instant defaultValueInstant;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueInteger() <em>Default Value Integer</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueInteger()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Integer defaultValueInteger;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueMarkdown() <em>Default Value Markdown</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueMarkdown()
+	 * @generated
+	 * @ordered
+	 */
+	protected Markdown defaultValueMarkdown;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueOid() <em>Default Value Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid defaultValueOid;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValuePositiveInt() <em>Default Value Positive Int</em>}' containment reference.
@@ -621,14 +551,64 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected PositiveInt defaultValuePositiveInt;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValueMarkdown() <em>Default Value Markdown</em>}' containment reference.
+	 * The cached value of the '{@link #getDefaultValueString() <em>Default Value String</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueMarkdown()
+	 * @see #getDefaultValueString()
 	 * @generated
 	 * @ordered
 	 */
-	protected Markdown defaultValueMarkdown;
+	protected org.hl7.fhir.String defaultValueString;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueTime() <em>Default Value Time</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected Time defaultValueTime;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueUnsignedInt() <em>Default Value Unsigned Int</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueUnsignedInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected UnsignedInt defaultValueUnsignedInt;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueUri() <em>Default Value Uri</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected Uri defaultValueUri;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueAddress() <em>Default Value Address</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected Address defaultValueAddress;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueAge() <em>Default Value Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected Age defaultValueAge;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValueAnnotation() <em>Default Value Annotation</em>}' containment reference.
@@ -651,16 +631,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Attachment defaultValueAttachment;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValueIdentifier() <em>Default Value Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Identifier defaultValueIdentifier;
-
-	/**
 	 * The cached value of the '{@link #getDefaultValueCodeableConcept() <em>Default Value Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -681,6 +651,86 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Coding defaultValueCoding;
 
 	/**
+	 * The cached value of the '{@link #getDefaultValueContactPoint() <em>Default Value Contact Point</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueContactPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected ContactPoint defaultValueContactPoint;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueCount() <em>Default Value Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected Count defaultValueCount;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueDistance() <em>Default Value Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected Distance defaultValueDistance;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueDuration() <em>Default Value Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected Duration defaultValueDuration;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueHumanName() <em>Default Value Human Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueHumanName()
+	 * @generated
+	 * @ordered
+	 */
+	protected HumanName defaultValueHumanName;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueIdentifier() <em>Default Value Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier defaultValueIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValueMoney() <em>Default Value Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValueMoney()
+	 * @generated
+	 * @ordered
+	 */
+	protected Money defaultValueMoney;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValuePeriod() <em>Default Value Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValuePeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period defaultValuePeriod;
+
+	/**
 	 * The cached value of the '{@link #getDefaultValueQuantity() <em>Default Value Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -699,16 +749,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected Range defaultValueRange;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValuePeriod() <em>Default Value Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValuePeriod()
-	 * @generated
-	 * @ordered
-	 */
-	protected Period defaultValuePeriod;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValueRatio() <em>Default Value Ratio</em>}' containment reference.
@@ -751,36 +791,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Signature defaultValueSignature;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValueHumanName() <em>Default Value Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueHumanName()
-	 * @generated
-	 * @ordered
-	 */
-	protected HumanName defaultValueHumanName;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueAddress() <em>Default Value Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected Address defaultValueAddress;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValueContactPoint() <em>Default Value Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValueContactPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContactPoint defaultValueContactPoint;
-
-	/**
 	 * The cached value of the '{@link #getDefaultValueTiming() <em>Default Value Timing</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -811,36 +821,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Markdown meaningWhenMissing;
 
 	/**
-	 * The cached value of the '{@link #getFixedBoolean() <em>Fixed Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedBoolean()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Boolean fixedBoolean;
-
-	/**
-	 * The cached value of the '{@link #getFixedInteger() <em>Fixed Integer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedInteger()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Integer fixedInteger;
-
-	/**
-	 * The cached value of the '{@link #getFixedDecimal() <em>Fixed Decimal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedDecimal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Decimal fixedDecimal;
-
-	/**
 	 * The cached value of the '{@link #getFixedBase64Binary() <em>Fixed Base64 Binary</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -851,34 +831,24 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Base64Binary fixedBase64Binary;
 
 	/**
-	 * The cached value of the '{@link #getFixedInstant() <em>Fixed Instant</em>}' containment reference.
+	 * The cached value of the '{@link #getFixedBoolean() <em>Fixed Boolean</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFixedInstant()
+	 * @see #getFixedBoolean()
 	 * @generated
 	 * @ordered
 	 */
-	protected Instant fixedInstant;
+	protected org.hl7.fhir.Boolean fixedBoolean;
 
 	/**
-	 * The cached value of the '{@link #getFixedString() <em>Fixed String</em>}' containment reference.
+	 * The cached value of the '{@link #getFixedCode() <em>Fixed Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFixedString()
+	 * @see #getFixedCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String fixedString;
-
-	/**
-	 * The cached value of the '{@link #getFixedUri() <em>Fixed Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri fixedUri;
+	protected Code fixedCode;
 
 	/**
 	 * The cached value of the '{@link #getFixedDate() <em>Fixed Date</em>}' containment reference.
@@ -901,44 +871,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected DateTime fixedDateTime;
 
 	/**
-	 * The cached value of the '{@link #getFixedTime() <em>Fixed Time</em>}' containment reference.
+	 * The cached value of the '{@link #getFixedDecimal() <em>Fixed Decimal</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFixedTime()
+	 * @see #getFixedDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time fixedTime;
-
-	/**
-	 * The cached value of the '{@link #getFixedCode() <em>Fixed Code</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedCode()
-	 * @generated
-	 * @ordered
-	 */
-	protected Code fixedCode;
-
-	/**
-	 * The cached value of the '{@link #getFixedOid() <em>Fixed Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedOid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Oid fixedOid;
-
-	/**
-	 * The cached value of the '{@link #getFixedUuid() <em>Fixed Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uuid fixedUuid;
+	protected Decimal fixedDecimal;
 
 	/**
 	 * The cached value of the '{@link #getFixedId() <em>Fixed Id</em>}' containment reference.
@@ -951,14 +891,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Id fixedId;
 
 	/**
-	 * The cached value of the '{@link #getFixedUnsignedInt() <em>Fixed Unsigned Int</em>}' containment reference.
+	 * The cached value of the '{@link #getFixedInstant() <em>Fixed Instant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFixedUnsignedInt()
+	 * @see #getFixedInstant()
 	 * @generated
 	 * @ordered
 	 */
-	protected UnsignedInt fixedUnsignedInt;
+	protected Instant fixedInstant;
+
+	/**
+	 * The cached value of the '{@link #getFixedInteger() <em>Fixed Integer</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedInteger()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Integer fixedInteger;
+
+	/**
+	 * The cached value of the '{@link #getFixedMarkdown() <em>Fixed Markdown</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedMarkdown()
+	 * @generated
+	 * @ordered
+	 */
+	protected Markdown fixedMarkdown;
+
+	/**
+	 * The cached value of the '{@link #getFixedOid() <em>Fixed Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid fixedOid;
 
 	/**
 	 * The cached value of the '{@link #getFixedPositiveInt() <em>Fixed Positive Int</em>}' containment reference.
@@ -971,14 +941,64 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected PositiveInt fixedPositiveInt;
 
 	/**
-	 * The cached value of the '{@link #getFixedMarkdown() <em>Fixed Markdown</em>}' containment reference.
+	 * The cached value of the '{@link #getFixedString() <em>Fixed String</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFixedMarkdown()
+	 * @see #getFixedString()
 	 * @generated
 	 * @ordered
 	 */
-	protected Markdown fixedMarkdown;
+	protected org.hl7.fhir.String fixedString;
+
+	/**
+	 * The cached value of the '{@link #getFixedTime() <em>Fixed Time</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected Time fixedTime;
+
+	/**
+	 * The cached value of the '{@link #getFixedUnsignedInt() <em>Fixed Unsigned Int</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedUnsignedInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected UnsignedInt fixedUnsignedInt;
+
+	/**
+	 * The cached value of the '{@link #getFixedUri() <em>Fixed Uri</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected Uri fixedUri;
+
+	/**
+	 * The cached value of the '{@link #getFixedAddress() <em>Fixed Address</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected Address fixedAddress;
+
+	/**
+	 * The cached value of the '{@link #getFixedAge() <em>Fixed Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected Age fixedAge;
 
 	/**
 	 * The cached value of the '{@link #getFixedAnnotation() <em>Fixed Annotation</em>}' containment reference.
@@ -1001,16 +1021,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Attachment fixedAttachment;
 
 	/**
-	 * The cached value of the '{@link #getFixedIdentifier() <em>Fixed Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Identifier fixedIdentifier;
-
-	/**
 	 * The cached value of the '{@link #getFixedCodeableConcept() <em>Fixed Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1031,6 +1041,86 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Coding fixedCoding;
 
 	/**
+	 * The cached value of the '{@link #getFixedContactPoint() <em>Fixed Contact Point</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedContactPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected ContactPoint fixedContactPoint;
+
+	/**
+	 * The cached value of the '{@link #getFixedCount() <em>Fixed Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected Count fixedCount;
+
+	/**
+	 * The cached value of the '{@link #getFixedDistance() <em>Fixed Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected Distance fixedDistance;
+
+	/**
+	 * The cached value of the '{@link #getFixedDuration() <em>Fixed Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected Duration fixedDuration;
+
+	/**
+	 * The cached value of the '{@link #getFixedHumanName() <em>Fixed Human Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedHumanName()
+	 * @generated
+	 * @ordered
+	 */
+	protected HumanName fixedHumanName;
+
+	/**
+	 * The cached value of the '{@link #getFixedIdentifier() <em>Fixed Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier fixedIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getFixedMoney() <em>Fixed Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedMoney()
+	 * @generated
+	 * @ordered
+	 */
+	protected Money fixedMoney;
+
+	/**
+	 * The cached value of the '{@link #getFixedPeriod() <em>Fixed Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFixedPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period fixedPeriod;
+
+	/**
 	 * The cached value of the '{@link #getFixedQuantity() <em>Fixed Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1049,16 +1139,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected Range fixedRange;
-
-	/**
-	 * The cached value of the '{@link #getFixedPeriod() <em>Fixed Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedPeriod()
-	 * @generated
-	 * @ordered
-	 */
-	protected Period fixedPeriod;
 
 	/**
 	 * The cached value of the '{@link #getFixedRatio() <em>Fixed Ratio</em>}' containment reference.
@@ -1101,36 +1181,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Signature fixedSignature;
 
 	/**
-	 * The cached value of the '{@link #getFixedHumanName() <em>Fixed Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedHumanName()
-	 * @generated
-	 * @ordered
-	 */
-	protected HumanName fixedHumanName;
-
-	/**
-	 * The cached value of the '{@link #getFixedAddress() <em>Fixed Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected Address fixedAddress;
-
-	/**
-	 * The cached value of the '{@link #getFixedContactPoint() <em>Fixed Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedContactPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContactPoint fixedContactPoint;
-
-	/**
 	 * The cached value of the '{@link #getFixedTiming() <em>Fixed Timing</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1151,36 +1201,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Meta fixedMeta;
 
 	/**
-	 * The cached value of the '{@link #getPatternBoolean() <em>Pattern Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternBoolean()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Boolean patternBoolean;
-
-	/**
-	 * The cached value of the '{@link #getPatternInteger() <em>Pattern Integer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternInteger()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Integer patternInteger;
-
-	/**
-	 * The cached value of the '{@link #getPatternDecimal() <em>Pattern Decimal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternDecimal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Decimal patternDecimal;
-
-	/**
 	 * The cached value of the '{@link #getPatternBase64Binary() <em>Pattern Base64 Binary</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1191,34 +1211,24 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Base64Binary patternBase64Binary;
 
 	/**
-	 * The cached value of the '{@link #getPatternInstant() <em>Pattern Instant</em>}' containment reference.
+	 * The cached value of the '{@link #getPatternBoolean() <em>Pattern Boolean</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternInstant()
+	 * @see #getPatternBoolean()
 	 * @generated
 	 * @ordered
 	 */
-	protected Instant patternInstant;
+	protected org.hl7.fhir.Boolean patternBoolean;
 
 	/**
-	 * The cached value of the '{@link #getPatternString() <em>Pattern String</em>}' containment reference.
+	 * The cached value of the '{@link #getPatternCode() <em>Pattern Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternString()
+	 * @see #getPatternCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String patternString;
-
-	/**
-	 * The cached value of the '{@link #getPatternUri() <em>Pattern Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri patternUri;
+	protected Code patternCode;
 
 	/**
 	 * The cached value of the '{@link #getPatternDate() <em>Pattern Date</em>}' containment reference.
@@ -1241,44 +1251,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected DateTime patternDateTime;
 
 	/**
-	 * The cached value of the '{@link #getPatternTime() <em>Pattern Time</em>}' containment reference.
+	 * The cached value of the '{@link #getPatternDecimal() <em>Pattern Decimal</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternTime()
+	 * @see #getPatternDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time patternTime;
-
-	/**
-	 * The cached value of the '{@link #getPatternCode() <em>Pattern Code</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternCode()
-	 * @generated
-	 * @ordered
-	 */
-	protected Code patternCode;
-
-	/**
-	 * The cached value of the '{@link #getPatternOid() <em>Pattern Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternOid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Oid patternOid;
-
-	/**
-	 * The cached value of the '{@link #getPatternUuid() <em>Pattern Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uuid patternUuid;
+	protected Decimal patternDecimal;
 
 	/**
 	 * The cached value of the '{@link #getPatternId() <em>Pattern Id</em>}' containment reference.
@@ -1291,14 +1271,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Id patternId;
 
 	/**
-	 * The cached value of the '{@link #getPatternUnsignedInt() <em>Pattern Unsigned Int</em>}' containment reference.
+	 * The cached value of the '{@link #getPatternInstant() <em>Pattern Instant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternUnsignedInt()
+	 * @see #getPatternInstant()
 	 * @generated
 	 * @ordered
 	 */
-	protected UnsignedInt patternUnsignedInt;
+	protected Instant patternInstant;
+
+	/**
+	 * The cached value of the '{@link #getPatternInteger() <em>Pattern Integer</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternInteger()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Integer patternInteger;
+
+	/**
+	 * The cached value of the '{@link #getPatternMarkdown() <em>Pattern Markdown</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternMarkdown()
+	 * @generated
+	 * @ordered
+	 */
+	protected Markdown patternMarkdown;
+
+	/**
+	 * The cached value of the '{@link #getPatternOid() <em>Pattern Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid patternOid;
 
 	/**
 	 * The cached value of the '{@link #getPatternPositiveInt() <em>Pattern Positive Int</em>}' containment reference.
@@ -1311,14 +1321,64 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected PositiveInt patternPositiveInt;
 
 	/**
-	 * The cached value of the '{@link #getPatternMarkdown() <em>Pattern Markdown</em>}' containment reference.
+	 * The cached value of the '{@link #getPatternString() <em>Pattern String</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatternMarkdown()
+	 * @see #getPatternString()
 	 * @generated
 	 * @ordered
 	 */
-	protected Markdown patternMarkdown;
+	protected org.hl7.fhir.String patternString;
+
+	/**
+	 * The cached value of the '{@link #getPatternTime() <em>Pattern Time</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected Time patternTime;
+
+	/**
+	 * The cached value of the '{@link #getPatternUnsignedInt() <em>Pattern Unsigned Int</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternUnsignedInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected UnsignedInt patternUnsignedInt;
+
+	/**
+	 * The cached value of the '{@link #getPatternUri() <em>Pattern Uri</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected Uri patternUri;
+
+	/**
+	 * The cached value of the '{@link #getPatternAddress() <em>Pattern Address</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected Address patternAddress;
+
+	/**
+	 * The cached value of the '{@link #getPatternAge() <em>Pattern Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected Age patternAge;
 
 	/**
 	 * The cached value of the '{@link #getPatternAnnotation() <em>Pattern Annotation</em>}' containment reference.
@@ -1341,16 +1401,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Attachment patternAttachment;
 
 	/**
-	 * The cached value of the '{@link #getPatternIdentifier() <em>Pattern Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Identifier patternIdentifier;
-
-	/**
 	 * The cached value of the '{@link #getPatternCodeableConcept() <em>Pattern Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1371,6 +1421,86 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Coding patternCoding;
 
 	/**
+	 * The cached value of the '{@link #getPatternContactPoint() <em>Pattern Contact Point</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternContactPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected ContactPoint patternContactPoint;
+
+	/**
+	 * The cached value of the '{@link #getPatternCount() <em>Pattern Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected Count patternCount;
+
+	/**
+	 * The cached value of the '{@link #getPatternDistance() <em>Pattern Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected Distance patternDistance;
+
+	/**
+	 * The cached value of the '{@link #getPatternDuration() <em>Pattern Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected Duration patternDuration;
+
+	/**
+	 * The cached value of the '{@link #getPatternHumanName() <em>Pattern Human Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternHumanName()
+	 * @generated
+	 * @ordered
+	 */
+	protected HumanName patternHumanName;
+
+	/**
+	 * The cached value of the '{@link #getPatternIdentifier() <em>Pattern Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier patternIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getPatternMoney() <em>Pattern Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternMoney()
+	 * @generated
+	 * @ordered
+	 */
+	protected Money patternMoney;
+
+	/**
+	 * The cached value of the '{@link #getPatternPeriod() <em>Pattern Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPatternPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period patternPeriod;
+
+	/**
 	 * The cached value of the '{@link #getPatternQuantity() <em>Pattern Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1389,16 +1519,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected Range patternRange;
-
-	/**
-	 * The cached value of the '{@link #getPatternPeriod() <em>Pattern Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternPeriod()
-	 * @generated
-	 * @ordered
-	 */
-	protected Period patternPeriod;
 
 	/**
 	 * The cached value of the '{@link #getPatternRatio() <em>Pattern Ratio</em>}' containment reference.
@@ -1441,36 +1561,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Signature patternSignature;
 
 	/**
-	 * The cached value of the '{@link #getPatternHumanName() <em>Pattern Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternHumanName()
-	 * @generated
-	 * @ordered
-	 */
-	protected HumanName patternHumanName;
-
-	/**
-	 * The cached value of the '{@link #getPatternAddress() <em>Pattern Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected Address patternAddress;
-
-	/**
-	 * The cached value of the '{@link #getPatternContactPoint() <em>Pattern Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatternContactPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContactPoint patternContactPoint;
-
-	/**
 	 * The cached value of the '{@link #getPatternTiming() <em>Pattern Timing</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1491,36 +1581,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Meta patternMeta;
 
 	/**
-	 * The cached value of the '{@link #getExampleBoolean() <em>Example Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleBoolean()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Boolean exampleBoolean;
-
-	/**
-	 * The cached value of the '{@link #getExampleInteger() <em>Example Integer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleInteger()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Integer exampleInteger;
-
-	/**
-	 * The cached value of the '{@link #getExampleDecimal() <em>Example Decimal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleDecimal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Decimal exampleDecimal;
-
-	/**
 	 * The cached value of the '{@link #getExampleBase64Binary() <em>Example Base64 Binary</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1531,34 +1591,24 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Base64Binary exampleBase64Binary;
 
 	/**
-	 * The cached value of the '{@link #getExampleInstant() <em>Example Instant</em>}' containment reference.
+	 * The cached value of the '{@link #getExampleBoolean() <em>Example Boolean</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExampleInstant()
+	 * @see #getExampleBoolean()
 	 * @generated
 	 * @ordered
 	 */
-	protected Instant exampleInstant;
+	protected org.hl7.fhir.Boolean exampleBoolean;
 
 	/**
-	 * The cached value of the '{@link #getExampleString() <em>Example String</em>}' containment reference.
+	 * The cached value of the '{@link #getExampleCode() <em>Example Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExampleString()
+	 * @see #getExampleCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String exampleString;
-
-	/**
-	 * The cached value of the '{@link #getExampleUri() <em>Example Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri exampleUri;
+	protected Code exampleCode;
 
 	/**
 	 * The cached value of the '{@link #getExampleDate() <em>Example Date</em>}' containment reference.
@@ -1581,44 +1631,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected DateTime exampleDateTime;
 
 	/**
-	 * The cached value of the '{@link #getExampleTime() <em>Example Time</em>}' containment reference.
+	 * The cached value of the '{@link #getExampleDecimal() <em>Example Decimal</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExampleTime()
+	 * @see #getExampleDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time exampleTime;
-
-	/**
-	 * The cached value of the '{@link #getExampleCode() <em>Example Code</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleCode()
-	 * @generated
-	 * @ordered
-	 */
-	protected Code exampleCode;
-
-	/**
-	 * The cached value of the '{@link #getExampleOid() <em>Example Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleOid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Oid exampleOid;
-
-	/**
-	 * The cached value of the '{@link #getExampleUuid() <em>Example Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uuid exampleUuid;
+	protected Decimal exampleDecimal;
 
 	/**
 	 * The cached value of the '{@link #getExampleId() <em>Example Id</em>}' containment reference.
@@ -1631,14 +1651,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Id exampleId;
 
 	/**
-	 * The cached value of the '{@link #getExampleUnsignedInt() <em>Example Unsigned Int</em>}' containment reference.
+	 * The cached value of the '{@link #getExampleInstant() <em>Example Instant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExampleUnsignedInt()
+	 * @see #getExampleInstant()
 	 * @generated
 	 * @ordered
 	 */
-	protected UnsignedInt exampleUnsignedInt;
+	protected Instant exampleInstant;
+
+	/**
+	 * The cached value of the '{@link #getExampleInteger() <em>Example Integer</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleInteger()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Integer exampleInteger;
+
+	/**
+	 * The cached value of the '{@link #getExampleMarkdown() <em>Example Markdown</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleMarkdown()
+	 * @generated
+	 * @ordered
+	 */
+	protected Markdown exampleMarkdown;
+
+	/**
+	 * The cached value of the '{@link #getExampleOid() <em>Example Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid exampleOid;
 
 	/**
 	 * The cached value of the '{@link #getExamplePositiveInt() <em>Example Positive Int</em>}' containment reference.
@@ -1651,14 +1701,64 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected PositiveInt examplePositiveInt;
 
 	/**
-	 * The cached value of the '{@link #getExampleMarkdown() <em>Example Markdown</em>}' containment reference.
+	 * The cached value of the '{@link #getExampleString() <em>Example String</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExampleMarkdown()
+	 * @see #getExampleString()
 	 * @generated
 	 * @ordered
 	 */
-	protected Markdown exampleMarkdown;
+	protected org.hl7.fhir.String exampleString;
+
+	/**
+	 * The cached value of the '{@link #getExampleTime() <em>Example Time</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected Time exampleTime;
+
+	/**
+	 * The cached value of the '{@link #getExampleUnsignedInt() <em>Example Unsigned Int</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleUnsignedInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected UnsignedInt exampleUnsignedInt;
+
+	/**
+	 * The cached value of the '{@link #getExampleUri() <em>Example Uri</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected Uri exampleUri;
+
+	/**
+	 * The cached value of the '{@link #getExampleAddress() <em>Example Address</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected Address exampleAddress;
+
+	/**
+	 * The cached value of the '{@link #getExampleAge() <em>Example Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected Age exampleAge;
 
 	/**
 	 * The cached value of the '{@link #getExampleAnnotation() <em>Example Annotation</em>}' containment reference.
@@ -1681,16 +1781,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Attachment exampleAttachment;
 
 	/**
-	 * The cached value of the '{@link #getExampleIdentifier() <em>Example Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Identifier exampleIdentifier;
-
-	/**
 	 * The cached value of the '{@link #getExampleCodeableConcept() <em>Example Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1711,6 +1801,86 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Coding exampleCoding;
 
 	/**
+	 * The cached value of the '{@link #getExampleContactPoint() <em>Example Contact Point</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleContactPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected ContactPoint exampleContactPoint;
+
+	/**
+	 * The cached value of the '{@link #getExampleCount() <em>Example Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected Count exampleCount;
+
+	/**
+	 * The cached value of the '{@link #getExampleDistance() <em>Example Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected Distance exampleDistance;
+
+	/**
+	 * The cached value of the '{@link #getExampleDuration() <em>Example Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected Duration exampleDuration;
+
+	/**
+	 * The cached value of the '{@link #getExampleHumanName() <em>Example Human Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleHumanName()
+	 * @generated
+	 * @ordered
+	 */
+	protected HumanName exampleHumanName;
+
+	/**
+	 * The cached value of the '{@link #getExampleIdentifier() <em>Example Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier exampleIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getExampleMoney() <em>Example Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExampleMoney()
+	 * @generated
+	 * @ordered
+	 */
+	protected Money exampleMoney;
+
+	/**
+	 * The cached value of the '{@link #getExamplePeriod() <em>Example Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExamplePeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period examplePeriod;
+
+	/**
 	 * The cached value of the '{@link #getExampleQuantity() <em>Example Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1729,16 +1899,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected Range exampleRange;
-
-	/**
-	 * The cached value of the '{@link #getExamplePeriod() <em>Example Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExamplePeriod()
-	 * @generated
-	 * @ordered
-	 */
-	protected Period examplePeriod;
 
 	/**
 	 * The cached value of the '{@link #getExampleRatio() <em>Example Ratio</em>}' containment reference.
@@ -1781,36 +1941,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Signature exampleSignature;
 
 	/**
-	 * The cached value of the '{@link #getExampleHumanName() <em>Example Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleHumanName()
-	 * @generated
-	 * @ordered
-	 */
-	protected HumanName exampleHumanName;
-
-	/**
-	 * The cached value of the '{@link #getExampleAddress() <em>Example Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected Address exampleAddress;
-
-	/**
-	 * The cached value of the '{@link #getExampleContactPoint() <em>Example Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExampleContactPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContactPoint exampleContactPoint;
-
-	/**
 	 * The cached value of the '{@link #getExampleTiming() <em>Example Timing</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1829,76 +1959,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected Meta exampleMeta;
-
-	/**
-	 * The cached value of the '{@link #getMinValueBoolean() <em>Min Value Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueBoolean()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Boolean minValueBoolean;
-
-	/**
-	 * The cached value of the '{@link #getMinValueInteger() <em>Min Value Integer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueInteger()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Integer minValueInteger;
-
-	/**
-	 * The cached value of the '{@link #getMinValueDecimal() <em>Min Value Decimal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueDecimal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Decimal minValueDecimal;
-
-	/**
-	 * The cached value of the '{@link #getMinValueBase64Binary() <em>Min Value Base64 Binary</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueBase64Binary()
-	 * @generated
-	 * @ordered
-	 */
-	protected Base64Binary minValueBase64Binary;
-
-	/**
-	 * The cached value of the '{@link #getMinValueInstant() <em>Min Value Instant</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueInstant()
-	 * @generated
-	 * @ordered
-	 */
-	protected Instant minValueInstant;
-
-	/**
-	 * The cached value of the '{@link #getMinValueString() <em>Min Value String</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueString()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.String minValueString;
-
-	/**
-	 * The cached value of the '{@link #getMinValueUri() <em>Min Value Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri minValueUri;
 
 	/**
 	 * The cached value of the '{@link #getMinValueDate() <em>Min Value Date</em>}' containment reference.
@@ -1921,6 +1981,16 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected DateTime minValueDateTime;
 
 	/**
+	 * The cached value of the '{@link #getMinValueInstant() <em>Min Value Instant</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinValueInstant()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instant minValueInstant;
+
+	/**
 	 * The cached value of the '{@link #getMinValueTime() <em>Min Value Time</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1931,54 +2001,24 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Time minValueTime;
 
 	/**
-	 * The cached value of the '{@link #getMinValueCode() <em>Min Value Code</em>}' containment reference.
+	 * The cached value of the '{@link #getMinValueDecimal() <em>Min Value Decimal</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMinValueCode()
+	 * @see #getMinValueDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected Code minValueCode;
+	protected Decimal minValueDecimal;
 
 	/**
-	 * The cached value of the '{@link #getMinValueOid() <em>Min Value Oid</em>}' containment reference.
+	 * The cached value of the '{@link #getMinValueInteger() <em>Min Value Integer</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMinValueOid()
+	 * @see #getMinValueInteger()
 	 * @generated
 	 * @ordered
 	 */
-	protected Oid minValueOid;
-
-	/**
-	 * The cached value of the '{@link #getMinValueUuid() <em>Min Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uuid minValueUuid;
-
-	/**
-	 * The cached value of the '{@link #getMinValueId() <em>Min Value Id</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueId()
-	 * @generated
-	 * @ordered
-	 */
-	protected Id minValueId;
-
-	/**
-	 * The cached value of the '{@link #getMinValueUnsignedInt() <em>Min Value Unsigned Int</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueUnsignedInt()
-	 * @generated
-	 * @ordered
-	 */
-	protected UnsignedInt minValueUnsignedInt;
+	protected org.hl7.fhir.Integer minValueInteger;
 
 	/**
 	 * The cached value of the '{@link #getMinValuePositiveInt() <em>Min Value Positive Int</em>}' containment reference.
@@ -1991,64 +2031,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected PositiveInt minValuePositiveInt;
 
 	/**
-	 * The cached value of the '{@link #getMinValueMarkdown() <em>Min Value Markdown</em>}' containment reference.
+	 * The cached value of the '{@link #getMinValueUnsignedInt() <em>Min Value Unsigned Int</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMinValueMarkdown()
+	 * @see #getMinValueUnsignedInt()
 	 * @generated
 	 * @ordered
 	 */
-	protected Markdown minValueMarkdown;
-
-	/**
-	 * The cached value of the '{@link #getMinValueAnnotation() <em>Min Value Annotation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueAnnotation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Annotation minValueAnnotation;
-
-	/**
-	 * The cached value of the '{@link #getMinValueAttachment() <em>Min Value Attachment</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueAttachment()
-	 * @generated
-	 * @ordered
-	 */
-	protected Attachment minValueAttachment;
-
-	/**
-	 * The cached value of the '{@link #getMinValueIdentifier() <em>Min Value Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Identifier minValueIdentifier;
-
-	/**
-	 * The cached value of the '{@link #getMinValueCodeableConcept() <em>Min Value Codeable Concept</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueCodeableConcept()
-	 * @generated
-	 * @ordered
-	 */
-	protected CodeableConcept minValueCodeableConcept;
-
-	/**
-	 * The cached value of the '{@link #getMinValueCoding() <em>Min Value Coding</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueCoding()
-	 * @generated
-	 * @ordered
-	 */
-	protected Coding minValueCoding;
+	protected UnsignedInt minValueUnsignedInt;
 
 	/**
 	 * The cached value of the '{@link #getMinValueQuantity() <em>Min Value Quantity</em>}' containment reference.
@@ -2059,186 +2049,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected Quantity minValueQuantity;
-
-	/**
-	 * The cached value of the '{@link #getMinValueRange() <em>Min Value Range</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueRange()
-	 * @generated
-	 * @ordered
-	 */
-	protected Range minValueRange;
-
-	/**
-	 * The cached value of the '{@link #getMinValuePeriod() <em>Min Value Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValuePeriod()
-	 * @generated
-	 * @ordered
-	 */
-	protected Period minValuePeriod;
-
-	/**
-	 * The cached value of the '{@link #getMinValueRatio() <em>Min Value Ratio</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueRatio()
-	 * @generated
-	 * @ordered
-	 */
-	protected Ratio minValueRatio;
-
-	/**
-	 * The cached value of the '{@link #getMinValueReference() <em>Min Value Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueReference()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference minValueReference;
-
-	/**
-	 * The cached value of the '{@link #getMinValueSampledData() <em>Min Value Sampled Data</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueSampledData()
-	 * @generated
-	 * @ordered
-	 */
-	protected SampledData minValueSampledData;
-
-	/**
-	 * The cached value of the '{@link #getMinValueSignature() <em>Min Value Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueSignature()
-	 * @generated
-	 * @ordered
-	 */
-	protected Signature minValueSignature;
-
-	/**
-	 * The cached value of the '{@link #getMinValueHumanName() <em>Min Value Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueHumanName()
-	 * @generated
-	 * @ordered
-	 */
-	protected HumanName minValueHumanName;
-
-	/**
-	 * The cached value of the '{@link #getMinValueAddress() <em>Min Value Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected Address minValueAddress;
-
-	/**
-	 * The cached value of the '{@link #getMinValueContactPoint() <em>Min Value Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueContactPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContactPoint minValueContactPoint;
-
-	/**
-	 * The cached value of the '{@link #getMinValueTiming() <em>Min Value Timing</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueTiming()
-	 * @generated
-	 * @ordered
-	 */
-	protected Timing minValueTiming;
-
-	/**
-	 * The cached value of the '{@link #getMinValueMeta() <em>Min Value Meta</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinValueMeta()
-	 * @generated
-	 * @ordered
-	 */
-	protected Meta minValueMeta;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueBoolean() <em>Max Value Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueBoolean()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Boolean maxValueBoolean;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueInteger() <em>Max Value Integer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueInteger()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Integer maxValueInteger;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueDecimal() <em>Max Value Decimal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueDecimal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Decimal maxValueDecimal;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueBase64Binary() <em>Max Value Base64 Binary</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueBase64Binary()
-	 * @generated
-	 * @ordered
-	 */
-	protected Base64Binary maxValueBase64Binary;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueInstant() <em>Max Value Instant</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueInstant()
-	 * @generated
-	 * @ordered
-	 */
-	protected Instant maxValueInstant;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueString() <em>Max Value String</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueString()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.String maxValueString;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueUri() <em>Max Value Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri maxValueUri;
 
 	/**
 	 * The cached value of the '{@link #getMaxValueDate() <em>Max Value Date</em>}' containment reference.
@@ -2261,6 +2071,16 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected DateTime maxValueDateTime;
 
 	/**
+	 * The cached value of the '{@link #getMaxValueInstant() <em>Max Value Instant</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxValueInstant()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instant maxValueInstant;
+
+	/**
 	 * The cached value of the '{@link #getMaxValueTime() <em>Max Value Time</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2271,54 +2091,24 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected Time maxValueTime;
 
 	/**
-	 * The cached value of the '{@link #getMaxValueCode() <em>Max Value Code</em>}' containment reference.
+	 * The cached value of the '{@link #getMaxValueDecimal() <em>Max Value Decimal</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMaxValueCode()
+	 * @see #getMaxValueDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected Code maxValueCode;
+	protected Decimal maxValueDecimal;
 
 	/**
-	 * The cached value of the '{@link #getMaxValueOid() <em>Max Value Oid</em>}' containment reference.
+	 * The cached value of the '{@link #getMaxValueInteger() <em>Max Value Integer</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMaxValueOid()
+	 * @see #getMaxValueInteger()
 	 * @generated
 	 * @ordered
 	 */
-	protected Oid maxValueOid;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueUuid() <em>Max Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uuid maxValueUuid;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueId() <em>Max Value Id</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueId()
-	 * @generated
-	 * @ordered
-	 */
-	protected Id maxValueId;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueUnsignedInt() <em>Max Value Unsigned Int</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueUnsignedInt()
-	 * @generated
-	 * @ordered
-	 */
-	protected UnsignedInt maxValueUnsignedInt;
+	protected org.hl7.fhir.Integer maxValueInteger;
 
 	/**
 	 * The cached value of the '{@link #getMaxValuePositiveInt() <em>Max Value Positive Int</em>}' containment reference.
@@ -2331,64 +2121,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	protected PositiveInt maxValuePositiveInt;
 
 	/**
-	 * The cached value of the '{@link #getMaxValueMarkdown() <em>Max Value Markdown</em>}' containment reference.
+	 * The cached value of the '{@link #getMaxValueUnsignedInt() <em>Max Value Unsigned Int</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMaxValueMarkdown()
+	 * @see #getMaxValueUnsignedInt()
 	 * @generated
 	 * @ordered
 	 */
-	protected Markdown maxValueMarkdown;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueAnnotation() <em>Max Value Annotation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueAnnotation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Annotation maxValueAnnotation;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueAttachment() <em>Max Value Attachment</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueAttachment()
-	 * @generated
-	 * @ordered
-	 */
-	protected Attachment maxValueAttachment;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueIdentifier() <em>Max Value Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Identifier maxValueIdentifier;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueCodeableConcept() <em>Max Value Codeable Concept</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueCodeableConcept()
-	 * @generated
-	 * @ordered
-	 */
-	protected CodeableConcept maxValueCodeableConcept;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueCoding() <em>Max Value Coding</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueCoding()
-	 * @generated
-	 * @ordered
-	 */
-	protected Coding maxValueCoding;
+	protected UnsignedInt maxValueUnsignedInt;
 
 	/**
 	 * The cached value of the '{@link #getMaxValueQuantity() <em>Max Value Quantity</em>}' containment reference.
@@ -2399,116 +2139,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * @ordered
 	 */
 	protected Quantity maxValueQuantity;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueRange() <em>Max Value Range</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueRange()
-	 * @generated
-	 * @ordered
-	 */
-	protected Range maxValueRange;
-
-	/**
-	 * The cached value of the '{@link #getMaxValuePeriod() <em>Max Value Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValuePeriod()
-	 * @generated
-	 * @ordered
-	 */
-	protected Period maxValuePeriod;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueRatio() <em>Max Value Ratio</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueRatio()
-	 * @generated
-	 * @ordered
-	 */
-	protected Ratio maxValueRatio;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueReference() <em>Max Value Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueReference()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference maxValueReference;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueSampledData() <em>Max Value Sampled Data</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueSampledData()
-	 * @generated
-	 * @ordered
-	 */
-	protected SampledData maxValueSampledData;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueSignature() <em>Max Value Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueSignature()
-	 * @generated
-	 * @ordered
-	 */
-	protected Signature maxValueSignature;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueHumanName() <em>Max Value Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueHumanName()
-	 * @generated
-	 * @ordered
-	 */
-	protected HumanName maxValueHumanName;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueAddress() <em>Max Value Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected Address maxValueAddress;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueContactPoint() <em>Max Value Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueContactPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContactPoint maxValueContactPoint;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueTiming() <em>Max Value Timing</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueTiming()
-	 * @generated
-	 * @ordered
-	 */
-	protected Timing maxValueTiming;
-
-	/**
-	 * The cached value of the '{@link #getMaxValueMeta() <em>Max Value Meta</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxValueMeta()
-	 * @generated
-	 * @ordered
-	 */
-	protected Meta maxValueMeta;
 
 	/**
 	 * The cached value of the '{@link #getMaxLength() <em>Max Length</em>}' containment reference.
@@ -3123,11 +2753,8 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ElementDefinitionType> getType() {
-		if (type == null) {
-			type = new EObjectContainmentEList<ElementDefinitionType>(ElementDefinitionType.class, this, FhirPackage.ELEMENT_DEFINITION__TYPE);
-		}
-		return type;
+	public Uri getContentReference() {
+		return contentReference;
 	}
 
 	/**
@@ -3135,20 +2762,11 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNameReference() {
-		return nameReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNameReference(org.hl7.fhir.String newNameReference, NotificationChain msgs) {
-		org.hl7.fhir.String oldNameReference = nameReference;
-		nameReference = newNameReference;
+	public NotificationChain basicSetContentReference(Uri newContentReference, NotificationChain msgs) {
+		Uri oldContentReference = contentReference;
+		contentReference = newContentReference;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE, oldNameReference, newNameReference);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE, oldContentReference, newContentReference);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -3159,18 +2777,30 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNameReference(org.hl7.fhir.String newNameReference) {
-		if (newNameReference != nameReference) {
+	public void setContentReference(Uri newContentReference) {
+		if (newContentReference != contentReference) {
 			NotificationChain msgs = null;
-			if (nameReference != null)
-				msgs = ((InternalEObject)nameReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE, null, msgs);
-			if (newNameReference != null)
-				msgs = ((InternalEObject)newNameReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE, null, msgs);
-			msgs = basicSetNameReference(newNameReference, msgs);
+			if (contentReference != null)
+				msgs = ((InternalEObject)contentReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE, null, msgs);
+			if (newContentReference != null)
+				msgs = ((InternalEObject)newContentReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE, null, msgs);
+			msgs = basicSetContentReference(newContentReference, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE, newNameReference, newNameReference));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE, newContentReference, newContentReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ElementDefinitionType> getType() {
+		if (type == null) {
+			type = new EObjectContainmentEList<ElementDefinitionType>(ElementDefinitionType.class, this, FhirPackage.ELEMENT_DEFINITION__TYPE);
+		}
+		return type;
 	}
 
 	/**
@@ -3694,49 +3324,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uuid getDefaultValueUuid() {
-		return defaultValueUuid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDefaultValueUuid(Uuid newDefaultValueUuid, NotificationChain msgs) {
-		Uuid oldDefaultValueUuid = defaultValueUuid;
-		defaultValueUuid = newDefaultValueUuid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID, oldDefaultValueUuid, newDefaultValueUuid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDefaultValueUuid(Uuid newDefaultValueUuid) {
-		if (newDefaultValueUuid != defaultValueUuid) {
-			NotificationChain msgs = null;
-			if (defaultValueUuid != null)
-				msgs = ((InternalEObject)defaultValueUuid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID, null, msgs);
-			if (newDefaultValueUuid != null)
-				msgs = ((InternalEObject)newDefaultValueUuid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID, null, msgs);
-			msgs = basicSetDefaultValueUuid(newDefaultValueUuid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID, newDefaultValueUuid, newDefaultValueUuid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Id getDefaultValueId() {
 		return defaultValueId;
 	}
@@ -4031,6 +3618,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER, newDefaultValueIdentifier, newDefaultValueIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Money getDefaultValueMoney() {
+		return defaultValueMoney;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultValueMoney(Money newDefaultValueMoney, NotificationChain msgs) {
+		Money oldDefaultValueMoney = defaultValueMoney;
+		defaultValueMoney = newDefaultValueMoney;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY, oldDefaultValueMoney, newDefaultValueMoney);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultValueMoney(Money newDefaultValueMoney) {
+		if (newDefaultValueMoney != defaultValueMoney) {
+			NotificationChain msgs = null;
+			if (defaultValueMoney != null)
+				msgs = ((InternalEObject)defaultValueMoney).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY, null, msgs);
+			if (newDefaultValueMoney != null)
+				msgs = ((InternalEObject)newDefaultValueMoney).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY, null, msgs);
+			msgs = basicSetDefaultValueMoney(newDefaultValueMoney, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY, newDefaultValueMoney, newDefaultValueMoney));
 	}
 
 	/**
@@ -4511,6 +4141,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Age getDefaultValueAge() {
+		return defaultValueAge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultValueAge(Age newDefaultValueAge, NotificationChain msgs) {
+		Age oldDefaultValueAge = defaultValueAge;
+		defaultValueAge = newDefaultValueAge;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE, oldDefaultValueAge, newDefaultValueAge);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultValueAge(Age newDefaultValueAge) {
+		if (newDefaultValueAge != defaultValueAge) {
+			NotificationChain msgs = null;
+			if (defaultValueAge != null)
+				msgs = ((InternalEObject)defaultValueAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE, null, msgs);
+			if (newDefaultValueAge != null)
+				msgs = ((InternalEObject)newDefaultValueAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE, null, msgs);
+			msgs = basicSetDefaultValueAge(newDefaultValueAge, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE, newDefaultValueAge, newDefaultValueAge));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContactPoint getDefaultValueContactPoint() {
 		return defaultValueContactPoint;
 	}
@@ -4547,6 +4220,135 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT, newDefaultValueContactPoint, newDefaultValueContactPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Count getDefaultValueCount() {
+		return defaultValueCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultValueCount(Count newDefaultValueCount, NotificationChain msgs) {
+		Count oldDefaultValueCount = defaultValueCount;
+		defaultValueCount = newDefaultValueCount;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT, oldDefaultValueCount, newDefaultValueCount);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultValueCount(Count newDefaultValueCount) {
+		if (newDefaultValueCount != defaultValueCount) {
+			NotificationChain msgs = null;
+			if (defaultValueCount != null)
+				msgs = ((InternalEObject)defaultValueCount).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT, null, msgs);
+			if (newDefaultValueCount != null)
+				msgs = ((InternalEObject)newDefaultValueCount).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT, null, msgs);
+			msgs = basicSetDefaultValueCount(newDefaultValueCount, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT, newDefaultValueCount, newDefaultValueCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Distance getDefaultValueDistance() {
+		return defaultValueDistance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultValueDistance(Distance newDefaultValueDistance, NotificationChain msgs) {
+		Distance oldDefaultValueDistance = defaultValueDistance;
+		defaultValueDistance = newDefaultValueDistance;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE, oldDefaultValueDistance, newDefaultValueDistance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultValueDistance(Distance newDefaultValueDistance) {
+		if (newDefaultValueDistance != defaultValueDistance) {
+			NotificationChain msgs = null;
+			if (defaultValueDistance != null)
+				msgs = ((InternalEObject)defaultValueDistance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE, null, msgs);
+			if (newDefaultValueDistance != null)
+				msgs = ((InternalEObject)newDefaultValueDistance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE, null, msgs);
+			msgs = basicSetDefaultValueDistance(newDefaultValueDistance, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE, newDefaultValueDistance, newDefaultValueDistance));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Duration getDefaultValueDuration() {
+		return defaultValueDuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDefaultValueDuration(Duration newDefaultValueDuration, NotificationChain msgs) {
+		Duration oldDefaultValueDuration = defaultValueDuration;
+		defaultValueDuration = newDefaultValueDuration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION, oldDefaultValueDuration, newDefaultValueDuration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultValueDuration(Duration newDefaultValueDuration) {
+		if (newDefaultValueDuration != defaultValueDuration) {
+			NotificationChain msgs = null;
+			if (defaultValueDuration != null)
+				msgs = ((InternalEObject)defaultValueDuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION, null, msgs);
+			if (newDefaultValueDuration != null)
+				msgs = ((InternalEObject)newDefaultValueDuration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION, null, msgs);
+			msgs = basicSetDefaultValueDuration(newDefaultValueDuration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION, newDefaultValueDuration, newDefaultValueDuration));
 	}
 
 	/**
@@ -5199,49 +5001,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uuid getFixedUuid() {
-		return fixedUuid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetFixedUuid(Uuid newFixedUuid, NotificationChain msgs) {
-		Uuid oldFixedUuid = fixedUuid;
-		fixedUuid = newFixedUuid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_UUID, oldFixedUuid, newFixedUuid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFixedUuid(Uuid newFixedUuid) {
-		if (newFixedUuid != fixedUuid) {
-			NotificationChain msgs = null;
-			if (fixedUuid != null)
-				msgs = ((InternalEObject)fixedUuid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_UUID, null, msgs);
-			if (newFixedUuid != null)
-				msgs = ((InternalEObject)newFixedUuid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_UUID, null, msgs);
-			msgs = basicSetFixedUuid(newFixedUuid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_UUID, newFixedUuid, newFixedUuid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Id getFixedId() {
 		return fixedId;
 	}
@@ -5536,6 +5295,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER, newFixedIdentifier, newFixedIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Money getFixedMoney() {
+		return fixedMoney;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFixedMoney(Money newFixedMoney, NotificationChain msgs) {
+		Money oldFixedMoney = fixedMoney;
+		fixedMoney = newFixedMoney;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY, oldFixedMoney, newFixedMoney);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFixedMoney(Money newFixedMoney) {
+		if (newFixedMoney != fixedMoney) {
+			NotificationChain msgs = null;
+			if (fixedMoney != null)
+				msgs = ((InternalEObject)fixedMoney).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY, null, msgs);
+			if (newFixedMoney != null)
+				msgs = ((InternalEObject)newFixedMoney).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY, null, msgs);
+			msgs = basicSetFixedMoney(newFixedMoney, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY, newFixedMoney, newFixedMoney));
 	}
 
 	/**
@@ -6016,6 +5818,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Age getFixedAge() {
+		return fixedAge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFixedAge(Age newFixedAge, NotificationChain msgs) {
+		Age oldFixedAge = fixedAge;
+		fixedAge = newFixedAge;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_AGE, oldFixedAge, newFixedAge);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFixedAge(Age newFixedAge) {
+		if (newFixedAge != fixedAge) {
+			NotificationChain msgs = null;
+			if (fixedAge != null)
+				msgs = ((InternalEObject)fixedAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_AGE, null, msgs);
+			if (newFixedAge != null)
+				msgs = ((InternalEObject)newFixedAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_AGE, null, msgs);
+			msgs = basicSetFixedAge(newFixedAge, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_AGE, newFixedAge, newFixedAge));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContactPoint getFixedContactPoint() {
 		return fixedContactPoint;
 	}
@@ -6052,6 +5897,135 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT, newFixedContactPoint, newFixedContactPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Count getFixedCount() {
+		return fixedCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFixedCount(Count newFixedCount, NotificationChain msgs) {
+		Count oldFixedCount = fixedCount;
+		fixedCount = newFixedCount;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT, oldFixedCount, newFixedCount);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFixedCount(Count newFixedCount) {
+		if (newFixedCount != fixedCount) {
+			NotificationChain msgs = null;
+			if (fixedCount != null)
+				msgs = ((InternalEObject)fixedCount).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT, null, msgs);
+			if (newFixedCount != null)
+				msgs = ((InternalEObject)newFixedCount).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT, null, msgs);
+			msgs = basicSetFixedCount(newFixedCount, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT, newFixedCount, newFixedCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Distance getFixedDistance() {
+		return fixedDistance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFixedDistance(Distance newFixedDistance, NotificationChain msgs) {
+		Distance oldFixedDistance = fixedDistance;
+		fixedDistance = newFixedDistance;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE, oldFixedDistance, newFixedDistance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFixedDistance(Distance newFixedDistance) {
+		if (newFixedDistance != fixedDistance) {
+			NotificationChain msgs = null;
+			if (fixedDistance != null)
+				msgs = ((InternalEObject)fixedDistance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE, null, msgs);
+			if (newFixedDistance != null)
+				msgs = ((InternalEObject)newFixedDistance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE, null, msgs);
+			msgs = basicSetFixedDistance(newFixedDistance, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE, newFixedDistance, newFixedDistance));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Duration getFixedDuration() {
+		return fixedDuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFixedDuration(Duration newFixedDuration, NotificationChain msgs) {
+		Duration oldFixedDuration = fixedDuration;
+		fixedDuration = newFixedDuration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION, oldFixedDuration, newFixedDuration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFixedDuration(Duration newFixedDuration) {
+		if (newFixedDuration != fixedDuration) {
+			NotificationChain msgs = null;
+			if (fixedDuration != null)
+				msgs = ((InternalEObject)fixedDuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION, null, msgs);
+			if (newFixedDuration != null)
+				msgs = ((InternalEObject)newFixedDuration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION, null, msgs);
+			msgs = basicSetFixedDuration(newFixedDuration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION, newFixedDuration, newFixedDuration));
 	}
 
 	/**
@@ -6661,49 +6635,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uuid getPatternUuid() {
-		return patternUuid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPatternUuid(Uuid newPatternUuid, NotificationChain msgs) {
-		Uuid oldPatternUuid = patternUuid;
-		patternUuid = newPatternUuid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID, oldPatternUuid, newPatternUuid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPatternUuid(Uuid newPatternUuid) {
-		if (newPatternUuid != patternUuid) {
-			NotificationChain msgs = null;
-			if (patternUuid != null)
-				msgs = ((InternalEObject)patternUuid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID, null, msgs);
-			if (newPatternUuid != null)
-				msgs = ((InternalEObject)newPatternUuid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID, null, msgs);
-			msgs = basicSetPatternUuid(newPatternUuid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID, newPatternUuid, newPatternUuid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Id getPatternId() {
 		return patternId;
 	}
@@ -6998,6 +6929,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER, newPatternIdentifier, newPatternIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Money getPatternMoney() {
+		return patternMoney;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPatternMoney(Money newPatternMoney, NotificationChain msgs) {
+		Money oldPatternMoney = patternMoney;
+		patternMoney = newPatternMoney;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY, oldPatternMoney, newPatternMoney);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPatternMoney(Money newPatternMoney) {
+		if (newPatternMoney != patternMoney) {
+			NotificationChain msgs = null;
+			if (patternMoney != null)
+				msgs = ((InternalEObject)patternMoney).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY, null, msgs);
+			if (newPatternMoney != null)
+				msgs = ((InternalEObject)newPatternMoney).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY, null, msgs);
+			msgs = basicSetPatternMoney(newPatternMoney, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY, newPatternMoney, newPatternMoney));
 	}
 
 	/**
@@ -7478,6 +7452,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Age getPatternAge() {
+		return patternAge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPatternAge(Age newPatternAge, NotificationChain msgs) {
+		Age oldPatternAge = patternAge;
+		patternAge = newPatternAge;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE, oldPatternAge, newPatternAge);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPatternAge(Age newPatternAge) {
+		if (newPatternAge != patternAge) {
+			NotificationChain msgs = null;
+			if (patternAge != null)
+				msgs = ((InternalEObject)patternAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE, null, msgs);
+			if (newPatternAge != null)
+				msgs = ((InternalEObject)newPatternAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE, null, msgs);
+			msgs = basicSetPatternAge(newPatternAge, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE, newPatternAge, newPatternAge));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContactPoint getPatternContactPoint() {
 		return patternContactPoint;
 	}
@@ -7514,6 +7531,135 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT, newPatternContactPoint, newPatternContactPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Count getPatternCount() {
+		return patternCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPatternCount(Count newPatternCount, NotificationChain msgs) {
+		Count oldPatternCount = patternCount;
+		patternCount = newPatternCount;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT, oldPatternCount, newPatternCount);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPatternCount(Count newPatternCount) {
+		if (newPatternCount != patternCount) {
+			NotificationChain msgs = null;
+			if (patternCount != null)
+				msgs = ((InternalEObject)patternCount).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT, null, msgs);
+			if (newPatternCount != null)
+				msgs = ((InternalEObject)newPatternCount).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT, null, msgs);
+			msgs = basicSetPatternCount(newPatternCount, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT, newPatternCount, newPatternCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Distance getPatternDistance() {
+		return patternDistance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPatternDistance(Distance newPatternDistance, NotificationChain msgs) {
+		Distance oldPatternDistance = patternDistance;
+		patternDistance = newPatternDistance;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE, oldPatternDistance, newPatternDistance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPatternDistance(Distance newPatternDistance) {
+		if (newPatternDistance != patternDistance) {
+			NotificationChain msgs = null;
+			if (patternDistance != null)
+				msgs = ((InternalEObject)patternDistance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE, null, msgs);
+			if (newPatternDistance != null)
+				msgs = ((InternalEObject)newPatternDistance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE, null, msgs);
+			msgs = basicSetPatternDistance(newPatternDistance, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE, newPatternDistance, newPatternDistance));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Duration getPatternDuration() {
+		return patternDuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPatternDuration(Duration newPatternDuration, NotificationChain msgs) {
+		Duration oldPatternDuration = patternDuration;
+		patternDuration = newPatternDuration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION, oldPatternDuration, newPatternDuration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPatternDuration(Duration newPatternDuration) {
+		if (newPatternDuration != patternDuration) {
+			NotificationChain msgs = null;
+			if (patternDuration != null)
+				msgs = ((InternalEObject)patternDuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION, null, msgs);
+			if (newPatternDuration != null)
+				msgs = ((InternalEObject)newPatternDuration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION, null, msgs);
+			msgs = basicSetPatternDuration(newPatternDuration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION, newPatternDuration, newPatternDuration));
 	}
 
 	/**
@@ -8123,49 +8269,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uuid getExampleUuid() {
-		return exampleUuid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetExampleUuid(Uuid newExampleUuid, NotificationChain msgs) {
-		Uuid oldExampleUuid = exampleUuid;
-		exampleUuid = newExampleUuid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID, oldExampleUuid, newExampleUuid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExampleUuid(Uuid newExampleUuid) {
-		if (newExampleUuid != exampleUuid) {
-			NotificationChain msgs = null;
-			if (exampleUuid != null)
-				msgs = ((InternalEObject)exampleUuid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID, null, msgs);
-			if (newExampleUuid != null)
-				msgs = ((InternalEObject)newExampleUuid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID, null, msgs);
-			msgs = basicSetExampleUuid(newExampleUuid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID, newExampleUuid, newExampleUuid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Id getExampleId() {
 		return exampleId;
 	}
@@ -8460,6 +8563,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER, newExampleIdentifier, newExampleIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Money getExampleMoney() {
+		return exampleMoney;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExampleMoney(Money newExampleMoney, NotificationChain msgs) {
+		Money oldExampleMoney = exampleMoney;
+		exampleMoney = newExampleMoney;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY, oldExampleMoney, newExampleMoney);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExampleMoney(Money newExampleMoney) {
+		if (newExampleMoney != exampleMoney) {
+			NotificationChain msgs = null;
+			if (exampleMoney != null)
+				msgs = ((InternalEObject)exampleMoney).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY, null, msgs);
+			if (newExampleMoney != null)
+				msgs = ((InternalEObject)newExampleMoney).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY, null, msgs);
+			msgs = basicSetExampleMoney(newExampleMoney, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY, newExampleMoney, newExampleMoney));
 	}
 
 	/**
@@ -8940,6 +9086,49 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Age getExampleAge() {
+		return exampleAge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExampleAge(Age newExampleAge, NotificationChain msgs) {
+		Age oldExampleAge = exampleAge;
+		exampleAge = newExampleAge;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE, oldExampleAge, newExampleAge);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExampleAge(Age newExampleAge) {
+		if (newExampleAge != exampleAge) {
+			NotificationChain msgs = null;
+			if (exampleAge != null)
+				msgs = ((InternalEObject)exampleAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE, null, msgs);
+			if (newExampleAge != null)
+				msgs = ((InternalEObject)newExampleAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE, null, msgs);
+			msgs = basicSetExampleAge(newExampleAge, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE, newExampleAge, newExampleAge));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContactPoint getExampleContactPoint() {
 		return exampleContactPoint;
 	}
@@ -8976,6 +9165,135 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT, newExampleContactPoint, newExampleContactPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Count getExampleCount() {
+		return exampleCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExampleCount(Count newExampleCount, NotificationChain msgs) {
+		Count oldExampleCount = exampleCount;
+		exampleCount = newExampleCount;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT, oldExampleCount, newExampleCount);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExampleCount(Count newExampleCount) {
+		if (newExampleCount != exampleCount) {
+			NotificationChain msgs = null;
+			if (exampleCount != null)
+				msgs = ((InternalEObject)exampleCount).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT, null, msgs);
+			if (newExampleCount != null)
+				msgs = ((InternalEObject)newExampleCount).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT, null, msgs);
+			msgs = basicSetExampleCount(newExampleCount, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT, newExampleCount, newExampleCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Distance getExampleDistance() {
+		return exampleDistance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExampleDistance(Distance newExampleDistance, NotificationChain msgs) {
+		Distance oldExampleDistance = exampleDistance;
+		exampleDistance = newExampleDistance;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE, oldExampleDistance, newExampleDistance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExampleDistance(Distance newExampleDistance) {
+		if (newExampleDistance != exampleDistance) {
+			NotificationChain msgs = null;
+			if (exampleDistance != null)
+				msgs = ((InternalEObject)exampleDistance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE, null, msgs);
+			if (newExampleDistance != null)
+				msgs = ((InternalEObject)newExampleDistance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE, null, msgs);
+			msgs = basicSetExampleDistance(newExampleDistance, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE, newExampleDistance, newExampleDistance));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Duration getExampleDuration() {
+		return exampleDuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExampleDuration(Duration newExampleDuration, NotificationChain msgs) {
+		Duration oldExampleDuration = exampleDuration;
+		exampleDuration = newExampleDuration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION, oldExampleDuration, newExampleDuration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExampleDuration(Duration newExampleDuration) {
+		if (newExampleDuration != exampleDuration) {
+			NotificationChain msgs = null;
+			if (exampleDuration != null)
+				msgs = ((InternalEObject)exampleDuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION, null, msgs);
+			if (newExampleDuration != null)
+				msgs = ((InternalEObject)newExampleDuration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION, null, msgs);
+			msgs = basicSetExampleDuration(newExampleDuration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION, newExampleDuration, newExampleDuration));
 	}
 
 	/**
@@ -9069,49 +9387,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.Boolean getMinValueBoolean() {
-		return minValueBoolean;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueBoolean(org.hl7.fhir.Boolean newMinValueBoolean, NotificationChain msgs) {
-		org.hl7.fhir.Boolean oldMinValueBoolean = minValueBoolean;
-		minValueBoolean = newMinValueBoolean;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN, oldMinValueBoolean, newMinValueBoolean);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueBoolean(org.hl7.fhir.Boolean newMinValueBoolean) {
-		if (newMinValueBoolean != minValueBoolean) {
-			NotificationChain msgs = null;
-			if (minValueBoolean != null)
-				msgs = ((InternalEObject)minValueBoolean).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN, null, msgs);
-			if (newMinValueBoolean != null)
-				msgs = ((InternalEObject)newMinValueBoolean).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN, null, msgs);
-			msgs = basicSetMinValueBoolean(newMinValueBoolean, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN, newMinValueBoolean, newMinValueBoolean));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public org.hl7.fhir.Integer getMinValueInteger() {
 		return minValueInteger;
 	}
@@ -9198,49 +9473,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Base64Binary getMinValueBase64Binary() {
-		return minValueBase64Binary;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueBase64Binary(Base64Binary newMinValueBase64Binary, NotificationChain msgs) {
-		Base64Binary oldMinValueBase64Binary = minValueBase64Binary;
-		minValueBase64Binary = newMinValueBase64Binary;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY, oldMinValueBase64Binary, newMinValueBase64Binary);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueBase64Binary(Base64Binary newMinValueBase64Binary) {
-		if (newMinValueBase64Binary != minValueBase64Binary) {
-			NotificationChain msgs = null;
-			if (minValueBase64Binary != null)
-				msgs = ((InternalEObject)minValueBase64Binary).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY, null, msgs);
-			if (newMinValueBase64Binary != null)
-				msgs = ((InternalEObject)newMinValueBase64Binary).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY, null, msgs);
-			msgs = basicSetMinValueBase64Binary(newMinValueBase64Binary, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY, newMinValueBase64Binary, newMinValueBase64Binary));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Instant getMinValueInstant() {
 		return minValueInstant;
 	}
@@ -9277,92 +9509,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT, newMinValueInstant, newMinValueInstant));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.hl7.fhir.String getMinValueString() {
-		return minValueString;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueString(org.hl7.fhir.String newMinValueString, NotificationChain msgs) {
-		org.hl7.fhir.String oldMinValueString = minValueString;
-		minValueString = newMinValueString;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING, oldMinValueString, newMinValueString);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueString(org.hl7.fhir.String newMinValueString) {
-		if (newMinValueString != minValueString) {
-			NotificationChain msgs = null;
-			if (minValueString != null)
-				msgs = ((InternalEObject)minValueString).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING, null, msgs);
-			if (newMinValueString != null)
-				msgs = ((InternalEObject)newMinValueString).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING, null, msgs);
-			msgs = basicSetMinValueString(newMinValueString, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING, newMinValueString, newMinValueString));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Uri getMinValueUri() {
-		return minValueUri;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueUri(Uri newMinValueUri, NotificationChain msgs) {
-		Uri oldMinValueUri = minValueUri;
-		minValueUri = newMinValueUri;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI, oldMinValueUri, newMinValueUri);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueUri(Uri newMinValueUri) {
-		if (newMinValueUri != minValueUri) {
-			NotificationChain msgs = null;
-			if (minValueUri != null)
-				msgs = ((InternalEObject)minValueUri).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI, null, msgs);
-			if (newMinValueUri != null)
-				msgs = ((InternalEObject)newMinValueUri).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI, null, msgs);
-			msgs = basicSetMinValueUri(newMinValueUri, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI, newMinValueUri, newMinValueUri));
 	}
 
 	/**
@@ -9499,178 +9645,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getMinValueCode() {
-		return minValueCode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueCode(Code newMinValueCode, NotificationChain msgs) {
-		Code oldMinValueCode = minValueCode;
-		minValueCode = newMinValueCode;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE, oldMinValueCode, newMinValueCode);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueCode(Code newMinValueCode) {
-		if (newMinValueCode != minValueCode) {
-			NotificationChain msgs = null;
-			if (minValueCode != null)
-				msgs = ((InternalEObject)minValueCode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE, null, msgs);
-			if (newMinValueCode != null)
-				msgs = ((InternalEObject)newMinValueCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE, null, msgs);
-			msgs = basicSetMinValueCode(newMinValueCode, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE, newMinValueCode, newMinValueCode));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Oid getMinValueOid() {
-		return minValueOid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueOid(Oid newMinValueOid, NotificationChain msgs) {
-		Oid oldMinValueOid = minValueOid;
-		minValueOid = newMinValueOid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID, oldMinValueOid, newMinValueOid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueOid(Oid newMinValueOid) {
-		if (newMinValueOid != minValueOid) {
-			NotificationChain msgs = null;
-			if (minValueOid != null)
-				msgs = ((InternalEObject)minValueOid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID, null, msgs);
-			if (newMinValueOid != null)
-				msgs = ((InternalEObject)newMinValueOid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID, null, msgs);
-			msgs = basicSetMinValueOid(newMinValueOid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID, newMinValueOid, newMinValueOid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Uuid getMinValueUuid() {
-		return minValueUuid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueUuid(Uuid newMinValueUuid, NotificationChain msgs) {
-		Uuid oldMinValueUuid = minValueUuid;
-		minValueUuid = newMinValueUuid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID, oldMinValueUuid, newMinValueUuid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueUuid(Uuid newMinValueUuid) {
-		if (newMinValueUuid != minValueUuid) {
-			NotificationChain msgs = null;
-			if (minValueUuid != null)
-				msgs = ((InternalEObject)minValueUuid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID, null, msgs);
-			if (newMinValueUuid != null)
-				msgs = ((InternalEObject)newMinValueUuid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID, null, msgs);
-			msgs = basicSetMinValueUuid(newMinValueUuid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID, newMinValueUuid, newMinValueUuid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Id getMinValueId() {
-		return minValueId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueId(Id newMinValueId, NotificationChain msgs) {
-		Id oldMinValueId = minValueId;
-		minValueId = newMinValueId;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID, oldMinValueId, newMinValueId);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueId(Id newMinValueId) {
-		if (newMinValueId != minValueId) {
-			NotificationChain msgs = null;
-			if (minValueId != null)
-				msgs = ((InternalEObject)minValueId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID, null, msgs);
-			if (newMinValueId != null)
-				msgs = ((InternalEObject)newMinValueId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID, null, msgs);
-			msgs = basicSetMinValueId(newMinValueId, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID, newMinValueId, newMinValueId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public UnsignedInt getMinValueUnsignedInt() {
 		return minValueUnsignedInt;
 	}
@@ -9757,264 +9731,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Markdown getMinValueMarkdown() {
-		return minValueMarkdown;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueMarkdown(Markdown newMinValueMarkdown, NotificationChain msgs) {
-		Markdown oldMinValueMarkdown = minValueMarkdown;
-		minValueMarkdown = newMinValueMarkdown;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN, oldMinValueMarkdown, newMinValueMarkdown);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueMarkdown(Markdown newMinValueMarkdown) {
-		if (newMinValueMarkdown != minValueMarkdown) {
-			NotificationChain msgs = null;
-			if (minValueMarkdown != null)
-				msgs = ((InternalEObject)minValueMarkdown).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN, null, msgs);
-			if (newMinValueMarkdown != null)
-				msgs = ((InternalEObject)newMinValueMarkdown).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN, null, msgs);
-			msgs = basicSetMinValueMarkdown(newMinValueMarkdown, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN, newMinValueMarkdown, newMinValueMarkdown));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Annotation getMinValueAnnotation() {
-		return minValueAnnotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueAnnotation(Annotation newMinValueAnnotation, NotificationChain msgs) {
-		Annotation oldMinValueAnnotation = minValueAnnotation;
-		minValueAnnotation = newMinValueAnnotation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION, oldMinValueAnnotation, newMinValueAnnotation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueAnnotation(Annotation newMinValueAnnotation) {
-		if (newMinValueAnnotation != minValueAnnotation) {
-			NotificationChain msgs = null;
-			if (minValueAnnotation != null)
-				msgs = ((InternalEObject)minValueAnnotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION, null, msgs);
-			if (newMinValueAnnotation != null)
-				msgs = ((InternalEObject)newMinValueAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION, null, msgs);
-			msgs = basicSetMinValueAnnotation(newMinValueAnnotation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION, newMinValueAnnotation, newMinValueAnnotation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Attachment getMinValueAttachment() {
-		return minValueAttachment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueAttachment(Attachment newMinValueAttachment, NotificationChain msgs) {
-		Attachment oldMinValueAttachment = minValueAttachment;
-		minValueAttachment = newMinValueAttachment;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT, oldMinValueAttachment, newMinValueAttachment);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueAttachment(Attachment newMinValueAttachment) {
-		if (newMinValueAttachment != minValueAttachment) {
-			NotificationChain msgs = null;
-			if (minValueAttachment != null)
-				msgs = ((InternalEObject)minValueAttachment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT, null, msgs);
-			if (newMinValueAttachment != null)
-				msgs = ((InternalEObject)newMinValueAttachment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT, null, msgs);
-			msgs = basicSetMinValueAttachment(newMinValueAttachment, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT, newMinValueAttachment, newMinValueAttachment));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Identifier getMinValueIdentifier() {
-		return minValueIdentifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueIdentifier(Identifier newMinValueIdentifier, NotificationChain msgs) {
-		Identifier oldMinValueIdentifier = minValueIdentifier;
-		minValueIdentifier = newMinValueIdentifier;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER, oldMinValueIdentifier, newMinValueIdentifier);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueIdentifier(Identifier newMinValueIdentifier) {
-		if (newMinValueIdentifier != minValueIdentifier) {
-			NotificationChain msgs = null;
-			if (minValueIdentifier != null)
-				msgs = ((InternalEObject)minValueIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER, null, msgs);
-			if (newMinValueIdentifier != null)
-				msgs = ((InternalEObject)newMinValueIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER, null, msgs);
-			msgs = basicSetMinValueIdentifier(newMinValueIdentifier, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER, newMinValueIdentifier, newMinValueIdentifier));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CodeableConcept getMinValueCodeableConcept() {
-		return minValueCodeableConcept;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueCodeableConcept(CodeableConcept newMinValueCodeableConcept, NotificationChain msgs) {
-		CodeableConcept oldMinValueCodeableConcept = minValueCodeableConcept;
-		minValueCodeableConcept = newMinValueCodeableConcept;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT, oldMinValueCodeableConcept, newMinValueCodeableConcept);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueCodeableConcept(CodeableConcept newMinValueCodeableConcept) {
-		if (newMinValueCodeableConcept != minValueCodeableConcept) {
-			NotificationChain msgs = null;
-			if (minValueCodeableConcept != null)
-				msgs = ((InternalEObject)minValueCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT, null, msgs);
-			if (newMinValueCodeableConcept != null)
-				msgs = ((InternalEObject)newMinValueCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT, null, msgs);
-			msgs = basicSetMinValueCodeableConcept(newMinValueCodeableConcept, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT, newMinValueCodeableConcept, newMinValueCodeableConcept));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Coding getMinValueCoding() {
-		return minValueCoding;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueCoding(Coding newMinValueCoding, NotificationChain msgs) {
-		Coding oldMinValueCoding = minValueCoding;
-		minValueCoding = newMinValueCoding;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING, oldMinValueCoding, newMinValueCoding);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueCoding(Coding newMinValueCoding) {
-		if (newMinValueCoding != minValueCoding) {
-			NotificationChain msgs = null;
-			if (minValueCoding != null)
-				msgs = ((InternalEObject)minValueCoding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING, null, msgs);
-			if (newMinValueCoding != null)
-				msgs = ((InternalEObject)newMinValueCoding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING, null, msgs);
-			msgs = basicSetMinValueCoding(newMinValueCoding, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING, newMinValueCoding, newMinValueCoding));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Quantity getMinValueQuantity() {
 		return minValueQuantity;
 	}
@@ -10051,522 +9767,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_QUANTITY, newMinValueQuantity, newMinValueQuantity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Range getMinValueRange() {
-		return minValueRange;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueRange(Range newMinValueRange, NotificationChain msgs) {
-		Range oldMinValueRange = minValueRange;
-		minValueRange = newMinValueRange;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE, oldMinValueRange, newMinValueRange);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueRange(Range newMinValueRange) {
-		if (newMinValueRange != minValueRange) {
-			NotificationChain msgs = null;
-			if (minValueRange != null)
-				msgs = ((InternalEObject)minValueRange).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE, null, msgs);
-			if (newMinValueRange != null)
-				msgs = ((InternalEObject)newMinValueRange).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE, null, msgs);
-			msgs = basicSetMinValueRange(newMinValueRange, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE, newMinValueRange, newMinValueRange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Period getMinValuePeriod() {
-		return minValuePeriod;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValuePeriod(Period newMinValuePeriod, NotificationChain msgs) {
-		Period oldMinValuePeriod = minValuePeriod;
-		minValuePeriod = newMinValuePeriod;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD, oldMinValuePeriod, newMinValuePeriod);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValuePeriod(Period newMinValuePeriod) {
-		if (newMinValuePeriod != minValuePeriod) {
-			NotificationChain msgs = null;
-			if (minValuePeriod != null)
-				msgs = ((InternalEObject)minValuePeriod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD, null, msgs);
-			if (newMinValuePeriod != null)
-				msgs = ((InternalEObject)newMinValuePeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD, null, msgs);
-			msgs = basicSetMinValuePeriod(newMinValuePeriod, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD, newMinValuePeriod, newMinValuePeriod));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Ratio getMinValueRatio() {
-		return minValueRatio;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueRatio(Ratio newMinValueRatio, NotificationChain msgs) {
-		Ratio oldMinValueRatio = minValueRatio;
-		minValueRatio = newMinValueRatio;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO, oldMinValueRatio, newMinValueRatio);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueRatio(Ratio newMinValueRatio) {
-		if (newMinValueRatio != minValueRatio) {
-			NotificationChain msgs = null;
-			if (minValueRatio != null)
-				msgs = ((InternalEObject)minValueRatio).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO, null, msgs);
-			if (newMinValueRatio != null)
-				msgs = ((InternalEObject)newMinValueRatio).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO, null, msgs);
-			msgs = basicSetMinValueRatio(newMinValueRatio, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO, newMinValueRatio, newMinValueRatio));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Reference getMinValueReference() {
-		return minValueReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueReference(Reference newMinValueReference, NotificationChain msgs) {
-		Reference oldMinValueReference = minValueReference;
-		minValueReference = newMinValueReference;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE, oldMinValueReference, newMinValueReference);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueReference(Reference newMinValueReference) {
-		if (newMinValueReference != minValueReference) {
-			NotificationChain msgs = null;
-			if (minValueReference != null)
-				msgs = ((InternalEObject)minValueReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE, null, msgs);
-			if (newMinValueReference != null)
-				msgs = ((InternalEObject)newMinValueReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE, null, msgs);
-			msgs = basicSetMinValueReference(newMinValueReference, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE, newMinValueReference, newMinValueReference));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SampledData getMinValueSampledData() {
-		return minValueSampledData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueSampledData(SampledData newMinValueSampledData, NotificationChain msgs) {
-		SampledData oldMinValueSampledData = minValueSampledData;
-		minValueSampledData = newMinValueSampledData;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA, oldMinValueSampledData, newMinValueSampledData);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueSampledData(SampledData newMinValueSampledData) {
-		if (newMinValueSampledData != minValueSampledData) {
-			NotificationChain msgs = null;
-			if (minValueSampledData != null)
-				msgs = ((InternalEObject)minValueSampledData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA, null, msgs);
-			if (newMinValueSampledData != null)
-				msgs = ((InternalEObject)newMinValueSampledData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA, null, msgs);
-			msgs = basicSetMinValueSampledData(newMinValueSampledData, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA, newMinValueSampledData, newMinValueSampledData));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Signature getMinValueSignature() {
-		return minValueSignature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueSignature(Signature newMinValueSignature, NotificationChain msgs) {
-		Signature oldMinValueSignature = minValueSignature;
-		minValueSignature = newMinValueSignature;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE, oldMinValueSignature, newMinValueSignature);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueSignature(Signature newMinValueSignature) {
-		if (newMinValueSignature != minValueSignature) {
-			NotificationChain msgs = null;
-			if (minValueSignature != null)
-				msgs = ((InternalEObject)minValueSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE, null, msgs);
-			if (newMinValueSignature != null)
-				msgs = ((InternalEObject)newMinValueSignature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE, null, msgs);
-			msgs = basicSetMinValueSignature(newMinValueSignature, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE, newMinValueSignature, newMinValueSignature));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HumanName getMinValueHumanName() {
-		return minValueHumanName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueHumanName(HumanName newMinValueHumanName, NotificationChain msgs) {
-		HumanName oldMinValueHumanName = minValueHumanName;
-		minValueHumanName = newMinValueHumanName;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME, oldMinValueHumanName, newMinValueHumanName);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueHumanName(HumanName newMinValueHumanName) {
-		if (newMinValueHumanName != minValueHumanName) {
-			NotificationChain msgs = null;
-			if (minValueHumanName != null)
-				msgs = ((InternalEObject)minValueHumanName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME, null, msgs);
-			if (newMinValueHumanName != null)
-				msgs = ((InternalEObject)newMinValueHumanName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME, null, msgs);
-			msgs = basicSetMinValueHumanName(newMinValueHumanName, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME, newMinValueHumanName, newMinValueHumanName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Address getMinValueAddress() {
-		return minValueAddress;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueAddress(Address newMinValueAddress, NotificationChain msgs) {
-		Address oldMinValueAddress = minValueAddress;
-		minValueAddress = newMinValueAddress;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS, oldMinValueAddress, newMinValueAddress);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueAddress(Address newMinValueAddress) {
-		if (newMinValueAddress != minValueAddress) {
-			NotificationChain msgs = null;
-			if (minValueAddress != null)
-				msgs = ((InternalEObject)minValueAddress).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS, null, msgs);
-			if (newMinValueAddress != null)
-				msgs = ((InternalEObject)newMinValueAddress).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS, null, msgs);
-			msgs = basicSetMinValueAddress(newMinValueAddress, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS, newMinValueAddress, newMinValueAddress));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ContactPoint getMinValueContactPoint() {
-		return minValueContactPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueContactPoint(ContactPoint newMinValueContactPoint, NotificationChain msgs) {
-		ContactPoint oldMinValueContactPoint = minValueContactPoint;
-		minValueContactPoint = newMinValueContactPoint;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT, oldMinValueContactPoint, newMinValueContactPoint);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueContactPoint(ContactPoint newMinValueContactPoint) {
-		if (newMinValueContactPoint != minValueContactPoint) {
-			NotificationChain msgs = null;
-			if (minValueContactPoint != null)
-				msgs = ((InternalEObject)minValueContactPoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT, null, msgs);
-			if (newMinValueContactPoint != null)
-				msgs = ((InternalEObject)newMinValueContactPoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT, null, msgs);
-			msgs = basicSetMinValueContactPoint(newMinValueContactPoint, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT, newMinValueContactPoint, newMinValueContactPoint));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Timing getMinValueTiming() {
-		return minValueTiming;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueTiming(Timing newMinValueTiming, NotificationChain msgs) {
-		Timing oldMinValueTiming = minValueTiming;
-		minValueTiming = newMinValueTiming;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING, oldMinValueTiming, newMinValueTiming);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueTiming(Timing newMinValueTiming) {
-		if (newMinValueTiming != minValueTiming) {
-			NotificationChain msgs = null;
-			if (minValueTiming != null)
-				msgs = ((InternalEObject)minValueTiming).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING, null, msgs);
-			if (newMinValueTiming != null)
-				msgs = ((InternalEObject)newMinValueTiming).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING, null, msgs);
-			msgs = basicSetMinValueTiming(newMinValueTiming, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING, newMinValueTiming, newMinValueTiming));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Meta getMinValueMeta() {
-		return minValueMeta;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMinValueMeta(Meta newMinValueMeta, NotificationChain msgs) {
-		Meta oldMinValueMeta = minValueMeta;
-		minValueMeta = newMinValueMeta;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META, oldMinValueMeta, newMinValueMeta);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMinValueMeta(Meta newMinValueMeta) {
-		if (newMinValueMeta != minValueMeta) {
-			NotificationChain msgs = null;
-			if (minValueMeta != null)
-				msgs = ((InternalEObject)minValueMeta).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META, null, msgs);
-			if (newMinValueMeta != null)
-				msgs = ((InternalEObject)newMinValueMeta).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META, null, msgs);
-			msgs = basicSetMinValueMeta(newMinValueMeta, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META, newMinValueMeta, newMinValueMeta));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.hl7.fhir.Boolean getMaxValueBoolean() {
-		return maxValueBoolean;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueBoolean(org.hl7.fhir.Boolean newMaxValueBoolean, NotificationChain msgs) {
-		org.hl7.fhir.Boolean oldMaxValueBoolean = maxValueBoolean;
-		maxValueBoolean = newMaxValueBoolean;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN, oldMaxValueBoolean, newMaxValueBoolean);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueBoolean(org.hl7.fhir.Boolean newMaxValueBoolean) {
-		if (newMaxValueBoolean != maxValueBoolean) {
-			NotificationChain msgs = null;
-			if (maxValueBoolean != null)
-				msgs = ((InternalEObject)maxValueBoolean).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN, null, msgs);
-			if (newMaxValueBoolean != null)
-				msgs = ((InternalEObject)newMaxValueBoolean).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN, null, msgs);
-			msgs = basicSetMaxValueBoolean(newMaxValueBoolean, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN, newMaxValueBoolean, newMaxValueBoolean));
 	}
 
 	/**
@@ -10660,49 +9860,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Base64Binary getMaxValueBase64Binary() {
-		return maxValueBase64Binary;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueBase64Binary(Base64Binary newMaxValueBase64Binary, NotificationChain msgs) {
-		Base64Binary oldMaxValueBase64Binary = maxValueBase64Binary;
-		maxValueBase64Binary = newMaxValueBase64Binary;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY, oldMaxValueBase64Binary, newMaxValueBase64Binary);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueBase64Binary(Base64Binary newMaxValueBase64Binary) {
-		if (newMaxValueBase64Binary != maxValueBase64Binary) {
-			NotificationChain msgs = null;
-			if (maxValueBase64Binary != null)
-				msgs = ((InternalEObject)maxValueBase64Binary).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY, null, msgs);
-			if (newMaxValueBase64Binary != null)
-				msgs = ((InternalEObject)newMaxValueBase64Binary).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY, null, msgs);
-			msgs = basicSetMaxValueBase64Binary(newMaxValueBase64Binary, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY, newMaxValueBase64Binary, newMaxValueBase64Binary));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Instant getMaxValueInstant() {
 		return maxValueInstant;
 	}
@@ -10739,92 +9896,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT, newMaxValueInstant, newMaxValueInstant));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.hl7.fhir.String getMaxValueString() {
-		return maxValueString;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueString(org.hl7.fhir.String newMaxValueString, NotificationChain msgs) {
-		org.hl7.fhir.String oldMaxValueString = maxValueString;
-		maxValueString = newMaxValueString;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING, oldMaxValueString, newMaxValueString);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueString(org.hl7.fhir.String newMaxValueString) {
-		if (newMaxValueString != maxValueString) {
-			NotificationChain msgs = null;
-			if (maxValueString != null)
-				msgs = ((InternalEObject)maxValueString).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING, null, msgs);
-			if (newMaxValueString != null)
-				msgs = ((InternalEObject)newMaxValueString).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING, null, msgs);
-			msgs = basicSetMaxValueString(newMaxValueString, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING, newMaxValueString, newMaxValueString));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Uri getMaxValueUri() {
-		return maxValueUri;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueUri(Uri newMaxValueUri, NotificationChain msgs) {
-		Uri oldMaxValueUri = maxValueUri;
-		maxValueUri = newMaxValueUri;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI, oldMaxValueUri, newMaxValueUri);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueUri(Uri newMaxValueUri) {
-		if (newMaxValueUri != maxValueUri) {
-			NotificationChain msgs = null;
-			if (maxValueUri != null)
-				msgs = ((InternalEObject)maxValueUri).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI, null, msgs);
-			if (newMaxValueUri != null)
-				msgs = ((InternalEObject)newMaxValueUri).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI, null, msgs);
-			msgs = basicSetMaxValueUri(newMaxValueUri, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI, newMaxValueUri, newMaxValueUri));
 	}
 
 	/**
@@ -10961,178 +10032,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Code getMaxValueCode() {
-		return maxValueCode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueCode(Code newMaxValueCode, NotificationChain msgs) {
-		Code oldMaxValueCode = maxValueCode;
-		maxValueCode = newMaxValueCode;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE, oldMaxValueCode, newMaxValueCode);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueCode(Code newMaxValueCode) {
-		if (newMaxValueCode != maxValueCode) {
-			NotificationChain msgs = null;
-			if (maxValueCode != null)
-				msgs = ((InternalEObject)maxValueCode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE, null, msgs);
-			if (newMaxValueCode != null)
-				msgs = ((InternalEObject)newMaxValueCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE, null, msgs);
-			msgs = basicSetMaxValueCode(newMaxValueCode, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE, newMaxValueCode, newMaxValueCode));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Oid getMaxValueOid() {
-		return maxValueOid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueOid(Oid newMaxValueOid, NotificationChain msgs) {
-		Oid oldMaxValueOid = maxValueOid;
-		maxValueOid = newMaxValueOid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID, oldMaxValueOid, newMaxValueOid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueOid(Oid newMaxValueOid) {
-		if (newMaxValueOid != maxValueOid) {
-			NotificationChain msgs = null;
-			if (maxValueOid != null)
-				msgs = ((InternalEObject)maxValueOid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID, null, msgs);
-			if (newMaxValueOid != null)
-				msgs = ((InternalEObject)newMaxValueOid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID, null, msgs);
-			msgs = basicSetMaxValueOid(newMaxValueOid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID, newMaxValueOid, newMaxValueOid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Uuid getMaxValueUuid() {
-		return maxValueUuid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueUuid(Uuid newMaxValueUuid, NotificationChain msgs) {
-		Uuid oldMaxValueUuid = maxValueUuid;
-		maxValueUuid = newMaxValueUuid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID, oldMaxValueUuid, newMaxValueUuid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueUuid(Uuid newMaxValueUuid) {
-		if (newMaxValueUuid != maxValueUuid) {
-			NotificationChain msgs = null;
-			if (maxValueUuid != null)
-				msgs = ((InternalEObject)maxValueUuid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID, null, msgs);
-			if (newMaxValueUuid != null)
-				msgs = ((InternalEObject)newMaxValueUuid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID, null, msgs);
-			msgs = basicSetMaxValueUuid(newMaxValueUuid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID, newMaxValueUuid, newMaxValueUuid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Id getMaxValueId() {
-		return maxValueId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueId(Id newMaxValueId, NotificationChain msgs) {
-		Id oldMaxValueId = maxValueId;
-		maxValueId = newMaxValueId;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID, oldMaxValueId, newMaxValueId);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueId(Id newMaxValueId) {
-		if (newMaxValueId != maxValueId) {
-			NotificationChain msgs = null;
-			if (maxValueId != null)
-				msgs = ((InternalEObject)maxValueId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID, null, msgs);
-			if (newMaxValueId != null)
-				msgs = ((InternalEObject)newMaxValueId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID, null, msgs);
-			msgs = basicSetMaxValueId(newMaxValueId, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID, newMaxValueId, newMaxValueId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public UnsignedInt getMaxValueUnsignedInt() {
 		return maxValueUnsignedInt;
 	}
@@ -11219,264 +10118,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Markdown getMaxValueMarkdown() {
-		return maxValueMarkdown;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueMarkdown(Markdown newMaxValueMarkdown, NotificationChain msgs) {
-		Markdown oldMaxValueMarkdown = maxValueMarkdown;
-		maxValueMarkdown = newMaxValueMarkdown;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN, oldMaxValueMarkdown, newMaxValueMarkdown);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueMarkdown(Markdown newMaxValueMarkdown) {
-		if (newMaxValueMarkdown != maxValueMarkdown) {
-			NotificationChain msgs = null;
-			if (maxValueMarkdown != null)
-				msgs = ((InternalEObject)maxValueMarkdown).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN, null, msgs);
-			if (newMaxValueMarkdown != null)
-				msgs = ((InternalEObject)newMaxValueMarkdown).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN, null, msgs);
-			msgs = basicSetMaxValueMarkdown(newMaxValueMarkdown, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN, newMaxValueMarkdown, newMaxValueMarkdown));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Annotation getMaxValueAnnotation() {
-		return maxValueAnnotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueAnnotation(Annotation newMaxValueAnnotation, NotificationChain msgs) {
-		Annotation oldMaxValueAnnotation = maxValueAnnotation;
-		maxValueAnnotation = newMaxValueAnnotation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION, oldMaxValueAnnotation, newMaxValueAnnotation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueAnnotation(Annotation newMaxValueAnnotation) {
-		if (newMaxValueAnnotation != maxValueAnnotation) {
-			NotificationChain msgs = null;
-			if (maxValueAnnotation != null)
-				msgs = ((InternalEObject)maxValueAnnotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION, null, msgs);
-			if (newMaxValueAnnotation != null)
-				msgs = ((InternalEObject)newMaxValueAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION, null, msgs);
-			msgs = basicSetMaxValueAnnotation(newMaxValueAnnotation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION, newMaxValueAnnotation, newMaxValueAnnotation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Attachment getMaxValueAttachment() {
-		return maxValueAttachment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueAttachment(Attachment newMaxValueAttachment, NotificationChain msgs) {
-		Attachment oldMaxValueAttachment = maxValueAttachment;
-		maxValueAttachment = newMaxValueAttachment;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT, oldMaxValueAttachment, newMaxValueAttachment);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueAttachment(Attachment newMaxValueAttachment) {
-		if (newMaxValueAttachment != maxValueAttachment) {
-			NotificationChain msgs = null;
-			if (maxValueAttachment != null)
-				msgs = ((InternalEObject)maxValueAttachment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT, null, msgs);
-			if (newMaxValueAttachment != null)
-				msgs = ((InternalEObject)newMaxValueAttachment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT, null, msgs);
-			msgs = basicSetMaxValueAttachment(newMaxValueAttachment, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT, newMaxValueAttachment, newMaxValueAttachment));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Identifier getMaxValueIdentifier() {
-		return maxValueIdentifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueIdentifier(Identifier newMaxValueIdentifier, NotificationChain msgs) {
-		Identifier oldMaxValueIdentifier = maxValueIdentifier;
-		maxValueIdentifier = newMaxValueIdentifier;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER, oldMaxValueIdentifier, newMaxValueIdentifier);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueIdentifier(Identifier newMaxValueIdentifier) {
-		if (newMaxValueIdentifier != maxValueIdentifier) {
-			NotificationChain msgs = null;
-			if (maxValueIdentifier != null)
-				msgs = ((InternalEObject)maxValueIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER, null, msgs);
-			if (newMaxValueIdentifier != null)
-				msgs = ((InternalEObject)newMaxValueIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER, null, msgs);
-			msgs = basicSetMaxValueIdentifier(newMaxValueIdentifier, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER, newMaxValueIdentifier, newMaxValueIdentifier));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CodeableConcept getMaxValueCodeableConcept() {
-		return maxValueCodeableConcept;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueCodeableConcept(CodeableConcept newMaxValueCodeableConcept, NotificationChain msgs) {
-		CodeableConcept oldMaxValueCodeableConcept = maxValueCodeableConcept;
-		maxValueCodeableConcept = newMaxValueCodeableConcept;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT, oldMaxValueCodeableConcept, newMaxValueCodeableConcept);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueCodeableConcept(CodeableConcept newMaxValueCodeableConcept) {
-		if (newMaxValueCodeableConcept != maxValueCodeableConcept) {
-			NotificationChain msgs = null;
-			if (maxValueCodeableConcept != null)
-				msgs = ((InternalEObject)maxValueCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT, null, msgs);
-			if (newMaxValueCodeableConcept != null)
-				msgs = ((InternalEObject)newMaxValueCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT, null, msgs);
-			msgs = basicSetMaxValueCodeableConcept(newMaxValueCodeableConcept, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT, newMaxValueCodeableConcept, newMaxValueCodeableConcept));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Coding getMaxValueCoding() {
-		return maxValueCoding;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueCoding(Coding newMaxValueCoding, NotificationChain msgs) {
-		Coding oldMaxValueCoding = maxValueCoding;
-		maxValueCoding = newMaxValueCoding;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING, oldMaxValueCoding, newMaxValueCoding);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueCoding(Coding newMaxValueCoding) {
-		if (newMaxValueCoding != maxValueCoding) {
-			NotificationChain msgs = null;
-			if (maxValueCoding != null)
-				msgs = ((InternalEObject)maxValueCoding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING, null, msgs);
-			if (newMaxValueCoding != null)
-				msgs = ((InternalEObject)newMaxValueCoding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING, null, msgs);
-			msgs = basicSetMaxValueCoding(newMaxValueCoding, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING, newMaxValueCoding, newMaxValueCoding));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Quantity getMaxValueQuantity() {
 		return maxValueQuantity;
 	}
@@ -11513,479 +10154,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_QUANTITY, newMaxValueQuantity, newMaxValueQuantity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Range getMaxValueRange() {
-		return maxValueRange;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueRange(Range newMaxValueRange, NotificationChain msgs) {
-		Range oldMaxValueRange = maxValueRange;
-		maxValueRange = newMaxValueRange;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE, oldMaxValueRange, newMaxValueRange);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueRange(Range newMaxValueRange) {
-		if (newMaxValueRange != maxValueRange) {
-			NotificationChain msgs = null;
-			if (maxValueRange != null)
-				msgs = ((InternalEObject)maxValueRange).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE, null, msgs);
-			if (newMaxValueRange != null)
-				msgs = ((InternalEObject)newMaxValueRange).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE, null, msgs);
-			msgs = basicSetMaxValueRange(newMaxValueRange, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE, newMaxValueRange, newMaxValueRange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Period getMaxValuePeriod() {
-		return maxValuePeriod;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValuePeriod(Period newMaxValuePeriod, NotificationChain msgs) {
-		Period oldMaxValuePeriod = maxValuePeriod;
-		maxValuePeriod = newMaxValuePeriod;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD, oldMaxValuePeriod, newMaxValuePeriod);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValuePeriod(Period newMaxValuePeriod) {
-		if (newMaxValuePeriod != maxValuePeriod) {
-			NotificationChain msgs = null;
-			if (maxValuePeriod != null)
-				msgs = ((InternalEObject)maxValuePeriod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD, null, msgs);
-			if (newMaxValuePeriod != null)
-				msgs = ((InternalEObject)newMaxValuePeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD, null, msgs);
-			msgs = basicSetMaxValuePeriod(newMaxValuePeriod, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD, newMaxValuePeriod, newMaxValuePeriod));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Ratio getMaxValueRatio() {
-		return maxValueRatio;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueRatio(Ratio newMaxValueRatio, NotificationChain msgs) {
-		Ratio oldMaxValueRatio = maxValueRatio;
-		maxValueRatio = newMaxValueRatio;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO, oldMaxValueRatio, newMaxValueRatio);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueRatio(Ratio newMaxValueRatio) {
-		if (newMaxValueRatio != maxValueRatio) {
-			NotificationChain msgs = null;
-			if (maxValueRatio != null)
-				msgs = ((InternalEObject)maxValueRatio).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO, null, msgs);
-			if (newMaxValueRatio != null)
-				msgs = ((InternalEObject)newMaxValueRatio).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO, null, msgs);
-			msgs = basicSetMaxValueRatio(newMaxValueRatio, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO, newMaxValueRatio, newMaxValueRatio));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Reference getMaxValueReference() {
-		return maxValueReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueReference(Reference newMaxValueReference, NotificationChain msgs) {
-		Reference oldMaxValueReference = maxValueReference;
-		maxValueReference = newMaxValueReference;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE, oldMaxValueReference, newMaxValueReference);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueReference(Reference newMaxValueReference) {
-		if (newMaxValueReference != maxValueReference) {
-			NotificationChain msgs = null;
-			if (maxValueReference != null)
-				msgs = ((InternalEObject)maxValueReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE, null, msgs);
-			if (newMaxValueReference != null)
-				msgs = ((InternalEObject)newMaxValueReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE, null, msgs);
-			msgs = basicSetMaxValueReference(newMaxValueReference, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE, newMaxValueReference, newMaxValueReference));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SampledData getMaxValueSampledData() {
-		return maxValueSampledData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueSampledData(SampledData newMaxValueSampledData, NotificationChain msgs) {
-		SampledData oldMaxValueSampledData = maxValueSampledData;
-		maxValueSampledData = newMaxValueSampledData;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA, oldMaxValueSampledData, newMaxValueSampledData);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueSampledData(SampledData newMaxValueSampledData) {
-		if (newMaxValueSampledData != maxValueSampledData) {
-			NotificationChain msgs = null;
-			if (maxValueSampledData != null)
-				msgs = ((InternalEObject)maxValueSampledData).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA, null, msgs);
-			if (newMaxValueSampledData != null)
-				msgs = ((InternalEObject)newMaxValueSampledData).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA, null, msgs);
-			msgs = basicSetMaxValueSampledData(newMaxValueSampledData, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA, newMaxValueSampledData, newMaxValueSampledData));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Signature getMaxValueSignature() {
-		return maxValueSignature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueSignature(Signature newMaxValueSignature, NotificationChain msgs) {
-		Signature oldMaxValueSignature = maxValueSignature;
-		maxValueSignature = newMaxValueSignature;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE, oldMaxValueSignature, newMaxValueSignature);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueSignature(Signature newMaxValueSignature) {
-		if (newMaxValueSignature != maxValueSignature) {
-			NotificationChain msgs = null;
-			if (maxValueSignature != null)
-				msgs = ((InternalEObject)maxValueSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE, null, msgs);
-			if (newMaxValueSignature != null)
-				msgs = ((InternalEObject)newMaxValueSignature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE, null, msgs);
-			msgs = basicSetMaxValueSignature(newMaxValueSignature, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE, newMaxValueSignature, newMaxValueSignature));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HumanName getMaxValueHumanName() {
-		return maxValueHumanName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueHumanName(HumanName newMaxValueHumanName, NotificationChain msgs) {
-		HumanName oldMaxValueHumanName = maxValueHumanName;
-		maxValueHumanName = newMaxValueHumanName;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME, oldMaxValueHumanName, newMaxValueHumanName);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueHumanName(HumanName newMaxValueHumanName) {
-		if (newMaxValueHumanName != maxValueHumanName) {
-			NotificationChain msgs = null;
-			if (maxValueHumanName != null)
-				msgs = ((InternalEObject)maxValueHumanName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME, null, msgs);
-			if (newMaxValueHumanName != null)
-				msgs = ((InternalEObject)newMaxValueHumanName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME, null, msgs);
-			msgs = basicSetMaxValueHumanName(newMaxValueHumanName, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME, newMaxValueHumanName, newMaxValueHumanName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Address getMaxValueAddress() {
-		return maxValueAddress;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueAddress(Address newMaxValueAddress, NotificationChain msgs) {
-		Address oldMaxValueAddress = maxValueAddress;
-		maxValueAddress = newMaxValueAddress;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS, oldMaxValueAddress, newMaxValueAddress);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueAddress(Address newMaxValueAddress) {
-		if (newMaxValueAddress != maxValueAddress) {
-			NotificationChain msgs = null;
-			if (maxValueAddress != null)
-				msgs = ((InternalEObject)maxValueAddress).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS, null, msgs);
-			if (newMaxValueAddress != null)
-				msgs = ((InternalEObject)newMaxValueAddress).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS, null, msgs);
-			msgs = basicSetMaxValueAddress(newMaxValueAddress, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS, newMaxValueAddress, newMaxValueAddress));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ContactPoint getMaxValueContactPoint() {
-		return maxValueContactPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueContactPoint(ContactPoint newMaxValueContactPoint, NotificationChain msgs) {
-		ContactPoint oldMaxValueContactPoint = maxValueContactPoint;
-		maxValueContactPoint = newMaxValueContactPoint;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT, oldMaxValueContactPoint, newMaxValueContactPoint);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueContactPoint(ContactPoint newMaxValueContactPoint) {
-		if (newMaxValueContactPoint != maxValueContactPoint) {
-			NotificationChain msgs = null;
-			if (maxValueContactPoint != null)
-				msgs = ((InternalEObject)maxValueContactPoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT, null, msgs);
-			if (newMaxValueContactPoint != null)
-				msgs = ((InternalEObject)newMaxValueContactPoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT, null, msgs);
-			msgs = basicSetMaxValueContactPoint(newMaxValueContactPoint, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT, newMaxValueContactPoint, newMaxValueContactPoint));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Timing getMaxValueTiming() {
-		return maxValueTiming;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueTiming(Timing newMaxValueTiming, NotificationChain msgs) {
-		Timing oldMaxValueTiming = maxValueTiming;
-		maxValueTiming = newMaxValueTiming;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING, oldMaxValueTiming, newMaxValueTiming);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueTiming(Timing newMaxValueTiming) {
-		if (newMaxValueTiming != maxValueTiming) {
-			NotificationChain msgs = null;
-			if (maxValueTiming != null)
-				msgs = ((InternalEObject)maxValueTiming).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING, null, msgs);
-			if (newMaxValueTiming != null)
-				msgs = ((InternalEObject)newMaxValueTiming).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING, null, msgs);
-			msgs = basicSetMaxValueTiming(newMaxValueTiming, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING, newMaxValueTiming, newMaxValueTiming));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Meta getMaxValueMeta() {
-		return maxValueMeta;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMaxValueMeta(Meta newMaxValueMeta, NotificationChain msgs) {
-		Meta oldMaxValueMeta = maxValueMeta;
-		maxValueMeta = newMaxValueMeta;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META, oldMaxValueMeta, newMaxValueMeta);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMaxValueMeta(Meta newMaxValueMeta) {
-		if (newMaxValueMeta != maxValueMeta) {
-			NotificationChain msgs = null;
-			if (maxValueMeta != null)
-				msgs = ((InternalEObject)maxValueMeta).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META, null, msgs);
-			if (newMaxValueMeta != null)
-				msgs = ((InternalEObject)newMaxValueMeta).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META, null, msgs);
-			msgs = basicSetMaxValueMeta(newMaxValueMeta, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META, newMaxValueMeta, newMaxValueMeta));
 	}
 
 	/**
@@ -12275,60 +10443,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return basicSetMax(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__BASE:
 				return basicSetBase(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE:
+				return basicSetContentReference(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__TYPE:
 				return ((InternalEList<?>)getType()).basicRemove(otherEnd, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE:
-				return basicSetNameReference(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
-				return basicSetDefaultValueBoolean(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
-				return basicSetDefaultValueInteger(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
-				return basicSetDefaultValueDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BASE64_BINARY:
 				return basicSetDefaultValueBase64Binary(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
-				return basicSetDefaultValueInstant(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
-				return basicSetDefaultValueString(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
-				return basicSetDefaultValueUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
+				return basicSetDefaultValueBoolean(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
+				return basicSetDefaultValueCode(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE:
 				return basicSetDefaultValueDate(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE_TIME:
 				return basicSetDefaultValueDateTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
-				return basicSetDefaultValueTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
-				return basicSetDefaultValueCode(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
-				return basicSetDefaultValueOid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID:
-				return basicSetDefaultValueUuid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
+				return basicSetDefaultValueDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ID:
 				return basicSetDefaultValueId(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
-				return basicSetDefaultValueUnsignedInt(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
-				return basicSetDefaultValuePositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
+				return basicSetDefaultValueInstant(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
+				return basicSetDefaultValueInteger(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MARKDOWN:
 				return basicSetDefaultValueMarkdown(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
+				return basicSetDefaultValueOid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
+				return basicSetDefaultValuePositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
+				return basicSetDefaultValueString(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
+				return basicSetDefaultValueTime(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
+				return basicSetDefaultValueUnsignedInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
+				return basicSetDefaultValueUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
+				return basicSetDefaultValueAddress(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE:
+				return basicSetDefaultValueAge(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ANNOTATION:
 				return basicSetDefaultValueAnnotation(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ATTACHMENT:
 				return basicSetDefaultValueAttachment(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
-				return basicSetDefaultValueIdentifier(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODEABLE_CONCEPT:
 				return basicSetDefaultValueCodeableConcept(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODING:
 				return basicSetDefaultValueCoding(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
+				return basicSetDefaultValueContactPoint(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT:
+				return basicSetDefaultValueCount(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE:
+				return basicSetDefaultValueDistance(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION:
+				return basicSetDefaultValueDuration(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
+				return basicSetDefaultValueHumanName(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
+				return basicSetDefaultValueIdentifier(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY:
+				return basicSetDefaultValueMoney(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
+				return basicSetDefaultValuePeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_QUANTITY:
 				return basicSetDefaultValueQuantity(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RANGE:
 				return basicSetDefaultValueRange(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
-				return basicSetDefaultValuePeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RATIO:
 				return basicSetDefaultValueRatio(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_REFERENCE:
@@ -12337,68 +10519,76 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return basicSetDefaultValueSampledData(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_SIGNATURE:
 				return basicSetDefaultValueSignature(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
-				return basicSetDefaultValueHumanName(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
-				return basicSetDefaultValueAddress(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
-				return basicSetDefaultValueContactPoint(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIMING:
 				return basicSetDefaultValueTiming(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_META:
 				return basicSetDefaultValueMeta(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MEANING_WHEN_MISSING:
 				return basicSetMeaningWhenMissing(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
-				return basicSetFixedBoolean(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
-				return basicSetFixedInteger(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
-				return basicSetFixedDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_BASE64_BINARY:
 				return basicSetFixedBase64Binary(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
-				return basicSetFixedInstant(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
-				return basicSetFixedString(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
-				return basicSetFixedUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
+				return basicSetFixedBoolean(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
+				return basicSetFixedCode(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE:
 				return basicSetFixedDate(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE_TIME:
 				return basicSetFixedDateTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
-				return basicSetFixedTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
-				return basicSetFixedCode(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
-				return basicSetFixedOid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UUID:
-				return basicSetFixedUuid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
+				return basicSetFixedDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ID:
 				return basicSetFixedId(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
-				return basicSetFixedUnsignedInt(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
-				return basicSetFixedPositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
+				return basicSetFixedInstant(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
+				return basicSetFixedInteger(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_MARKDOWN:
 				return basicSetFixedMarkdown(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
+				return basicSetFixedOid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
+				return basicSetFixedPositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
+				return basicSetFixedString(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
+				return basicSetFixedTime(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
+				return basicSetFixedUnsignedInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
+				return basicSetFixedUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
+				return basicSetFixedAddress(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_AGE:
+				return basicSetFixedAge(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ANNOTATION:
 				return basicSetFixedAnnotation(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ATTACHMENT:
 				return basicSetFixedAttachment(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
-				return basicSetFixedIdentifier(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODEABLE_CONCEPT:
 				return basicSetFixedCodeableConcept(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODING:
 				return basicSetFixedCoding(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
+				return basicSetFixedContactPoint(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT:
+				return basicSetFixedCount(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE:
+				return basicSetFixedDistance(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION:
+				return basicSetFixedDuration(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
+				return basicSetFixedHumanName(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
+				return basicSetFixedIdentifier(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY:
+				return basicSetFixedMoney(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
+				return basicSetFixedPeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_QUANTITY:
 				return basicSetFixedQuantity(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RANGE:
 				return basicSetFixedRange(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
-				return basicSetFixedPeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RATIO:
 				return basicSetFixedRatio(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_REFERENCE:
@@ -12407,66 +10597,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return basicSetFixedSampledData(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_SIGNATURE:
 				return basicSetFixedSignature(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
-				return basicSetFixedHumanName(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
-				return basicSetFixedAddress(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
-				return basicSetFixedContactPoint(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIMING:
 				return basicSetFixedTiming(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_META:
 				return basicSetFixedMeta(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
-				return basicSetPatternBoolean(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
-				return basicSetPatternInteger(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
-				return basicSetPatternDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BASE64_BINARY:
 				return basicSetPatternBase64Binary(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
-				return basicSetPatternInstant(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
-				return basicSetPatternString(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
-				return basicSetPatternUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
+				return basicSetPatternBoolean(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
+				return basicSetPatternCode(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE:
 				return basicSetPatternDate(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE_TIME:
 				return basicSetPatternDateTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
-				return basicSetPatternTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
-				return basicSetPatternCode(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
-				return basicSetPatternOid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID:
-				return basicSetPatternUuid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
+				return basicSetPatternDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ID:
 				return basicSetPatternId(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
-				return basicSetPatternUnsignedInt(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
-				return basicSetPatternPositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
+				return basicSetPatternInstant(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
+				return basicSetPatternInteger(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MARKDOWN:
 				return basicSetPatternMarkdown(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
+				return basicSetPatternOid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
+				return basicSetPatternPositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
+				return basicSetPatternString(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
+				return basicSetPatternTime(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
+				return basicSetPatternUnsignedInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
+				return basicSetPatternUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
+				return basicSetPatternAddress(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE:
+				return basicSetPatternAge(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ANNOTATION:
 				return basicSetPatternAnnotation(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ATTACHMENT:
 				return basicSetPatternAttachment(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
-				return basicSetPatternIdentifier(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODEABLE_CONCEPT:
 				return basicSetPatternCodeableConcept(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODING:
 				return basicSetPatternCoding(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
+				return basicSetPatternContactPoint(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT:
+				return basicSetPatternCount(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE:
+				return basicSetPatternDistance(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION:
+				return basicSetPatternDuration(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
+				return basicSetPatternHumanName(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
+				return basicSetPatternIdentifier(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY:
+				return basicSetPatternMoney(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
+				return basicSetPatternPeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_QUANTITY:
 				return basicSetPatternQuantity(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RANGE:
 				return basicSetPatternRange(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
-				return basicSetPatternPeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RATIO:
 				return basicSetPatternRatio(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_REFERENCE:
@@ -12475,66 +10673,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return basicSetPatternSampledData(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_SIGNATURE:
 				return basicSetPatternSignature(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
-				return basicSetPatternHumanName(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
-				return basicSetPatternAddress(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
-				return basicSetPatternContactPoint(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIMING:
 				return basicSetPatternTiming(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_META:
 				return basicSetPatternMeta(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
-				return basicSetExampleBoolean(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
-				return basicSetExampleInteger(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
-				return basicSetExampleDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BASE64_BINARY:
 				return basicSetExampleBase64Binary(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
-				return basicSetExampleInstant(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
-				return basicSetExampleString(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
-				return basicSetExampleUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
+				return basicSetExampleBoolean(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
+				return basicSetExampleCode(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE:
 				return basicSetExampleDate(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE_TIME:
 				return basicSetExampleDateTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
-				return basicSetExampleTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
-				return basicSetExampleCode(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
-				return basicSetExampleOid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID:
-				return basicSetExampleUuid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
+				return basicSetExampleDecimal(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ID:
 				return basicSetExampleId(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
-				return basicSetExampleUnsignedInt(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
-				return basicSetExamplePositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
+				return basicSetExampleInstant(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
+				return basicSetExampleInteger(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MARKDOWN:
 				return basicSetExampleMarkdown(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
+				return basicSetExampleOid(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
+				return basicSetExamplePositiveInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
+				return basicSetExampleString(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
+				return basicSetExampleTime(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
+				return basicSetExampleUnsignedInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
+				return basicSetExampleUri(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
+				return basicSetExampleAddress(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE:
+				return basicSetExampleAge(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ANNOTATION:
 				return basicSetExampleAnnotation(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ATTACHMENT:
 				return basicSetExampleAttachment(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
-				return basicSetExampleIdentifier(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODEABLE_CONCEPT:
 				return basicSetExampleCodeableConcept(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODING:
 				return basicSetExampleCoding(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
+				return basicSetExampleContactPoint(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT:
+				return basicSetExampleCount(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE:
+				return basicSetExampleDistance(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION:
+				return basicSetExampleDuration(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
+				return basicSetExampleHumanName(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
+				return basicSetExampleIdentifier(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY:
+				return basicSetExampleMoney(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
+				return basicSetExamplePeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_QUANTITY:
 				return basicSetExampleQuantity(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RANGE:
 				return basicSetExampleRange(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
-				return basicSetExamplePeriod(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RATIO:
 				return basicSetExampleRatio(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_REFERENCE:
@@ -12543,152 +10749,46 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return basicSetExampleSampledData(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_SIGNATURE:
 				return basicSetExampleSignature(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
-				return basicSetExampleHumanName(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
-				return basicSetExampleAddress(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
-				return basicSetExampleContactPoint(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIMING:
 				return basicSetExampleTiming(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_META:
 				return basicSetExampleMeta(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN:
-				return basicSetMinValueBoolean(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
-				return basicSetMinValueInteger(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
-				return basicSetMinValueDecimal(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY:
-				return basicSetMinValueBase64Binary(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
-				return basicSetMinValueInstant(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING:
-				return basicSetMinValueString(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI:
-				return basicSetMinValueUri(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE:
 				return basicSetMinValueDate(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE_TIME:
 				return basicSetMinValueDateTime(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
+				return basicSetMinValueInstant(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIME:
 				return basicSetMinValueTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE:
-				return basicSetMinValueCode(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID:
-				return basicSetMinValueOid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID:
-				return basicSetMinValueUuid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID:
-				return basicSetMinValueId(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
-				return basicSetMinValueUnsignedInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
+				return basicSetMinValueDecimal(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
+				return basicSetMinValueInteger(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_POSITIVE_INT:
 				return basicSetMinValuePositiveInt(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN:
-				return basicSetMinValueMarkdown(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION:
-				return basicSetMinValueAnnotation(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT:
-				return basicSetMinValueAttachment(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER:
-				return basicSetMinValueIdentifier(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT:
-				return basicSetMinValueCodeableConcept(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING:
-				return basicSetMinValueCoding(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
+				return basicSetMinValueUnsignedInt(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_QUANTITY:
 				return basicSetMinValueQuantity(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE:
-				return basicSetMinValueRange(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD:
-				return basicSetMinValuePeriod(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO:
-				return basicSetMinValueRatio(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE:
-				return basicSetMinValueReference(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA:
-				return basicSetMinValueSampledData(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE:
-				return basicSetMinValueSignature(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME:
-				return basicSetMinValueHumanName(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS:
-				return basicSetMinValueAddress(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT:
-				return basicSetMinValueContactPoint(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING:
-				return basicSetMinValueTiming(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META:
-				return basicSetMinValueMeta(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN:
-				return basicSetMaxValueBoolean(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
-				return basicSetMaxValueInteger(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
-				return basicSetMaxValueDecimal(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY:
-				return basicSetMaxValueBase64Binary(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
-				return basicSetMaxValueInstant(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING:
-				return basicSetMaxValueString(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI:
-				return basicSetMaxValueUri(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE:
 				return basicSetMaxValueDate(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE_TIME:
 				return basicSetMaxValueDateTime(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
+				return basicSetMaxValueInstant(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIME:
 				return basicSetMaxValueTime(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE:
-				return basicSetMaxValueCode(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID:
-				return basicSetMaxValueOid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID:
-				return basicSetMaxValueUuid(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID:
-				return basicSetMaxValueId(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
-				return basicSetMaxValueUnsignedInt(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
+				return basicSetMaxValueDecimal(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
+				return basicSetMaxValueInteger(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_POSITIVE_INT:
 				return basicSetMaxValuePositiveInt(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN:
-				return basicSetMaxValueMarkdown(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION:
-				return basicSetMaxValueAnnotation(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT:
-				return basicSetMaxValueAttachment(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER:
-				return basicSetMaxValueIdentifier(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT:
-				return basicSetMaxValueCodeableConcept(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING:
-				return basicSetMaxValueCoding(null, msgs);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
+				return basicSetMaxValueUnsignedInt(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_QUANTITY:
 				return basicSetMaxValueQuantity(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE:
-				return basicSetMaxValueRange(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD:
-				return basicSetMaxValuePeriod(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO:
-				return basicSetMaxValueRatio(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE:
-				return basicSetMaxValueReference(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA:
-				return basicSetMaxValueSampledData(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE:
-				return basicSetMaxValueSignature(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME:
-				return basicSetMaxValueHumanName(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS:
-				return basicSetMaxValueAddress(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT:
-				return basicSetMaxValueContactPoint(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING:
-				return basicSetMaxValueTiming(null, msgs);
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META:
-				return basicSetMaxValueMeta(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__MAX_LENGTH:
 				return basicSetMaxLength(null, msgs);
 			case FhirPackage.ELEMENT_DEFINITION__CONDITION:
@@ -12745,60 +10845,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return getMax();
 			case FhirPackage.ELEMENT_DEFINITION__BASE:
 				return getBase();
+			case FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE:
+				return getContentReference();
 			case FhirPackage.ELEMENT_DEFINITION__TYPE:
 				return getType();
-			case FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE:
-				return getNameReference();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
-				return getDefaultValueBoolean();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
-				return getDefaultValueInteger();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
-				return getDefaultValueDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BASE64_BINARY:
 				return getDefaultValueBase64Binary();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
-				return getDefaultValueInstant();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
-				return getDefaultValueString();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
-				return getDefaultValueUri();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
+				return getDefaultValueBoolean();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
+				return getDefaultValueCode();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE:
 				return getDefaultValueDate();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE_TIME:
 				return getDefaultValueDateTime();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
-				return getDefaultValueTime();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
-				return getDefaultValueCode();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
-				return getDefaultValueOid();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID:
-				return getDefaultValueUuid();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
+				return getDefaultValueDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ID:
 				return getDefaultValueId();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
-				return getDefaultValueUnsignedInt();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
-				return getDefaultValuePositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
+				return getDefaultValueInstant();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
+				return getDefaultValueInteger();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MARKDOWN:
 				return getDefaultValueMarkdown();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
+				return getDefaultValueOid();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
+				return getDefaultValuePositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
+				return getDefaultValueString();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
+				return getDefaultValueTime();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
+				return getDefaultValueUnsignedInt();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
+				return getDefaultValueUri();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
+				return getDefaultValueAddress();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE:
+				return getDefaultValueAge();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ANNOTATION:
 				return getDefaultValueAnnotation();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ATTACHMENT:
 				return getDefaultValueAttachment();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
-				return getDefaultValueIdentifier();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODEABLE_CONCEPT:
 				return getDefaultValueCodeableConcept();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODING:
 				return getDefaultValueCoding();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
+				return getDefaultValueContactPoint();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT:
+				return getDefaultValueCount();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE:
+				return getDefaultValueDistance();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION:
+				return getDefaultValueDuration();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
+				return getDefaultValueHumanName();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
+				return getDefaultValueIdentifier();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY:
+				return getDefaultValueMoney();
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
+				return getDefaultValuePeriod();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_QUANTITY:
 				return getDefaultValueQuantity();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RANGE:
 				return getDefaultValueRange();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
-				return getDefaultValuePeriod();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RATIO:
 				return getDefaultValueRatio();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_REFERENCE:
@@ -12807,68 +10921,76 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return getDefaultValueSampledData();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_SIGNATURE:
 				return getDefaultValueSignature();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
-				return getDefaultValueHumanName();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
-				return getDefaultValueAddress();
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
-				return getDefaultValueContactPoint();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIMING:
 				return getDefaultValueTiming();
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_META:
 				return getDefaultValueMeta();
 			case FhirPackage.ELEMENT_DEFINITION__MEANING_WHEN_MISSING:
 				return getMeaningWhenMissing();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
-				return getFixedBoolean();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
-				return getFixedInteger();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
-				return getFixedDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_BASE64_BINARY:
 				return getFixedBase64Binary();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
-				return getFixedInstant();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
-				return getFixedString();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
-				return getFixedUri();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
+				return getFixedBoolean();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
+				return getFixedCode();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE:
 				return getFixedDate();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE_TIME:
 				return getFixedDateTime();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
-				return getFixedTime();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
-				return getFixedCode();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
-				return getFixedOid();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UUID:
-				return getFixedUuid();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
+				return getFixedDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ID:
 				return getFixedId();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
-				return getFixedUnsignedInt();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
-				return getFixedPositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
+				return getFixedInstant();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
+				return getFixedInteger();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_MARKDOWN:
 				return getFixedMarkdown();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
+				return getFixedOid();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
+				return getFixedPositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
+				return getFixedString();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
+				return getFixedTime();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
+				return getFixedUnsignedInt();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
+				return getFixedUri();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
+				return getFixedAddress();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_AGE:
+				return getFixedAge();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ANNOTATION:
 				return getFixedAnnotation();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ATTACHMENT:
 				return getFixedAttachment();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
-				return getFixedIdentifier();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODEABLE_CONCEPT:
 				return getFixedCodeableConcept();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODING:
 				return getFixedCoding();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
+				return getFixedContactPoint();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT:
+				return getFixedCount();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE:
+				return getFixedDistance();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION:
+				return getFixedDuration();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
+				return getFixedHumanName();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
+				return getFixedIdentifier();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY:
+				return getFixedMoney();
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
+				return getFixedPeriod();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_QUANTITY:
 				return getFixedQuantity();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RANGE:
 				return getFixedRange();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
-				return getFixedPeriod();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RATIO:
 				return getFixedRatio();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_REFERENCE:
@@ -12877,66 +10999,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return getFixedSampledData();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_SIGNATURE:
 				return getFixedSignature();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
-				return getFixedHumanName();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
-				return getFixedAddress();
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
-				return getFixedContactPoint();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIMING:
 				return getFixedTiming();
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_META:
 				return getFixedMeta();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
-				return getPatternBoolean();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
-				return getPatternInteger();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
-				return getPatternDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BASE64_BINARY:
 				return getPatternBase64Binary();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
-				return getPatternInstant();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
-				return getPatternString();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
-				return getPatternUri();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
+				return getPatternBoolean();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
+				return getPatternCode();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE:
 				return getPatternDate();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE_TIME:
 				return getPatternDateTime();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
-				return getPatternTime();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
-				return getPatternCode();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
-				return getPatternOid();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID:
-				return getPatternUuid();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
+				return getPatternDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ID:
 				return getPatternId();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
-				return getPatternUnsignedInt();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
-				return getPatternPositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
+				return getPatternInstant();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
+				return getPatternInteger();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MARKDOWN:
 				return getPatternMarkdown();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
+				return getPatternOid();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
+				return getPatternPositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
+				return getPatternString();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
+				return getPatternTime();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
+				return getPatternUnsignedInt();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
+				return getPatternUri();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
+				return getPatternAddress();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE:
+				return getPatternAge();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ANNOTATION:
 				return getPatternAnnotation();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ATTACHMENT:
 				return getPatternAttachment();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
-				return getPatternIdentifier();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODEABLE_CONCEPT:
 				return getPatternCodeableConcept();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODING:
 				return getPatternCoding();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
+				return getPatternContactPoint();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT:
+				return getPatternCount();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE:
+				return getPatternDistance();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION:
+				return getPatternDuration();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
+				return getPatternHumanName();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
+				return getPatternIdentifier();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY:
+				return getPatternMoney();
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
+				return getPatternPeriod();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_QUANTITY:
 				return getPatternQuantity();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RANGE:
 				return getPatternRange();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
-				return getPatternPeriod();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RATIO:
 				return getPatternRatio();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_REFERENCE:
@@ -12945,66 +11075,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return getPatternSampledData();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_SIGNATURE:
 				return getPatternSignature();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
-				return getPatternHumanName();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
-				return getPatternAddress();
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
-				return getPatternContactPoint();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIMING:
 				return getPatternTiming();
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_META:
 				return getPatternMeta();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
-				return getExampleBoolean();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
-				return getExampleInteger();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
-				return getExampleDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BASE64_BINARY:
 				return getExampleBase64Binary();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
-				return getExampleInstant();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
-				return getExampleString();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
-				return getExampleUri();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
+				return getExampleBoolean();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
+				return getExampleCode();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE:
 				return getExampleDate();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE_TIME:
 				return getExampleDateTime();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
-				return getExampleTime();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
-				return getExampleCode();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
-				return getExampleOid();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID:
-				return getExampleUuid();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
+				return getExampleDecimal();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ID:
 				return getExampleId();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
-				return getExampleUnsignedInt();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
-				return getExamplePositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
+				return getExampleInstant();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
+				return getExampleInteger();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MARKDOWN:
 				return getExampleMarkdown();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
+				return getExampleOid();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
+				return getExamplePositiveInt();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
+				return getExampleString();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
+				return getExampleTime();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
+				return getExampleUnsignedInt();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
+				return getExampleUri();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
+				return getExampleAddress();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE:
+				return getExampleAge();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ANNOTATION:
 				return getExampleAnnotation();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ATTACHMENT:
 				return getExampleAttachment();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
-				return getExampleIdentifier();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODEABLE_CONCEPT:
 				return getExampleCodeableConcept();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODING:
 				return getExampleCoding();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
+				return getExampleContactPoint();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT:
+				return getExampleCount();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE:
+				return getExampleDistance();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION:
+				return getExampleDuration();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
+				return getExampleHumanName();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
+				return getExampleIdentifier();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY:
+				return getExampleMoney();
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
+				return getExamplePeriod();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_QUANTITY:
 				return getExampleQuantity();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RANGE:
 				return getExampleRange();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
-				return getExamplePeriod();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RATIO:
 				return getExampleRatio();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_REFERENCE:
@@ -13013,152 +11151,46 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return getExampleSampledData();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_SIGNATURE:
 				return getExampleSignature();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
-				return getExampleHumanName();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
-				return getExampleAddress();
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
-				return getExampleContactPoint();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIMING:
 				return getExampleTiming();
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_META:
 				return getExampleMeta();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN:
-				return getMinValueBoolean();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
-				return getMinValueInteger();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
-				return getMinValueDecimal();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY:
-				return getMinValueBase64Binary();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
-				return getMinValueInstant();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING:
-				return getMinValueString();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI:
-				return getMinValueUri();
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE:
 				return getMinValueDate();
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE_TIME:
 				return getMinValueDateTime();
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
+				return getMinValueInstant();
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIME:
 				return getMinValueTime();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE:
-				return getMinValueCode();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID:
-				return getMinValueOid();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID:
-				return getMinValueUuid();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID:
-				return getMinValueId();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
-				return getMinValueUnsignedInt();
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
+				return getMinValueDecimal();
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
+				return getMinValueInteger();
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_POSITIVE_INT:
 				return getMinValuePositiveInt();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN:
-				return getMinValueMarkdown();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION:
-				return getMinValueAnnotation();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT:
-				return getMinValueAttachment();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER:
-				return getMinValueIdentifier();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT:
-				return getMinValueCodeableConcept();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING:
-				return getMinValueCoding();
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
+				return getMinValueUnsignedInt();
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_QUANTITY:
 				return getMinValueQuantity();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE:
-				return getMinValueRange();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD:
-				return getMinValuePeriod();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO:
-				return getMinValueRatio();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE:
-				return getMinValueReference();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA:
-				return getMinValueSampledData();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE:
-				return getMinValueSignature();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME:
-				return getMinValueHumanName();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS:
-				return getMinValueAddress();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT:
-				return getMinValueContactPoint();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING:
-				return getMinValueTiming();
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META:
-				return getMinValueMeta();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN:
-				return getMaxValueBoolean();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
-				return getMaxValueInteger();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
-				return getMaxValueDecimal();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY:
-				return getMaxValueBase64Binary();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
-				return getMaxValueInstant();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING:
-				return getMaxValueString();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI:
-				return getMaxValueUri();
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE:
 				return getMaxValueDate();
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE_TIME:
 				return getMaxValueDateTime();
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
+				return getMaxValueInstant();
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIME:
 				return getMaxValueTime();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE:
-				return getMaxValueCode();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID:
-				return getMaxValueOid();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID:
-				return getMaxValueUuid();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID:
-				return getMaxValueId();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
-				return getMaxValueUnsignedInt();
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
+				return getMaxValueDecimal();
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
+				return getMaxValueInteger();
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_POSITIVE_INT:
 				return getMaxValuePositiveInt();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN:
-				return getMaxValueMarkdown();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION:
-				return getMaxValueAnnotation();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT:
-				return getMaxValueAttachment();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER:
-				return getMaxValueIdentifier();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT:
-				return getMaxValueCodeableConcept();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING:
-				return getMaxValueCoding();
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
+				return getMaxValueUnsignedInt();
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_QUANTITY:
 				return getMaxValueQuantity();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE:
-				return getMaxValueRange();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD:
-				return getMaxValuePeriod();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO:
-				return getMaxValueRatio();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE:
-				return getMaxValueReference();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA:
-				return getMaxValueSampledData();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE:
-				return getMaxValueSignature();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME:
-				return getMaxValueHumanName();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS:
-				return getMaxValueAddress();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT:
-				return getMaxValueContactPoint();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING:
-				return getMaxValueTiming();
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META:
-				return getMaxValueMeta();
 			case FhirPackage.ELEMENT_DEFINITION__MAX_LENGTH:
 				return getMaxLength();
 			case FhirPackage.ELEMENT_DEFINITION__CONDITION:
@@ -13233,33 +11265,21 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__BASE:
 				setBase((ElementDefinitionBase)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE:
+				setContentReference((Uri)newValue);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__TYPE:
 				getType().clear();
 				getType().addAll((Collection<? extends ElementDefinitionType>)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE:
-				setNameReference((org.hl7.fhir.String)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BASE64_BINARY:
+				setDefaultValueBase64Binary((Base64Binary)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
 				setDefaultValueBoolean((org.hl7.fhir.Boolean)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
-				setDefaultValueInteger((org.hl7.fhir.Integer)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
-				setDefaultValueDecimal((Decimal)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BASE64_BINARY:
-				setDefaultValueBase64Binary((Base64Binary)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
-				setDefaultValueInstant((Instant)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
-				setDefaultValueString((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
-				setDefaultValueUri((Uri)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
+				setDefaultValueCode((Code)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE:
 				setDefaultValueDate((Date)newValue);
@@ -13267,29 +11287,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE_TIME:
 				setDefaultValueDateTime((DateTime)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
-				setDefaultValueTime((Time)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
-				setDefaultValueCode((Code)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
-				setDefaultValueOid((Oid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID:
-				setDefaultValueUuid((Uuid)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
+				setDefaultValueDecimal((Decimal)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ID:
 				setDefaultValueId((Id)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
-				setDefaultValueUnsignedInt((UnsignedInt)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
+				setDefaultValueInstant((Instant)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
+				setDefaultValueInteger((org.hl7.fhir.Integer)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MARKDOWN:
+				setDefaultValueMarkdown((Markdown)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
+				setDefaultValueOid((Oid)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
 				setDefaultValuePositiveInt((PositiveInt)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MARKDOWN:
-				setDefaultValueMarkdown((Markdown)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
+				setDefaultValueString((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
+				setDefaultValueTime((Time)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
+				setDefaultValueUnsignedInt((UnsignedInt)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
+				setDefaultValueUri((Uri)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
+				setDefaultValueAddress((Address)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE:
+				setDefaultValueAge((Age)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ANNOTATION:
 				setDefaultValueAnnotation((Annotation)newValue);
@@ -13297,23 +11332,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ATTACHMENT:
 				setDefaultValueAttachment((Attachment)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
-				setDefaultValueIdentifier((Identifier)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODEABLE_CONCEPT:
 				setDefaultValueCodeableConcept((CodeableConcept)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODING:
 				setDefaultValueCoding((Coding)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
+				setDefaultValueContactPoint((ContactPoint)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT:
+				setDefaultValueCount((Count)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE:
+				setDefaultValueDistance((Distance)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION:
+				setDefaultValueDuration((Duration)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
+				setDefaultValueHumanName((HumanName)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
+				setDefaultValueIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY:
+				setDefaultValueMoney((Money)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
+				setDefaultValuePeriod((Period)newValue);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_QUANTITY:
 				setDefaultValueQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RANGE:
 				setDefaultValueRange((Range)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
-				setDefaultValuePeriod((Period)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RATIO:
 				setDefaultValueRatio((Ratio)newValue);
@@ -13327,15 +11380,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_SIGNATURE:
 				setDefaultValueSignature((Signature)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
-				setDefaultValueHumanName((HumanName)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
-				setDefaultValueAddress((Address)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
-				setDefaultValueContactPoint((ContactPoint)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIMING:
 				setDefaultValueTiming((Timing)newValue);
 				return;
@@ -13345,26 +11389,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__MEANING_WHEN_MISSING:
 				setMeaningWhenMissing((Markdown)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
-				setFixedBoolean((org.hl7.fhir.Boolean)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
-				setFixedInteger((org.hl7.fhir.Integer)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
-				setFixedDecimal((Decimal)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_BASE64_BINARY:
 				setFixedBase64Binary((Base64Binary)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
-				setFixedInstant((Instant)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
+				setFixedBoolean((org.hl7.fhir.Boolean)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
-				setFixedString((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
-				setFixedUri((Uri)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
+				setFixedCode((Code)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE:
 				setFixedDate((Date)newValue);
@@ -13372,29 +11404,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE_TIME:
 				setFixedDateTime((DateTime)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
-				setFixedTime((Time)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
-				setFixedCode((Code)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
-				setFixedOid((Oid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UUID:
-				setFixedUuid((Uuid)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
+				setFixedDecimal((Decimal)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ID:
 				setFixedId((Id)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
-				setFixedUnsignedInt((UnsignedInt)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
+				setFixedInstant((Instant)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
+				setFixedInteger((org.hl7.fhir.Integer)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_MARKDOWN:
+				setFixedMarkdown((Markdown)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
+				setFixedOid((Oid)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
 				setFixedPositiveInt((PositiveInt)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_MARKDOWN:
-				setFixedMarkdown((Markdown)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
+				setFixedString((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
+				setFixedTime((Time)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
+				setFixedUnsignedInt((UnsignedInt)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
+				setFixedUri((Uri)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
+				setFixedAddress((Address)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_AGE:
+				setFixedAge((Age)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ANNOTATION:
 				setFixedAnnotation((Annotation)newValue);
@@ -13402,23 +11449,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ATTACHMENT:
 				setFixedAttachment((Attachment)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
-				setFixedIdentifier((Identifier)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODEABLE_CONCEPT:
 				setFixedCodeableConcept((CodeableConcept)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODING:
 				setFixedCoding((Coding)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
+				setFixedContactPoint((ContactPoint)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT:
+				setFixedCount((Count)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE:
+				setFixedDistance((Distance)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION:
+				setFixedDuration((Duration)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
+				setFixedHumanName((HumanName)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
+				setFixedIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY:
+				setFixedMoney((Money)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
+				setFixedPeriod((Period)newValue);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_QUANTITY:
 				setFixedQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RANGE:
 				setFixedRange((Range)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
-				setFixedPeriod((Period)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RATIO:
 				setFixedRatio((Ratio)newValue);
@@ -13432,41 +11497,20 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_SIGNATURE:
 				setFixedSignature((Signature)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
-				setFixedHumanName((HumanName)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
-				setFixedAddress((Address)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
-				setFixedContactPoint((ContactPoint)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIMING:
 				setFixedTiming((Timing)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_META:
 				setFixedMeta((Meta)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
-				setPatternBoolean((org.hl7.fhir.Boolean)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
-				setPatternInteger((org.hl7.fhir.Integer)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
-				setPatternDecimal((Decimal)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BASE64_BINARY:
 				setPatternBase64Binary((Base64Binary)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
-				setPatternInstant((Instant)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
+				setPatternBoolean((org.hl7.fhir.Boolean)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
-				setPatternString((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
-				setPatternUri((Uri)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
+				setPatternCode((Code)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE:
 				setPatternDate((Date)newValue);
@@ -13474,29 +11518,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE_TIME:
 				setPatternDateTime((DateTime)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
-				setPatternTime((Time)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
-				setPatternCode((Code)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
-				setPatternOid((Oid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID:
-				setPatternUuid((Uuid)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
+				setPatternDecimal((Decimal)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ID:
 				setPatternId((Id)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
-				setPatternUnsignedInt((UnsignedInt)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
+				setPatternInstant((Instant)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
+				setPatternInteger((org.hl7.fhir.Integer)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MARKDOWN:
+				setPatternMarkdown((Markdown)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
+				setPatternOid((Oid)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
 				setPatternPositiveInt((PositiveInt)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MARKDOWN:
-				setPatternMarkdown((Markdown)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
+				setPatternString((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
+				setPatternTime((Time)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
+				setPatternUnsignedInt((UnsignedInt)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
+				setPatternUri((Uri)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
+				setPatternAddress((Address)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE:
+				setPatternAge((Age)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ANNOTATION:
 				setPatternAnnotation((Annotation)newValue);
@@ -13504,23 +11563,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ATTACHMENT:
 				setPatternAttachment((Attachment)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
-				setPatternIdentifier((Identifier)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODEABLE_CONCEPT:
 				setPatternCodeableConcept((CodeableConcept)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODING:
 				setPatternCoding((Coding)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
+				setPatternContactPoint((ContactPoint)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT:
+				setPatternCount((Count)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE:
+				setPatternDistance((Distance)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION:
+				setPatternDuration((Duration)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
+				setPatternHumanName((HumanName)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
+				setPatternIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY:
+				setPatternMoney((Money)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
+				setPatternPeriod((Period)newValue);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_QUANTITY:
 				setPatternQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RANGE:
 				setPatternRange((Range)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
-				setPatternPeriod((Period)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RATIO:
 				setPatternRatio((Ratio)newValue);
@@ -13534,41 +11611,20 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_SIGNATURE:
 				setPatternSignature((Signature)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
-				setPatternHumanName((HumanName)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
-				setPatternAddress((Address)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
-				setPatternContactPoint((ContactPoint)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIMING:
 				setPatternTiming((Timing)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_META:
 				setPatternMeta((Meta)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
-				setExampleBoolean((org.hl7.fhir.Boolean)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
-				setExampleInteger((org.hl7.fhir.Integer)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
-				setExampleDecimal((Decimal)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BASE64_BINARY:
 				setExampleBase64Binary((Base64Binary)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
-				setExampleInstant((Instant)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
+				setExampleBoolean((org.hl7.fhir.Boolean)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
-				setExampleString((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
-				setExampleUri((Uri)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
+				setExampleCode((Code)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE:
 				setExampleDate((Date)newValue);
@@ -13576,29 +11632,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE_TIME:
 				setExampleDateTime((DateTime)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
-				setExampleTime((Time)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
-				setExampleCode((Code)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
-				setExampleOid((Oid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID:
-				setExampleUuid((Uuid)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
+				setExampleDecimal((Decimal)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ID:
 				setExampleId((Id)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
-				setExampleUnsignedInt((UnsignedInt)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
+				setExampleInstant((Instant)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
+				setExampleInteger((org.hl7.fhir.Integer)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MARKDOWN:
+				setExampleMarkdown((Markdown)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
+				setExampleOid((Oid)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
 				setExamplePositiveInt((PositiveInt)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MARKDOWN:
-				setExampleMarkdown((Markdown)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
+				setExampleString((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
+				setExampleTime((Time)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
+				setExampleUnsignedInt((UnsignedInt)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
+				setExampleUri((Uri)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
+				setExampleAddress((Address)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE:
+				setExampleAge((Age)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ANNOTATION:
 				setExampleAnnotation((Annotation)newValue);
@@ -13606,23 +11677,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ATTACHMENT:
 				setExampleAttachment((Attachment)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
-				setExampleIdentifier((Identifier)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODEABLE_CONCEPT:
 				setExampleCodeableConcept((CodeableConcept)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODING:
 				setExampleCoding((Coding)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
+				setExampleContactPoint((ContactPoint)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT:
+				setExampleCount((Count)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE:
+				setExampleDistance((Distance)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION:
+				setExampleDuration((Duration)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
+				setExampleHumanName((HumanName)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
+				setExampleIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY:
+				setExampleMoney((Money)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
+				setExamplePeriod((Period)newValue);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_QUANTITY:
 				setExampleQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RANGE:
 				setExampleRange((Range)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
-				setExamplePeriod((Period)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RATIO:
 				setExampleRatio((Ratio)newValue);
@@ -13636,41 +11725,11 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_SIGNATURE:
 				setExampleSignature((Signature)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
-				setExampleHumanName((HumanName)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
-				setExampleAddress((Address)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
-				setExampleContactPoint((ContactPoint)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIMING:
 				setExampleTiming((Timing)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_META:
 				setExampleMeta((Meta)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN:
-				setMinValueBoolean((org.hl7.fhir.Boolean)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
-				setMinValueInteger((org.hl7.fhir.Integer)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
-				setMinValueDecimal((Decimal)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY:
-				setMinValueBase64Binary((Base64Binary)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
-				setMinValueInstant((Instant)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING:
-				setMinValueString((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI:
-				setMinValueUri((Uri)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE:
 				setMinValueDate((Date)newValue);
@@ -13678,101 +11737,26 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE_TIME:
 				setMinValueDateTime((DateTime)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
+				setMinValueInstant((Instant)newValue);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIME:
 				setMinValueTime((Time)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE:
-				setMinValueCode((Code)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
+				setMinValueDecimal((Decimal)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID:
-				setMinValueOid((Oid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID:
-				setMinValueUuid((Uuid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID:
-				setMinValueId((Id)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
-				setMinValueUnsignedInt((UnsignedInt)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
+				setMinValueInteger((org.hl7.fhir.Integer)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_POSITIVE_INT:
 				setMinValuePositiveInt((PositiveInt)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN:
-				setMinValueMarkdown((Markdown)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION:
-				setMinValueAnnotation((Annotation)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT:
-				setMinValueAttachment((Attachment)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER:
-				setMinValueIdentifier((Identifier)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT:
-				setMinValueCodeableConcept((CodeableConcept)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING:
-				setMinValueCoding((Coding)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
+				setMinValueUnsignedInt((UnsignedInt)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_QUANTITY:
 				setMinValueQuantity((Quantity)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE:
-				setMinValueRange((Range)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD:
-				setMinValuePeriod((Period)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO:
-				setMinValueRatio((Ratio)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE:
-				setMinValueReference((Reference)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA:
-				setMinValueSampledData((SampledData)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE:
-				setMinValueSignature((Signature)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME:
-				setMinValueHumanName((HumanName)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS:
-				setMinValueAddress((Address)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT:
-				setMinValueContactPoint((ContactPoint)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING:
-				setMinValueTiming((Timing)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META:
-				setMinValueMeta((Meta)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN:
-				setMaxValueBoolean((org.hl7.fhir.Boolean)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
-				setMaxValueInteger((org.hl7.fhir.Integer)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
-				setMaxValueDecimal((Decimal)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY:
-				setMaxValueBase64Binary((Base64Binary)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
-				setMaxValueInstant((Instant)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING:
-				setMaxValueString((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI:
-				setMaxValueUri((Uri)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE:
 				setMaxValueDate((Date)newValue);
@@ -13780,80 +11764,26 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE_TIME:
 				setMaxValueDateTime((DateTime)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
+				setMaxValueInstant((Instant)newValue);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIME:
 				setMaxValueTime((Time)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE:
-				setMaxValueCode((Code)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
+				setMaxValueDecimal((Decimal)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID:
-				setMaxValueOid((Oid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID:
-				setMaxValueUuid((Uuid)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID:
-				setMaxValueId((Id)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
-				setMaxValueUnsignedInt((UnsignedInt)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
+				setMaxValueInteger((org.hl7.fhir.Integer)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_POSITIVE_INT:
 				setMaxValuePositiveInt((PositiveInt)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN:
-				setMaxValueMarkdown((Markdown)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION:
-				setMaxValueAnnotation((Annotation)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT:
-				setMaxValueAttachment((Attachment)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER:
-				setMaxValueIdentifier((Identifier)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT:
-				setMaxValueCodeableConcept((CodeableConcept)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING:
-				setMaxValueCoding((Coding)newValue);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
+				setMaxValueUnsignedInt((UnsignedInt)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_QUANTITY:
 				setMaxValueQuantity((Quantity)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE:
-				setMaxValueRange((Range)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD:
-				setMaxValuePeriod((Period)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO:
-				setMaxValueRatio((Ratio)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE:
-				setMaxValueReference((Reference)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA:
-				setMaxValueSampledData((SampledData)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE:
-				setMaxValueSignature((Signature)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME:
-				setMaxValueHumanName((HumanName)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS:
-				setMaxValueAddress((Address)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT:
-				setMaxValueContactPoint((ContactPoint)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING:
-				setMaxValueTiming((Timing)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META:
-				setMaxValueMeta((Meta)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_LENGTH:
 				setMaxLength((org.hl7.fhir.Integer)newValue);
@@ -13936,32 +11866,20 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__BASE:
 				setBase((ElementDefinitionBase)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE:
+				setContentReference((Uri)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__TYPE:
 				getType().clear();
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE:
-				setNameReference((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
-				setDefaultValueBoolean((org.hl7.fhir.Boolean)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
-				setDefaultValueInteger((org.hl7.fhir.Integer)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
-				setDefaultValueDecimal((Decimal)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BASE64_BINARY:
 				setDefaultValueBase64Binary((Base64Binary)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
-				setDefaultValueInstant((Instant)null);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
+				setDefaultValueBoolean((org.hl7.fhir.Boolean)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
-				setDefaultValueString((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
-				setDefaultValueUri((Uri)null);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
+				setDefaultValueCode((Code)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE:
 				setDefaultValueDate((Date)null);
@@ -13969,29 +11887,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE_TIME:
 				setDefaultValueDateTime((DateTime)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
-				setDefaultValueTime((Time)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
-				setDefaultValueCode((Code)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
-				setDefaultValueOid((Oid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID:
-				setDefaultValueUuid((Uuid)null);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
+				setDefaultValueDecimal((Decimal)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ID:
 				setDefaultValueId((Id)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
-				setDefaultValueUnsignedInt((UnsignedInt)null);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
+				setDefaultValueInstant((Instant)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
+				setDefaultValueInteger((org.hl7.fhir.Integer)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MARKDOWN:
+				setDefaultValueMarkdown((Markdown)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
+				setDefaultValueOid((Oid)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
 				setDefaultValuePositiveInt((PositiveInt)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MARKDOWN:
-				setDefaultValueMarkdown((Markdown)null);
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
+				setDefaultValueString((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
+				setDefaultValueTime((Time)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
+				setDefaultValueUnsignedInt((UnsignedInt)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
+				setDefaultValueUri((Uri)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
+				setDefaultValueAddress((Address)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE:
+				setDefaultValueAge((Age)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ANNOTATION:
 				setDefaultValueAnnotation((Annotation)null);
@@ -13999,23 +11932,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ATTACHMENT:
 				setDefaultValueAttachment((Attachment)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
-				setDefaultValueIdentifier((Identifier)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODEABLE_CONCEPT:
 				setDefaultValueCodeableConcept((CodeableConcept)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODING:
 				setDefaultValueCoding((Coding)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
+				setDefaultValueContactPoint((ContactPoint)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT:
+				setDefaultValueCount((Count)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE:
+				setDefaultValueDistance((Distance)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION:
+				setDefaultValueDuration((Duration)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
+				setDefaultValueHumanName((HumanName)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
+				setDefaultValueIdentifier((Identifier)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY:
+				setDefaultValueMoney((Money)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
+				setDefaultValuePeriod((Period)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_QUANTITY:
 				setDefaultValueQuantity((Quantity)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RANGE:
 				setDefaultValueRange((Range)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
-				setDefaultValuePeriod((Period)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RATIO:
 				setDefaultValueRatio((Ratio)null);
@@ -14029,15 +11980,6 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_SIGNATURE:
 				setDefaultValueSignature((Signature)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
-				setDefaultValueHumanName((HumanName)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
-				setDefaultValueAddress((Address)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
-				setDefaultValueContactPoint((ContactPoint)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIMING:
 				setDefaultValueTiming((Timing)null);
 				return;
@@ -14047,26 +11989,14 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__MEANING_WHEN_MISSING:
 				setMeaningWhenMissing((Markdown)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
-				setFixedBoolean((org.hl7.fhir.Boolean)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
-				setFixedInteger((org.hl7.fhir.Integer)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
-				setFixedDecimal((Decimal)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_BASE64_BINARY:
 				setFixedBase64Binary((Base64Binary)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
-				setFixedInstant((Instant)null);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
+				setFixedBoolean((org.hl7.fhir.Boolean)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
-				setFixedString((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
-				setFixedUri((Uri)null);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
+				setFixedCode((Code)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE:
 				setFixedDate((Date)null);
@@ -14074,29 +12004,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE_TIME:
 				setFixedDateTime((DateTime)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
-				setFixedTime((Time)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
-				setFixedCode((Code)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
-				setFixedOid((Oid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UUID:
-				setFixedUuid((Uuid)null);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
+				setFixedDecimal((Decimal)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ID:
 				setFixedId((Id)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
-				setFixedUnsignedInt((UnsignedInt)null);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
+				setFixedInstant((Instant)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
+				setFixedInteger((org.hl7.fhir.Integer)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_MARKDOWN:
+				setFixedMarkdown((Markdown)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
+				setFixedOid((Oid)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
 				setFixedPositiveInt((PositiveInt)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_MARKDOWN:
-				setFixedMarkdown((Markdown)null);
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
+				setFixedString((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
+				setFixedTime((Time)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
+				setFixedUnsignedInt((UnsignedInt)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
+				setFixedUri((Uri)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
+				setFixedAddress((Address)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_AGE:
+				setFixedAge((Age)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ANNOTATION:
 				setFixedAnnotation((Annotation)null);
@@ -14104,23 +12049,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ATTACHMENT:
 				setFixedAttachment((Attachment)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
-				setFixedIdentifier((Identifier)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODEABLE_CONCEPT:
 				setFixedCodeableConcept((CodeableConcept)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODING:
 				setFixedCoding((Coding)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
+				setFixedContactPoint((ContactPoint)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT:
+				setFixedCount((Count)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE:
+				setFixedDistance((Distance)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION:
+				setFixedDuration((Duration)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
+				setFixedHumanName((HumanName)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
+				setFixedIdentifier((Identifier)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY:
+				setFixedMoney((Money)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
+				setFixedPeriod((Period)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_QUANTITY:
 				setFixedQuantity((Quantity)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RANGE:
 				setFixedRange((Range)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
-				setFixedPeriod((Period)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RATIO:
 				setFixedRatio((Ratio)null);
@@ -14134,41 +12097,20 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_SIGNATURE:
 				setFixedSignature((Signature)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
-				setFixedHumanName((HumanName)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
-				setFixedAddress((Address)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
-				setFixedContactPoint((ContactPoint)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIMING:
 				setFixedTiming((Timing)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_META:
 				setFixedMeta((Meta)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
-				setPatternBoolean((org.hl7.fhir.Boolean)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
-				setPatternInteger((org.hl7.fhir.Integer)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
-				setPatternDecimal((Decimal)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BASE64_BINARY:
 				setPatternBase64Binary((Base64Binary)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
-				setPatternInstant((Instant)null);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
+				setPatternBoolean((org.hl7.fhir.Boolean)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
-				setPatternString((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
-				setPatternUri((Uri)null);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
+				setPatternCode((Code)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE:
 				setPatternDate((Date)null);
@@ -14176,29 +12118,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE_TIME:
 				setPatternDateTime((DateTime)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
-				setPatternTime((Time)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
-				setPatternCode((Code)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
-				setPatternOid((Oid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID:
-				setPatternUuid((Uuid)null);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
+				setPatternDecimal((Decimal)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ID:
 				setPatternId((Id)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
-				setPatternUnsignedInt((UnsignedInt)null);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
+				setPatternInstant((Instant)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
+				setPatternInteger((org.hl7.fhir.Integer)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MARKDOWN:
+				setPatternMarkdown((Markdown)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
+				setPatternOid((Oid)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
 				setPatternPositiveInt((PositiveInt)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MARKDOWN:
-				setPatternMarkdown((Markdown)null);
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
+				setPatternString((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
+				setPatternTime((Time)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
+				setPatternUnsignedInt((UnsignedInt)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
+				setPatternUri((Uri)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
+				setPatternAddress((Address)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE:
+				setPatternAge((Age)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ANNOTATION:
 				setPatternAnnotation((Annotation)null);
@@ -14206,23 +12163,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ATTACHMENT:
 				setPatternAttachment((Attachment)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
-				setPatternIdentifier((Identifier)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODEABLE_CONCEPT:
 				setPatternCodeableConcept((CodeableConcept)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODING:
 				setPatternCoding((Coding)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
+				setPatternContactPoint((ContactPoint)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT:
+				setPatternCount((Count)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE:
+				setPatternDistance((Distance)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION:
+				setPatternDuration((Duration)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
+				setPatternHumanName((HumanName)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
+				setPatternIdentifier((Identifier)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY:
+				setPatternMoney((Money)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
+				setPatternPeriod((Period)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_QUANTITY:
 				setPatternQuantity((Quantity)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RANGE:
 				setPatternRange((Range)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
-				setPatternPeriod((Period)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RATIO:
 				setPatternRatio((Ratio)null);
@@ -14236,41 +12211,20 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_SIGNATURE:
 				setPatternSignature((Signature)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
-				setPatternHumanName((HumanName)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
-				setPatternAddress((Address)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
-				setPatternContactPoint((ContactPoint)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIMING:
 				setPatternTiming((Timing)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_META:
 				setPatternMeta((Meta)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
-				setExampleBoolean((org.hl7.fhir.Boolean)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
-				setExampleInteger((org.hl7.fhir.Integer)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
-				setExampleDecimal((Decimal)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BASE64_BINARY:
 				setExampleBase64Binary((Base64Binary)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
-				setExampleInstant((Instant)null);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
+				setExampleBoolean((org.hl7.fhir.Boolean)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
-				setExampleString((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
-				setExampleUri((Uri)null);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
+				setExampleCode((Code)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE:
 				setExampleDate((Date)null);
@@ -14278,29 +12232,44 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE_TIME:
 				setExampleDateTime((DateTime)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
-				setExampleTime((Time)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
-				setExampleCode((Code)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
-				setExampleOid((Oid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID:
-				setExampleUuid((Uuid)null);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
+				setExampleDecimal((Decimal)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ID:
 				setExampleId((Id)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
-				setExampleUnsignedInt((UnsignedInt)null);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
+				setExampleInstant((Instant)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
+				setExampleInteger((org.hl7.fhir.Integer)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MARKDOWN:
+				setExampleMarkdown((Markdown)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
+				setExampleOid((Oid)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
 				setExamplePositiveInt((PositiveInt)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MARKDOWN:
-				setExampleMarkdown((Markdown)null);
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
+				setExampleString((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
+				setExampleTime((Time)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
+				setExampleUnsignedInt((UnsignedInt)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
+				setExampleUri((Uri)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
+				setExampleAddress((Address)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE:
+				setExampleAge((Age)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ANNOTATION:
 				setExampleAnnotation((Annotation)null);
@@ -14308,23 +12277,41 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ATTACHMENT:
 				setExampleAttachment((Attachment)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
-				setExampleIdentifier((Identifier)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODEABLE_CONCEPT:
 				setExampleCodeableConcept((CodeableConcept)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODING:
 				setExampleCoding((Coding)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
+				setExampleContactPoint((ContactPoint)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT:
+				setExampleCount((Count)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE:
+				setExampleDistance((Distance)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION:
+				setExampleDuration((Duration)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
+				setExampleHumanName((HumanName)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
+				setExampleIdentifier((Identifier)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY:
+				setExampleMoney((Money)null);
+				return;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
+				setExamplePeriod((Period)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_QUANTITY:
 				setExampleQuantity((Quantity)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RANGE:
 				setExampleRange((Range)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
-				setExamplePeriod((Period)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RATIO:
 				setExampleRatio((Ratio)null);
@@ -14338,41 +12325,11 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_SIGNATURE:
 				setExampleSignature((Signature)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
-				setExampleHumanName((HumanName)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
-				setExampleAddress((Address)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
-				setExampleContactPoint((ContactPoint)null);
-				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIMING:
 				setExampleTiming((Timing)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_META:
 				setExampleMeta((Meta)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN:
-				setMinValueBoolean((org.hl7.fhir.Boolean)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
-				setMinValueInteger((org.hl7.fhir.Integer)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
-				setMinValueDecimal((Decimal)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY:
-				setMinValueBase64Binary((Base64Binary)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
-				setMinValueInstant((Instant)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING:
-				setMinValueString((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI:
-				setMinValueUri((Uri)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE:
 				setMinValueDate((Date)null);
@@ -14380,101 +12337,26 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE_TIME:
 				setMinValueDateTime((DateTime)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
+				setMinValueInstant((Instant)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIME:
 				setMinValueTime((Time)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE:
-				setMinValueCode((Code)null);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
+				setMinValueDecimal((Decimal)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID:
-				setMinValueOid((Oid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID:
-				setMinValueUuid((Uuid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID:
-				setMinValueId((Id)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
-				setMinValueUnsignedInt((UnsignedInt)null);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
+				setMinValueInteger((org.hl7.fhir.Integer)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_POSITIVE_INT:
 				setMinValuePositiveInt((PositiveInt)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN:
-				setMinValueMarkdown((Markdown)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION:
-				setMinValueAnnotation((Annotation)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT:
-				setMinValueAttachment((Attachment)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER:
-				setMinValueIdentifier((Identifier)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT:
-				setMinValueCodeableConcept((CodeableConcept)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING:
-				setMinValueCoding((Coding)null);
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
+				setMinValueUnsignedInt((UnsignedInt)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_QUANTITY:
 				setMinValueQuantity((Quantity)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE:
-				setMinValueRange((Range)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD:
-				setMinValuePeriod((Period)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO:
-				setMinValueRatio((Ratio)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE:
-				setMinValueReference((Reference)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA:
-				setMinValueSampledData((SampledData)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE:
-				setMinValueSignature((Signature)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME:
-				setMinValueHumanName((HumanName)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS:
-				setMinValueAddress((Address)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT:
-				setMinValueContactPoint((ContactPoint)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING:
-				setMinValueTiming((Timing)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META:
-				setMinValueMeta((Meta)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN:
-				setMaxValueBoolean((org.hl7.fhir.Boolean)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
-				setMaxValueInteger((org.hl7.fhir.Integer)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
-				setMaxValueDecimal((Decimal)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY:
-				setMaxValueBase64Binary((Base64Binary)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
-				setMaxValueInstant((Instant)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING:
-				setMaxValueString((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI:
-				setMaxValueUri((Uri)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE:
 				setMaxValueDate((Date)null);
@@ -14482,80 +12364,26 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE_TIME:
 				setMaxValueDateTime((DateTime)null);
 				return;
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
+				setMaxValueInstant((Instant)null);
+				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIME:
 				setMaxValueTime((Time)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE:
-				setMaxValueCode((Code)null);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
+				setMaxValueDecimal((Decimal)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID:
-				setMaxValueOid((Oid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID:
-				setMaxValueUuid((Uuid)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID:
-				setMaxValueId((Id)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
-				setMaxValueUnsignedInt((UnsignedInt)null);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
+				setMaxValueInteger((org.hl7.fhir.Integer)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_POSITIVE_INT:
 				setMaxValuePositiveInt((PositiveInt)null);
 				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN:
-				setMaxValueMarkdown((Markdown)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION:
-				setMaxValueAnnotation((Annotation)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT:
-				setMaxValueAttachment((Attachment)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER:
-				setMaxValueIdentifier((Identifier)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT:
-				setMaxValueCodeableConcept((CodeableConcept)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING:
-				setMaxValueCoding((Coding)null);
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
+				setMaxValueUnsignedInt((UnsignedInt)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_QUANTITY:
 				setMaxValueQuantity((Quantity)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE:
-				setMaxValueRange((Range)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD:
-				setMaxValuePeriod((Period)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO:
-				setMaxValueRatio((Ratio)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE:
-				setMaxValueReference((Reference)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA:
-				setMaxValueSampledData((SampledData)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE:
-				setMaxValueSignature((Signature)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME:
-				setMaxValueHumanName((HumanName)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS:
-				setMaxValueAddress((Address)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT:
-				setMaxValueContactPoint((ContactPoint)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING:
-				setMaxValueTiming((Timing)null);
-				return;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META:
-				setMaxValueMeta((Meta)null);
 				return;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_LENGTH:
 				setMaxLength((org.hl7.fhir.Integer)null);
@@ -14621,60 +12449,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return max != null;
 			case FhirPackage.ELEMENT_DEFINITION__BASE:
 				return base != null;
+			case FhirPackage.ELEMENT_DEFINITION__CONTENT_REFERENCE:
+				return contentReference != null;
 			case FhirPackage.ELEMENT_DEFINITION__TYPE:
 				return type != null && !type.isEmpty();
-			case FhirPackage.ELEMENT_DEFINITION__NAME_REFERENCE:
-				return nameReference != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
-				return defaultValueBoolean != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
-				return defaultValueInteger != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
-				return defaultValueDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BASE64_BINARY:
 				return defaultValueBase64Binary != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
-				return defaultValueInstant != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
-				return defaultValueString != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
-				return defaultValueUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_BOOLEAN:
+				return defaultValueBoolean != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
+				return defaultValueCode != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE:
 				return defaultValueDate != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DATE_TIME:
 				return defaultValueDateTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
-				return defaultValueTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODE:
-				return defaultValueCode != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
-				return defaultValueOid != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UUID:
-				return defaultValueUuid != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DECIMAL:
+				return defaultValueDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ID:
 				return defaultValueId != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
-				return defaultValueUnsignedInt != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
-				return defaultValuePositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INSTANT:
+				return defaultValueInstant != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_INTEGER:
+				return defaultValueInteger != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MARKDOWN:
 				return defaultValueMarkdown != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_OID:
+				return defaultValueOid != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_POSITIVE_INT:
+				return defaultValuePositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_STRING:
+				return defaultValueString != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIME:
+				return defaultValueTime != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_UNSIGNED_INT:
+				return defaultValueUnsignedInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_URI:
+				return defaultValueUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
+				return defaultValueAddress != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_AGE:
+				return defaultValueAge != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ANNOTATION:
 				return defaultValueAnnotation != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ATTACHMENT:
 				return defaultValueAttachment != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
-				return defaultValueIdentifier != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODEABLE_CONCEPT:
 				return defaultValueCodeableConcept != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CODING:
 				return defaultValueCoding != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
+				return defaultValueContactPoint != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_COUNT:
+				return defaultValueCount != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DISTANCE:
+				return defaultValueDistance != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_DURATION:
+				return defaultValueDuration != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
+				return defaultValueHumanName != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_IDENTIFIER:
+				return defaultValueIdentifier != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_MONEY:
+				return defaultValueMoney != null;
+			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
+				return defaultValuePeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_QUANTITY:
 				return defaultValueQuantity != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RANGE:
 				return defaultValueRange != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_PERIOD:
-				return defaultValuePeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_RATIO:
 				return defaultValueRatio != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_REFERENCE:
@@ -14683,68 +12525,76 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return defaultValueSampledData != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_SIGNATURE:
 				return defaultValueSignature != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_HUMAN_NAME:
-				return defaultValueHumanName != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_ADDRESS:
-				return defaultValueAddress != null;
-			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_CONTACT_POINT:
-				return defaultValueContactPoint != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_TIMING:
 				return defaultValueTiming != null;
 			case FhirPackage.ELEMENT_DEFINITION__DEFAULT_VALUE_META:
 				return defaultValueMeta != null;
 			case FhirPackage.ELEMENT_DEFINITION__MEANING_WHEN_MISSING:
 				return meaningWhenMissing != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
-				return fixedBoolean != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
-				return fixedInteger != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
-				return fixedDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_BASE64_BINARY:
 				return fixedBase64Binary != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
-				return fixedInstant != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
-				return fixedString != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
-				return fixedUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_BOOLEAN:
+				return fixedBoolean != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
+				return fixedCode != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE:
 				return fixedDate != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_DATE_TIME:
 				return fixedDateTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
-				return fixedTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODE:
-				return fixedCode != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
-				return fixedOid != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UUID:
-				return fixedUuid != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DECIMAL:
+				return fixedDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ID:
 				return fixedId != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
-				return fixedUnsignedInt != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
-				return fixedPositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INSTANT:
+				return fixedInstant != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_INTEGER:
+				return fixedInteger != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_MARKDOWN:
 				return fixedMarkdown != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_OID:
+				return fixedOid != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_POSITIVE_INT:
+				return fixedPositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_STRING:
+				return fixedString != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIME:
+				return fixedTime != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_UNSIGNED_INT:
+				return fixedUnsignedInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_URI:
+				return fixedUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
+				return fixedAddress != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_AGE:
+				return fixedAge != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ANNOTATION:
 				return fixedAnnotation != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_ATTACHMENT:
 				return fixedAttachment != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
-				return fixedIdentifier != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODEABLE_CONCEPT:
 				return fixedCodeableConcept != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_CODING:
 				return fixedCoding != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
+				return fixedContactPoint != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_COUNT:
+				return fixedCount != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DISTANCE:
+				return fixedDistance != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_DURATION:
+				return fixedDuration != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
+				return fixedHumanName != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_IDENTIFIER:
+				return fixedIdentifier != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_MONEY:
+				return fixedMoney != null;
+			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
+				return fixedPeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_QUANTITY:
 				return fixedQuantity != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RANGE:
 				return fixedRange != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_PERIOD:
-				return fixedPeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_RATIO:
 				return fixedRatio != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_REFERENCE:
@@ -14753,66 +12603,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return fixedSampledData != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_SIGNATURE:
 				return fixedSignature != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_HUMAN_NAME:
-				return fixedHumanName != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_ADDRESS:
-				return fixedAddress != null;
-			case FhirPackage.ELEMENT_DEFINITION__FIXED_CONTACT_POINT:
-				return fixedContactPoint != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_TIMING:
 				return fixedTiming != null;
 			case FhirPackage.ELEMENT_DEFINITION__FIXED_META:
 				return fixedMeta != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
-				return patternBoolean != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
-				return patternInteger != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
-				return patternDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BASE64_BINARY:
 				return patternBase64Binary != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
-				return patternInstant != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
-				return patternString != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
-				return patternUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_BOOLEAN:
+				return patternBoolean != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
+				return patternCode != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE:
 				return patternDate != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DATE_TIME:
 				return patternDateTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
-				return patternTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODE:
-				return patternCode != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
-				return patternOid != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UUID:
-				return patternUuid != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DECIMAL:
+				return patternDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ID:
 				return patternId != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
-				return patternUnsignedInt != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
-				return patternPositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INSTANT:
+				return patternInstant != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_INTEGER:
+				return patternInteger != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MARKDOWN:
 				return patternMarkdown != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_OID:
+				return patternOid != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_POSITIVE_INT:
+				return patternPositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_STRING:
+				return patternString != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIME:
+				return patternTime != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_UNSIGNED_INT:
+				return patternUnsignedInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_URI:
+				return patternUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
+				return patternAddress != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_AGE:
+				return patternAge != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ANNOTATION:
 				return patternAnnotation != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ATTACHMENT:
 				return patternAttachment != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
-				return patternIdentifier != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODEABLE_CONCEPT:
 				return patternCodeableConcept != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CODING:
 				return patternCoding != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
+				return patternContactPoint != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_COUNT:
+				return patternCount != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DISTANCE:
+				return patternDistance != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_DURATION:
+				return patternDuration != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
+				return patternHumanName != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_IDENTIFIER:
+				return patternIdentifier != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_MONEY:
+				return patternMoney != null;
+			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
+				return patternPeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_QUANTITY:
 				return patternQuantity != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RANGE:
 				return patternRange != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_PERIOD:
-				return patternPeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_RATIO:
 				return patternRatio != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_REFERENCE:
@@ -14821,66 +12679,74 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return patternSampledData != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_SIGNATURE:
 				return patternSignature != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_HUMAN_NAME:
-				return patternHumanName != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_ADDRESS:
-				return patternAddress != null;
-			case FhirPackage.ELEMENT_DEFINITION__PATTERN_CONTACT_POINT:
-				return patternContactPoint != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_TIMING:
 				return patternTiming != null;
 			case FhirPackage.ELEMENT_DEFINITION__PATTERN_META:
 				return patternMeta != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
-				return exampleBoolean != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
-				return exampleInteger != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
-				return exampleDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BASE64_BINARY:
 				return exampleBase64Binary != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
-				return exampleInstant != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
-				return exampleString != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
-				return exampleUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_BOOLEAN:
+				return exampleBoolean != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
+				return exampleCode != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE:
 				return exampleDate != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DATE_TIME:
 				return exampleDateTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
-				return exampleTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODE:
-				return exampleCode != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
-				return exampleOid != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UUID:
-				return exampleUuid != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DECIMAL:
+				return exampleDecimal != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ID:
 				return exampleId != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
-				return exampleUnsignedInt != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
-				return examplePositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INSTANT:
+				return exampleInstant != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_INTEGER:
+				return exampleInteger != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MARKDOWN:
 				return exampleMarkdown != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_OID:
+				return exampleOid != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_POSITIVE_INT:
+				return examplePositiveInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_STRING:
+				return exampleString != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIME:
+				return exampleTime != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_UNSIGNED_INT:
+				return exampleUnsignedInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_URI:
+				return exampleUri != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
+				return exampleAddress != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_AGE:
+				return exampleAge != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ANNOTATION:
 				return exampleAnnotation != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ATTACHMENT:
 				return exampleAttachment != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
-				return exampleIdentifier != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODEABLE_CONCEPT:
 				return exampleCodeableConcept != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CODING:
 				return exampleCoding != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
+				return exampleContactPoint != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_COUNT:
+				return exampleCount != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DISTANCE:
+				return exampleDistance != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_DURATION:
+				return exampleDuration != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
+				return exampleHumanName != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_IDENTIFIER:
+				return exampleIdentifier != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_MONEY:
+				return exampleMoney != null;
+			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
+				return examplePeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_QUANTITY:
 				return exampleQuantity != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RANGE:
 				return exampleRange != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_PERIOD:
-				return examplePeriod != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_RATIO:
 				return exampleRatio != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_REFERENCE:
@@ -14889,152 +12755,46 @@ public class ElementDefinitionImpl extends ElementImpl implements ElementDefinit
 				return exampleSampledData != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_SIGNATURE:
 				return exampleSignature != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_HUMAN_NAME:
-				return exampleHumanName != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_ADDRESS:
-				return exampleAddress != null;
-			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_CONTACT_POINT:
-				return exampleContactPoint != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_TIMING:
 				return exampleTiming != null;
 			case FhirPackage.ELEMENT_DEFINITION__EXAMPLE_META:
 				return exampleMeta != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BOOLEAN:
-				return minValueBoolean != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
-				return minValueInteger != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
-				return minValueDecimal != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_BASE64_BINARY:
-				return minValueBase64Binary != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
-				return minValueInstant != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_STRING:
-				return minValueString != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_URI:
-				return minValueUri != null;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE:
 				return minValueDate != null;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DATE_TIME:
 				return minValueDateTime != null;
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INSTANT:
+				return minValueInstant != null;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIME:
 				return minValueTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODE:
-				return minValueCode != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_OID:
-				return minValueOid != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UUID:
-				return minValueUuid != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ID:
-				return minValueId != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
-				return minValueUnsignedInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_DECIMAL:
+				return minValueDecimal != null;
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_INTEGER:
+				return minValueInteger != null;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_POSITIVE_INT:
 				return minValuePositiveInt != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_MARKDOWN:
-				return minValueMarkdown != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ANNOTATION:
-				return minValueAnnotation != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ATTACHMENT:
-				return minValueAttachment != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_IDENTIFIER:
-				return minValueIdentifier != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODEABLE_CONCEPT:
-				return minValueCodeableConcept != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CODING:
-				return minValueCoding != null;
+			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_UNSIGNED_INT:
+				return minValueUnsignedInt != null;
 			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_QUANTITY:
 				return minValueQuantity != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RANGE:
-				return minValueRange != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_PERIOD:
-				return minValuePeriod != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_RATIO:
-				return minValueRatio != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_REFERENCE:
-				return minValueReference != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SAMPLED_DATA:
-				return minValueSampledData != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_SIGNATURE:
-				return minValueSignature != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_HUMAN_NAME:
-				return minValueHumanName != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_ADDRESS:
-				return minValueAddress != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_CONTACT_POINT:
-				return minValueContactPoint != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_TIMING:
-				return minValueTiming != null;
-			case FhirPackage.ELEMENT_DEFINITION__MIN_VALUE_META:
-				return minValueMeta != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BOOLEAN:
-				return maxValueBoolean != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
-				return maxValueInteger != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
-				return maxValueDecimal != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_BASE64_BINARY:
-				return maxValueBase64Binary != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
-				return maxValueInstant != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_STRING:
-				return maxValueString != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_URI:
-				return maxValueUri != null;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE:
 				return maxValueDate != null;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DATE_TIME:
 				return maxValueDateTime != null;
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INSTANT:
+				return maxValueInstant != null;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIME:
 				return maxValueTime != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODE:
-				return maxValueCode != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_OID:
-				return maxValueOid != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UUID:
-				return maxValueUuid != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ID:
-				return maxValueId != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
-				return maxValueUnsignedInt != null;
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_DECIMAL:
+				return maxValueDecimal != null;
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_INTEGER:
+				return maxValueInteger != null;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_POSITIVE_INT:
 				return maxValuePositiveInt != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_MARKDOWN:
-				return maxValueMarkdown != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ANNOTATION:
-				return maxValueAnnotation != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ATTACHMENT:
-				return maxValueAttachment != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_IDENTIFIER:
-				return maxValueIdentifier != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODEABLE_CONCEPT:
-				return maxValueCodeableConcept != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CODING:
-				return maxValueCoding != null;
+			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_UNSIGNED_INT:
+				return maxValueUnsignedInt != null;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_QUANTITY:
 				return maxValueQuantity != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RANGE:
-				return maxValueRange != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_PERIOD:
-				return maxValuePeriod != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_RATIO:
-				return maxValueRatio != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_REFERENCE:
-				return maxValueReference != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SAMPLED_DATA:
-				return maxValueSampledData != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_SIGNATURE:
-				return maxValueSignature != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_HUMAN_NAME:
-				return maxValueHumanName != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_ADDRESS:
-				return maxValueAddress != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_CONTACT_POINT:
-				return maxValueContactPoint != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_TIMING:
-				return maxValueTiming != null;
-			case FhirPackage.ELEMENT_DEFINITION__MAX_VALUE_META:
-				return maxValueMeta != null;
 			case FhirPackage.ELEMENT_DEFINITION__MAX_LENGTH:
 				return maxLength != null;
 			case FhirPackage.ELEMENT_DEFINITION__CONDITION:

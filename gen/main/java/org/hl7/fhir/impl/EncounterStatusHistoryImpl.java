@@ -9,8 +9,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.hl7.fhir.EncounterState;
+import org.hl7.fhir.EncounterStatus;
 import org.hl7.fhir.EncounterStatusHistory;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Period;
@@ -38,7 +37,7 @@ public class EncounterStatusHistoryImpl extends BackboneElementImpl implements E
 	 * @generated
 	 * @ordered
 	 */
-	protected EncounterState status;
+	protected EncounterStatus status;
 
 	/**
 	 * The cached value of the '{@link #getPeriod() <em>Period</em>}' containment reference.
@@ -74,7 +73,7 @@ public class EncounterStatusHistoryImpl extends BackboneElementImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EncounterState getStatus() {
+	public EncounterStatus getStatus() {
 		return status;
 	}
 
@@ -83,8 +82,8 @@ public class EncounterStatusHistoryImpl extends BackboneElementImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStatus(EncounterState newStatus, NotificationChain msgs) {
-		EncounterState oldStatus = status;
+	public NotificationChain basicSetStatus(EncounterStatus newStatus, NotificationChain msgs) {
+		EncounterStatus oldStatus = status;
 		status = newStatus;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ENCOUNTER_STATUS_HISTORY__STATUS, oldStatus, newStatus);
@@ -98,7 +97,7 @@ public class EncounterStatusHistoryImpl extends BackboneElementImpl implements E
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStatus(EncounterState newStatus) {
+	public void setStatus(EncounterStatus newStatus) {
 		if (newStatus != status) {
 			NotificationChain msgs = null;
 			if (status != null)
@@ -196,7 +195,7 @@ public class EncounterStatusHistoryImpl extends BackboneElementImpl implements E
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FhirPackage.ENCOUNTER_STATUS_HISTORY__STATUS:
-				setStatus((EncounterState)newValue);
+				setStatus((EncounterStatus)newValue);
 				return;
 			case FhirPackage.ENCOUNTER_STATUS_HISTORY__PERIOD:
 				setPeriod((Period)newValue);
@@ -214,7 +213,7 @@ public class EncounterStatusHistoryImpl extends BackboneElementImpl implements E
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FhirPackage.ENCOUNTER_STATUS_HISTORY__STATUS:
-				setStatus((EncounterState)null);
+				setStatus((EncounterStatus)null);
 				return;
 			case FhirPackage.ENCOUNTER_STATUS_HISTORY__PERIOD:
 				setPeriod((Period)null);

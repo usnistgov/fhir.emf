@@ -56,7 +56,7 @@ public interface DocumentManifestRelated extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Related Resource to this DocumentManifest. For example, Order, DiagnosticOrder,  Procedure, EligibilityRequest, etc.
+	 * Related Resource to this DocumentManifest. For example, Order, DiagnosticRequest,  Procedure, EligibilityRequest, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Ref</em>' containment reference.
 	 * @see #setRef(Reference)

@@ -65,7 +65,7 @@ public enum ActionListList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Cancel, reverse or nullify the target resource.
+	 * Cancel, Reverse or Nullify
 	 * <!-- end-model-doc -->
 	 * @see #CANCEL
 	 * @model name="cancel"
@@ -79,7 +79,7 @@ public enum ActionListList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Check for previously un-read/ not-retrieved resources.
+	 * Poll
 	 * <!-- end-model-doc -->
 	 * @see #POLL
 	 * @model name="poll"
@@ -93,7 +93,7 @@ public enum ActionListList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Re-process the target resource.
+	 * Re-Process
 	 * <!-- end-model-doc -->
 	 * @see #REPROCESS
 	 * @model name="reprocess"
@@ -107,7 +107,7 @@ public enum ActionListList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Retrieve the processing status of the target resource.
+	 * Status Check
 	 * <!-- end-model-doc -->
 	 * @see #STATUS
 	 * @model name="status"

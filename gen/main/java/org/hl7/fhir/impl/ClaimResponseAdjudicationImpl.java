@@ -24,7 +24,8 @@ import org.hl7.fhir.Money;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.ClaimResponseAdjudicationImpl#getCode <em>Code</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseAdjudicationImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseAdjudicationImpl#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseAdjudicationImpl#getAmount <em>Amount</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseAdjudicationImpl#getValue <em>Value</em>}</li>
  * </ul>
@@ -33,14 +34,24 @@ import org.hl7.fhir.Money;
  */
 public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implements ClaimResponseAdjudication {
 	/**
-	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCode()
+	 * @see #getCategory()
 	 * @generated
 	 * @ordered
 	 */
-	protected Coding code;
+	protected Coding category;
+
+	/**
+	 * The cached value of the '{@link #getReason() <em>Reason</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReason()
+	 * @generated
+	 * @ordered
+	 */
+	protected Coding reason;
 
 	/**
 	 * The cached value of the '{@link #getAmount() <em>Amount</em>}' containment reference.
@@ -86,8 +97,8 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Coding getCode() {
-		return code;
+	public Coding getCategory() {
+		return category;
 	}
 
 	/**
@@ -95,11 +106,11 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCode(Coding newCode, NotificationChain msgs) {
-		Coding oldCode = code;
-		code = newCode;
+	public NotificationChain basicSetCategory(Coding newCategory, NotificationChain msgs) {
+		Coding oldCategory = category;
+		category = newCategory;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE, oldCode, newCode);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY, oldCategory, newCategory);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -110,18 +121,61 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCode(Coding newCode) {
-		if (newCode != code) {
+	public void setCategory(Coding newCategory) {
+		if (newCategory != category) {
 			NotificationChain msgs = null;
-			if (code != null)
-				msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE, null, msgs);
-			if (newCode != null)
-				msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE, null, msgs);
-			msgs = basicSetCode(newCode, msgs);
+			if (category != null)
+				msgs = ((InternalEObject)category).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY, null, msgs);
+			if (newCategory != null)
+				msgs = ((InternalEObject)newCategory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY, null, msgs);
+			msgs = basicSetCategory(newCategory, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE, newCode, newCode));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY, newCategory, newCategory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Coding getReason() {
+		return reason;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetReason(Coding newReason, NotificationChain msgs) {
+		Coding oldReason = reason;
+		reason = newReason;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON, oldReason, newReason);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReason(Coding newReason) {
+		if (newReason != reason) {
+			NotificationChain msgs = null;
+			if (reason != null)
+				msgs = ((InternalEObject)reason).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON, null, msgs);
+			if (newReason != null)
+				msgs = ((InternalEObject)newReason).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON, null, msgs);
+			msgs = basicSetReason(newReason, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON, newReason, newReason));
 	}
 
 	/**
@@ -218,8 +272,10 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE:
-				return basicSetCode(null, msgs);
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY:
+				return basicSetCategory(null, msgs);
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON:
+				return basicSetReason(null, msgs);
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__AMOUNT:
 				return basicSetAmount(null, msgs);
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__VALUE:
@@ -236,8 +292,10 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE:
-				return getCode();
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY:
+				return getCategory();
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON:
+				return getReason();
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__AMOUNT:
 				return getAmount();
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__VALUE:
@@ -254,8 +312,11 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE:
-				setCode((Coding)newValue);
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY:
+				setCategory((Coding)newValue);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON:
+				setReason((Coding)newValue);
 				return;
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__AMOUNT:
 				setAmount((Money)newValue);
@@ -275,8 +336,11 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE:
-				setCode((Coding)null);
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY:
+				setCategory((Coding)null);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON:
+				setReason((Coding)null);
 				return;
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__AMOUNT:
 				setAmount((Money)null);
@@ -296,8 +360,10 @@ public class ClaimResponseAdjudicationImpl extends BackboneElementImpl implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CODE:
-				return code != null;
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__CATEGORY:
+				return category != null;
+			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__REASON:
+				return reason != null;
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__AMOUNT:
 				return amount != null;
 			case FhirPackage.CLAIM_RESPONSE_ADJUDICATION__VALUE:

@@ -19,17 +19,17 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getOnset <em>Onset</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getRecordedDate <em>Recorded Date</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getRecorder <em>Recorder</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getPatient <em>Patient</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getReporter <em>Reporter</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getSubstance <em>Substance</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getStatus <em>Status</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getCriticality <em>Criticality</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getCategory <em>Category</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getLastOccurence <em>Last Occurence</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getCode <em>Code</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getPatient <em>Patient</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getAttestedDate <em>Attested Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getRecorder <em>Recorder</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getReporter <em>Reporter</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getOnset <em>Onset</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getLastOccurrence <em>Last Occurrence</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getNote <em>Note</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getReaction <em>Reaction</em>}</li>
  * </ul>
@@ -82,37 +82,37 @@ public interface AllergyIntolerance extends DomainResource {
 	void setOnset(DateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Recorded Date</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Last Occurrence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Date when the sensitivity was recorded.
+	 * Represents the date and/or time of the last known occurrence of a reaction event.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Recorded Date</em>' containment reference.
-	 * @see #setRecordedDate(DateTime)
-	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_RecordedDate()
+	 * @return the value of the '<em>Last Occurrence</em>' containment reference.
+	 * @see #setLastOccurrence(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_LastOccurrence()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='recordedDate' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='lastOccurrence' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	DateTime getRecordedDate();
+	DateTime getLastOccurrence();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getRecordedDate <em>Recorded Date</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getLastOccurrence <em>Last Occurrence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Recorded Date</em>' containment reference.
-	 * @see #getRecordedDate()
+	 * @param value the new value of the '<em>Last Occurrence</em>' containment reference.
+	 * @see #getLastOccurrence()
 	 * @generated
 	 */
-	void setRecordedDate(DateTime value);
+	void setLastOccurrence(DateTime value);
 
 	/**
 	 * Returns the value of the '<em><b>Recorder</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Individual who recorded the record and takes responsibility for its conten.
+	 * Individual who recorded the record and takes responsibility for its content.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Recorder</em>' containment reference.
 	 * @see #setRecorder(Reference)
@@ -160,6 +160,32 @@ public interface AllergyIntolerance extends DomainResource {
 	void setPatient(Reference value);
 
 	/**
+	 * Returns the value of the '<em><b>Attested Date</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates the most recent date on which the recorder has asserted that the information represented by this AllergyIntolerance record is accurate.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Attested Date</em>' containment reference.
+	 * @see #setAttestedDate(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_AttestedDate()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='attestedDate' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	DateTime getAttestedDate();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getAttestedDate <em>Attested Date</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Attested Date</em>' containment reference.
+	 * @see #getAttestedDate()
+	 * @generated
+	 */
+	void setAttestedDate(DateTime value);
+
+	/**
 	 * Returns the value of the '<em><b>Reporter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -186,37 +212,11 @@ public interface AllergyIntolerance extends DomainResource {
 	void setReporter(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Substance</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Substance</em>' containment reference.
-	 * @see #setSubstance(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Substance()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='substance' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	CodeableConcept getSubstance();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getSubstance <em>Substance</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Substance</em>' containment reference.
-	 * @see #getSubstance()
-	 * @generated
-	 */
-	void setSubstance(CodeableConcept value);
-
-	/**
 	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance.
+	 * Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
 	 * @see #setStatus(AllergyIntoleranceStatus)
@@ -242,7 +242,7 @@ public interface AllergyIntolerance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance.
+	 * Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Criticality</em>' containment reference.
 	 * @see #setCriticality(AllergyIntoleranceCriticality)
@@ -262,6 +262,32 @@ public interface AllergyIntolerance extends DomainResource {
 	 * @generated
 	 */
 	void setCriticality(AllergyIntoleranceCriticality value);
+
+	/**
+	 * Returns the value of the '<em><b>Code</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., "Latex"), an allergy or intolerance condition (e.g., "Latex allergy"), or a negated/excluded code for a specific substance or class (e.g., "No latex allergy") or a general or categorical negated statement (e.g.,  "No known allergy", "No known drug allergies").
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Code</em>' containment reference.
+	 * @see #setCode(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Code()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='code' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CodeableConcept getCode();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getCode <em>Code</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Code</em>' containment reference.
+	 * @see #getCode()
+	 * @generated
+	 */
+	void setCode(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
@@ -294,7 +320,7 @@ public interface AllergyIntolerance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Category of the identified Substance.
+	 * Category of the identified substance.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' containment reference.
 	 * @see #setCategory(AllergyIntoleranceCategory)
@@ -316,56 +342,20 @@ public interface AllergyIntolerance extends DomainResource {
 	void setCategory(AllergyIntoleranceCategory value);
 
 	/**
-	 * Returns the value of the '<em><b>Last Occurence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Represents the date and/or time of the last known occurrence of a reaction event.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Last Occurence</em>' containment reference.
-	 * @see #setLastOccurence(DateTime)
-	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_LastOccurence()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='lastOccurence' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	DateTime getLastOccurence();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getLastOccurence <em>Last Occurence</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Last Occurence</em>' containment reference.
-	 * @see #getLastOccurence()
-	 * @generated
-	 */
-	void setLastOccurence(DateTime value);
-
-	/**
-	 * Returns the value of the '<em><b>Note</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Note</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Annotation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Note</em>' containment reference.
-	 * @see #setNote(Annotation)
+	 * @return the value of the '<em>Note</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Note()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Annotation getNote();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getNote <em>Note</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Note</em>' containment reference.
-	 * @see #getNote()
-	 * @generated
-	 */
-	void setNote(Annotation value);
+	EList<Annotation> getNote();
 
 	/**
 	 * Returns the value of the '<em><b>Reaction</b></em>' containment reference list.
@@ -373,7 +363,7 @@ public interface AllergyIntolerance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Details about each adverse reaction event linked to exposure to the identified Substance.
+	 * Details about each adverse reaction event linked to exposure to the identified substance.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reaction</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Reaction()

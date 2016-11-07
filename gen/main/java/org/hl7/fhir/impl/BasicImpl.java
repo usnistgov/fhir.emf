@@ -35,8 +35,8 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.BasicImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BasicImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BasicImpl#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.BasicImpl#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BasicImpl#getCreated <em>Created</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.BasicImpl#getAuthor <em>Author</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,16 +73,6 @@ public class BasicImpl extends DomainResourceImpl implements Basic {
 	protected Reference subject;
 
 	/**
-	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAuthor()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference author;
-
-	/**
 	 * The cached value of the '{@link #getCreated() <em>Created</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,6 +81,16 @@ public class BasicImpl extends DomainResourceImpl implements Basic {
 	 * @ordered
 	 */
 	protected Date created;
+
+	/**
+	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAuthor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference author;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -309,10 +309,10 @@ public class BasicImpl extends DomainResourceImpl implements Basic {
 				return basicSetCode(null, msgs);
 			case FhirPackage.BASIC__SUBJECT:
 				return basicSetSubject(null, msgs);
-			case FhirPackage.BASIC__AUTHOR:
-				return basicSetAuthor(null, msgs);
 			case FhirPackage.BASIC__CREATED:
 				return basicSetCreated(null, msgs);
+			case FhirPackage.BASIC__AUTHOR:
+				return basicSetAuthor(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -331,10 +331,10 @@ public class BasicImpl extends DomainResourceImpl implements Basic {
 				return getCode();
 			case FhirPackage.BASIC__SUBJECT:
 				return getSubject();
-			case FhirPackage.BASIC__AUTHOR:
-				return getAuthor();
 			case FhirPackage.BASIC__CREATED:
 				return getCreated();
+			case FhirPackage.BASIC__AUTHOR:
+				return getAuthor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -358,11 +358,11 @@ public class BasicImpl extends DomainResourceImpl implements Basic {
 			case FhirPackage.BASIC__SUBJECT:
 				setSubject((Reference)newValue);
 				return;
-			case FhirPackage.BASIC__AUTHOR:
-				setAuthor((Reference)newValue);
-				return;
 			case FhirPackage.BASIC__CREATED:
 				setCreated((Date)newValue);
+				return;
+			case FhirPackage.BASIC__AUTHOR:
+				setAuthor((Reference)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -385,11 +385,11 @@ public class BasicImpl extends DomainResourceImpl implements Basic {
 			case FhirPackage.BASIC__SUBJECT:
 				setSubject((Reference)null);
 				return;
-			case FhirPackage.BASIC__AUTHOR:
-				setAuthor((Reference)null);
-				return;
 			case FhirPackage.BASIC__CREATED:
 				setCreated((Date)null);
+				return;
+			case FhirPackage.BASIC__AUTHOR:
+				setAuthor((Reference)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -409,10 +409,10 @@ public class BasicImpl extends DomainResourceImpl implements Basic {
 				return code != null;
 			case FhirPackage.BASIC__SUBJECT:
 				return subject != null;
-			case FhirPackage.BASIC__AUTHOR:
-				return author != null;
 			case FhirPackage.BASIC__CREATED:
 				return created != null;
+			case FhirPackage.BASIC__AUTHOR:
+				return author != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -75,7 +75,7 @@ public enum ContactPointUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A communication contact point at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.
+	 * Home
 	 * <!-- end-model-doc -->
 	 * @see #HOME
 	 * @model name="home"
@@ -89,7 +89,7 @@ public enum ContactPointUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An office contact point. First choice for business related contacts during business hours.
+	 * Work
 	 * <!-- end-model-doc -->
 	 * @see #WORK
 	 * @model name="work"
@@ -103,7 +103,7 @@ public enum ContactPointUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A temporary contact point. The period can provide more detailed information.
+	 * Temp
 	 * <!-- end-model-doc -->
 	 * @see #TEMP
 	 * @model name="temp"
@@ -117,7 +117,7 @@ public enum ContactPointUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This contact point is no longer in use (or was never correct, but retained for records).
+	 * Old
 	 * <!-- end-model-doc -->
 	 * @see #OLD
 	 * @model name="old"
@@ -131,7 +131,7 @@ public enum ContactPointUseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business.
+	 * Mobile
 	 * <!-- end-model-doc -->
 	 * @see #MOBILE
 	 * @model name="mobile"

@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CarePlan;
 import org.hl7.fhir.CarePlanActivity;
-import org.hl7.fhir.CarePlanParticipant;
 import org.hl7.fhir.CarePlanRelatedPlan;
 import org.hl7.fhir.CarePlanStatus;
 import org.hl7.fhir.CodeableConcept;
@@ -50,7 +49,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getSupport <em>Support</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getRelatedPlan <em>Related Plan</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getParticipant <em>Participant</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getCareTeam <em>Care Team</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getGoal <em>Goal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanImpl#getNote <em>Note</em>}</li>
@@ -180,14 +179,14 @@ public class CarePlanImpl extends DomainResourceImpl implements CarePlan {
 	protected EList<CarePlanRelatedPlan> relatedPlan;
 
 	/**
-	 * The cached value of the '{@link #getParticipant() <em>Participant</em>}' containment reference list.
+	 * The cached value of the '{@link #getCareTeam() <em>Care Team</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParticipant()
+	 * @see #getCareTeam()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CarePlanParticipant> participant;
+	protected EList<Reference> careTeam;
 
 	/**
 	 * The cached value of the '{@link #getGoal() <em>Goal</em>}' containment reference list.
@@ -573,11 +572,11 @@ public class CarePlanImpl extends DomainResourceImpl implements CarePlan {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CarePlanParticipant> getParticipant() {
-		if (participant == null) {
-			participant = new EObjectContainmentEList<CarePlanParticipant>(CarePlanParticipant.class, this, FhirPackage.CARE_PLAN__PARTICIPANT);
+	public EList<Reference> getCareTeam() {
+		if (careTeam == null) {
+			careTeam = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.CARE_PLAN__CARE_TEAM);
 		}
-		return participant;
+		return careTeam;
 	}
 
 	/**
@@ -679,8 +678,8 @@ public class CarePlanImpl extends DomainResourceImpl implements CarePlan {
 				return ((InternalEList<?>)getSupport()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CARE_PLAN__RELATED_PLAN:
 				return ((InternalEList<?>)getRelatedPlan()).basicRemove(otherEnd, msgs);
-			case FhirPackage.CARE_PLAN__PARTICIPANT:
-				return ((InternalEList<?>)getParticipant()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CARE_PLAN__CARE_TEAM:
+				return ((InternalEList<?>)getCareTeam()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CARE_PLAN__GOAL:
 				return ((InternalEList<?>)getGoal()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CARE_PLAN__ACTIVITY:
@@ -723,8 +722,8 @@ public class CarePlanImpl extends DomainResourceImpl implements CarePlan {
 				return getSupport();
 			case FhirPackage.CARE_PLAN__RELATED_PLAN:
 				return getRelatedPlan();
-			case FhirPackage.CARE_PLAN__PARTICIPANT:
-				return getParticipant();
+			case FhirPackage.CARE_PLAN__CARE_TEAM:
+				return getCareTeam();
 			case FhirPackage.CARE_PLAN__GOAL:
 				return getGoal();
 			case FhirPackage.CARE_PLAN__ACTIVITY:
@@ -786,9 +785,9 @@ public class CarePlanImpl extends DomainResourceImpl implements CarePlan {
 				getRelatedPlan().clear();
 				getRelatedPlan().addAll((Collection<? extends CarePlanRelatedPlan>)newValue);
 				return;
-			case FhirPackage.CARE_PLAN__PARTICIPANT:
-				getParticipant().clear();
-				getParticipant().addAll((Collection<? extends CarePlanParticipant>)newValue);
+			case FhirPackage.CARE_PLAN__CARE_TEAM:
+				getCareTeam().clear();
+				getCareTeam().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.CARE_PLAN__GOAL:
 				getGoal().clear();
@@ -849,8 +848,8 @@ public class CarePlanImpl extends DomainResourceImpl implements CarePlan {
 			case FhirPackage.CARE_PLAN__RELATED_PLAN:
 				getRelatedPlan().clear();
 				return;
-			case FhirPackage.CARE_PLAN__PARTICIPANT:
-				getParticipant().clear();
+			case FhirPackage.CARE_PLAN__CARE_TEAM:
+				getCareTeam().clear();
 				return;
 			case FhirPackage.CARE_PLAN__GOAL:
 				getGoal().clear();
@@ -897,8 +896,8 @@ public class CarePlanImpl extends DomainResourceImpl implements CarePlan {
 				return support != null && !support.isEmpty();
 			case FhirPackage.CARE_PLAN__RELATED_PLAN:
 				return relatedPlan != null && !relatedPlan.isEmpty();
-			case FhirPackage.CARE_PLAN__PARTICIPANT:
-				return participant != null && !participant.isEmpty();
+			case FhirPackage.CARE_PLAN__CARE_TEAM:
+				return careTeam != null && !careTeam.isEmpty();
 			case FhirPackage.CARE_PLAN__GOAL:
 				return goal != null && !goal.isEmpty();
 			case FhirPackage.CARE_PLAN__ACTIVITY:

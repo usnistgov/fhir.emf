@@ -28,14 +28,46 @@ public enum PropertyRepresentationList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	XML_ATTR(0, "xmlAttr", "xmlAttr");
+	XML_ATTR(0, "xmlAttr", "xmlAttr"), /**
+	 * The '<em><b>Xml Text</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #XML_TEXT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	XML_TEXT(1, "xmlText", "xmlText"), /**
+	 * The '<em><b>Type Attr</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TYPE_ATTR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TYPE_ATTR(2, "typeAttr", "typeAttr"), /**
+	 * The '<em><b>Cda Text</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CDA_TEXT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CDA_TEXT(3, "cdaText", "cdaText"), /**
+	 * The '<em><b>Xhtml</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #XHTML_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	XHTML(4, "xhtml", "xhtml");
 
 	/**
 	 * The '<em><b>Xml Attr</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * In XML, this property is represented as an attribute not an element.
+	 * XML Attribute
 	 * <!-- end-model-doc -->
 	 * @see #XML_ATTR
 	 * @model name="xmlAttr"
@@ -43,6 +75,62 @@ public enum PropertyRepresentationList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int XML_ATTR_VALUE = 0;
+
+	/**
+	 * The '<em><b>Xml Text</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * XML Text
+	 * <!-- end-model-doc -->
+	 * @see #XML_TEXT
+	 * @model name="xmlText"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int XML_TEXT_VALUE = 1;
+
+	/**
+	 * The '<em><b>Type Attr</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Type Attribute
+	 * <!-- end-model-doc -->
+	 * @see #TYPE_ATTR
+	 * @model name="typeAttr"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TYPE_ATTR_VALUE = 2;
+
+	/**
+	 * The '<em><b>Cda Text</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * CDA Text Format
+	 * <!-- end-model-doc -->
+	 * @see #CDA_TEXT
+	 * @model name="cdaText"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CDA_TEXT_VALUE = 3;
+
+	/**
+	 * The '<em><b>Xhtml</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * XHTML
+	 * <!-- end-model-doc -->
+	 * @see #XHTML
+	 * @model name="xhtml"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int XHTML_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Property Representation List</b></em>' enumerators.
@@ -53,6 +141,10 @@ public enum PropertyRepresentationList implements Enumerator {
 	private static final PropertyRepresentationList[] VALUES_ARRAY =
 		new PropertyRepresentationList[] {
 			XML_ATTR,
+			XML_TEXT,
+			TYPE_ATTR,
+			CDA_TEXT,
+			XHTML,
 		};
 
 	/**
@@ -110,6 +202,10 @@ public enum PropertyRepresentationList implements Enumerator {
 	public static PropertyRepresentationList get(int value) {
 		switch (value) {
 			case XML_ATTR_VALUE: return XML_ATTR;
+			case XML_TEXT_VALUE: return XML_TEXT;
+			case TYPE_ATTR_VALUE: return TYPE_ATTR;
+			case CDA_TEXT_VALUE: return CDA_TEXT;
+			case XHTML_VALUE: return XHTML;
 		}
 		return null;
 	}

@@ -18,7 +18,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.CodeableConcept;
+import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.Period;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.SpecimenTreatment;
 
@@ -33,6 +35,8 @@ import org.hl7.fhir.SpecimenTreatment;
  *   <li>{@link org.hl7.fhir.impl.SpecimenTreatmentImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SpecimenTreatmentImpl#getProcedure <em>Procedure</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SpecimenTreatmentImpl#getAdditive <em>Additive</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SpecimenTreatmentImpl#getTimeDateTime <em>Time Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SpecimenTreatmentImpl#getTimePeriod <em>Time Period</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +71,26 @@ public class SpecimenTreatmentImpl extends BackboneElementImpl implements Specim
 	 * @ordered
 	 */
 	protected EList<Reference> additive;
+
+	/**
+	 * The cached value of the '{@link #getTimeDateTime() <em>Time Date Time</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeDateTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected DateTime timeDateTime;
+
+	/**
+	 * The cached value of the '{@link #getTimePeriod() <em>Time Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimePeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period timePeriod;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,6 +214,92 @@ public class SpecimenTreatmentImpl extends BackboneElementImpl implements Specim
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DateTime getTimeDateTime() {
+		return timeDateTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTimeDateTime(DateTime newTimeDateTime, NotificationChain msgs) {
+		DateTime oldTimeDateTime = timeDateTime;
+		timeDateTime = newTimeDateTime;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME, oldTimeDateTime, newTimeDateTime);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTimeDateTime(DateTime newTimeDateTime) {
+		if (newTimeDateTime != timeDateTime) {
+			NotificationChain msgs = null;
+			if (timeDateTime != null)
+				msgs = ((InternalEObject)timeDateTime).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME, null, msgs);
+			if (newTimeDateTime != null)
+				msgs = ((InternalEObject)newTimeDateTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME, null, msgs);
+			msgs = basicSetTimeDateTime(newTimeDateTime, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME, newTimeDateTime, newTimeDateTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Period getTimePeriod() {
+		return timePeriod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTimePeriod(Period newTimePeriod, NotificationChain msgs) {
+		Period oldTimePeriod = timePeriod;
+		timePeriod = newTimePeriod;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD, oldTimePeriod, newTimePeriod);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTimePeriod(Period newTimePeriod) {
+		if (newTimePeriod != timePeriod) {
+			NotificationChain msgs = null;
+			if (timePeriod != null)
+				msgs = ((InternalEObject)timePeriod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD, null, msgs);
+			if (newTimePeriod != null)
+				msgs = ((InternalEObject)newTimePeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD, null, msgs);
+			msgs = basicSetTimePeriod(newTimePeriod, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD, newTimePeriod, newTimePeriod));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -199,6 +309,10 @@ public class SpecimenTreatmentImpl extends BackboneElementImpl implements Specim
 				return basicSetProcedure(null, msgs);
 			case FhirPackage.SPECIMEN_TREATMENT__ADDITIVE:
 				return ((InternalEList<?>)getAdditive()).basicRemove(otherEnd, msgs);
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME:
+				return basicSetTimeDateTime(null, msgs);
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD:
+				return basicSetTimePeriod(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -217,6 +331,10 @@ public class SpecimenTreatmentImpl extends BackboneElementImpl implements Specim
 				return getProcedure();
 			case FhirPackage.SPECIMEN_TREATMENT__ADDITIVE:
 				return getAdditive();
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME:
+				return getTimeDateTime();
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD:
+				return getTimePeriod();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -240,6 +358,12 @@ public class SpecimenTreatmentImpl extends BackboneElementImpl implements Specim
 				getAdditive().clear();
 				getAdditive().addAll((Collection<? extends Reference>)newValue);
 				return;
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME:
+				setTimeDateTime((DateTime)newValue);
+				return;
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD:
+				setTimePeriod((Period)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -261,6 +385,12 @@ public class SpecimenTreatmentImpl extends BackboneElementImpl implements Specim
 			case FhirPackage.SPECIMEN_TREATMENT__ADDITIVE:
 				getAdditive().clear();
 				return;
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME:
+				setTimeDateTime((DateTime)null);
+				return;
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD:
+				setTimePeriod((Period)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -279,6 +409,10 @@ public class SpecimenTreatmentImpl extends BackboneElementImpl implements Specim
 				return procedure != null;
 			case FhirPackage.SPECIMEN_TREATMENT__ADDITIVE:
 				return additive != null && !additive.isEmpty();
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_DATE_TIME:
+				return timeDateTime != null;
+			case FhirPackage.SPECIMEN_TREATMENT__TIME_PERIOD:
+				return timePeriod != null;
 		}
 		return super.eIsSet(featureID);
 	}

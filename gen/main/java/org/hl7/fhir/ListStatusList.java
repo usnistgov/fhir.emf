@@ -55,7 +55,7 @@ public enum ListStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The list is considered to be an active part of the patient's record.
+	 * Current
 	 * <!-- end-model-doc -->
 	 * @see #CURRENT
 	 * @model name="current"
@@ -69,7 +69,7 @@ public enum ListStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The list is "old" and should no longer be considered accurate or relevant.
+	 * Retired
 	 * <!-- end-model-doc -->
 	 * @see #RETIRED
 	 * @model name="retired"
@@ -83,7 +83,7 @@ public enum ListStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The list was never accurate.  It is retained for medico-legal purposes only.
+	 * Entered In Error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"

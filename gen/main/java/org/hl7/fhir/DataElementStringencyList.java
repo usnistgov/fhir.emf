@@ -85,7 +85,7 @@ public enum DataElementStringencyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The data element is sufficiently well-constrained that multiple pieces of data captured according to the constraints of the data element will be comparable (though in some cases, a degree of automated conversion/normalization may be required).
+	 * Comparable
 	 * <!-- end-model-doc -->
 	 * @see #COMPARABLE
 	 * @model name="comparable"
@@ -99,7 +99,7 @@ public enum DataElementStringencyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The data element is fully specified down to a single value set, single unit of measure, single data type, etc.  Multiple pieces of data associated with this data element are fully comparable.
+	 * Fully Specified
 	 * <!-- end-model-doc -->
 	 * @see #FULLY_SPECIFIED
 	 * @model name="fullySpecified" literal="fully-specified"
@@ -113,7 +113,7 @@ public enum DataElementStringencyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The data element allows multiple units of measure having equivalent meaning; e.g. "cc" (cubic centimeter) and "mL" (milliliter).
+	 * Equivalent
 	 * <!-- end-model-doc -->
 	 * @see #EQUIVALENT
 	 * @model name="equivalent"
@@ -127,7 +127,7 @@ public enum DataElementStringencyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The data element allows multiple units of measure that are convertable between each other (e.g. inches and centimeters) and/or allows data to be captured in multiple value sets for which a known mapping exists allowing conversion of meaning.
+	 * Convertable
 	 * <!-- end-model-doc -->
 	 * @see #CONVERTABLE
 	 * @model name="convertable"
@@ -141,7 +141,7 @@ public enum DataElementStringencyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A convertable data element where unit conversions are different only by a power of 10; e.g. g, mg, kg.
+	 * Scaleable
 	 * <!-- end-model-doc -->
 	 * @see #SCALEABLE
 	 * @model name="scaleable"
@@ -155,7 +155,7 @@ public enum DataElementStringencyList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The data element is unconstrained in units, choice of data types and/or choice of vocabulary such that automated comparison of data captured using the data element is not possible.
+	 * Flexible
 	 * <!-- end-model-doc -->
 	 * @see #FLEXIBLE
 	 * @model name="flexible"

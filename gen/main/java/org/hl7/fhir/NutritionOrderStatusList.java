@@ -98,14 +98,22 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CANCELLED(7, "cancelled", "cancelled");
+	CANCELLED(7, "cancelled", "cancelled"), /**
+	 * The '<em><b>Entered In Error</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENTERED_IN_ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENTERED_IN_ERROR(8, "enteredInError", "entered-in-error");
 
 	/**
 	 * The '<em><b>Proposed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has been proposed.
+	 * Proposed
 	 * <!-- end-model-doc -->
 	 * @see #PROPOSED
 	 * @model name="proposed"
@@ -119,7 +127,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request is in preliminary form prior to being sent.
+	 * Draft
 	 * <!-- end-model-doc -->
 	 * @see #DRAFT
 	 * @model name="draft"
@@ -133,7 +141,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has been planned.
+	 * Planned
 	 * <!-- end-model-doc -->
 	 * @see #PLANNED
 	 * @model name="planned"
@@ -147,7 +155,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has been placed.
+	 * Requested
 	 * <!-- end-model-doc -->
 	 * @see #REQUESTED
 	 * @model name="requested"
@@ -161,7 +169,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request is 'actionable', but not all actions that are implied by it have occurred yet.
+	 * Active
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
@@ -175,7 +183,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions implied by the request have been temporarily halted, but are expected to continue later. May also be called "suspended".
+	 * On-Hold
 	 * <!-- end-model-doc -->
 	 * @see #ON_HOLD
 	 * @model name="onHold" literal="on-hold"
@@ -189,7 +197,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All actions that are implied by the order have occurred and no continuation is planned (this will rarely be made explicit).
+	 * Completed
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -203,7 +211,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request has been withdrawn and is no longer actionable.
+	 * Cancelled
 	 * <!-- end-model-doc -->
 	 * @see #CANCELLED
 	 * @model name="cancelled"
@@ -211,6 +219,20 @@ public enum NutritionOrderStatusList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int CANCELLED_VALUE = 7;
+
+	/**
+	 * The '<em><b>Entered In Error</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Entered in Error
+	 * <!-- end-model-doc -->
+	 * @see #ENTERED_IN_ERROR
+	 * @model name="enteredInError" literal="entered-in-error"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENTERED_IN_ERROR_VALUE = 8;
 
 	/**
 	 * An array of all the '<em><b>Nutrition Order Status List</b></em>' enumerators.
@@ -228,6 +250,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 			ON_HOLD,
 			COMPLETED,
 			CANCELLED,
+			ENTERED_IN_ERROR,
 		};
 
 	/**
@@ -292,6 +315,7 @@ public enum NutritionOrderStatusList implements Enumerator {
 			case ON_HOLD_VALUE: return ON_HOLD;
 			case COMPLETED_VALUE: return COMPLETED;
 			case CANCELLED_VALUE: return CANCELLED;
+			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
 		}
 		return null;
 	}

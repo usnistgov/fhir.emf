@@ -20,6 +20,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.SpecimenTreatment#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.SpecimenTreatment#getProcedure <em>Procedure</em>}</li>
  *   <li>{@link org.hl7.fhir.SpecimenTreatment#getAdditive <em>Additive</em>}</li>
+ *   <li>{@link org.hl7.fhir.SpecimenTreatment#getTimeDateTime <em>Time Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.SpecimenTreatment#getTimePeriod <em>Time Period</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getSpecimenTreatment()
@@ -94,5 +96,57 @@ public interface SpecimenTreatment extends BackboneElement {
 	 * @generated
 	 */
 	EList<Reference> getAdditive();
+
+	/**
+	 * Returns the value of the '<em><b>Time Date Time</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A record of the time or period when the specimen treatment occurred.  For example the time of sample fixation or the period of time the sample was in formalin. (choose any one of time*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Time Date Time</em>' containment reference.
+	 * @see #setTimeDateTime(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getSpecimenTreatment_TimeDateTime()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='timeDateTime' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	DateTime getTimeDateTime();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.SpecimenTreatment#getTimeDateTime <em>Time Date Time</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Time Date Time</em>' containment reference.
+	 * @see #getTimeDateTime()
+	 * @generated
+	 */
+	void setTimeDateTime(DateTime value);
+
+	/**
+	 * Returns the value of the '<em><b>Time Period</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A record of the time or period when the specimen treatment occurred.  For example the time of sample fixation or the period of time the sample was in formalin. (choose any one of time*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Time Period</em>' containment reference.
+	 * @see #setTimePeriod(Period)
+	 * @see org.hl7.fhir.FhirPackage#getSpecimenTreatment_TimePeriod()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='timePeriod' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Period getTimePeriod();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.SpecimenTreatment#getTimePeriod <em>Time Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Time Period</em>' containment reference.
+	 * @see #getTimePeriod()
+	 * @generated
+	 */
+	void setTimePeriod(Period value);
 
 } // SpecimenTreatment

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.hl7.fhir.BundleResponse;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Instant;
+import org.hl7.fhir.ResourceContainer;
 import org.hl7.fhir.Uri;
 
 /**
@@ -27,6 +28,7 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.BundleResponseImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BundleResponseImpl#getEtag <em>Etag</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BundleResponseImpl#getLastModified <em>Last Modified</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.BundleResponseImpl#getOutcome <em>Outcome</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,6 +73,16 @@ public class BundleResponseImpl extends BackboneElementImpl implements BundleRes
 	 * @ordered
 	 */
 	protected Instant lastModified;
+
+	/**
+	 * The cached value of the '{@link #getOutcome() <em>Outcome</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutcome()
+	 * @generated
+	 * @ordered
+	 */
+	protected ResourceContainer outcome;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -268,6 +280,49 @@ public class BundleResponseImpl extends BackboneElementImpl implements BundleRes
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ResourceContainer getOutcome() {
+		return outcome;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOutcome(ResourceContainer newOutcome, NotificationChain msgs) {
+		ResourceContainer oldOutcome = outcome;
+		outcome = newOutcome;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.BUNDLE_RESPONSE__OUTCOME, oldOutcome, newOutcome);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutcome(ResourceContainer newOutcome) {
+		if (newOutcome != outcome) {
+			NotificationChain msgs = null;
+			if (outcome != null)
+				msgs = ((InternalEObject)outcome).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BUNDLE_RESPONSE__OUTCOME, null, msgs);
+			if (newOutcome != null)
+				msgs = ((InternalEObject)newOutcome).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BUNDLE_RESPONSE__OUTCOME, null, msgs);
+			msgs = basicSetOutcome(newOutcome, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BUNDLE_RESPONSE__OUTCOME, newOutcome, newOutcome));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -279,6 +334,8 @@ public class BundleResponseImpl extends BackboneElementImpl implements BundleRes
 				return basicSetEtag(null, msgs);
 			case FhirPackage.BUNDLE_RESPONSE__LAST_MODIFIED:
 				return basicSetLastModified(null, msgs);
+			case FhirPackage.BUNDLE_RESPONSE__OUTCOME:
+				return basicSetOutcome(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -299,6 +356,8 @@ public class BundleResponseImpl extends BackboneElementImpl implements BundleRes
 				return getEtag();
 			case FhirPackage.BUNDLE_RESPONSE__LAST_MODIFIED:
 				return getLastModified();
+			case FhirPackage.BUNDLE_RESPONSE__OUTCOME:
+				return getOutcome();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -322,6 +381,9 @@ public class BundleResponseImpl extends BackboneElementImpl implements BundleRes
 				return;
 			case FhirPackage.BUNDLE_RESPONSE__LAST_MODIFIED:
 				setLastModified((Instant)newValue);
+				return;
+			case FhirPackage.BUNDLE_RESPONSE__OUTCOME:
+				setOutcome((ResourceContainer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -347,6 +409,9 @@ public class BundleResponseImpl extends BackboneElementImpl implements BundleRes
 			case FhirPackage.BUNDLE_RESPONSE__LAST_MODIFIED:
 				setLastModified((Instant)null);
 				return;
+			case FhirPackage.BUNDLE_RESPONSE__OUTCOME:
+				setOutcome((ResourceContainer)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -367,6 +432,8 @@ public class BundleResponseImpl extends BackboneElementImpl implements BundleRes
 				return etag != null;
 			case FhirPackage.BUNDLE_RESPONSE__LAST_MODIFIED:
 				return lastModified != null;
+			case FhirPackage.BUNDLE_RESPONSE__OUTCOME:
+				return outcome != null;
 		}
 		return super.eIsSet(featureID);
 	}

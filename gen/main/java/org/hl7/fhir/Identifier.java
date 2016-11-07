@@ -113,7 +113,7 @@ public interface Identifier extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The portion of the identifier typically displayed to the user and which is unique within the context of the system.
+	 * The portion of the identifier typically relevant to the user and which is unique within the context of the system.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(org.hl7.fhir.String)

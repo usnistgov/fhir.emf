@@ -65,7 +65,7 @@ public enum UseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The treatment is complete and this represents a Claim for the services.
+	 * Complete
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETE
 	 * @model name="complete"
@@ -79,7 +79,7 @@ public enum UseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The treatment is proposed and this represents a Pre-authorization for the services.
+	 * Proposed
 	 * <!-- end-model-doc -->
 	 * @see #PROPOSED
 	 * @model name="proposed"
@@ -93,7 +93,7 @@ public enum UseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The treatment is proposed and this represents a Pre-determination for the services.
+	 * Exploratory
 	 * <!-- end-model-doc -->
 	 * @see #EXPLORATORY
 	 * @model name="exploratory"
@@ -107,7 +107,7 @@ public enum UseList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A locally defined or otherwise resolved status.
+	 * Other
 	 * <!-- end-model-doc -->
 	 * @see #OTHER
 	 * @model name="other"

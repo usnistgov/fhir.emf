@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.CodeableConcept;
-import org.hl7.fhir.ContractActor1;
+import org.hl7.fhir.ContractAgent1;
 import org.hl7.fhir.ContractTerm;
 import org.hl7.fhir.ContractValuedItem1;
 import org.hl7.fhir.DateTime;
@@ -40,10 +40,10 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getApplies <em>Applies</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getSubType <em>Sub Type</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getSubject <em>Subject</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getTopic <em>Topic</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getAction <em>Action</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getActionReason <em>Action Reason</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getActor <em>Actor</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getAgent <em>Agent</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getValuedItem <em>Valued Item</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ContractTermImpl#getGroup <em>Group</em>}</li>
@@ -103,14 +103,14 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 	protected CodeableConcept subType;
 
 	/**
-	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference.
+	 * The cached value of the '{@link #getTopic() <em>Topic</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSubject()
+	 * @see #getTopic()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference subject;
+	protected EList<Reference> topic;
 
 	/**
 	 * The cached value of the '{@link #getAction() <em>Action</em>}' containment reference list.
@@ -133,14 +133,14 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 	protected EList<CodeableConcept> actionReason;
 
 	/**
-	 * The cached value of the '{@link #getActor() <em>Actor</em>}' containment reference list.
+	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActor()
+	 * @see #getAgent()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ContractActor1> actor;
+	protected EList<ContractAgent1> agent;
 
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' containment reference.
@@ -411,42 +411,11 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getSubject() {
-		return subject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSubject(Reference newSubject, NotificationChain msgs) {
-		Reference oldSubject = subject;
-		subject = newSubject;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONTRACT_TERM__SUBJECT, oldSubject, newSubject);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Reference> getTopic() {
+		if (topic == null) {
+			topic = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.CONTRACT_TERM__TOPIC);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSubject(Reference newSubject) {
-		if (newSubject != subject) {
-			NotificationChain msgs = null;
-			if (subject != null)
-				msgs = ((InternalEObject)subject).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONTRACT_TERM__SUBJECT, null, msgs);
-			if (newSubject != null)
-				msgs = ((InternalEObject)newSubject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONTRACT_TERM__SUBJECT, null, msgs);
-			msgs = basicSetSubject(newSubject, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONTRACT_TERM__SUBJECT, newSubject, newSubject));
+		return topic;
 	}
 
 	/**
@@ -478,11 +447,11 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ContractActor1> getActor() {
-		if (actor == null) {
-			actor = new EObjectContainmentEList<ContractActor1>(ContractActor1.class, this, FhirPackage.CONTRACT_TERM__ACTOR);
+	public EList<ContractAgent1> getAgent() {
+		if (agent == null) {
+			agent = new EObjectContainmentEList<ContractAgent1>(ContractAgent1.class, this, FhirPackage.CONTRACT_TERM__AGENT);
 		}
-		return actor;
+		return agent;
 	}
 
 	/**
@@ -570,14 +539,14 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 				return basicSetType(null, msgs);
 			case FhirPackage.CONTRACT_TERM__SUB_TYPE:
 				return basicSetSubType(null, msgs);
-			case FhirPackage.CONTRACT_TERM__SUBJECT:
-				return basicSetSubject(null, msgs);
+			case FhirPackage.CONTRACT_TERM__TOPIC:
+				return ((InternalEList<?>)getTopic()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT_TERM__ACTION:
 				return ((InternalEList<?>)getAction()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT_TERM__ACTION_REASON:
 				return ((InternalEList<?>)getActionReason()).basicRemove(otherEnd, msgs);
-			case FhirPackage.CONTRACT_TERM__ACTOR:
-				return ((InternalEList<?>)getActor()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CONTRACT_TERM__AGENT:
+				return ((InternalEList<?>)getAgent()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONTRACT_TERM__TEXT:
 				return basicSetText(null, msgs);
 			case FhirPackage.CONTRACT_TERM__VALUED_ITEM:
@@ -606,14 +575,14 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 				return getType();
 			case FhirPackage.CONTRACT_TERM__SUB_TYPE:
 				return getSubType();
-			case FhirPackage.CONTRACT_TERM__SUBJECT:
-				return getSubject();
+			case FhirPackage.CONTRACT_TERM__TOPIC:
+				return getTopic();
 			case FhirPackage.CONTRACT_TERM__ACTION:
 				return getAction();
 			case FhirPackage.CONTRACT_TERM__ACTION_REASON:
 				return getActionReason();
-			case FhirPackage.CONTRACT_TERM__ACTOR:
-				return getActor();
+			case FhirPackage.CONTRACT_TERM__AGENT:
+				return getAgent();
 			case FhirPackage.CONTRACT_TERM__TEXT:
 				return getText();
 			case FhirPackage.CONTRACT_TERM__VALUED_ITEM:
@@ -648,8 +617,9 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 			case FhirPackage.CONTRACT_TERM__SUB_TYPE:
 				setSubType((CodeableConcept)newValue);
 				return;
-			case FhirPackage.CONTRACT_TERM__SUBJECT:
-				setSubject((Reference)newValue);
+			case FhirPackage.CONTRACT_TERM__TOPIC:
+				getTopic().clear();
+				getTopic().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.CONTRACT_TERM__ACTION:
 				getAction().clear();
@@ -659,9 +629,9 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 				getActionReason().clear();
 				getActionReason().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
-			case FhirPackage.CONTRACT_TERM__ACTOR:
-				getActor().clear();
-				getActor().addAll((Collection<? extends ContractActor1>)newValue);
+			case FhirPackage.CONTRACT_TERM__AGENT:
+				getAgent().clear();
+				getAgent().addAll((Collection<? extends ContractAgent1>)newValue);
 				return;
 			case FhirPackage.CONTRACT_TERM__TEXT:
 				setText((org.hl7.fhir.String)newValue);
@@ -701,8 +671,8 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 			case FhirPackage.CONTRACT_TERM__SUB_TYPE:
 				setSubType((CodeableConcept)null);
 				return;
-			case FhirPackage.CONTRACT_TERM__SUBJECT:
-				setSubject((Reference)null);
+			case FhirPackage.CONTRACT_TERM__TOPIC:
+				getTopic().clear();
 				return;
 			case FhirPackage.CONTRACT_TERM__ACTION:
 				getAction().clear();
@@ -710,8 +680,8 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 			case FhirPackage.CONTRACT_TERM__ACTION_REASON:
 				getActionReason().clear();
 				return;
-			case FhirPackage.CONTRACT_TERM__ACTOR:
-				getActor().clear();
+			case FhirPackage.CONTRACT_TERM__AGENT:
+				getAgent().clear();
 				return;
 			case FhirPackage.CONTRACT_TERM__TEXT:
 				setText((org.hl7.fhir.String)null);
@@ -744,14 +714,14 @@ public class ContractTermImpl extends BackboneElementImpl implements ContractTer
 				return type != null;
 			case FhirPackage.CONTRACT_TERM__SUB_TYPE:
 				return subType != null;
-			case FhirPackage.CONTRACT_TERM__SUBJECT:
-				return subject != null;
+			case FhirPackage.CONTRACT_TERM__TOPIC:
+				return topic != null && !topic.isEmpty();
 			case FhirPackage.CONTRACT_TERM__ACTION:
 				return action != null && !action.isEmpty();
 			case FhirPackage.CONTRACT_TERM__ACTION_REASON:
 				return actionReason != null && !actionReason.isEmpty();
-			case FhirPackage.CONTRACT_TERM__ACTOR:
-				return actor != null && !actor.isEmpty();
+			case FhirPackage.CONTRACT_TERM__AGENT:
+				return agent != null && !agent.isEmpty();
 			case FhirPackage.CONTRACT_TERM__TEXT:
 				return text != null;
 			case FhirPackage.CONTRACT_TERM__VALUED_ITEM:

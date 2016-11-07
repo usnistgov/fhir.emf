@@ -19,15 +19,19 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.EnrollmentRequest#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.EnrollmentRequest#getRuleset <em>Ruleset</em>}</li>
  *   <li>{@link org.hl7.fhir.EnrollmentRequest#getOriginalRuleset <em>Original Ruleset</em>}</li>
  *   <li>{@link org.hl7.fhir.EnrollmentRequest#getCreated <em>Created</em>}</li>
- *   <li>{@link org.hl7.fhir.EnrollmentRequest#getTarget <em>Target</em>}</li>
- *   <li>{@link org.hl7.fhir.EnrollmentRequest#getProvider <em>Provider</em>}</li>
- *   <li>{@link org.hl7.fhir.EnrollmentRequest#getOrganization <em>Organization</em>}</li>
- *   <li>{@link org.hl7.fhir.EnrollmentRequest#getSubject <em>Subject</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getInsurerIdentifier <em>Insurer Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getInsurerReference <em>Insurer Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getProviderIdentifier <em>Provider Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getProviderReference <em>Provider Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getOrganizationIdentifier <em>Organization Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getOrganizationReference <em>Organization Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getSubjectIdentifier <em>Subject Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.EnrollmentRequest#getSubjectReference <em>Subject Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.EnrollmentRequest#getCoverage <em>Coverage</em>}</li>
- *   <li>{@link org.hl7.fhir.EnrollmentRequest#getRelationship <em>Relationship</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest()
@@ -50,6 +54,32 @@ public interface EnrollmentRequest extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The status of the resource instance.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Status</em>' containment reference.
+	 * @see #setStatus(EnrollmentRequestStatus)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_Status()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EnrollmentRequestStatus getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getStatus <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' containment reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(EnrollmentRequestStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Ruleset</b></em>' containment reference.
@@ -130,108 +160,212 @@ public interface EnrollmentRequest extends DomainResource {
 	void setCreated(DateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Insurer Identifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Insurer who is target  of the request.
+	 * The Insurer who is target  of the request. (choose any one of insurer*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Target</em>' containment reference.
-	 * @see #setTarget(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_Target()
+	 * @return the value of the '<em>Insurer Identifier</em>' containment reference.
+	 * @see #setInsurerIdentifier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_InsurerIdentifier()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='target' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='insurerIdentifier' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getTarget();
+	Identifier getInsurerIdentifier();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getTarget <em>Target</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getInsurerIdentifier <em>Insurer Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' containment reference.
-	 * @see #getTarget()
+	 * @param value the new value of the '<em>Insurer Identifier</em>' containment reference.
+	 * @see #getInsurerIdentifier()
 	 * @generated
 	 */
-	void setTarget(Reference value);
+	void setInsurerIdentifier(Identifier value);
 
 	/**
-	 * Returns the value of the '<em><b>Provider</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Insurer Reference</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The practitioner who is responsible for the services rendered to the patient.
+	 * The Insurer who is target  of the request. (choose any one of insurer*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Provider</em>' containment reference.
-	 * @see #setProvider(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_Provider()
+	 * @return the value of the '<em>Insurer Reference</em>' containment reference.
+	 * @see #setInsurerReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_InsurerReference()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='provider' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='insurerReference' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getProvider();
+	Reference getInsurerReference();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getProvider <em>Provider</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getInsurerReference <em>Insurer Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Provider</em>' containment reference.
-	 * @see #getProvider()
+	 * @param value the new value of the '<em>Insurer Reference</em>' containment reference.
+	 * @see #getInsurerReference()
 	 * @generated
 	 */
-	void setProvider(Reference value);
+	void setInsurerReference(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Organization</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Provider Identifier</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The organization which is responsible for the services rendered to the patient.
+	 * The practitioner who is responsible for the services rendered to the patient. (choose any one of provider*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Organization</em>' containment reference.
-	 * @see #setOrganization(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_Organization()
+	 * @return the value of the '<em>Provider Identifier</em>' containment reference.
+	 * @see #setProviderIdentifier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_ProviderIdentifier()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='organization' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='providerIdentifier' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getOrganization();
+	Identifier getProviderIdentifier();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getOrganization <em>Organization</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getProviderIdentifier <em>Provider Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Organization</em>' containment reference.
-	 * @see #getOrganization()
+	 * @param value the new value of the '<em>Provider Identifier</em>' containment reference.
+	 * @see #getProviderIdentifier()
 	 * @generated
 	 */
-	void setOrganization(Reference value);
+	void setProviderIdentifier(Identifier value);
 
 	/**
-	 * Returns the value of the '<em><b>Subject</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Provider Reference</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Patient Resource.
+	 * The practitioner who is responsible for the services rendered to the patient. (choose any one of provider*, but only one)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Subject</em>' containment reference.
-	 * @see #setSubject(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_Subject()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='subject' namespace='##targetNamespace'"
+	 * @return the value of the '<em>Provider Reference</em>' containment reference.
+	 * @see #setProviderReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_ProviderReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='providerReference' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getSubject();
+	Reference getProviderReference();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getSubject <em>Subject</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getProviderReference <em>Provider Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Subject</em>' containment reference.
-	 * @see #getSubject()
+	 * @param value the new value of the '<em>Provider Reference</em>' containment reference.
+	 * @see #getProviderReference()
 	 * @generated
 	 */
-	void setSubject(Reference value);
+	void setProviderReference(Reference value);
+
+	/**
+	 * Returns the value of the '<em><b>Organization Identifier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The organization which is responsible for the services rendered to the patient. (choose any one of organization*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Organization Identifier</em>' containment reference.
+	 * @see #setOrganizationIdentifier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_OrganizationIdentifier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='organizationIdentifier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Identifier getOrganizationIdentifier();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getOrganizationIdentifier <em>Organization Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Organization Identifier</em>' containment reference.
+	 * @see #getOrganizationIdentifier()
+	 * @generated
+	 */
+	void setOrganizationIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Organization Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The organization which is responsible for the services rendered to the patient. (choose any one of organization*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Organization Reference</em>' containment reference.
+	 * @see #setOrganizationReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_OrganizationReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='organizationReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getOrganizationReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getOrganizationReference <em>Organization Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Organization Reference</em>' containment reference.
+	 * @see #getOrganizationReference()
+	 * @generated
+	 */
+	void setOrganizationReference(Reference value);
+
+	/**
+	 * Returns the value of the '<em><b>Subject Identifier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Patient Resource. (choose any one of subject*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Subject Identifier</em>' containment reference.
+	 * @see #setSubjectIdentifier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_SubjectIdentifier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='subjectIdentifier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Identifier getSubjectIdentifier();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getSubjectIdentifier <em>Subject Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Subject Identifier</em>' containment reference.
+	 * @see #getSubjectIdentifier()
+	 * @generated
+	 */
+	void setSubjectIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Subject Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Patient Resource. (choose any one of subject*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Subject Reference</em>' containment reference.
+	 * @see #setSubjectReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_SubjectReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='subjectReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getSubjectReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getSubjectReference <em>Subject Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Subject Reference</em>' containment reference.
+	 * @see #getSubjectReference()
+	 * @generated
+	 */
+	void setSubjectReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Coverage</b></em>' containment reference.
@@ -258,31 +392,5 @@ public interface EnrollmentRequest extends DomainResource {
 	 * @generated
 	 */
 	void setCoverage(Reference value);
-
-	/**
-	 * Returns the value of the '<em><b>Relationship</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The relationship of the patient to the subscriber.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Relationship</em>' containment reference.
-	 * @see #setRelationship(Coding)
-	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_Relationship()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='relationship' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Coding getRelationship();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.EnrollmentRequest#getRelationship <em>Relationship</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Relationship</em>' containment reference.
-	 * @see #getRelationship()
-	 * @generated
-	 */
-	void setRelationship(Coding value);
 
 } // EnrollmentRequest

@@ -37,21 +37,21 @@ import org.hl7.fhir.Uri;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getUdiCarrier <em>Udi Carrier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getLotNumber <em>Lot Number</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getManufacturer <em>Manufacturer</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getManufactureDate <em>Manufacture Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getExpirationDate <em>Expiration Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getModel <em>Model</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getManufactureDate <em>Manufacture Date</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getExpiry <em>Expiry</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getUdi <em>Udi</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getLotNumber <em>Lot Number</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getPatient <em>Patient</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getContact <em>Contact</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getUrl <em>Url</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DeviceImpl#getNote <em>Note</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,24 +68,14 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	protected EList<Identifier> identifier;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * The cached value of the '{@link #getUdiCarrier() <em>Udi Carrier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getUdiCarrier()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept type;
-
-	/**
-	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNote()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Annotation> note;
+	protected Identifier udiCarrier;
 
 	/**
 	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
@@ -98,6 +88,26 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	protected DeviceStatus status;
 
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected CodeableConcept type;
+
+	/**
+	 * The cached value of the '{@link #getLotNumber() <em>Lot Number</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLotNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.String lotNumber;
+
+	/**
 	 * The cached value of the '{@link #getManufacturer() <em>Manufacturer</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -106,6 +116,26 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String manufacturer;
+
+	/**
+	 * The cached value of the '{@link #getManufactureDate() <em>Manufacture Date</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManufactureDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected DateTime manufactureDate;
+
+	/**
+	 * The cached value of the '{@link #getExpirationDate() <em>Expiration Date</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpirationDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected DateTime expirationDate;
 
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' containment reference.
@@ -128,44 +158,14 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	protected org.hl7.fhir.String version;
 
 	/**
-	 * The cached value of the '{@link #getManufactureDate() <em>Manufacture Date</em>}' containment reference.
+	 * The cached value of the '{@link #getPatient() <em>Patient</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getManufactureDate()
+	 * @see #getPatient()
 	 * @generated
 	 * @ordered
 	 */
-	protected DateTime manufactureDate;
-
-	/**
-	 * The cached value of the '{@link #getExpiry() <em>Expiry</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExpiry()
-	 * @generated
-	 * @ordered
-	 */
-	protected DateTime expiry;
-
-	/**
-	 * The cached value of the '{@link #getUdi() <em>Udi</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUdi()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.String udi;
-
-	/**
-	 * The cached value of the '{@link #getLotNumber() <em>Lot Number</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLotNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.String lotNumber;
+	protected Reference patient;
 
 	/**
 	 * The cached value of the '{@link #getOwner() <em>Owner</em>}' containment reference.
@@ -178,26 +178,6 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	protected Reference owner;
 
 	/**
-	 * The cached value of the '{@link #getLocation() <em>Location</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference location;
-
-	/**
-	 * The cached value of the '{@link #getPatient() <em>Patient</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPatient()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference patient;
-
-	/**
 	 * The cached value of the '{@link #getContact() <em>Contact</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -208,6 +188,16 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	protected EList<ContactPoint> contact;
 
 	/**
+	 * The cached value of the '{@link #getLocation() <em>Location</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference location;
+
+	/**
 	 * The cached value of the '{@link #getUrl() <em>Url</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,6 +206,16 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	 * @ordered
 	 */
 	protected Uri url;
+
+	/**
+	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNote()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Annotation> note;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -246,6 +246,49 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 			identifier = new EObjectContainmentEList<Identifier>(Identifier.class, this, FhirPackage.DEVICE__IDENTIFIER);
 		}
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Identifier getUdiCarrier() {
+		return udiCarrier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetUdiCarrier(Identifier newUdiCarrier, NotificationChain msgs) {
+		Identifier oldUdiCarrier = udiCarrier;
+		udiCarrier = newUdiCarrier;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__UDI_CARRIER, oldUdiCarrier, newUdiCarrier);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUdiCarrier(Identifier newUdiCarrier) {
+		if (newUdiCarrier != udiCarrier) {
+			NotificationChain msgs = null;
+			if (udiCarrier != null)
+				msgs = ((InternalEObject)udiCarrier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__UDI_CARRIER, null, msgs);
+			if (newUdiCarrier != null)
+				msgs = ((InternalEObject)newUdiCarrier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__UDI_CARRIER, null, msgs);
+			msgs = basicSetUdiCarrier(newUdiCarrier, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__UDI_CARRIER, newUdiCarrier, newUdiCarrier));
 	}
 
 	/**
@@ -523,8 +566,8 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DateTime getExpiry() {
-		return expiry;
+	public DateTime getExpirationDate() {
+		return expirationDate;
 	}
 
 	/**
@@ -532,11 +575,11 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExpiry(DateTime newExpiry, NotificationChain msgs) {
-		DateTime oldExpiry = expiry;
-		expiry = newExpiry;
+	public NotificationChain basicSetExpirationDate(DateTime newExpirationDate, NotificationChain msgs) {
+		DateTime oldExpirationDate = expirationDate;
+		expirationDate = newExpirationDate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__EXPIRY, oldExpiry, newExpiry);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__EXPIRATION_DATE, oldExpirationDate, newExpirationDate);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -547,61 +590,18 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpiry(DateTime newExpiry) {
-		if (newExpiry != expiry) {
+	public void setExpirationDate(DateTime newExpirationDate) {
+		if (newExpirationDate != expirationDate) {
 			NotificationChain msgs = null;
-			if (expiry != null)
-				msgs = ((InternalEObject)expiry).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__EXPIRY, null, msgs);
-			if (newExpiry != null)
-				msgs = ((InternalEObject)newExpiry).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__EXPIRY, null, msgs);
-			msgs = basicSetExpiry(newExpiry, msgs);
+			if (expirationDate != null)
+				msgs = ((InternalEObject)expirationDate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__EXPIRATION_DATE, null, msgs);
+			if (newExpirationDate != null)
+				msgs = ((InternalEObject)newExpirationDate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__EXPIRATION_DATE, null, msgs);
+			msgs = basicSetExpirationDate(newExpirationDate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__EXPIRY, newExpiry, newExpiry));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.hl7.fhir.String getUdi() {
-		return udi;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetUdi(org.hl7.fhir.String newUdi, NotificationChain msgs) {
-		org.hl7.fhir.String oldUdi = udi;
-		udi = newUdi;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__UDI, oldUdi, newUdi);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUdi(org.hl7.fhir.String newUdi) {
-		if (newUdi != udi) {
-			NotificationChain msgs = null;
-			if (udi != null)
-				msgs = ((InternalEObject)udi).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__UDI, null, msgs);
-			if (newUdi != null)
-				msgs = ((InternalEObject)newUdi).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEVICE__UDI, null, msgs);
-			msgs = basicSetUdi(newUdi, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__UDI, newUdi, newUdi));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEVICE__EXPIRATION_DATE, newExpirationDate, newExpirationDate));
 	}
 
 	/**
@@ -841,36 +841,36 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 		switch (featureID) {
 			case FhirPackage.DEVICE__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
-			case FhirPackage.DEVICE__TYPE:
-				return basicSetType(null, msgs);
-			case FhirPackage.DEVICE__NOTE:
-				return ((InternalEList<?>)getNote()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEVICE__UDI_CARRIER:
+				return basicSetUdiCarrier(null, msgs);
 			case FhirPackage.DEVICE__STATUS:
 				return basicSetStatus(null, msgs);
+			case FhirPackage.DEVICE__TYPE:
+				return basicSetType(null, msgs);
+			case FhirPackage.DEVICE__LOT_NUMBER:
+				return basicSetLotNumber(null, msgs);
 			case FhirPackage.DEVICE__MANUFACTURER:
 				return basicSetManufacturer(null, msgs);
+			case FhirPackage.DEVICE__MANUFACTURE_DATE:
+				return basicSetManufactureDate(null, msgs);
+			case FhirPackage.DEVICE__EXPIRATION_DATE:
+				return basicSetExpirationDate(null, msgs);
 			case FhirPackage.DEVICE__MODEL:
 				return basicSetModel(null, msgs);
 			case FhirPackage.DEVICE__VERSION:
 				return basicSetVersion(null, msgs);
-			case FhirPackage.DEVICE__MANUFACTURE_DATE:
-				return basicSetManufactureDate(null, msgs);
-			case FhirPackage.DEVICE__EXPIRY:
-				return basicSetExpiry(null, msgs);
-			case FhirPackage.DEVICE__UDI:
-				return basicSetUdi(null, msgs);
-			case FhirPackage.DEVICE__LOT_NUMBER:
-				return basicSetLotNumber(null, msgs);
-			case FhirPackage.DEVICE__OWNER:
-				return basicSetOwner(null, msgs);
-			case FhirPackage.DEVICE__LOCATION:
-				return basicSetLocation(null, msgs);
 			case FhirPackage.DEVICE__PATIENT:
 				return basicSetPatient(null, msgs);
+			case FhirPackage.DEVICE__OWNER:
+				return basicSetOwner(null, msgs);
 			case FhirPackage.DEVICE__CONTACT:
 				return ((InternalEList<?>)getContact()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEVICE__LOCATION:
+				return basicSetLocation(null, msgs);
 			case FhirPackage.DEVICE__URL:
 				return basicSetUrl(null, msgs);
+			case FhirPackage.DEVICE__NOTE:
+				return ((InternalEList<?>)getNote()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -885,36 +885,36 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 		switch (featureID) {
 			case FhirPackage.DEVICE__IDENTIFIER:
 				return getIdentifier();
-			case FhirPackage.DEVICE__TYPE:
-				return getType();
-			case FhirPackage.DEVICE__NOTE:
-				return getNote();
+			case FhirPackage.DEVICE__UDI_CARRIER:
+				return getUdiCarrier();
 			case FhirPackage.DEVICE__STATUS:
 				return getStatus();
+			case FhirPackage.DEVICE__TYPE:
+				return getType();
+			case FhirPackage.DEVICE__LOT_NUMBER:
+				return getLotNumber();
 			case FhirPackage.DEVICE__MANUFACTURER:
 				return getManufacturer();
+			case FhirPackage.DEVICE__MANUFACTURE_DATE:
+				return getManufactureDate();
+			case FhirPackage.DEVICE__EXPIRATION_DATE:
+				return getExpirationDate();
 			case FhirPackage.DEVICE__MODEL:
 				return getModel();
 			case FhirPackage.DEVICE__VERSION:
 				return getVersion();
-			case FhirPackage.DEVICE__MANUFACTURE_DATE:
-				return getManufactureDate();
-			case FhirPackage.DEVICE__EXPIRY:
-				return getExpiry();
-			case FhirPackage.DEVICE__UDI:
-				return getUdi();
-			case FhirPackage.DEVICE__LOT_NUMBER:
-				return getLotNumber();
-			case FhirPackage.DEVICE__OWNER:
-				return getOwner();
-			case FhirPackage.DEVICE__LOCATION:
-				return getLocation();
 			case FhirPackage.DEVICE__PATIENT:
 				return getPatient();
+			case FhirPackage.DEVICE__OWNER:
+				return getOwner();
 			case FhirPackage.DEVICE__CONTACT:
 				return getContact();
+			case FhirPackage.DEVICE__LOCATION:
+				return getLocation();
 			case FhirPackage.DEVICE__URL:
 				return getUrl();
+			case FhirPackage.DEVICE__NOTE:
+				return getNote();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -932,18 +932,26 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
 				return;
-			case FhirPackage.DEVICE__TYPE:
-				setType((CodeableConcept)newValue);
-				return;
-			case FhirPackage.DEVICE__NOTE:
-				getNote().clear();
-				getNote().addAll((Collection<? extends Annotation>)newValue);
+			case FhirPackage.DEVICE__UDI_CARRIER:
+				setUdiCarrier((Identifier)newValue);
 				return;
 			case FhirPackage.DEVICE__STATUS:
 				setStatus((DeviceStatus)newValue);
 				return;
+			case FhirPackage.DEVICE__TYPE:
+				setType((CodeableConcept)newValue);
+				return;
+			case FhirPackage.DEVICE__LOT_NUMBER:
+				setLotNumber((org.hl7.fhir.String)newValue);
+				return;
 			case FhirPackage.DEVICE__MANUFACTURER:
 				setManufacturer((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.DEVICE__MANUFACTURE_DATE:
+				setManufactureDate((DateTime)newValue);
+				return;
+			case FhirPackage.DEVICE__EXPIRATION_DATE:
+				setExpirationDate((DateTime)newValue);
 				return;
 			case FhirPackage.DEVICE__MODEL:
 				setModel((org.hl7.fhir.String)newValue);
@@ -951,33 +959,25 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 			case FhirPackage.DEVICE__VERSION:
 				setVersion((org.hl7.fhir.String)newValue);
 				return;
-			case FhirPackage.DEVICE__MANUFACTURE_DATE:
-				setManufactureDate((DateTime)newValue);
-				return;
-			case FhirPackage.DEVICE__EXPIRY:
-				setExpiry((DateTime)newValue);
-				return;
-			case FhirPackage.DEVICE__UDI:
-				setUdi((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.DEVICE__LOT_NUMBER:
-				setLotNumber((org.hl7.fhir.String)newValue);
+			case FhirPackage.DEVICE__PATIENT:
+				setPatient((Reference)newValue);
 				return;
 			case FhirPackage.DEVICE__OWNER:
 				setOwner((Reference)newValue);
-				return;
-			case FhirPackage.DEVICE__LOCATION:
-				setLocation((Reference)newValue);
-				return;
-			case FhirPackage.DEVICE__PATIENT:
-				setPatient((Reference)newValue);
 				return;
 			case FhirPackage.DEVICE__CONTACT:
 				getContact().clear();
 				getContact().addAll((Collection<? extends ContactPoint>)newValue);
 				return;
+			case FhirPackage.DEVICE__LOCATION:
+				setLocation((Reference)newValue);
+				return;
 			case FhirPackage.DEVICE__URL:
 				setUrl((Uri)newValue);
+				return;
+			case FhirPackage.DEVICE__NOTE:
+				getNote().clear();
+				getNote().addAll((Collection<? extends Annotation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -994,17 +994,26 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 			case FhirPackage.DEVICE__IDENTIFIER:
 				getIdentifier().clear();
 				return;
-			case FhirPackage.DEVICE__TYPE:
-				setType((CodeableConcept)null);
-				return;
-			case FhirPackage.DEVICE__NOTE:
-				getNote().clear();
+			case FhirPackage.DEVICE__UDI_CARRIER:
+				setUdiCarrier((Identifier)null);
 				return;
 			case FhirPackage.DEVICE__STATUS:
 				setStatus((DeviceStatus)null);
 				return;
+			case FhirPackage.DEVICE__TYPE:
+				setType((CodeableConcept)null);
+				return;
+			case FhirPackage.DEVICE__LOT_NUMBER:
+				setLotNumber((org.hl7.fhir.String)null);
+				return;
 			case FhirPackage.DEVICE__MANUFACTURER:
 				setManufacturer((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.DEVICE__MANUFACTURE_DATE:
+				setManufactureDate((DateTime)null);
+				return;
+			case FhirPackage.DEVICE__EXPIRATION_DATE:
+				setExpirationDate((DateTime)null);
 				return;
 			case FhirPackage.DEVICE__MODEL:
 				setModel((org.hl7.fhir.String)null);
@@ -1012,32 +1021,23 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 			case FhirPackage.DEVICE__VERSION:
 				setVersion((org.hl7.fhir.String)null);
 				return;
-			case FhirPackage.DEVICE__MANUFACTURE_DATE:
-				setManufactureDate((DateTime)null);
-				return;
-			case FhirPackage.DEVICE__EXPIRY:
-				setExpiry((DateTime)null);
-				return;
-			case FhirPackage.DEVICE__UDI:
-				setUdi((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.DEVICE__LOT_NUMBER:
-				setLotNumber((org.hl7.fhir.String)null);
+			case FhirPackage.DEVICE__PATIENT:
+				setPatient((Reference)null);
 				return;
 			case FhirPackage.DEVICE__OWNER:
 				setOwner((Reference)null);
 				return;
-			case FhirPackage.DEVICE__LOCATION:
-				setLocation((Reference)null);
-				return;
-			case FhirPackage.DEVICE__PATIENT:
-				setPatient((Reference)null);
-				return;
 			case FhirPackage.DEVICE__CONTACT:
 				getContact().clear();
 				return;
+			case FhirPackage.DEVICE__LOCATION:
+				setLocation((Reference)null);
+				return;
 			case FhirPackage.DEVICE__URL:
 				setUrl((Uri)null);
+				return;
+			case FhirPackage.DEVICE__NOTE:
+				getNote().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -1053,36 +1053,36 @@ public class DeviceImpl extends DomainResourceImpl implements Device {
 		switch (featureID) {
 			case FhirPackage.DEVICE__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
-			case FhirPackage.DEVICE__TYPE:
-				return type != null;
-			case FhirPackage.DEVICE__NOTE:
-				return note != null && !note.isEmpty();
+			case FhirPackage.DEVICE__UDI_CARRIER:
+				return udiCarrier != null;
 			case FhirPackage.DEVICE__STATUS:
 				return status != null;
+			case FhirPackage.DEVICE__TYPE:
+				return type != null;
+			case FhirPackage.DEVICE__LOT_NUMBER:
+				return lotNumber != null;
 			case FhirPackage.DEVICE__MANUFACTURER:
 				return manufacturer != null;
+			case FhirPackage.DEVICE__MANUFACTURE_DATE:
+				return manufactureDate != null;
+			case FhirPackage.DEVICE__EXPIRATION_DATE:
+				return expirationDate != null;
 			case FhirPackage.DEVICE__MODEL:
 				return model != null;
 			case FhirPackage.DEVICE__VERSION:
 				return version != null;
-			case FhirPackage.DEVICE__MANUFACTURE_DATE:
-				return manufactureDate != null;
-			case FhirPackage.DEVICE__EXPIRY:
-				return expiry != null;
-			case FhirPackage.DEVICE__UDI:
-				return udi != null;
-			case FhirPackage.DEVICE__LOT_NUMBER:
-				return lotNumber != null;
-			case FhirPackage.DEVICE__OWNER:
-				return owner != null;
-			case FhirPackage.DEVICE__LOCATION:
-				return location != null;
 			case FhirPackage.DEVICE__PATIENT:
 				return patient != null;
+			case FhirPackage.DEVICE__OWNER:
+				return owner != null;
 			case FhirPackage.DEVICE__CONTACT:
 				return contact != null && !contact.isEmpty();
+			case FhirPackage.DEVICE__LOCATION:
+				return location != null;
 			case FhirPackage.DEVICE__URL:
 				return url != null;
+			case FhirPackage.DEVICE__NOTE:
+				return note != null && !note.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

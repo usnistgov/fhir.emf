@@ -34,13 +34,13 @@ public interface Range extends Element {
 	 * The low limit. The boundary is inclusive.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Low</em>' containment reference.
-	 * @see #setLow(SimpleQuantity)
+	 * @see #setLow(Quantity)
 	 * @see org.hl7.fhir.FhirPackage#getRange_Low()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='low' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getLow();
+	Quantity getLow();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Range#getLow <em>Low</em>}' containment reference.
@@ -50,7 +50,7 @@ public interface Range extends Element {
 	 * @see #getLow()
 	 * @generated
 	 */
-	void setLow(SimpleQuantity value);
+	void setLow(Quantity value);
 
 	/**
 	 * Returns the value of the '<em><b>High</b></em>' containment reference.
@@ -60,13 +60,13 @@ public interface Range extends Element {
 	 * The high limit. The boundary is inclusive.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>High</em>' containment reference.
-	 * @see #setHigh(SimpleQuantity)
+	 * @see #setHigh(Quantity)
 	 * @see org.hl7.fhir.FhirPackage#getRange_High()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='high' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	SimpleQuantity getHigh();
+	Quantity getHigh();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Range#getHigh <em>High</em>}' containment reference.
@@ -76,6 +76,6 @@ public interface Range extends Element {
 	 * @see #getHigh()
 	 * @generated
 	 */
-	void setHigh(SimpleQuantity value);
+	void setHigh(Quantity value);
 
 } // Range

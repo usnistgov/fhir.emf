@@ -19,10 +19,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.Code;
 import org.hl7.fhir.ConditionalDeleteStatus;
+import org.hl7.fhir.ConditionalReadStatus;
 import org.hl7.fhir.ConformanceInteraction;
 import org.hl7.fhir.ConformanceResource;
 import org.hl7.fhir.ConformanceSearchParam;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.Markdown;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.ResourceVersionPolicy;
 
@@ -36,11 +38,13 @@ import org.hl7.fhir.ResourceVersionPolicy;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getProfile <em>Profile</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getInteraction <em>Interaction</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getVersioning <em>Versioning</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getReadHistory <em>Read History</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getUpdateCreate <em>Update Create</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getConditionalCreate <em>Conditional Create</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getConditionalRead <em>Conditional Read</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getConditionalUpdate <em>Conditional Update</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getConditionalDelete <em>Conditional Delete</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceResourceImpl#getSearchInclude <em>Search Include</em>}</li>
@@ -70,6 +74,16 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 	 * @ordered
 	 */
 	protected Reference profile;
+
+	/**
+	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Markdown documentation;
 
 	/**
 	 * The cached value of the '{@link #getInteraction() <em>Interaction</em>}' containment reference list.
@@ -120,6 +134,16 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 	 * @ordered
 	 */
 	protected org.hl7.fhir.Boolean conditionalCreate;
+
+	/**
+	 * The cached value of the '{@link #getConditionalRead() <em>Conditional Read</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConditionalRead()
+	 * @generated
+	 * @ordered
+	 */
+	protected ConditionalReadStatus conditionalRead;
 
 	/**
 	 * The cached value of the '{@link #getConditionalUpdate() <em>Conditional Update</em>}' containment reference.
@@ -274,6 +298,49 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONFORMANCE_RESOURCE__PROFILE, newProfile, newProfile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Markdown getDocumentation() {
+		return documentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDocumentation(Markdown newDocumentation, NotificationChain msgs) {
+		Markdown oldDocumentation = documentation;
+		documentation = newDocumentation;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION, oldDocumentation, newDocumentation);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocumentation(Markdown newDocumentation) {
+		if (newDocumentation != documentation) {
+			NotificationChain msgs = null;
+			if (documentation != null)
+				msgs = ((InternalEObject)documentation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION, null, msgs);
+			if (newDocumentation != null)
+				msgs = ((InternalEObject)newDocumentation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION, null, msgs);
+			msgs = basicSetDocumentation(newDocumentation, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION, newDocumentation, newDocumentation));
 	}
 
 	/**
@@ -465,6 +532,49 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ConditionalReadStatus getConditionalRead() {
+		return conditionalRead;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConditionalRead(ConditionalReadStatus newConditionalRead, NotificationChain msgs) {
+		ConditionalReadStatus oldConditionalRead = conditionalRead;
+		conditionalRead = newConditionalRead;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ, oldConditionalRead, newConditionalRead);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConditionalRead(ConditionalReadStatus newConditionalRead) {
+		if (newConditionalRead != conditionalRead) {
+			NotificationChain msgs = null;
+			if (conditionalRead != null)
+				msgs = ((InternalEObject)conditionalRead).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ, null, msgs);
+			if (newConditionalRead != null)
+				msgs = ((InternalEObject)newConditionalRead).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ, null, msgs);
+			msgs = basicSetConditionalRead(newConditionalRead, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ, newConditionalRead, newConditionalRead));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.hl7.fhir.Boolean getConditionalUpdate() {
 		return conditionalUpdate;
 	}
@@ -594,6 +704,8 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return basicSetType(null, msgs);
 			case FhirPackage.CONFORMANCE_RESOURCE__PROFILE:
 				return basicSetProfile(null, msgs);
+			case FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION:
+				return basicSetDocumentation(null, msgs);
 			case FhirPackage.CONFORMANCE_RESOURCE__INTERACTION:
 				return ((InternalEList<?>)getInteraction()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONFORMANCE_RESOURCE__VERSIONING:
@@ -604,6 +716,8 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return basicSetUpdateCreate(null, msgs);
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_CREATE:
 				return basicSetConditionalCreate(null, msgs);
+			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ:
+				return basicSetConditionalRead(null, msgs);
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_UPDATE:
 				return basicSetConditionalUpdate(null, msgs);
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_DELETE:
@@ -630,6 +744,8 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return getType();
 			case FhirPackage.CONFORMANCE_RESOURCE__PROFILE:
 				return getProfile();
+			case FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION:
+				return getDocumentation();
 			case FhirPackage.CONFORMANCE_RESOURCE__INTERACTION:
 				return getInteraction();
 			case FhirPackage.CONFORMANCE_RESOURCE__VERSIONING:
@@ -640,6 +756,8 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return getUpdateCreate();
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_CREATE:
 				return getConditionalCreate();
+			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ:
+				return getConditionalRead();
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_UPDATE:
 				return getConditionalUpdate();
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_DELETE:
@@ -669,6 +787,9 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 			case FhirPackage.CONFORMANCE_RESOURCE__PROFILE:
 				setProfile((Reference)newValue);
 				return;
+			case FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION:
+				setDocumentation((Markdown)newValue);
+				return;
 			case FhirPackage.CONFORMANCE_RESOURCE__INTERACTION:
 				getInteraction().clear();
 				getInteraction().addAll((Collection<? extends ConformanceInteraction>)newValue);
@@ -684,6 +805,9 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return;
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_CREATE:
 				setConditionalCreate((org.hl7.fhir.Boolean)newValue);
+				return;
+			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ:
+				setConditionalRead((ConditionalReadStatus)newValue);
 				return;
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_UPDATE:
 				setConditionalUpdate((org.hl7.fhir.Boolean)newValue);
@@ -721,6 +845,9 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 			case FhirPackage.CONFORMANCE_RESOURCE__PROFILE:
 				setProfile((Reference)null);
 				return;
+			case FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION:
+				setDocumentation((Markdown)null);
+				return;
 			case FhirPackage.CONFORMANCE_RESOURCE__INTERACTION:
 				getInteraction().clear();
 				return;
@@ -735,6 +862,9 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return;
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_CREATE:
 				setConditionalCreate((org.hl7.fhir.Boolean)null);
+				return;
+			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ:
+				setConditionalRead((ConditionalReadStatus)null);
 				return;
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_UPDATE:
 				setConditionalUpdate((org.hl7.fhir.Boolean)null);
@@ -767,6 +897,8 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return type != null;
 			case FhirPackage.CONFORMANCE_RESOURCE__PROFILE:
 				return profile != null;
+			case FhirPackage.CONFORMANCE_RESOURCE__DOCUMENTATION:
+				return documentation != null;
 			case FhirPackage.CONFORMANCE_RESOURCE__INTERACTION:
 				return interaction != null && !interaction.isEmpty();
 			case FhirPackage.CONFORMANCE_RESOURCE__VERSIONING:
@@ -777,6 +909,8 @@ public class ConformanceResourceImpl extends BackboneElementImpl implements Conf
 				return updateCreate != null;
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_CREATE:
 				return conditionalCreate != null;
+			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_READ:
+				return conditionalRead != null;
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_UPDATE:
 				return conditionalUpdate != null;
 			case FhirPackage.CONFORMANCE_RESOURCE__CONDITIONAL_DELETE:

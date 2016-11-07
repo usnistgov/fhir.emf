@@ -34,7 +34,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.ValueSet#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.hl7.fhir.ValueSet#getCopyright <em>Copyright</em>}</li>
  *   <li>{@link org.hl7.fhir.ValueSet#getExtensible <em>Extensible</em>}</li>
- *   <li>{@link org.hl7.fhir.ValueSet#getCodeSystem <em>Code System</em>}</li>
  *   <li>{@link org.hl7.fhir.ValueSet#getCompose <em>Compose</em>}</li>
  *   <li>{@link org.hl7.fhir.ValueSet#getExpansion <em>Expansion</em>}</li>
  * </ul>
@@ -71,30 +70,20 @@ public interface ValueSet extends DomainResource {
 	void setUrl(Uri value);
 
 	/**
-	 * Returns the value of the '<em><b>Identifier</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Identifier</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Identifier}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Formal identifier that is used to identify this value set when it is represented in other formats, or referenced in a specification, model, design or an instance.
+	 * A formal identifier that is used to identify this value set when it is represented in other formats, or referenced in a specification, model, design or an instance.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Identifier</em>' containment reference.
-	 * @see #setIdentifier(Identifier)
+	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getValueSet_Identifier()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='identifier' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Identifier getIdentifier();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ValueSet#getIdentifier <em>Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Identifier</em>' containment reference.
-	 * @see #getIdentifier()
-	 * @generated
-	 */
-	void setIdentifier(Identifier value);
+	EList<Identifier> getIdentifier();
 
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' containment reference.
@@ -156,13 +145,13 @@ public interface ValueSet extends DomainResource {
 	 * The status of the value set.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(Code)
+	 * @see #setStatus(ConformanceResourceStatus)
 	 * @see org.hl7.fhir.FhirPackage#getValueSet_Status()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Code getStatus();
+	ConformanceResourceStatus getStatus();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ValueSet#getStatus <em>Status</em>}' containment reference.
@@ -172,7 +161,7 @@ public interface ValueSet extends DomainResource {
 	 * @see #getStatus()
 	 * @generated
 	 */
-	void setStatus(Code value);
+	void setStatus(ConformanceResourceStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Experimental</b></em>' containment reference.
@@ -302,13 +291,13 @@ public interface ValueSet extends DomainResource {
 	 * A free text natural language description of the use of the value set - reason for definition, "the semantic space" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
-	 * @see #setDescription(org.hl7.fhir.String)
+	 * @see #setDescription(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getValueSet_Description()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getDescription();
+	Markdown getDescription();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ValueSet#getDescription <em>Description</em>}' containment reference.
@@ -318,7 +307,7 @@ public interface ValueSet extends DomainResource {
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(org.hl7.fhir.String value);
+	void setDescription(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Use Context</b></em>' containment reference list.
@@ -370,13 +359,13 @@ public interface ValueSet extends DomainResource {
 	 * Explains why this value set is needed and why it has been constrained as it has.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Requirements</em>' containment reference.
-	 * @see #setRequirements(org.hl7.fhir.String)
+	 * @see #setRequirements(Markdown)
 	 * @see org.hl7.fhir.FhirPackage#getValueSet_Requirements()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='requirements' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getRequirements();
+	Markdown getRequirements();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.ValueSet#getRequirements <em>Requirements</em>}' containment reference.
@@ -386,7 +375,7 @@ public interface ValueSet extends DomainResource {
 	 * @see #getRequirements()
 	 * @generated
 	 */
-	void setRequirements(org.hl7.fhir.String value);
+	void setRequirements(Markdown value);
 
 	/**
 	 * Returns the value of the '<em><b>Copyright</b></em>' containment reference.
@@ -439,32 +428,6 @@ public interface ValueSet extends DomainResource {
 	 * @generated
 	 */
 	void setExtensible(org.hl7.fhir.Boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Code System</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A definition of a code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to its (codeSystem.system) directly.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Code System</em>' containment reference.
-	 * @see #setCodeSystem(ValueSetCodeSystem)
-	 * @see org.hl7.fhir.FhirPackage#getValueSet_CodeSystem()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='codeSystem' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	ValueSetCodeSystem getCodeSystem();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ValueSet#getCodeSystem <em>Code System</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Code System</em>' containment reference.
-	 * @see #getCodeSystem()
-	 * @generated
-	 */
-	void setCodeSystem(ValueSetCodeSystem value);
 
 	/**
 	 * Returns the value of the '<em><b>Compose</b></em>' containment reference.

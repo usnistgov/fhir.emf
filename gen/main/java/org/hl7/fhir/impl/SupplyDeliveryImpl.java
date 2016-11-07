@@ -22,8 +22,8 @@ import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Period;
+import org.hl7.fhir.Quantity;
 import org.hl7.fhir.Reference;
-import org.hl7.fhir.SimpleQuantity;
 import org.hl7.fhir.SupplyDelivery;
 import org.hl7.fhir.SupplyDeliveryStatus;
 
@@ -40,7 +40,8 @@ import org.hl7.fhir.SupplyDeliveryStatus;
  *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getSuppliedItem <em>Supplied Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getSuppliedItemCodeableConcept <em>Supplied Item Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getSuppliedItemReference <em>Supplied Item Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getSupplier <em>Supplier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getWhenPrepared <em>When Prepared</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SupplyDeliveryImpl#getTime <em>Time</em>}</li>
@@ -99,17 +100,27 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 	 * @generated
 	 * @ordered
 	 */
-	protected SimpleQuantity quantity;
+	protected Quantity quantity;
 
 	/**
-	 * The cached value of the '{@link #getSuppliedItem() <em>Supplied Item</em>}' containment reference.
+	 * The cached value of the '{@link #getSuppliedItemCodeableConcept() <em>Supplied Item Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSuppliedItem()
+	 * @see #getSuppliedItemCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference suppliedItem;
+	protected CodeableConcept suppliedItemCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getSuppliedItemReference() <em>Supplied Item Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliedItemReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference suppliedItemReference;
 
 	/**
 	 * The cached value of the '{@link #getSupplier() <em>Supplier</em>}' containment reference.
@@ -357,7 +368,7 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimpleQuantity getQuantity() {
+	public Quantity getQuantity() {
 		return quantity;
 	}
 
@@ -366,8 +377,8 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetQuantity(SimpleQuantity newQuantity, NotificationChain msgs) {
-		SimpleQuantity oldQuantity = quantity;
+	public NotificationChain basicSetQuantity(Quantity newQuantity, NotificationChain msgs) {
+		Quantity oldQuantity = quantity;
 		quantity = newQuantity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_DELIVERY__QUANTITY, oldQuantity, newQuantity);
@@ -381,7 +392,7 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQuantity(SimpleQuantity newQuantity) {
+	public void setQuantity(Quantity newQuantity) {
 		if (newQuantity != quantity) {
 			NotificationChain msgs = null;
 			if (quantity != null)
@@ -400,8 +411,8 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getSuppliedItem() {
-		return suppliedItem;
+	public CodeableConcept getSuppliedItemCodeableConcept() {
+		return suppliedItemCodeableConcept;
 	}
 
 	/**
@@ -409,11 +420,11 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSuppliedItem(Reference newSuppliedItem, NotificationChain msgs) {
-		Reference oldSuppliedItem = suppliedItem;
-		suppliedItem = newSuppliedItem;
+	public NotificationChain basicSetSuppliedItemCodeableConcept(CodeableConcept newSuppliedItemCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldSuppliedItemCodeableConcept = suppliedItemCodeableConcept;
+		suppliedItemCodeableConcept = newSuppliedItemCodeableConcept;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM, oldSuppliedItem, newSuppliedItem);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT, oldSuppliedItemCodeableConcept, newSuppliedItemCodeableConcept);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -424,18 +435,61 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSuppliedItem(Reference newSuppliedItem) {
-		if (newSuppliedItem != suppliedItem) {
+	public void setSuppliedItemCodeableConcept(CodeableConcept newSuppliedItemCodeableConcept) {
+		if (newSuppliedItemCodeableConcept != suppliedItemCodeableConcept) {
 			NotificationChain msgs = null;
-			if (suppliedItem != null)
-				msgs = ((InternalEObject)suppliedItem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM, null, msgs);
-			if (newSuppliedItem != null)
-				msgs = ((InternalEObject)newSuppliedItem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM, null, msgs);
-			msgs = basicSetSuppliedItem(newSuppliedItem, msgs);
+			if (suppliedItemCodeableConcept != null)
+				msgs = ((InternalEObject)suppliedItemCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT, null, msgs);
+			if (newSuppliedItemCodeableConcept != null)
+				msgs = ((InternalEObject)newSuppliedItemCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetSuppliedItemCodeableConcept(newSuppliedItemCodeableConcept, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM, newSuppliedItem, newSuppliedItem));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT, newSuppliedItemCodeableConcept, newSuppliedItemCodeableConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getSuppliedItemReference() {
+		return suppliedItemReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSuppliedItemReference(Reference newSuppliedItemReference, NotificationChain msgs) {
+		Reference oldSuppliedItemReference = suppliedItemReference;
+		suppliedItemReference = newSuppliedItemReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE, oldSuppliedItemReference, newSuppliedItemReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSuppliedItemReference(Reference newSuppliedItemReference) {
+		if (newSuppliedItemReference != suppliedItemReference) {
+			NotificationChain msgs = null;
+			if (suppliedItemReference != null)
+				msgs = ((InternalEObject)suppliedItemReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE, null, msgs);
+			if (newSuppliedItemReference != null)
+				msgs = ((InternalEObject)newSuppliedItemReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE, null, msgs);
+			msgs = basicSetSuppliedItemReference(newSuppliedItemReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE, newSuppliedItemReference, newSuppliedItemReference));
 	}
 
 	/**
@@ -640,8 +694,10 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 				return basicSetType(null, msgs);
 			case FhirPackage.SUPPLY_DELIVERY__QUANTITY:
 				return basicSetQuantity(null, msgs);
-			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM:
-				return basicSetSuppliedItem(null, msgs);
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT:
+				return basicSetSuppliedItemCodeableConcept(null, msgs);
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE:
+				return basicSetSuppliedItemReference(null, msgs);
 			case FhirPackage.SUPPLY_DELIVERY__SUPPLIER:
 				return basicSetSupplier(null, msgs);
 			case FhirPackage.SUPPLY_DELIVERY__WHEN_PREPARED:
@@ -674,8 +730,10 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 				return getType();
 			case FhirPackage.SUPPLY_DELIVERY__QUANTITY:
 				return getQuantity();
-			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM:
-				return getSuppliedItem();
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT:
+				return getSuppliedItemCodeableConcept();
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE:
+				return getSuppliedItemReference();
 			case FhirPackage.SUPPLY_DELIVERY__SUPPLIER:
 				return getSupplier();
 			case FhirPackage.SUPPLY_DELIVERY__WHEN_PREPARED:
@@ -712,10 +770,13 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 				setType((CodeableConcept)newValue);
 				return;
 			case FhirPackage.SUPPLY_DELIVERY__QUANTITY:
-				setQuantity((SimpleQuantity)newValue);
+				setQuantity((Quantity)newValue);
 				return;
-			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM:
-				setSuppliedItem((Reference)newValue);
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT:
+				setSuppliedItemCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE:
+				setSuppliedItemReference((Reference)newValue);
 				return;
 			case FhirPackage.SUPPLY_DELIVERY__SUPPLIER:
 				setSupplier((Reference)newValue);
@@ -758,10 +819,13 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 				setType((CodeableConcept)null);
 				return;
 			case FhirPackage.SUPPLY_DELIVERY__QUANTITY:
-				setQuantity((SimpleQuantity)null);
+				setQuantity((Quantity)null);
 				return;
-			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM:
-				setSuppliedItem((Reference)null);
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT:
+				setSuppliedItemCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE:
+				setSuppliedItemReference((Reference)null);
 				return;
 			case FhirPackage.SUPPLY_DELIVERY__SUPPLIER:
 				setSupplier((Reference)null);
@@ -800,8 +864,10 @@ public class SupplyDeliveryImpl extends DomainResourceImpl implements SupplyDeli
 				return type != null;
 			case FhirPackage.SUPPLY_DELIVERY__QUANTITY:
 				return quantity != null;
-			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM:
-				return suppliedItem != null;
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_CODEABLE_CONCEPT:
+				return suppliedItemCodeableConcept != null;
+			case FhirPackage.SUPPLY_DELIVERY__SUPPLIED_ITEM_REFERENCE:
+				return suppliedItemReference != null;
 			case FhirPackage.SUPPLY_DELIVERY__SUPPLIER:
 				return supplier != null;
 			case FhirPackage.SUPPLY_DELIVERY__WHEN_PREPARED:

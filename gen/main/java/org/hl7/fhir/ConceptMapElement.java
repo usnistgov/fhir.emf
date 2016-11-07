@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.ConceptMapElement#getCodeSystem <em>Code System</em>}</li>
  *   <li>{@link org.hl7.fhir.ConceptMapElement#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ConceptMapElement#getTarget <em>Target</em>}</li>
  * </ul>
@@ -27,32 +26,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ConceptMapElement extends BackboneElement {
-	/**
-	 * Returns the value of the '<em><b>Code System</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An absolute URI that identifies the Code System (if the source is a value set that crosses more than one code system).
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Code System</em>' containment reference.
-	 * @see #setCodeSystem(Uri)
-	 * @see org.hl7.fhir.FhirPackage#getConceptMapElement_CodeSystem()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='codeSystem' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uri getCodeSystem();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ConceptMapElement#getCodeSystem <em>Code System</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Code System</em>' containment reference.
-	 * @see #getCodeSystem()
-	 * @generated
-	 */
-	void setCodeSystem(Uri value);
-
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

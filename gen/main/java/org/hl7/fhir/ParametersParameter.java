@@ -18,41 +18,44 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueBoolean <em>Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueInteger <em>Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueDecimal <em>Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueBase64Binary <em>Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueInstant <em>Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueString <em>Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueUri <em>Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueBoolean <em>Value Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueCode <em>Value Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueDate <em>Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueDateTime <em>Value Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueTime <em>Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueCode <em>Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueOid <em>Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueUuid <em>Value Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueDecimal <em>Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueId <em>Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueUnsignedInt <em>Value Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValuePositiveInt <em>Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueInstant <em>Value Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueInteger <em>Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueMarkdown <em>Value Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueOid <em>Value Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValuePositiveInt <em>Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueString <em>Value String</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueTime <em>Value Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueUnsignedInt <em>Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueUri <em>Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueAddress <em>Value Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueAge <em>Value Age</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueAnnotation <em>Value Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueAttachment <em>Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueIdentifier <em>Value Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueCodeableConcept <em>Value Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueCoding <em>Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueContactPoint <em>Value Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueCount <em>Value Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueDistance <em>Value Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueDuration <em>Value Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueHumanName <em>Value Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueIdentifier <em>Value Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueMoney <em>Value Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValuePeriod <em>Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueQuantity <em>Value Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueRange <em>Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValuePeriod <em>Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueRatio <em>Value Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueReference <em>Value Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueSampledData <em>Value Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueSignature <em>Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueHumanName <em>Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueAddress <em>Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueContactPoint <em>Value Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueTiming <em>Value Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueMeta <em>Value Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.ParametersParameter#getValueElementDefinition <em>Value Element Definition</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getResource <em>Resource</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getPart <em>Part</em>}</li>
  * </ul>
@@ -401,32 +404,6 @@ public interface ParametersParameter extends BackboneElement {
 	void setValueOid(Oid value);
 
 	/**
-	 * Returns the value of the '<em><b>Value Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If the parameter is a data type. (choose any one of value*, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Value Uuid</em>' containment reference.
-	 * @see #setValueUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='valueUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getValueUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueUuid <em>Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Uuid</em>' containment reference.
-	 * @see #getValueUuid()
-	 * @generated
-	 */
-	void setValueUuid(Uuid value);
-
-	/**
 	 * Returns the value of the '<em><b>Value Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -607,6 +584,32 @@ public interface ParametersParameter extends BackboneElement {
 	 * @generated
 	 */
 	void setValueIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Money</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the parameter is a data type. (choose any one of value*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Money</em>' containment reference.
+	 * @see #setValueMoney(Money)
+	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueMoney()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueMoney' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Money getValueMoney();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueMoney <em>Value Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Money</em>' containment reference.
+	 * @see #getValueMoney()
+	 * @generated
+	 */
+	void setValueMoney(Money value);
 
 	/**
 	 * Returns the value of the '<em><b>Value Codeable Concept</b></em>' containment reference.
@@ -895,6 +898,32 @@ public interface ParametersParameter extends BackboneElement {
 	void setValueAddress(Address value);
 
 	/**
+	 * Returns the value of the '<em><b>Value Age</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the parameter is a data type. (choose any one of value*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Age</em>' containment reference.
+	 * @see #setValueAge(Age)
+	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueAge()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueAge' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Age getValueAge();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueAge <em>Value Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Age</em>' containment reference.
+	 * @see #getValueAge()
+	 * @generated
+	 */
+	void setValueAge(Age value);
+
+	/**
 	 * Returns the value of the '<em><b>Value Contact Point</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -919,6 +948,84 @@ public interface ParametersParameter extends BackboneElement {
 	 * @generated
 	 */
 	void setValueContactPoint(ContactPoint value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Count</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the parameter is a data type. (choose any one of value*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Count</em>' containment reference.
+	 * @see #setValueCount(Count)
+	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueCount()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueCount' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Count getValueCount();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueCount <em>Value Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Count</em>' containment reference.
+	 * @see #getValueCount()
+	 * @generated
+	 */
+	void setValueCount(Count value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Distance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the parameter is a data type. (choose any one of value*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Distance</em>' containment reference.
+	 * @see #setValueDistance(Distance)
+	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueDistance()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueDistance' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Distance getValueDistance();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueDistance <em>Value Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Distance</em>' containment reference.
+	 * @see #getValueDistance()
+	 * @generated
+	 */
+	void setValueDistance(Distance value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Duration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If the parameter is a data type. (choose any one of value*, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value Duration</em>' containment reference.
+	 * @see #setValueDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueDuration()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueDuration' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Duration getValueDuration();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueDuration <em>Value Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Duration</em>' containment reference.
+	 * @see #getValueDuration()
+	 * @generated
+	 */
+	void setValueDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Value Timing</b></em>' containment reference.
@@ -973,32 +1080,6 @@ public interface ParametersParameter extends BackboneElement {
 	void setValueMeta(Meta value);
 
 	/**
-	 * Returns the value of the '<em><b>Value Element Definition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If the parameter is a data type. (choose any one of value*, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Value Element Definition</em>' containment reference.
-	 * @see #setValueElementDefinition(ElementDefinition)
-	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueElementDefinition()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='valueElementDefinition' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	ElementDefinition getValueElementDefinition();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueElementDefinition <em>Value Element Definition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Element Definition</em>' containment reference.
-	 * @see #getValueElementDefinition()
-	 * @generated
-	 */
-	void setValueElementDefinition(ElementDefinition value);
-
-	/**
 	 * Returns the value of the '<em><b>Resource</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1030,7 +1111,7 @@ public interface ParametersParameter extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A named part of a parameter. In many implementation context, a set of named parts is known as a "Tuple".
+	 * A named part of a multi-part parameter.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Part</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_Part()

@@ -78,14 +78,22 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CANCELLED(5, "cancelled", "cancelled");
+	CANCELLED(5, "cancelled", "cancelled"), /**
+	 * The '<em><b>Entered In Error</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENTERED_IN_ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENTERED_IN_ERROR(6, "enteredInError", "entered-in-error");
 
 	/**
 	 * The '<em><b>Planned</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This episode of care is planned to start at the date specified in the period.start. During this status an organization may perform assessments to determine if they are eligible to receive services, or be organizing to make resources available to provide care services.
+	 * Planned
 	 * <!-- end-model-doc -->
 	 * @see #PLANNED
 	 * @model name="planned"
@@ -99,7 +107,7 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This episode has been placed on a waitlist, pending the episode being made active (or cancelled).
+	 * Waitlist
 	 * <!-- end-model-doc -->
 	 * @see #WAITLIST
 	 * @model name="waitlist"
@@ -113,7 +121,7 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This episode of care is current.
+	 * Active
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
@@ -127,7 +135,7 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This episode of care is on hold, the organization has limited responsibility for the patient (such as while on respite).
+	 * On Hold
 	 * <!-- end-model-doc -->
 	 * @see #ONHOLD
 	 * @model name="onhold"
@@ -141,7 +149,7 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This episode of care is finished at the organization is not expecting to be providing care to the patient. Can also be known as "closed", "completed" or other similar terms.
+	 * Finished
 	 * <!-- end-model-doc -->
 	 * @see #FINISHED
 	 * @model name="finished"
@@ -155,7 +163,7 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The episode of care was cancelled, or withdrawn from service, often selected during the planned stage as the patient may have gone elsewhere, or the circumstances have changed and the organization is unable to provide the care. It indicates that services terminated outside the planned/expected workflow.
+	 * Cancelled
 	 * <!-- end-model-doc -->
 	 * @see #CANCELLED
 	 * @model name="cancelled"
@@ -163,6 +171,20 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int CANCELLED_VALUE = 5;
+
+	/**
+	 * The '<em><b>Entered In Error</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Entered in Error
+	 * <!-- end-model-doc -->
+	 * @see #ENTERED_IN_ERROR
+	 * @model name="enteredInError" literal="entered-in-error"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENTERED_IN_ERROR_VALUE = 6;
 
 	/**
 	 * An array of all the '<em><b>Episode Of Care Status List</b></em>' enumerators.
@@ -178,6 +200,7 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 			ONHOLD,
 			FINISHED,
 			CANCELLED,
+			ENTERED_IN_ERROR,
 		};
 
 	/**
@@ -240,6 +263,7 @@ public enum EpisodeOfCareStatusList implements Enumerator {
 			case ONHOLD_VALUE: return ONHOLD;
 			case FINISHED_VALUE: return FINISHED;
 			case CANCELLED_VALUE: return CANCELLED;
+			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
 		}
 		return null;
 	}

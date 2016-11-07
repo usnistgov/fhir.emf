@@ -88,14 +88,22 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NOSHOW(6, "noshow", "noshow");
+	NOSHOW(6, "noshow", "noshow"), /**
+	 * The '<em><b>Entered In Error</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENTERED_IN_ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENTERED_IN_ERROR(7, "enteredInError", "entered-in-error");
 
 	/**
 	 * The '<em><b>Proposed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * None of the participant(s) have finalized their acceptance of the appointment request, and the start/end time may not be set yet.
+	 * Proposed
 	 * <!-- end-model-doc -->
 	 * @see #PROPOSED
 	 * @model name="proposed"
@@ -109,7 +117,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some or all of the participant(s) have not finalized their acceptance of the appointment request.
+	 * Pending
 	 * <!-- end-model-doc -->
 	 * @see #PENDING
 	 * @model name="pending"
@@ -123,7 +131,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All participant(s) have been considered and the appointment is confirmed to go ahead at the date/times specified.
+	 * Booked
 	 * <!-- end-model-doc -->
 	 * @see #BOOKED
 	 * @model name="booked"
@@ -137,7 +145,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some of the patients have arrived.
+	 * Arrived
 	 * <!-- end-model-doc -->
 	 * @see #ARRIVED
 	 * @model name="arrived"
@@ -151,7 +159,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This appointment has completed and may have resulted in an encounter.
+	 * Fulfilled
 	 * <!-- end-model-doc -->
 	 * @see #FULFILLED
 	 * @model name="fulfilled"
@@ -165,7 +173,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The appointment has been cancelled.
+	 * Cancelled
 	 * <!-- end-model-doc -->
 	 * @see #CANCELLED
 	 * @model name="cancelled"
@@ -179,7 +187,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some or all of the participant(s) have not/did not appear for the appointment (usually the patient).
+	 * No Show
 	 * <!-- end-model-doc -->
 	 * @see #NOSHOW
 	 * @model name="noshow"
@@ -187,6 +195,20 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int NOSHOW_VALUE = 6;
+
+	/**
+	 * The '<em><b>Entered In Error</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Entered in error
+	 * <!-- end-model-doc -->
+	 * @see #ENTERED_IN_ERROR
+	 * @model name="enteredInError" literal="entered-in-error"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENTERED_IN_ERROR_VALUE = 7;
 
 	/**
 	 * An array of all the '<em><b>Appointment Status List</b></em>' enumerators.
@@ -203,6 +225,7 @@ public enum AppointmentStatusList implements Enumerator {
 			FULFILLED,
 			CANCELLED,
 			NOSHOW,
+			ENTERED_IN_ERROR,
 		};
 
 	/**
@@ -266,6 +289,7 @@ public enum AppointmentStatusList implements Enumerator {
 			case FULFILLED_VALUE: return FULFILLED;
 			case CANCELLED_VALUE: return CANCELLED;
 			case NOSHOW_VALUE: return NOSHOW;
+			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
 		}
 		return null;
 	}

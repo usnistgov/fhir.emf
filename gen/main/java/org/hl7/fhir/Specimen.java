@@ -19,15 +19,17 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Specimen#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.Specimen#getAccessionIdentifier <em>Accession Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getType <em>Type</em>}</li>
- *   <li>{@link org.hl7.fhir.Specimen#getParent <em>Parent</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.Specimen#getAccessionIdentifier <em>Accession Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getReceivedTime <em>Received Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.Specimen#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.hl7.fhir.Specimen#getRequest <em>Request</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getCollection <em>Collection</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getTreatment <em>Treatment</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.hl7.fhir.Specimen#getNote <em>Note</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getSpecimen()
@@ -118,6 +120,22 @@ public interface Specimen extends DomainResource {
 	 * @generated
 	 */
 	EList<Reference> getParent();
+
+	/**
+	 * Returns the value of the '<em><b>Request</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Details concerning a test or procedure request that required a specimen to be collected.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Request</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getSpecimen_Request()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='request' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getRequest();
 
 	/**
 	 * Returns the value of the '<em><b>Subject</b></em>' containment reference.
@@ -254,5 +272,21 @@ public interface Specimen extends DomainResource {
 	 * @generated
 	 */
 	EList<SpecimenContainer> getContainer();
+
+	/**
+	 * Returns the value of the '<em><b>Note</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Annotation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Note</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getSpecimen_Note()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Annotation> getNote();
 
 } // Specimen

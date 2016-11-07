@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.ClaimResponseAddItem;
-import org.hl7.fhir.ClaimResponseAdjudication3;
+import org.hl7.fhir.ClaimResponseAdjudication;
 import org.hl7.fhir.ClaimResponseDetail1;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
@@ -34,9 +34,12 @@ import org.hl7.fhir.PositiveInt;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getSequenceLinkId <em>Sequence Link Id</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getRevenue <em>Revenue</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getService <em>Service</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getFee <em>Fee</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getNoteNumberLinkId <em>Note Number Link Id</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getNoteNumber <em>Note Number</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getAdjudication <em>Adjudication</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseAddItemImpl#getDetail <em>Detail</em>}</li>
  * </ul>
@@ -55,6 +58,26 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 	protected EList<PositiveInt> sequenceLinkId;
 
 	/**
+	 * The cached value of the '{@link #getRevenue() <em>Revenue</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRevenue()
+	 * @generated
+	 * @ordered
+	 */
+	protected Coding revenue;
+
+	/**
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategory()
+	 * @generated
+	 * @ordered
+	 */
+	protected Coding category;
+
+	/**
 	 * The cached value of the '{@link #getService() <em>Service</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,6 +86,16 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 	 * @ordered
 	 */
 	protected Coding service;
+
+	/**
+	 * The cached value of the '{@link #getModifier() <em>Modifier</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Coding> modifier;
 
 	/**
 	 * The cached value of the '{@link #getFee() <em>Fee</em>}' containment reference.
@@ -75,14 +108,14 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 	protected Money fee;
 
 	/**
-	 * The cached value of the '{@link #getNoteNumberLinkId() <em>Note Number Link Id</em>}' containment reference list.
+	 * The cached value of the '{@link #getNoteNumber() <em>Note Number</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNoteNumberLinkId()
+	 * @see #getNoteNumber()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PositiveInt> noteNumberLinkId;
+	protected EList<PositiveInt> noteNumber;
 
 	/**
 	 * The cached value of the '{@link #getAdjudication() <em>Adjudication</em>}' containment reference list.
@@ -92,7 +125,7 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ClaimResponseAdjudication3> adjudication;
+	protected EList<ClaimResponseAdjudication> adjudication;
 
 	/**
 	 * The cached value of the '{@link #getDetail() <em>Detail</em>}' containment reference list.
@@ -133,6 +166,92 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 			sequenceLinkId = new EObjectContainmentEList<PositiveInt>(PositiveInt.class, this, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SEQUENCE_LINK_ID);
 		}
 		return sequenceLinkId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Coding getRevenue() {
+		return revenue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRevenue(Coding newRevenue, NotificationChain msgs) {
+		Coding oldRevenue = revenue;
+		revenue = newRevenue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE, oldRevenue, newRevenue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRevenue(Coding newRevenue) {
+		if (newRevenue != revenue) {
+			NotificationChain msgs = null;
+			if (revenue != null)
+				msgs = ((InternalEObject)revenue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE, null, msgs);
+			if (newRevenue != null)
+				msgs = ((InternalEObject)newRevenue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE, null, msgs);
+			msgs = basicSetRevenue(newRevenue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE, newRevenue, newRevenue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Coding getCategory() {
+		return category;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCategory(Coding newCategory, NotificationChain msgs) {
+		Coding oldCategory = category;
+		category = newCategory;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY, oldCategory, newCategory);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCategory(Coding newCategory) {
+		if (newCategory != category) {
+			NotificationChain msgs = null;
+			if (category != null)
+				msgs = ((InternalEObject)category).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY, null, msgs);
+			if (newCategory != null)
+				msgs = ((InternalEObject)newCategory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY, null, msgs);
+			msgs = basicSetCategory(newCategory, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY, newCategory, newCategory));
 	}
 
 	/**
@@ -183,6 +302,18 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Coding> getModifier() {
+		if (modifier == null) {
+			modifier = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__MODIFIER);
+		}
+		return modifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Money getFee() {
 		return fee;
 	}
@@ -226,11 +357,11 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<PositiveInt> getNoteNumberLinkId() {
-		if (noteNumberLinkId == null) {
-			noteNumberLinkId = new EObjectContainmentEList<PositiveInt>(PositiveInt.class, this, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER_LINK_ID);
+	public EList<PositiveInt> getNoteNumber() {
+		if (noteNumber == null) {
+			noteNumber = new EObjectContainmentEList<PositiveInt>(PositiveInt.class, this, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER);
 		}
-		return noteNumberLinkId;
+		return noteNumber;
 	}
 
 	/**
@@ -238,9 +369,9 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ClaimResponseAdjudication3> getAdjudication() {
+	public EList<ClaimResponseAdjudication> getAdjudication() {
 		if (adjudication == null) {
-			adjudication = new EObjectContainmentEList<ClaimResponseAdjudication3>(ClaimResponseAdjudication3.class, this, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__ADJUDICATION);
+			adjudication = new EObjectContainmentEList<ClaimResponseAdjudication>(ClaimResponseAdjudication.class, this, FhirPackage.CLAIM_RESPONSE_ADD_ITEM__ADJUDICATION);
 		}
 		return adjudication;
 	}
@@ -267,12 +398,18 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 		switch (featureID) {
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SEQUENCE_LINK_ID:
 				return ((InternalEList<?>)getSequenceLinkId()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE:
+				return basicSetRevenue(null, msgs);
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY:
+				return basicSetCategory(null, msgs);
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SERVICE:
 				return basicSetService(null, msgs);
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__MODIFIER:
+				return ((InternalEList<?>)getModifier()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__FEE:
 				return basicSetFee(null, msgs);
-			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER_LINK_ID:
-				return ((InternalEList<?>)getNoteNumberLinkId()).basicRemove(otherEnd, msgs);
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER:
+				return ((InternalEList<?>)getNoteNumber()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__ADJUDICATION:
 				return ((InternalEList<?>)getAdjudication()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__DETAIL:
@@ -291,12 +428,18 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 		switch (featureID) {
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SEQUENCE_LINK_ID:
 				return getSequenceLinkId();
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE:
+				return getRevenue();
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY:
+				return getCategory();
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SERVICE:
 				return getService();
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__MODIFIER:
+				return getModifier();
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__FEE:
 				return getFee();
-			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER_LINK_ID:
-				return getNoteNumberLinkId();
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER:
+				return getNoteNumber();
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__ADJUDICATION:
 				return getAdjudication();
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__DETAIL:
@@ -318,19 +461,29 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 				getSequenceLinkId().clear();
 				getSequenceLinkId().addAll((Collection<? extends PositiveInt>)newValue);
 				return;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE:
+				setRevenue((Coding)newValue);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY:
+				setCategory((Coding)newValue);
+				return;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SERVICE:
 				setService((Coding)newValue);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__MODIFIER:
+				getModifier().clear();
+				getModifier().addAll((Collection<? extends Coding>)newValue);
 				return;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__FEE:
 				setFee((Money)newValue);
 				return;
-			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER_LINK_ID:
-				getNoteNumberLinkId().clear();
-				getNoteNumberLinkId().addAll((Collection<? extends PositiveInt>)newValue);
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER:
+				getNoteNumber().clear();
+				getNoteNumber().addAll((Collection<? extends PositiveInt>)newValue);
 				return;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__ADJUDICATION:
 				getAdjudication().clear();
-				getAdjudication().addAll((Collection<? extends ClaimResponseAdjudication3>)newValue);
+				getAdjudication().addAll((Collection<? extends ClaimResponseAdjudication>)newValue);
 				return;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__DETAIL:
 				getDetail().clear();
@@ -351,14 +504,23 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SEQUENCE_LINK_ID:
 				getSequenceLinkId().clear();
 				return;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE:
+				setRevenue((Coding)null);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY:
+				setCategory((Coding)null);
+				return;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SERVICE:
 				setService((Coding)null);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__MODIFIER:
+				getModifier().clear();
 				return;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__FEE:
 				setFee((Money)null);
 				return;
-			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER_LINK_ID:
-				getNoteNumberLinkId().clear();
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER:
+				getNoteNumber().clear();
 				return;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__ADJUDICATION:
 				getAdjudication().clear();
@@ -380,12 +542,18 @@ public class ClaimResponseAddItemImpl extends BackboneElementImpl implements Cla
 		switch (featureID) {
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SEQUENCE_LINK_ID:
 				return sequenceLinkId != null && !sequenceLinkId.isEmpty();
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__REVENUE:
+				return revenue != null;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__CATEGORY:
+				return category != null;
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__SERVICE:
 				return service != null;
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__MODIFIER:
+				return modifier != null && !modifier.isEmpty();
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__FEE:
 				return fee != null;
-			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER_LINK_ID:
-				return noteNumberLinkId != null && !noteNumberLinkId.isEmpty();
+			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__NOTE_NUMBER:
+				return noteNumber != null && !noteNumber.isEmpty();
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__ADJUDICATION:
 				return adjudication != null && !adjudication.isEmpty();
 			case FhirPackage.CLAIM_RESPONSE_ADD_ITEM__DETAIL:

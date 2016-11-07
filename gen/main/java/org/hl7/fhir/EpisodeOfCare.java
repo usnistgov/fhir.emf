@@ -28,7 +28,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getPeriod <em>Period</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getReferralRequest <em>Referral Request</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getCareManager <em>Care Manager</em>}</li>
- *   <li>{@link org.hl7.fhir.EpisodeOfCare#getCareTeam <em>Care Team</em>}</li>
+ *   <li>{@link org.hl7.fhir.EpisodeOfCare#getTeam <em>Team</em>}</li>
+ *   <li>{@link org.hl7.fhir.EpisodeOfCare#getAccount <em>Account</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare()
@@ -100,7 +101,7 @@ public interface EpisodeOfCare extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care.
+	 * A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_Type()
@@ -247,19 +248,35 @@ public interface EpisodeOfCare extends DomainResource {
 	void setCareManager(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Care Team</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.EpisodeOfCareCareTeam}.
+	 * Returns the value of the '<em><b>Team</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The list of practitioners that may be facilitating this episode of care for specific purposes.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Care Team</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_CareTeam()
+	 * @return the value of the '<em>Team</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_Team()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='careTeam' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='team' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<EpisodeOfCareCareTeam> getCareTeam();
+	EList<Reference> getTeam();
+
+	/**
+	 * Returns the value of the '<em><b>Account</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The set of accounts that may be used for billing for this EpisodeOfCare.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Account</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_Account()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='account' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getAccount();
 
 } // EpisodeOfCare

@@ -2,6 +2,8 @@
  */
 package org.hl7.fhir;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -18,6 +20,8 @@ package org.hl7.fhir;
  * <ul>
  *   <li>{@link org.hl7.fhir.ClaimDiagnosis#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.hl7.fhir.ClaimDiagnosis#getDiagnosis <em>Diagnosis</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimDiagnosis#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.ClaimDiagnosis#getDrg <em>Drg</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getClaimDiagnosis()
@@ -76,5 +80,47 @@ public interface ClaimDiagnosis extends BackboneElement {
 	 * @generated
 	 */
 	void setDiagnosis(Coding value);
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The type of the Diagnosis, for example: admitting,.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Type</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getClaimDiagnosis_Type()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Coding> getType();
+
+	/**
+	 * Returns the value of the '<em><b>Drg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The Diagnosis Related Group (DRG) code based on the assigned grouping code system.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Drg</em>' containment reference.
+	 * @see #setDrg(Coding)
+	 * @see org.hl7.fhir.FhirPackage#getClaimDiagnosis_Drg()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='drg' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Coding getDrg();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ClaimDiagnosis#getDrg <em>Drg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Drg</em>' containment reference.
+	 * @see #getDrg()
+	 * @generated
+	 */
+	void setDrg(Coding value);
 
 } // ClaimDiagnosis

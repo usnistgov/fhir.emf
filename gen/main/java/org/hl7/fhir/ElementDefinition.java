@@ -32,213 +32,179 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMin <em>Min</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMax <em>Max</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getBase <em>Base</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getContentReference <em>Content Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getType <em>Type</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getNameReference <em>Name Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueBoolean <em>Default Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueInteger <em>Default Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueDecimal <em>Default Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueBase64Binary <em>Default Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueInstant <em>Default Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueString <em>Default Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueUri <em>Default Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueBoolean <em>Default Value Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueCode <em>Default Value Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueDate <em>Default Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueDateTime <em>Default Value Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueTime <em>Default Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueCode <em>Default Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueOid <em>Default Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueUuid <em>Default Value Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueDecimal <em>Default Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueId <em>Default Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueUnsignedInt <em>Default Value Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValuePositiveInt <em>Default Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueInstant <em>Default Value Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueInteger <em>Default Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueMarkdown <em>Default Value Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueOid <em>Default Value Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValuePositiveInt <em>Default Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueString <em>Default Value String</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueTime <em>Default Value Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueUnsignedInt <em>Default Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueUri <em>Default Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueAddress <em>Default Value Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueAge <em>Default Value Age</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueAnnotation <em>Default Value Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueAttachment <em>Default Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueIdentifier <em>Default Value Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueCodeableConcept <em>Default Value Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueCoding <em>Default Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueContactPoint <em>Default Value Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueCount <em>Default Value Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueDistance <em>Default Value Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueDuration <em>Default Value Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueHumanName <em>Default Value Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueIdentifier <em>Default Value Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueMoney <em>Default Value Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValuePeriod <em>Default Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueQuantity <em>Default Value Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueRange <em>Default Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValuePeriod <em>Default Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueRatio <em>Default Value Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueReference <em>Default Value Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueSampledData <em>Default Value Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueSignature <em>Default Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueHumanName <em>Default Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueAddress <em>Default Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueContactPoint <em>Default Value Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueTiming <em>Default Value Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getDefaultValueMeta <em>Default Value Meta</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMeaningWhenMissing <em>Meaning When Missing</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedBoolean <em>Fixed Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedInteger <em>Fixed Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedDecimal <em>Fixed Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedBase64Binary <em>Fixed Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedInstant <em>Fixed Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedString <em>Fixed String</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedUri <em>Fixed Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedBoolean <em>Fixed Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedCode <em>Fixed Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedDate <em>Fixed Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedDateTime <em>Fixed Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedTime <em>Fixed Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedCode <em>Fixed Code</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedOid <em>Fixed Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedUuid <em>Fixed Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedDecimal <em>Fixed Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedId <em>Fixed Id</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedUnsignedInt <em>Fixed Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedPositiveInt <em>Fixed Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedInstant <em>Fixed Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedInteger <em>Fixed Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedMarkdown <em>Fixed Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedOid <em>Fixed Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedPositiveInt <em>Fixed Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedString <em>Fixed String</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedTime <em>Fixed Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedUnsignedInt <em>Fixed Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedUri <em>Fixed Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedAddress <em>Fixed Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedAge <em>Fixed Age</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedAnnotation <em>Fixed Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedAttachment <em>Fixed Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedIdentifier <em>Fixed Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedCodeableConcept <em>Fixed Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedCoding <em>Fixed Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedContactPoint <em>Fixed Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedCount <em>Fixed Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedDistance <em>Fixed Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedDuration <em>Fixed Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedHumanName <em>Fixed Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedIdentifier <em>Fixed Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedMoney <em>Fixed Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedPeriod <em>Fixed Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedQuantity <em>Fixed Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedRange <em>Fixed Range</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedPeriod <em>Fixed Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedRatio <em>Fixed Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedReference <em>Fixed Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedSampledData <em>Fixed Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedSignature <em>Fixed Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedHumanName <em>Fixed Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedAddress <em>Fixed Address</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedContactPoint <em>Fixed Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedTiming <em>Fixed Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getFixedMeta <em>Fixed Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternBoolean <em>Pattern Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternInteger <em>Pattern Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternDecimal <em>Pattern Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternBase64Binary <em>Pattern Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternInstant <em>Pattern Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternString <em>Pattern String</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternUri <em>Pattern Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternBoolean <em>Pattern Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternCode <em>Pattern Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternDate <em>Pattern Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternDateTime <em>Pattern Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternTime <em>Pattern Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternCode <em>Pattern Code</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternOid <em>Pattern Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternUuid <em>Pattern Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternDecimal <em>Pattern Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternId <em>Pattern Id</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternUnsignedInt <em>Pattern Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternPositiveInt <em>Pattern Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternInstant <em>Pattern Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternInteger <em>Pattern Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternMarkdown <em>Pattern Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternOid <em>Pattern Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternPositiveInt <em>Pattern Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternString <em>Pattern String</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternTime <em>Pattern Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternUnsignedInt <em>Pattern Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternUri <em>Pattern Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternAddress <em>Pattern Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternAge <em>Pattern Age</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternAnnotation <em>Pattern Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternAttachment <em>Pattern Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternIdentifier <em>Pattern Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternCodeableConcept <em>Pattern Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternCoding <em>Pattern Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternContactPoint <em>Pattern Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternCount <em>Pattern Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternDistance <em>Pattern Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternDuration <em>Pattern Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternHumanName <em>Pattern Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternIdentifier <em>Pattern Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternMoney <em>Pattern Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternPeriod <em>Pattern Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternQuantity <em>Pattern Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternRange <em>Pattern Range</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternPeriod <em>Pattern Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternRatio <em>Pattern Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternReference <em>Pattern Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternSampledData <em>Pattern Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternSignature <em>Pattern Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternHumanName <em>Pattern Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternAddress <em>Pattern Address</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternContactPoint <em>Pattern Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternTiming <em>Pattern Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getPatternMeta <em>Pattern Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleBoolean <em>Example Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleInteger <em>Example Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleDecimal <em>Example Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleBase64Binary <em>Example Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleInstant <em>Example Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleString <em>Example String</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleUri <em>Example Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleBoolean <em>Example Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleCode <em>Example Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleDate <em>Example Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleDateTime <em>Example Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleTime <em>Example Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleCode <em>Example Code</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleOid <em>Example Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleUuid <em>Example Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleDecimal <em>Example Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleId <em>Example Id</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleUnsignedInt <em>Example Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExamplePositiveInt <em>Example Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleInstant <em>Example Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleInteger <em>Example Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleMarkdown <em>Example Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleOid <em>Example Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExamplePositiveInt <em>Example Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleString <em>Example String</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleTime <em>Example Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleUnsignedInt <em>Example Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleUri <em>Example Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleAddress <em>Example Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleAge <em>Example Age</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleAnnotation <em>Example Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleAttachment <em>Example Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleIdentifier <em>Example Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleCodeableConcept <em>Example Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleCoding <em>Example Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleContactPoint <em>Example Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleCount <em>Example Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleDistance <em>Example Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleDuration <em>Example Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleHumanName <em>Example Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleIdentifier <em>Example Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleMoney <em>Example Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getExamplePeriod <em>Example Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleQuantity <em>Example Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleRange <em>Example Range</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExamplePeriod <em>Example Period</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleRatio <em>Example Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleReference <em>Example Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleSampledData <em>Example Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleSignature <em>Example Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleHumanName <em>Example Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleAddress <em>Example Address</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleContactPoint <em>Example Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleTiming <em>Example Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getExampleMeta <em>Example Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueBoolean <em>Min Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueInteger <em>Min Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueDecimal <em>Min Value Decimal</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueBase64Binary <em>Min Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueInstant <em>Min Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueString <em>Min Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueUri <em>Min Value Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueDate <em>Min Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueDateTime <em>Min Value Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueInstant <em>Min Value Instant</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueTime <em>Min Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueCode <em>Min Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueOid <em>Min Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueUuid <em>Min Value Uuid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueId <em>Min Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueUnsignedInt <em>Min Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueDecimal <em>Min Value Decimal</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueInteger <em>Min Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValuePositiveInt <em>Min Value Positive Int</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueMarkdown <em>Min Value Markdown</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueAnnotation <em>Min Value Annotation</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueAttachment <em>Min Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueIdentifier <em>Min Value Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueCodeableConcept <em>Min Value Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueCoding <em>Min Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueUnsignedInt <em>Min Value Unsigned Int</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueQuantity <em>Min Value Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueRange <em>Min Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValuePeriod <em>Min Value Period</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueRatio <em>Min Value Ratio</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueReference <em>Min Value Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueSampledData <em>Min Value Sampled Data</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueSignature <em>Min Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueHumanName <em>Min Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueAddress <em>Min Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueContactPoint <em>Min Value Contact Point</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueTiming <em>Min Value Timing</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMinValueMeta <em>Min Value Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueBoolean <em>Max Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueInteger <em>Max Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueDecimal <em>Max Value Decimal</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueBase64Binary <em>Max Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueInstant <em>Max Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueString <em>Max Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueUri <em>Max Value Uri</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueDate <em>Max Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueDateTime <em>Max Value Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueInstant <em>Max Value Instant</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueTime <em>Max Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueCode <em>Max Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueOid <em>Max Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueUuid <em>Max Value Uuid</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueId <em>Max Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueUnsignedInt <em>Max Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueDecimal <em>Max Value Decimal</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueInteger <em>Max Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValuePositiveInt <em>Max Value Positive Int</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueMarkdown <em>Max Value Markdown</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueAnnotation <em>Max Value Annotation</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueAttachment <em>Max Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueIdentifier <em>Max Value Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueCodeableConcept <em>Max Value Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueCoding <em>Max Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueUnsignedInt <em>Max Value Unsigned Int</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueQuantity <em>Max Value Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueRange <em>Max Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValuePeriod <em>Max Value Period</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueRatio <em>Max Value Ratio</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueReference <em>Max Value Reference</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueSampledData <em>Max Value Sampled Data</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueSignature <em>Max Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueHumanName <em>Max Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueAddress <em>Max Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueContactPoint <em>Max Value Contact Point</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueTiming <em>Max Value Timing</em>}</li>
- *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxValueMeta <em>Max Value Meta</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getMaxLength <em>Max Length</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinition#getConstraint <em>Constraint</em>}</li>
@@ -301,7 +267,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
+	 * The name of this element definition. This is a unique name referring to a specific set of constraints applied to this element, used to provide a name to different slices of the same element.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' containment reference.
 	 * @see #setName(org.hl7.fhir.String)
@@ -567,7 +533,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
+	 * Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Base</em>' containment reference.
 	 * @see #setBase(ElementDefinitionBase)
@@ -589,6 +555,32 @@ public interface ElementDefinition extends Element {
 	void setBase(ElementDefinitionBase value);
 
 	/**
+	 * Returns the value of the '<em><b>Content Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Content Reference</em>' containment reference.
+	 * @see #setContentReference(Uri)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_ContentReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='contentReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Uri getContentReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getContentReference <em>Content Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Content Reference</em>' containment reference.
+	 * @see #getContentReference()
+	 * @generated
+	 */
+	void setContentReference(Uri value);
+
+	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.ElementDefinitionType}.
 	 * <!-- begin-user-doc -->
@@ -603,32 +595,6 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	EList<ElementDefinitionType> getType();
-
-	/**
-	 * Returns the value of the '<em><b>Name Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Name Reference</em>' containment reference.
-	 * @see #setNameReference(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_NameReference()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='nameReference' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	org.hl7.fhir.String getNameReference();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getNameReference <em>Name Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name Reference</em>' containment reference.
-	 * @see #getNameReference()
-	 * @generated
-	 */
-	void setNameReference(org.hl7.fhir.String value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Value Boolean</b></em>' containment reference.
@@ -943,32 +909,6 @@ public interface ElementDefinition extends Element {
 	void setDefaultValueOid(Oid value);
 
 	/**
-	 * Returns the value of the '<em><b>Default Value Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false'). (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Default Value Uuid</em>' containment reference.
-	 * @see #setDefaultValueUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_DefaultValueUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='defaultValueUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getDefaultValueUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getDefaultValueUuid <em>Default Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default Value Uuid</em>' containment reference.
-	 * @see #getDefaultValueUuid()
-	 * @generated
-	 */
-	void setDefaultValueUuid(Uuid value);
-
-	/**
 	 * Returns the value of the '<em><b>Default Value Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1149,6 +1089,32 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setDefaultValueIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Value Money</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false'). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Default Value Money</em>' containment reference.
+	 * @see #setDefaultValueMoney(Money)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_DefaultValueMoney()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='defaultValueMoney' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Money getDefaultValueMoney();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getDefaultValueMoney <em>Default Value Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Value Money</em>' containment reference.
+	 * @see #getDefaultValueMoney()
+	 * @generated
+	 */
+	void setDefaultValueMoney(Money value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Value Codeable Concept</b></em>' containment reference.
@@ -1437,6 +1403,32 @@ public interface ElementDefinition extends Element {
 	void setDefaultValueAddress(Address value);
 
 	/**
+	 * Returns the value of the '<em><b>Default Value Age</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false'). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Default Value Age</em>' containment reference.
+	 * @see #setDefaultValueAge(Age)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_DefaultValueAge()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='defaultValueAge' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Age getDefaultValueAge();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getDefaultValueAge <em>Default Value Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Value Age</em>' containment reference.
+	 * @see #getDefaultValueAge()
+	 * @generated
+	 */
+	void setDefaultValueAge(Age value);
+
+	/**
 	 * Returns the value of the '<em><b>Default Value Contact Point</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1461,6 +1453,84 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setDefaultValueContactPoint(ContactPoint value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Value Count</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false'). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Default Value Count</em>' containment reference.
+	 * @see #setDefaultValueCount(Count)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_DefaultValueCount()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='defaultValueCount' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Count getDefaultValueCount();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getDefaultValueCount <em>Default Value Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Value Count</em>' containment reference.
+	 * @see #getDefaultValueCount()
+	 * @generated
+	 */
+	void setDefaultValueCount(Count value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Value Distance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false'). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Default Value Distance</em>' containment reference.
+	 * @see #setDefaultValueDistance(Distance)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_DefaultValueDistance()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='defaultValueDistance' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Distance getDefaultValueDistance();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getDefaultValueDistance <em>Default Value Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Value Distance</em>' containment reference.
+	 * @see #getDefaultValueDistance()
+	 * @generated
+	 */
+	void setDefaultValueDistance(Distance value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Value Duration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false'). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Default Value Duration</em>' containment reference.
+	 * @see #setDefaultValueDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_DefaultValueDuration()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='defaultValueDuration' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Duration getDefaultValueDuration();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getDefaultValueDuration <em>Default Value Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Value Duration</em>' containment reference.
+	 * @see #getDefaultValueDuration()
+	 * @generated
+	 */
+	void setDefaultValueDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Value Timing</b></em>' containment reference.
@@ -1853,32 +1923,6 @@ public interface ElementDefinition extends Element {
 	void setFixedOid(Oid value);
 
 	/**
-	 * Returns the value of the '<em><b>Fixed Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Fixed Uuid</em>' containment reference.
-	 * @see #setFixedUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_FixedUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='fixedUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getFixedUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getFixedUuid <em>Fixed Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fixed Uuid</em>' containment reference.
-	 * @see #getFixedUuid()
-	 * @generated
-	 */
-	void setFixedUuid(Uuid value);
-
-	/**
 	 * Returns the value of the '<em><b>Fixed Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2059,6 +2103,32 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setFixedIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Fixed Money</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Fixed Money</em>' containment reference.
+	 * @see #setFixedMoney(Money)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_FixedMoney()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='fixedMoney' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Money getFixedMoney();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getFixedMoney <em>Fixed Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fixed Money</em>' containment reference.
+	 * @see #getFixedMoney()
+	 * @generated
+	 */
+	void setFixedMoney(Money value);
 
 	/**
 	 * Returns the value of the '<em><b>Fixed Codeable Concept</b></em>' containment reference.
@@ -2347,6 +2417,32 @@ public interface ElementDefinition extends Element {
 	void setFixedAddress(Address value);
 
 	/**
+	 * Returns the value of the '<em><b>Fixed Age</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Fixed Age</em>' containment reference.
+	 * @see #setFixedAge(Age)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_FixedAge()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='fixedAge' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Age getFixedAge();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getFixedAge <em>Fixed Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fixed Age</em>' containment reference.
+	 * @see #getFixedAge()
+	 * @generated
+	 */
+	void setFixedAge(Age value);
+
+	/**
 	 * Returns the value of the '<em><b>Fixed Contact Point</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2371,6 +2467,84 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setFixedContactPoint(ContactPoint value);
+
+	/**
+	 * Returns the value of the '<em><b>Fixed Count</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Fixed Count</em>' containment reference.
+	 * @see #setFixedCount(Count)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_FixedCount()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='fixedCount' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Count getFixedCount();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getFixedCount <em>Fixed Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fixed Count</em>' containment reference.
+	 * @see #getFixedCount()
+	 * @generated
+	 */
+	void setFixedCount(Count value);
+
+	/**
+	 * Returns the value of the '<em><b>Fixed Distance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Fixed Distance</em>' containment reference.
+	 * @see #setFixedDistance(Distance)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_FixedDistance()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='fixedDistance' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Distance getFixedDistance();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getFixedDistance <em>Fixed Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fixed Distance</em>' containment reference.
+	 * @see #getFixedDistance()
+	 * @generated
+	 */
+	void setFixedDistance(Distance value);
+
+	/**
+	 * Returns the value of the '<em><b>Fixed Duration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Fixed Duration</em>' containment reference.
+	 * @see #setFixedDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_FixedDuration()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='fixedDuration' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Duration getFixedDuration();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getFixedDuration <em>Fixed Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fixed Duration</em>' containment reference.
+	 * @see #getFixedDuration()
+	 * @generated
+	 */
+	void setFixedDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Fixed Timing</b></em>' containment reference.
@@ -2737,32 +2911,6 @@ public interface ElementDefinition extends Element {
 	void setPatternOid(Oid value);
 
 	/**
-	 * Returns the value of the '<em><b>Pattern Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.). (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Pattern Uuid</em>' containment reference.
-	 * @see #setPatternUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_PatternUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='patternUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getPatternUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getPatternUuid <em>Pattern Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pattern Uuid</em>' containment reference.
-	 * @see #getPatternUuid()
-	 * @generated
-	 */
-	void setPatternUuid(Uuid value);
-
-	/**
 	 * Returns the value of the '<em><b>Pattern Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2943,6 +3091,32 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setPatternIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Pattern Money</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Pattern Money</em>' containment reference.
+	 * @see #setPatternMoney(Money)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_PatternMoney()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='patternMoney' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Money getPatternMoney();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getPatternMoney <em>Pattern Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pattern Money</em>' containment reference.
+	 * @see #getPatternMoney()
+	 * @generated
+	 */
+	void setPatternMoney(Money value);
 
 	/**
 	 * Returns the value of the '<em><b>Pattern Codeable Concept</b></em>' containment reference.
@@ -3231,6 +3405,32 @@ public interface ElementDefinition extends Element {
 	void setPatternAddress(Address value);
 
 	/**
+	 * Returns the value of the '<em><b>Pattern Age</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Pattern Age</em>' containment reference.
+	 * @see #setPatternAge(Age)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_PatternAge()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='patternAge' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Age getPatternAge();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getPatternAge <em>Pattern Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pattern Age</em>' containment reference.
+	 * @see #getPatternAge()
+	 * @generated
+	 */
+	void setPatternAge(Age value);
+
+	/**
 	 * Returns the value of the '<em><b>Pattern Contact Point</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3255,6 +3455,84 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setPatternContactPoint(ContactPoint value);
+
+	/**
+	 * Returns the value of the '<em><b>Pattern Count</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Pattern Count</em>' containment reference.
+	 * @see #setPatternCount(Count)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_PatternCount()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='patternCount' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Count getPatternCount();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getPatternCount <em>Pattern Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pattern Count</em>' containment reference.
+	 * @see #getPatternCount()
+	 * @generated
+	 */
+	void setPatternCount(Count value);
+
+	/**
+	 * Returns the value of the '<em><b>Pattern Distance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Pattern Distance</em>' containment reference.
+	 * @see #setPatternDistance(Distance)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_PatternDistance()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='patternDistance' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Distance getPatternDistance();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getPatternDistance <em>Pattern Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pattern Distance</em>' containment reference.
+	 * @see #getPatternDistance()
+	 * @generated
+	 */
+	void setPatternDistance(Distance value);
+
+	/**
+	 * Returns the value of the '<em><b>Pattern Duration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.). (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Pattern Duration</em>' containment reference.
+	 * @see #setPatternDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_PatternDuration()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='patternDuration' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Duration getPatternDuration();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getPatternDuration <em>Pattern Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pattern Duration</em>' containment reference.
+	 * @see #getPatternDuration()
+	 * @generated
+	 */
+	void setPatternDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Pattern Timing</b></em>' containment reference.
@@ -3621,32 +3899,6 @@ public interface ElementDefinition extends Element {
 	void setExampleOid(Oid value);
 
 	/**
-	 * Returns the value of the '<em><b>Example Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A sample value for this element demonstrating the type of information that would typically be captured. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Example Uuid</em>' containment reference.
-	 * @see #setExampleUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_ExampleUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='exampleUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getExampleUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getExampleUuid <em>Example Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Example Uuid</em>' containment reference.
-	 * @see #getExampleUuid()
-	 * @generated
-	 */
-	void setExampleUuid(Uuid value);
-
-	/**
 	 * Returns the value of the '<em><b>Example Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3827,6 +4079,32 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setExampleIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Example Money</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A sample value for this element demonstrating the type of information that would typically be captured. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Example Money</em>' containment reference.
+	 * @see #setExampleMoney(Money)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_ExampleMoney()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='exampleMoney' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Money getExampleMoney();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getExampleMoney <em>Example Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Example Money</em>' containment reference.
+	 * @see #getExampleMoney()
+	 * @generated
+	 */
+	void setExampleMoney(Money value);
 
 	/**
 	 * Returns the value of the '<em><b>Example Codeable Concept</b></em>' containment reference.
@@ -4115,6 +4393,32 @@ public interface ElementDefinition extends Element {
 	void setExampleAddress(Address value);
 
 	/**
+	 * Returns the value of the '<em><b>Example Age</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A sample value for this element demonstrating the type of information that would typically be captured. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Example Age</em>' containment reference.
+	 * @see #setExampleAge(Age)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_ExampleAge()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='exampleAge' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Age getExampleAge();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getExampleAge <em>Example Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Example Age</em>' containment reference.
+	 * @see #getExampleAge()
+	 * @generated
+	 */
+	void setExampleAge(Age value);
+
+	/**
 	 * Returns the value of the '<em><b>Example Contact Point</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4139,6 +4443,84 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setExampleContactPoint(ContactPoint value);
+
+	/**
+	 * Returns the value of the '<em><b>Example Count</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A sample value for this element demonstrating the type of information that would typically be captured. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Example Count</em>' containment reference.
+	 * @see #setExampleCount(Count)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_ExampleCount()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='exampleCount' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Count getExampleCount();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getExampleCount <em>Example Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Example Count</em>' containment reference.
+	 * @see #getExampleCount()
+	 * @generated
+	 */
+	void setExampleCount(Count value);
+
+	/**
+	 * Returns the value of the '<em><b>Example Distance</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A sample value for this element demonstrating the type of information that would typically be captured. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Example Distance</em>' containment reference.
+	 * @see #setExampleDistance(Distance)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_ExampleDistance()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='exampleDistance' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Distance getExampleDistance();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getExampleDistance <em>Example Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Example Distance</em>' containment reference.
+	 * @see #getExampleDistance()
+	 * @generated
+	 */
+	void setExampleDistance(Distance value);
+
+	/**
+	 * Returns the value of the '<em><b>Example Duration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A sample value for this element demonstrating the type of information that would typically be captured. (choose any one of the elements, but only one)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Example Duration</em>' containment reference.
+	 * @see #setExampleDuration(Duration)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_ExampleDuration()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='exampleDuration' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Duration getExampleDuration();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getExampleDuration <em>Example Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Example Duration</em>' containment reference.
+	 * @see #getExampleDuration()
+	 * @generated
+	 */
+	void setExampleDuration(Duration value);
 
 	/**
 	 * Returns the value of the '<em><b>Example Timing</b></em>' containment reference.
@@ -4193,37 +4575,11 @@ public interface ElementDefinition extends Element {
 	void setExampleMeta(Meta value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Value Boolean</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Boolean</em>' containment reference.
-	 * @see #setMinValueBoolean(org.hl7.fhir.Boolean)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueBoolean()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueBoolean' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	org.hl7.fhir.Boolean getMinValueBoolean();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueBoolean <em>Min Value Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Boolean</em>' containment reference.
-	 * @see #getMinValueBoolean()
-	 * @generated
-	 */
-	void setMinValueBoolean(org.hl7.fhir.Boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Min Value Integer</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Integer</em>' containment reference.
 	 * @see #setMinValueInteger(org.hl7.fhir.Integer)
@@ -4249,7 +4605,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Decimal</em>' containment reference.
 	 * @see #setMinValueDecimal(Decimal)
@@ -4271,37 +4627,11 @@ public interface ElementDefinition extends Element {
 	void setMinValueDecimal(Decimal value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Value Base64 Binary</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Base64 Binary</em>' containment reference.
-	 * @see #setMinValueBase64Binary(Base64Binary)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueBase64Binary()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueBase64Binary' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Base64Binary getMinValueBase64Binary();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueBase64Binary <em>Min Value Base64 Binary</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Base64 Binary</em>' containment reference.
-	 * @see #getMinValueBase64Binary()
-	 * @generated
-	 */
-	void setMinValueBase64Binary(Base64Binary value);
-
-	/**
 	 * Returns the value of the '<em><b>Min Value Instant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Instant</em>' containment reference.
 	 * @see #setMinValueInstant(Instant)
@@ -4323,63 +4653,11 @@ public interface ElementDefinition extends Element {
 	void setMinValueInstant(Instant value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Value String</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value String</em>' containment reference.
-	 * @see #setMinValueString(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueString()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueString' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	org.hl7.fhir.String getMinValueString();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueString <em>Min Value String</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value String</em>' containment reference.
-	 * @see #getMinValueString()
-	 * @generated
-	 */
-	void setMinValueString(org.hl7.fhir.String value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Uri</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Uri</em>' containment reference.
-	 * @see #setMinValueUri(Uri)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueUri()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueUri' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uri getMinValueUri();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueUri <em>Min Value Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Uri</em>' containment reference.
-	 * @see #getMinValueUri()
-	 * @generated
-	 */
-	void setMinValueUri(Uri value);
-
-	/**
 	 * Returns the value of the '<em><b>Min Value Date</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Date</em>' containment reference.
 	 * @see #setMinValueDate(Date)
@@ -4405,7 +4683,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Date Time</em>' containment reference.
 	 * @see #setMinValueDateTime(DateTime)
@@ -4431,7 +4709,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Time</em>' containment reference.
 	 * @see #setMinValueTime(Time)
@@ -4453,115 +4731,11 @@ public interface ElementDefinition extends Element {
 	void setMinValueTime(Time value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Value Code</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Code</em>' containment reference.
-	 * @see #setMinValueCode(Code)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueCode()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueCode' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Code getMinValueCode();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueCode <em>Min Value Code</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Code</em>' containment reference.
-	 * @see #getMinValueCode()
-	 * @generated
-	 */
-	void setMinValueCode(Code value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Oid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Oid</em>' containment reference.
-	 * @see #setMinValueOid(Oid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueOid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueOid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Oid getMinValueOid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueOid <em>Min Value Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Oid</em>' containment reference.
-	 * @see #getMinValueOid()
-	 * @generated
-	 */
-	void setMinValueOid(Oid value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Uuid</em>' containment reference.
-	 * @see #setMinValueUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getMinValueUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueUuid <em>Min Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Uuid</em>' containment reference.
-	 * @see #getMinValueUuid()
-	 * @generated
-	 */
-	void setMinValueUuid(Uuid value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Id</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Id</em>' containment reference.
-	 * @see #setMinValueId(Id)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueId()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueId' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Id getMinValueId();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueId <em>Min Value Id</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Id</em>' containment reference.
-	 * @see #getMinValueId()
-	 * @generated
-	 */
-	void setMinValueId(Id value);
-
-	/**
 	 * Returns the value of the '<em><b>Min Value Unsigned Int</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Unsigned Int</em>' containment reference.
 	 * @see #setMinValueUnsignedInt(UnsignedInt)
@@ -4587,7 +4761,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Positive Int</em>' containment reference.
 	 * @see #setMinValuePositiveInt(PositiveInt)
@@ -4609,167 +4783,11 @@ public interface ElementDefinition extends Element {
 	void setMinValuePositiveInt(PositiveInt value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Value Markdown</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Markdown</em>' containment reference.
-	 * @see #setMinValueMarkdown(Markdown)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueMarkdown()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueMarkdown' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Markdown getMinValueMarkdown();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueMarkdown <em>Min Value Markdown</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Markdown</em>' containment reference.
-	 * @see #getMinValueMarkdown()
-	 * @generated
-	 */
-	void setMinValueMarkdown(Markdown value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Annotation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Annotation</em>' containment reference.
-	 * @see #setMinValueAnnotation(Annotation)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueAnnotation()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueAnnotation' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Annotation getMinValueAnnotation();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueAnnotation <em>Min Value Annotation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Annotation</em>' containment reference.
-	 * @see #getMinValueAnnotation()
-	 * @generated
-	 */
-	void setMinValueAnnotation(Annotation value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Attachment</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Attachment</em>' containment reference.
-	 * @see #setMinValueAttachment(Attachment)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueAttachment()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueAttachment' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Attachment getMinValueAttachment();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueAttachment <em>Min Value Attachment</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Attachment</em>' containment reference.
-	 * @see #getMinValueAttachment()
-	 * @generated
-	 */
-	void setMinValueAttachment(Attachment value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Identifier</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Identifier</em>' containment reference.
-	 * @see #setMinValueIdentifier(Identifier)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueIdentifier()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueIdentifier' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Identifier getMinValueIdentifier();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueIdentifier <em>Min Value Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Identifier</em>' containment reference.
-	 * @see #getMinValueIdentifier()
-	 * @generated
-	 */
-	void setMinValueIdentifier(Identifier value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Codeable Concept</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Codeable Concept</em>' containment reference.
-	 * @see #setMinValueCodeableConcept(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueCodeableConcept()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueCodeableConcept' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	CodeableConcept getMinValueCodeableConcept();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueCodeableConcept <em>Min Value Codeable Concept</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Codeable Concept</em>' containment reference.
-	 * @see #getMinValueCodeableConcept()
-	 * @generated
-	 */
-	void setMinValueCodeableConcept(CodeableConcept value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Coding</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Coding</em>' containment reference.
-	 * @see #setMinValueCoding(Coding)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueCoding()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueCoding' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Coding getMinValueCoding();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueCoding <em>Min Value Coding</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Coding</em>' containment reference.
-	 * @see #getMinValueCoding()
-	 * @generated
-	 */
-	void setMinValueCoding(Coding value);
-
-	/**
 	 * Returns the value of the '<em><b>Min Value Quantity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of minValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Value Quantity</em>' containment reference.
 	 * @see #setMinValueQuantity(Quantity)
@@ -4791,323 +4809,11 @@ public interface ElementDefinition extends Element {
 	void setMinValueQuantity(Quantity value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Value Range</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Range</em>' containment reference.
-	 * @see #setMinValueRange(Range)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueRange()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueRange' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Range getMinValueRange();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueRange <em>Min Value Range</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Range</em>' containment reference.
-	 * @see #getMinValueRange()
-	 * @generated
-	 */
-	void setMinValueRange(Range value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Period</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Period</em>' containment reference.
-	 * @see #setMinValuePeriod(Period)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValuePeriod()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValuePeriod' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Period getMinValuePeriod();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValuePeriod <em>Min Value Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Period</em>' containment reference.
-	 * @see #getMinValuePeriod()
-	 * @generated
-	 */
-	void setMinValuePeriod(Period value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Ratio</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Ratio</em>' containment reference.
-	 * @see #setMinValueRatio(Ratio)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueRatio()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueRatio' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Ratio getMinValueRatio();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueRatio <em>Min Value Ratio</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Ratio</em>' containment reference.
-	 * @see #getMinValueRatio()
-	 * @generated
-	 */
-	void setMinValueRatio(Ratio value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Reference</em>' containment reference.
-	 * @see #setMinValueReference(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueReference()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueReference' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Reference getMinValueReference();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueReference <em>Min Value Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Reference</em>' containment reference.
-	 * @see #getMinValueReference()
-	 * @generated
-	 */
-	void setMinValueReference(Reference value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Sampled Data</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Sampled Data</em>' containment reference.
-	 * @see #setMinValueSampledData(SampledData)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueSampledData()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueSampledData' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	SampledData getMinValueSampledData();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueSampledData <em>Min Value Sampled Data</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Sampled Data</em>' containment reference.
-	 * @see #getMinValueSampledData()
-	 * @generated
-	 */
-	void setMinValueSampledData(SampledData value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Signature</em>' containment reference.
-	 * @see #setMinValueSignature(Signature)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueSignature()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueSignature' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Signature getMinValueSignature();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueSignature <em>Min Value Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Signature</em>' containment reference.
-	 * @see #getMinValueSignature()
-	 * @generated
-	 */
-	void setMinValueSignature(Signature value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Human Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Human Name</em>' containment reference.
-	 * @see #setMinValueHumanName(HumanName)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueHumanName()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueHumanName' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	HumanName getMinValueHumanName();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueHumanName <em>Min Value Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Human Name</em>' containment reference.
-	 * @see #getMinValueHumanName()
-	 * @generated
-	 */
-	void setMinValueHumanName(HumanName value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Address</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Address</em>' containment reference.
-	 * @see #setMinValueAddress(Address)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueAddress()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueAddress' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Address getMinValueAddress();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueAddress <em>Min Value Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Address</em>' containment reference.
-	 * @see #getMinValueAddress()
-	 * @generated
-	 */
-	void setMinValueAddress(Address value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Contact Point</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Contact Point</em>' containment reference.
-	 * @see #setMinValueContactPoint(ContactPoint)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueContactPoint()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueContactPoint' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	ContactPoint getMinValueContactPoint();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueContactPoint <em>Min Value Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Contact Point</em>' containment reference.
-	 * @see #getMinValueContactPoint()
-	 * @generated
-	 */
-	void setMinValueContactPoint(ContactPoint value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Timing</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Timing</em>' containment reference.
-	 * @see #setMinValueTiming(Timing)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueTiming()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueTiming' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Timing getMinValueTiming();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueTiming <em>Min Value Timing</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Timing</em>' containment reference.
-	 * @see #getMinValueTiming()
-	 * @generated
-	 */
-	void setMinValueTiming(Timing value);
-
-	/**
-	 * Returns the value of the '<em><b>Min Value Meta</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Value Meta</em>' containment reference.
-	 * @see #setMinValueMeta(Meta)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MinValueMeta()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='minValueMeta' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Meta getMinValueMeta();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMinValueMeta <em>Min Value Meta</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Meta</em>' containment reference.
-	 * @see #getMinValueMeta()
-	 * @generated
-	 */
-	void setMinValueMeta(Meta value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Boolean</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Boolean</em>' containment reference.
-	 * @see #setMaxValueBoolean(org.hl7.fhir.Boolean)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueBoolean()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueBoolean' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	org.hl7.fhir.Boolean getMaxValueBoolean();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueBoolean <em>Max Value Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Boolean</em>' containment reference.
-	 * @see #getMaxValueBoolean()
-	 * @generated
-	 */
-	void setMaxValueBoolean(org.hl7.fhir.Boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Max Value Integer</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Integer</em>' containment reference.
 	 * @see #setMaxValueInteger(org.hl7.fhir.Integer)
@@ -5133,7 +4839,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Decimal</em>' containment reference.
 	 * @see #setMaxValueDecimal(Decimal)
@@ -5155,37 +4861,11 @@ public interface ElementDefinition extends Element {
 	void setMaxValueDecimal(Decimal value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Value Base64 Binary</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Base64 Binary</em>' containment reference.
-	 * @see #setMaxValueBase64Binary(Base64Binary)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueBase64Binary()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueBase64Binary' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Base64Binary getMaxValueBase64Binary();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueBase64Binary <em>Max Value Base64 Binary</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Base64 Binary</em>' containment reference.
-	 * @see #getMaxValueBase64Binary()
-	 * @generated
-	 */
-	void setMaxValueBase64Binary(Base64Binary value);
-
-	/**
 	 * Returns the value of the '<em><b>Max Value Instant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Instant</em>' containment reference.
 	 * @see #setMaxValueInstant(Instant)
@@ -5207,63 +4887,11 @@ public interface ElementDefinition extends Element {
 	void setMaxValueInstant(Instant value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Value String</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value String</em>' containment reference.
-	 * @see #setMaxValueString(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueString()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueString' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	org.hl7.fhir.String getMaxValueString();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueString <em>Max Value String</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value String</em>' containment reference.
-	 * @see #getMaxValueString()
-	 * @generated
-	 */
-	void setMaxValueString(org.hl7.fhir.String value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Uri</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Uri</em>' containment reference.
-	 * @see #setMaxValueUri(Uri)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueUri()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueUri' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uri getMaxValueUri();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueUri <em>Max Value Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Uri</em>' containment reference.
-	 * @see #getMaxValueUri()
-	 * @generated
-	 */
-	void setMaxValueUri(Uri value);
-
-	/**
 	 * Returns the value of the '<em><b>Max Value Date</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Date</em>' containment reference.
 	 * @see #setMaxValueDate(Date)
@@ -5289,7 +4917,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Date Time</em>' containment reference.
 	 * @see #setMaxValueDateTime(DateTime)
@@ -5315,7 +4943,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Time</em>' containment reference.
 	 * @see #setMaxValueTime(Time)
@@ -5337,115 +4965,11 @@ public interface ElementDefinition extends Element {
 	void setMaxValueTime(Time value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Value Code</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Code</em>' containment reference.
-	 * @see #setMaxValueCode(Code)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueCode()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueCode' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Code getMaxValueCode();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueCode <em>Max Value Code</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Code</em>' containment reference.
-	 * @see #getMaxValueCode()
-	 * @generated
-	 */
-	void setMaxValueCode(Code value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Oid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Oid</em>' containment reference.
-	 * @see #setMaxValueOid(Oid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueOid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueOid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Oid getMaxValueOid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueOid <em>Max Value Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Oid</em>' containment reference.
-	 * @see #getMaxValueOid()
-	 * @generated
-	 */
-	void setMaxValueOid(Oid value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Uuid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Uuid</em>' containment reference.
-	 * @see #setMaxValueUuid(Uuid)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueUuid()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueUuid' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Uuid getMaxValueUuid();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueUuid <em>Max Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Uuid</em>' containment reference.
-	 * @see #getMaxValueUuid()
-	 * @generated
-	 */
-	void setMaxValueUuid(Uuid value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Id</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Id</em>' containment reference.
-	 * @see #setMaxValueId(Id)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueId()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueId' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Id getMaxValueId();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueId <em>Max Value Id</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Id</em>' containment reference.
-	 * @see #getMaxValueId()
-	 * @generated
-	 */
-	void setMaxValueId(Id value);
-
-	/**
 	 * Returns the value of the '<em><b>Max Value Unsigned Int</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Unsigned Int</em>' containment reference.
 	 * @see #setMaxValueUnsignedInt(UnsignedInt)
@@ -5471,7 +4995,7 @@ public interface ElementDefinition extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Positive Int</em>' containment reference.
 	 * @see #setMaxValuePositiveInt(PositiveInt)
@@ -5493,167 +5017,11 @@ public interface ElementDefinition extends Element {
 	void setMaxValuePositiveInt(PositiveInt value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Value Markdown</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Markdown</em>' containment reference.
-	 * @see #setMaxValueMarkdown(Markdown)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueMarkdown()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueMarkdown' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Markdown getMaxValueMarkdown();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueMarkdown <em>Max Value Markdown</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Markdown</em>' containment reference.
-	 * @see #getMaxValueMarkdown()
-	 * @generated
-	 */
-	void setMaxValueMarkdown(Markdown value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Annotation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Annotation</em>' containment reference.
-	 * @see #setMaxValueAnnotation(Annotation)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueAnnotation()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueAnnotation' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Annotation getMaxValueAnnotation();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueAnnotation <em>Max Value Annotation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Annotation</em>' containment reference.
-	 * @see #getMaxValueAnnotation()
-	 * @generated
-	 */
-	void setMaxValueAnnotation(Annotation value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Attachment</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Attachment</em>' containment reference.
-	 * @see #setMaxValueAttachment(Attachment)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueAttachment()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueAttachment' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Attachment getMaxValueAttachment();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueAttachment <em>Max Value Attachment</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Attachment</em>' containment reference.
-	 * @see #getMaxValueAttachment()
-	 * @generated
-	 */
-	void setMaxValueAttachment(Attachment value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Identifier</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Identifier</em>' containment reference.
-	 * @see #setMaxValueIdentifier(Identifier)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueIdentifier()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueIdentifier' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Identifier getMaxValueIdentifier();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueIdentifier <em>Max Value Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Identifier</em>' containment reference.
-	 * @see #getMaxValueIdentifier()
-	 * @generated
-	 */
-	void setMaxValueIdentifier(Identifier value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Codeable Concept</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Codeable Concept</em>' containment reference.
-	 * @see #setMaxValueCodeableConcept(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueCodeableConcept()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueCodeableConcept' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	CodeableConcept getMaxValueCodeableConcept();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueCodeableConcept <em>Max Value Codeable Concept</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Codeable Concept</em>' containment reference.
-	 * @see #getMaxValueCodeableConcept()
-	 * @generated
-	 */
-	void setMaxValueCodeableConcept(CodeableConcept value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Coding</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Coding</em>' containment reference.
-	 * @see #setMaxValueCoding(Coding)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueCoding()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueCoding' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Coding getMaxValueCoding();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueCoding <em>Max Value Coding</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Coding</em>' containment reference.
-	 * @see #getMaxValueCoding()
-	 * @generated
-	 */
-	void setMaxValueCoding(Coding value);
-
-	/**
 	 * Returns the value of the '<em><b>Max Value Quantity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
+	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of maxValue*, but only one)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Value Quantity</em>' containment reference.
 	 * @see #setMaxValueQuantity(Quantity)
@@ -5673,292 +5041,6 @@ public interface ElementDefinition extends Element {
 	 * @generated
 	 */
 	void setMaxValueQuantity(Quantity value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Range</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Range</em>' containment reference.
-	 * @see #setMaxValueRange(Range)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueRange()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueRange' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Range getMaxValueRange();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueRange <em>Max Value Range</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Range</em>' containment reference.
-	 * @see #getMaxValueRange()
-	 * @generated
-	 */
-	void setMaxValueRange(Range value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Period</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Period</em>' containment reference.
-	 * @see #setMaxValuePeriod(Period)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValuePeriod()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValuePeriod' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Period getMaxValuePeriod();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValuePeriod <em>Max Value Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Period</em>' containment reference.
-	 * @see #getMaxValuePeriod()
-	 * @generated
-	 */
-	void setMaxValuePeriod(Period value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Ratio</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Ratio</em>' containment reference.
-	 * @see #setMaxValueRatio(Ratio)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueRatio()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueRatio' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Ratio getMaxValueRatio();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueRatio <em>Max Value Ratio</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Ratio</em>' containment reference.
-	 * @see #getMaxValueRatio()
-	 * @generated
-	 */
-	void setMaxValueRatio(Ratio value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Reference</em>' containment reference.
-	 * @see #setMaxValueReference(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueReference()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueReference' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Reference getMaxValueReference();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueReference <em>Max Value Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Reference</em>' containment reference.
-	 * @see #getMaxValueReference()
-	 * @generated
-	 */
-	void setMaxValueReference(Reference value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Sampled Data</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Sampled Data</em>' containment reference.
-	 * @see #setMaxValueSampledData(SampledData)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueSampledData()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueSampledData' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	SampledData getMaxValueSampledData();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueSampledData <em>Max Value Sampled Data</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Sampled Data</em>' containment reference.
-	 * @see #getMaxValueSampledData()
-	 * @generated
-	 */
-	void setMaxValueSampledData(SampledData value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Signature</em>' containment reference.
-	 * @see #setMaxValueSignature(Signature)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueSignature()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueSignature' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Signature getMaxValueSignature();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueSignature <em>Max Value Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Signature</em>' containment reference.
-	 * @see #getMaxValueSignature()
-	 * @generated
-	 */
-	void setMaxValueSignature(Signature value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Human Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Human Name</em>' containment reference.
-	 * @see #setMaxValueHumanName(HumanName)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueHumanName()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueHumanName' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	HumanName getMaxValueHumanName();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueHumanName <em>Max Value Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Human Name</em>' containment reference.
-	 * @see #getMaxValueHumanName()
-	 * @generated
-	 */
-	void setMaxValueHumanName(HumanName value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Address</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Address</em>' containment reference.
-	 * @see #setMaxValueAddress(Address)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueAddress()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueAddress' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Address getMaxValueAddress();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueAddress <em>Max Value Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Address</em>' containment reference.
-	 * @see #getMaxValueAddress()
-	 * @generated
-	 */
-	void setMaxValueAddress(Address value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Contact Point</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Contact Point</em>' containment reference.
-	 * @see #setMaxValueContactPoint(ContactPoint)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueContactPoint()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueContactPoint' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	ContactPoint getMaxValueContactPoint();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueContactPoint <em>Max Value Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Contact Point</em>' containment reference.
-	 * @see #getMaxValueContactPoint()
-	 * @generated
-	 */
-	void setMaxValueContactPoint(ContactPoint value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Timing</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Timing</em>' containment reference.
-	 * @see #setMaxValueTiming(Timing)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueTiming()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueTiming' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Timing getMaxValueTiming();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueTiming <em>Max Value Timing</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Timing</em>' containment reference.
-	 * @see #getMaxValueTiming()
-	 * @generated
-	 */
-	void setMaxValueTiming(Timing value);
-
-	/**
-	 * Returns the value of the '<em><b>Max Value Meta</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity. (choose any one of the elements, but only one)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Value Meta</em>' containment reference.
-	 * @see #setMaxValueMeta(Meta)
-	 * @see org.hl7.fhir.FhirPackage#getElementDefinition_MaxValueMeta()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='maxValueMeta' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Meta getMaxValueMeta();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinition#getMaxValueMeta <em>Max Value Meta</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Meta</em>' containment reference.
-	 * @see #getMaxValueMeta()
-	 * @generated
-	 */
-	void setMaxValueMeta(Meta value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Length</b></em>' containment reference.

@@ -58,14 +58,22 @@ public enum SlotStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BUSY_TENTATIVE(3, "busyTentative", "busy-tentative");
+	BUSY_TENTATIVE(3, "busyTentative", "busy-tentative"), /**
+	 * The '<em><b>Entered In Error</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENTERED_IN_ERROR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENTERED_IN_ERROR(4, "enteredInError", "entered-in-error");
 
 	/**
 	 * The '<em><b>Busy</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the time interval is busy because one  or more events have been scheduled for that interval.
+	 * Busy
 	 * <!-- end-model-doc -->
 	 * @see #BUSY
 	 * @model name="busy"
@@ -79,7 +87,7 @@ public enum SlotStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the time interval is free for scheduling.
+	 * Free
 	 * <!-- end-model-doc -->
 	 * @see #FREE
 	 * @model name="free"
@@ -93,7 +101,7 @@ public enum SlotStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the time interval is busy and that the interval can not be scheduled.
+	 * Busy (Unavailable)
 	 * <!-- end-model-doc -->
 	 * @see #BUSY_UNAVAILABLE
 	 * @model name="busyUnavailable" literal="busy-unavailable"
@@ -107,7 +115,7 @@ public enum SlotStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates that the time interval is busy because one or more events have been tentatively scheduled for that interval.
+	 * Busy (Tentative)
 	 * <!-- end-model-doc -->
 	 * @see #BUSY_TENTATIVE
 	 * @model name="busyTentative" literal="busy-tentative"
@@ -115,6 +123,20 @@ public enum SlotStatusList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int BUSY_TENTATIVE_VALUE = 3;
+
+	/**
+	 * The '<em><b>Entered In Error</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Entered in error
+	 * <!-- end-model-doc -->
+	 * @see #ENTERED_IN_ERROR
+	 * @model name="enteredInError" literal="entered-in-error"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENTERED_IN_ERROR_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Slot Status List</b></em>' enumerators.
@@ -128,6 +150,7 @@ public enum SlotStatusList implements Enumerator {
 			FREE,
 			BUSY_UNAVAILABLE,
 			BUSY_TENTATIVE,
+			ENTERED_IN_ERROR,
 		};
 
 	/**
@@ -188,6 +211,7 @@ public enum SlotStatusList implements Enumerator {
 			case FREE_VALUE: return FREE;
 			case BUSY_UNAVAILABLE_VALUE: return BUSY_UNAVAILABLE;
 			case BUSY_TENTATIVE_VALUE: return BUSY_TENTATIVE;
+			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
 		}
 		return null;
 	}

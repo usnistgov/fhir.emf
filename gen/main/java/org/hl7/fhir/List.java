@@ -19,15 +19,15 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.List#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.List#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.hl7.fhir.List#getMode <em>Mode</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getTitle <em>Title</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.List#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getEncounter <em>Encounter</em>}</li>
- *   <li>{@link org.hl7.fhir.List#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getDate <em>Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.List#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getOrderedBy <em>Ordered By</em>}</li>
- *   <li>{@link org.hl7.fhir.List#getMode <em>Mode</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getNote <em>Note</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.hl7.fhir.List#getEmptyReason <em>Empty Reason</em>}</li>
@@ -289,30 +289,20 @@ public interface List extends DomainResource {
 	void setMode(ListMode value);
 
 	/**
-	 * Returns the value of the '<em><b>Note</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Note</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Annotation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Comments that apply to the overall list.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Note</em>' containment reference.
-	 * @see #setNote(org.hl7.fhir.String)
+	 * @return the value of the '<em>Note</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getList_Note()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getNote();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.List#getNote <em>Note</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Note</em>' containment reference.
-	 * @see #getNote()
-	 * @generated
-	 */
-	void setNote(org.hl7.fhir.String value);
+	EList<Annotation> getNote();
 
 	/**
 	 * Returns the value of the '<em><b>Entry</b></em>' containment reference list.

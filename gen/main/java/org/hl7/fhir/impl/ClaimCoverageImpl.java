@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.ClaimCoverage;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.Identifier;
 import org.hl7.fhir.PositiveInt;
 import org.hl7.fhir.Reference;
 
@@ -33,9 +34,9 @@ import org.hl7.fhir.Reference;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getFocal <em>Focal</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getCoverage <em>Coverage</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getCoverageIdentifier <em>Coverage Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getCoverageReference <em>Coverage Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getBusinessArrangement <em>Business Arrangement</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getRelationship <em>Relationship</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getPreAuthRef <em>Pre Auth Ref</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getClaimResponse <em>Claim Response</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimCoverageImpl#getOriginalRuleset <em>Original Ruleset</em>}</li>
@@ -65,14 +66,24 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 	protected org.hl7.fhir.Boolean focal;
 
 	/**
-	 * The cached value of the '{@link #getCoverage() <em>Coverage</em>}' containment reference.
+	 * The cached value of the '{@link #getCoverageIdentifier() <em>Coverage Identifier</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCoverage()
+	 * @see #getCoverageIdentifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference coverage;
+	protected Identifier coverageIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getCoverageReference() <em>Coverage Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoverageReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference coverageReference;
 
 	/**
 	 * The cached value of the '{@link #getBusinessArrangement() <em>Business Arrangement</em>}' containment reference.
@@ -83,16 +94,6 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String businessArrangement;
-
-	/**
-	 * The cached value of the '{@link #getRelationship() <em>Relationship</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRelationship()
-	 * @generated
-	 * @ordered
-	 */
-	protected Coding relationship;
 
 	/**
 	 * The cached value of the '{@link #getPreAuthRef() <em>Pre Auth Ref</em>}' containment reference list.
@@ -234,8 +235,8 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getCoverage() {
-		return coverage;
+	public Identifier getCoverageIdentifier() {
+		return coverageIdentifier;
 	}
 
 	/**
@@ -243,11 +244,11 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCoverage(Reference newCoverage, NotificationChain msgs) {
-		Reference oldCoverage = coverage;
-		coverage = newCoverage;
+	public NotificationChain basicSetCoverageIdentifier(Identifier newCoverageIdentifier, NotificationChain msgs) {
+		Identifier oldCoverageIdentifier = coverageIdentifier;
+		coverageIdentifier = newCoverageIdentifier;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__COVERAGE, oldCoverage, newCoverage);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER, oldCoverageIdentifier, newCoverageIdentifier);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -258,18 +259,61 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCoverage(Reference newCoverage) {
-		if (newCoverage != coverage) {
+	public void setCoverageIdentifier(Identifier newCoverageIdentifier) {
+		if (newCoverageIdentifier != coverageIdentifier) {
 			NotificationChain msgs = null;
-			if (coverage != null)
-				msgs = ((InternalEObject)coverage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__COVERAGE, null, msgs);
-			if (newCoverage != null)
-				msgs = ((InternalEObject)newCoverage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__COVERAGE, null, msgs);
-			msgs = basicSetCoverage(newCoverage, msgs);
+			if (coverageIdentifier != null)
+				msgs = ((InternalEObject)coverageIdentifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER, null, msgs);
+			if (newCoverageIdentifier != null)
+				msgs = ((InternalEObject)newCoverageIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER, null, msgs);
+			msgs = basicSetCoverageIdentifier(newCoverageIdentifier, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__COVERAGE, newCoverage, newCoverage));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER, newCoverageIdentifier, newCoverageIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getCoverageReference() {
+		return coverageReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCoverageReference(Reference newCoverageReference, NotificationChain msgs) {
+		Reference oldCoverageReference = coverageReference;
+		coverageReference = newCoverageReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE, oldCoverageReference, newCoverageReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCoverageReference(Reference newCoverageReference) {
+		if (newCoverageReference != coverageReference) {
+			NotificationChain msgs = null;
+			if (coverageReference != null)
+				msgs = ((InternalEObject)coverageReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE, null, msgs);
+			if (newCoverageReference != null)
+				msgs = ((InternalEObject)newCoverageReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE, null, msgs);
+			msgs = basicSetCoverageReference(newCoverageReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE, newCoverageReference, newCoverageReference));
 	}
 
 	/**
@@ -313,49 +357,6 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__BUSINESS_ARRANGEMENT, newBusinessArrangement, newBusinessArrangement));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Coding getRelationship() {
-		return relationship;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRelationship(Coding newRelationship, NotificationChain msgs) {
-		Coding oldRelationship = relationship;
-		relationship = newRelationship;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__RELATIONSHIP, oldRelationship, newRelationship);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRelationship(Coding newRelationship) {
-		if (newRelationship != relationship) {
-			NotificationChain msgs = null;
-			if (relationship != null)
-				msgs = ((InternalEObject)relationship).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__RELATIONSHIP, null, msgs);
-			if (newRelationship != null)
-				msgs = ((InternalEObject)newRelationship).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CLAIM_COVERAGE__RELATIONSHIP, null, msgs);
-			msgs = basicSetRelationship(newRelationship, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CLAIM_COVERAGE__RELATIONSHIP, newRelationship, newRelationship));
 	}
 
 	/**
@@ -468,12 +469,12 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 				return basicSetSequence(null, msgs);
 			case FhirPackage.CLAIM_COVERAGE__FOCAL:
 				return basicSetFocal(null, msgs);
-			case FhirPackage.CLAIM_COVERAGE__COVERAGE:
-				return basicSetCoverage(null, msgs);
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER:
+				return basicSetCoverageIdentifier(null, msgs);
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE:
+				return basicSetCoverageReference(null, msgs);
 			case FhirPackage.CLAIM_COVERAGE__BUSINESS_ARRANGEMENT:
 				return basicSetBusinessArrangement(null, msgs);
-			case FhirPackage.CLAIM_COVERAGE__RELATIONSHIP:
-				return basicSetRelationship(null, msgs);
 			case FhirPackage.CLAIM_COVERAGE__PRE_AUTH_REF:
 				return ((InternalEList<?>)getPreAuthRef()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CLAIM_COVERAGE__CLAIM_RESPONSE:
@@ -496,12 +497,12 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 				return getSequence();
 			case FhirPackage.CLAIM_COVERAGE__FOCAL:
 				return getFocal();
-			case FhirPackage.CLAIM_COVERAGE__COVERAGE:
-				return getCoverage();
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER:
+				return getCoverageIdentifier();
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE:
+				return getCoverageReference();
 			case FhirPackage.CLAIM_COVERAGE__BUSINESS_ARRANGEMENT:
 				return getBusinessArrangement();
-			case FhirPackage.CLAIM_COVERAGE__RELATIONSHIP:
-				return getRelationship();
 			case FhirPackage.CLAIM_COVERAGE__PRE_AUTH_REF:
 				return getPreAuthRef();
 			case FhirPackage.CLAIM_COVERAGE__CLAIM_RESPONSE:
@@ -527,14 +528,14 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 			case FhirPackage.CLAIM_COVERAGE__FOCAL:
 				setFocal((org.hl7.fhir.Boolean)newValue);
 				return;
-			case FhirPackage.CLAIM_COVERAGE__COVERAGE:
-				setCoverage((Reference)newValue);
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER:
+				setCoverageIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE:
+				setCoverageReference((Reference)newValue);
 				return;
 			case FhirPackage.CLAIM_COVERAGE__BUSINESS_ARRANGEMENT:
 				setBusinessArrangement((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.CLAIM_COVERAGE__RELATIONSHIP:
-				setRelationship((Coding)newValue);
 				return;
 			case FhirPackage.CLAIM_COVERAGE__PRE_AUTH_REF:
 				getPreAuthRef().clear();
@@ -564,14 +565,14 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 			case FhirPackage.CLAIM_COVERAGE__FOCAL:
 				setFocal((org.hl7.fhir.Boolean)null);
 				return;
-			case FhirPackage.CLAIM_COVERAGE__COVERAGE:
-				setCoverage((Reference)null);
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER:
+				setCoverageIdentifier((Identifier)null);
+				return;
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE:
+				setCoverageReference((Reference)null);
 				return;
 			case FhirPackage.CLAIM_COVERAGE__BUSINESS_ARRANGEMENT:
 				setBusinessArrangement((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.CLAIM_COVERAGE__RELATIONSHIP:
-				setRelationship((Coding)null);
 				return;
 			case FhirPackage.CLAIM_COVERAGE__PRE_AUTH_REF:
 				getPreAuthRef().clear();
@@ -598,12 +599,12 @@ public class ClaimCoverageImpl extends BackboneElementImpl implements ClaimCover
 				return sequence != null;
 			case FhirPackage.CLAIM_COVERAGE__FOCAL:
 				return focal != null;
-			case FhirPackage.CLAIM_COVERAGE__COVERAGE:
-				return coverage != null;
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_IDENTIFIER:
+				return coverageIdentifier != null;
+			case FhirPackage.CLAIM_COVERAGE__COVERAGE_REFERENCE:
+				return coverageReference != null;
 			case FhirPackage.CLAIM_COVERAGE__BUSINESS_ARRANGEMENT:
 				return businessArrangement != null;
-			case FhirPackage.CLAIM_COVERAGE__RELATIONSHIP:
-				return relationship != null;
 			case FhirPackage.CLAIM_COVERAGE__PRE_AUTH_REF:
 				return preAuthRef != null && !preAuthRef.isEmpty();
 			case FhirPackage.CLAIM_COVERAGE__CLAIM_RESPONSE:

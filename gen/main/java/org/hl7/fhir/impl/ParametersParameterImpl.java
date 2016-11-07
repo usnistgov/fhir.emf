@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.Address;
+import org.hl7.fhir.Age;
 import org.hl7.fhir.Annotation;
 import org.hl7.fhir.Attachment;
 import org.hl7.fhir.Base64Binary;
@@ -25,10 +26,12 @@ import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.ContactPoint;
+import org.hl7.fhir.Count;
 import org.hl7.fhir.Date;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.Decimal;
-import org.hl7.fhir.ElementDefinition;
+import org.hl7.fhir.Distance;
+import org.hl7.fhir.Duration;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.HumanName;
 import org.hl7.fhir.Id;
@@ -36,6 +39,7 @@ import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Instant;
 import org.hl7.fhir.Markdown;
 import org.hl7.fhir.Meta;
+import org.hl7.fhir.Money;
 import org.hl7.fhir.Oid;
 import org.hl7.fhir.ParametersParameter;
 import org.hl7.fhir.Period;
@@ -51,7 +55,6 @@ import org.hl7.fhir.Time;
 import org.hl7.fhir.Timing;
 import org.hl7.fhir.UnsignedInt;
 import org.hl7.fhir.Uri;
-import org.hl7.fhir.Uuid;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,41 +65,44 @@ import org.hl7.fhir.Uuid;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueBoolean <em>Value Boolean</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueInteger <em>Value Integer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueDecimal <em>Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueBase64Binary <em>Value Base64 Binary</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueInstant <em>Value Instant</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueString <em>Value String</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueUri <em>Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueBoolean <em>Value Boolean</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueCode <em>Value Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueDate <em>Value Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueDateTime <em>Value Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueTime <em>Value Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueCode <em>Value Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueOid <em>Value Oid</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueUuid <em>Value Uuid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueDecimal <em>Value Decimal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueId <em>Value Id</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueUnsignedInt <em>Value Unsigned Int</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValuePositiveInt <em>Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueInstant <em>Value Instant</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueInteger <em>Value Integer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueMarkdown <em>Value Markdown</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueOid <em>Value Oid</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValuePositiveInt <em>Value Positive Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueString <em>Value String</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueTime <em>Value Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueUnsignedInt <em>Value Unsigned Int</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueUri <em>Value Uri</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueAddress <em>Value Address</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueAge <em>Value Age</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueAnnotation <em>Value Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueAttachment <em>Value Attachment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueIdentifier <em>Value Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueCodeableConcept <em>Value Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueCoding <em>Value Coding</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueContactPoint <em>Value Contact Point</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueCount <em>Value Count</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueDistance <em>Value Distance</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueDuration <em>Value Duration</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueHumanName <em>Value Human Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueIdentifier <em>Value Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueMoney <em>Value Money</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValuePeriod <em>Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueQuantity <em>Value Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueRange <em>Value Range</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValuePeriod <em>Value Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueRatio <em>Value Ratio</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueReference <em>Value Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueSampledData <em>Value Sampled Data</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueSignature <em>Value Signature</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueHumanName <em>Value Human Name</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueAddress <em>Value Address</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueContactPoint <em>Value Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueTiming <em>Value Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueMeta <em>Value Meta</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueElementDefinition <em>Value Element Definition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getResource <em>Resource</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getPart <em>Part</em>}</li>
  * </ul>
@@ -115,36 +121,6 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected org.hl7.fhir.String name;
 
 	/**
-	 * The cached value of the '{@link #getValueBoolean() <em>Value Boolean</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueBoolean()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Boolean valueBoolean;
-
-	/**
-	 * The cached value of the '{@link #getValueInteger() <em>Value Integer</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueInteger()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.Integer valueInteger;
-
-	/**
-	 * The cached value of the '{@link #getValueDecimal() <em>Value Decimal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueDecimal()
-	 * @generated
-	 * @ordered
-	 */
-	protected Decimal valueDecimal;
-
-	/**
 	 * The cached value of the '{@link #getValueBase64Binary() <em>Value Base64 Binary</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,34 +131,24 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected Base64Binary valueBase64Binary;
 
 	/**
-	 * The cached value of the '{@link #getValueInstant() <em>Value Instant</em>}' containment reference.
+	 * The cached value of the '{@link #getValueBoolean() <em>Value Boolean</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueInstant()
+	 * @see #getValueBoolean()
 	 * @generated
 	 * @ordered
 	 */
-	protected Instant valueInstant;
+	protected org.hl7.fhir.Boolean valueBoolean;
 
 	/**
-	 * The cached value of the '{@link #getValueString() <em>Value String</em>}' containment reference.
+	 * The cached value of the '{@link #getValueCode() <em>Value Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueString()
+	 * @see #getValueCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String valueString;
-
-	/**
-	 * The cached value of the '{@link #getValueUri() <em>Value Uri</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uri valueUri;
+	protected Code valueCode;
 
 	/**
 	 * The cached value of the '{@link #getValueDate() <em>Value Date</em>}' containment reference.
@@ -205,44 +171,14 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected DateTime valueDateTime;
 
 	/**
-	 * The cached value of the '{@link #getValueTime() <em>Value Time</em>}' containment reference.
+	 * The cached value of the '{@link #getValueDecimal() <em>Value Decimal</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueTime()
+	 * @see #getValueDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time valueTime;
-
-	/**
-	 * The cached value of the '{@link #getValueCode() <em>Value Code</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueCode()
-	 * @generated
-	 * @ordered
-	 */
-	protected Code valueCode;
-
-	/**
-	 * The cached value of the '{@link #getValueOid() <em>Value Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueOid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Oid valueOid;
-
-	/**
-	 * The cached value of the '{@link #getValueUuid() <em>Value Uuid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Uuid valueUuid;
+	protected Decimal valueDecimal;
 
 	/**
 	 * The cached value of the '{@link #getValueId() <em>Value Id</em>}' containment reference.
@@ -255,14 +191,44 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected Id valueId;
 
 	/**
-	 * The cached value of the '{@link #getValueUnsignedInt() <em>Value Unsigned Int</em>}' containment reference.
+	 * The cached value of the '{@link #getValueInstant() <em>Value Instant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueUnsignedInt()
+	 * @see #getValueInstant()
 	 * @generated
 	 * @ordered
 	 */
-	protected UnsignedInt valueUnsignedInt;
+	protected Instant valueInstant;
+
+	/**
+	 * The cached value of the '{@link #getValueInteger() <em>Value Integer</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueInteger()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Integer valueInteger;
+
+	/**
+	 * The cached value of the '{@link #getValueMarkdown() <em>Value Markdown</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueMarkdown()
+	 * @generated
+	 * @ordered
+	 */
+	protected Markdown valueMarkdown;
+
+	/**
+	 * The cached value of the '{@link #getValueOid() <em>Value Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid valueOid;
 
 	/**
 	 * The cached value of the '{@link #getValuePositiveInt() <em>Value Positive Int</em>}' containment reference.
@@ -275,14 +241,64 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected PositiveInt valuePositiveInt;
 
 	/**
-	 * The cached value of the '{@link #getValueMarkdown() <em>Value Markdown</em>}' containment reference.
+	 * The cached value of the '{@link #getValueString() <em>Value String</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueMarkdown()
+	 * @see #getValueString()
 	 * @generated
 	 * @ordered
 	 */
-	protected Markdown valueMarkdown;
+	protected org.hl7.fhir.String valueString;
+
+	/**
+	 * The cached value of the '{@link #getValueTime() <em>Value Time</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected Time valueTime;
+
+	/**
+	 * The cached value of the '{@link #getValueUnsignedInt() <em>Value Unsigned Int</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueUnsignedInt()
+	 * @generated
+	 * @ordered
+	 */
+	protected UnsignedInt valueUnsignedInt;
+
+	/**
+	 * The cached value of the '{@link #getValueUri() <em>Value Uri</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected Uri valueUri;
+
+	/**
+	 * The cached value of the '{@link #getValueAddress() <em>Value Address</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected Address valueAddress;
+
+	/**
+	 * The cached value of the '{@link #getValueAge() <em>Value Age</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueAge()
+	 * @generated
+	 * @ordered
+	 */
+	protected Age valueAge;
 
 	/**
 	 * The cached value of the '{@link #getValueAnnotation() <em>Value Annotation</em>}' containment reference.
@@ -305,16 +321,6 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected Attachment valueAttachment;
 
 	/**
-	 * The cached value of the '{@link #getValueIdentifier() <em>Value Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Identifier valueIdentifier;
-
-	/**
 	 * The cached value of the '{@link #getValueCodeableConcept() <em>Value Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,6 +341,86 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected Coding valueCoding;
 
 	/**
+	 * The cached value of the '{@link #getValueContactPoint() <em>Value Contact Point</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueContactPoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected ContactPoint valueContactPoint;
+
+	/**
+	 * The cached value of the '{@link #getValueCount() <em>Value Count</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected Count valueCount;
+
+	/**
+	 * The cached value of the '{@link #getValueDistance() <em>Value Distance</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected Distance valueDistance;
+
+	/**
+	 * The cached value of the '{@link #getValueDuration() <em>Value Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected Duration valueDuration;
+
+	/**
+	 * The cached value of the '{@link #getValueHumanName() <em>Value Human Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueHumanName()
+	 * @generated
+	 * @ordered
+	 */
+	protected HumanName valueHumanName;
+
+	/**
+	 * The cached value of the '{@link #getValueIdentifier() <em>Value Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier valueIdentifier;
+
+	/**
+	 * The cached value of the '{@link #getValueMoney() <em>Value Money</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueMoney()
+	 * @generated
+	 * @ordered
+	 */
+	protected Money valueMoney;
+
+	/**
+	 * The cached value of the '{@link #getValuePeriod() <em>Value Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValuePeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period valuePeriod;
+
+	/**
 	 * The cached value of the '{@link #getValueQuantity() <em>Value Quantity</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -353,16 +439,6 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	 * @ordered
 	 */
 	protected Range valueRange;
-
-	/**
-	 * The cached value of the '{@link #getValuePeriod() <em>Value Period</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValuePeriod()
-	 * @generated
-	 * @ordered
-	 */
-	protected Period valuePeriod;
 
 	/**
 	 * The cached value of the '{@link #getValueRatio() <em>Value Ratio</em>}' containment reference.
@@ -405,36 +481,6 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	protected Signature valueSignature;
 
 	/**
-	 * The cached value of the '{@link #getValueHumanName() <em>Value Human Name</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueHumanName()
-	 * @generated
-	 * @ordered
-	 */
-	protected HumanName valueHumanName;
-
-	/**
-	 * The cached value of the '{@link #getValueAddress() <em>Value Address</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected Address valueAddress;
-
-	/**
-	 * The cached value of the '{@link #getValueContactPoint() <em>Value Contact Point</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueContactPoint()
-	 * @generated
-	 * @ordered
-	 */
-	protected ContactPoint valueContactPoint;
-
-	/**
 	 * The cached value of the '{@link #getValueTiming() <em>Value Timing</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -453,16 +499,6 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	 * @ordered
 	 */
 	protected Meta valueMeta;
-
-	/**
-	 * The cached value of the '{@link #getValueElementDefinition() <em>Value Element Definition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueElementDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected ElementDefinition valueElementDefinition;
 
 	/**
 	 * The cached value of the '{@link #getResource() <em>Resource</em>}' containment reference.
@@ -1067,49 +1103,6 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uuid getValueUuid() {
-		return valueUuid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetValueUuid(Uuid newValueUuid, NotificationChain msgs) {
-		Uuid oldValueUuid = valueUuid;
-		valueUuid = newValueUuid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID, oldValueUuid, newValueUuid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValueUuid(Uuid newValueUuid) {
-		if (newValueUuid != valueUuid) {
-			NotificationChain msgs = null;
-			if (valueUuid != null)
-				msgs = ((InternalEObject)valueUuid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID, null, msgs);
-			if (newValueUuid != null)
-				msgs = ((InternalEObject)newValueUuid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID, null, msgs);
-			msgs = basicSetValueUuid(newValueUuid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID, newValueUuid, newValueUuid));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Id getValueId() {
 		return valueId;
 	}
@@ -1404,6 +1397,49 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER, newValueIdentifier, newValueIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Money getValueMoney() {
+		return valueMoney;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValueMoney(Money newValueMoney, NotificationChain msgs) {
+		Money oldValueMoney = valueMoney;
+		valueMoney = newValueMoney;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY, oldValueMoney, newValueMoney);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueMoney(Money newValueMoney) {
+		if (newValueMoney != valueMoney) {
+			NotificationChain msgs = null;
+			if (valueMoney != null)
+				msgs = ((InternalEObject)valueMoney).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY, null, msgs);
+			if (newValueMoney != null)
+				msgs = ((InternalEObject)newValueMoney).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY, null, msgs);
+			msgs = basicSetValueMoney(newValueMoney, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY, newValueMoney, newValueMoney));
 	}
 
 	/**
@@ -1884,6 +1920,49 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Age getValueAge() {
+		return valueAge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValueAge(Age newValueAge, NotificationChain msgs) {
+		Age oldValueAge = valueAge;
+		valueAge = newValueAge;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE, oldValueAge, newValueAge);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueAge(Age newValueAge) {
+		if (newValueAge != valueAge) {
+			NotificationChain msgs = null;
+			if (valueAge != null)
+				msgs = ((InternalEObject)valueAge).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE, null, msgs);
+			if (newValueAge != null)
+				msgs = ((InternalEObject)newValueAge).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE, null, msgs);
+			msgs = basicSetValueAge(newValueAge, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE, newValueAge, newValueAge));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ContactPoint getValueContactPoint() {
 		return valueContactPoint;
 	}
@@ -1920,6 +1999,135 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT, newValueContactPoint, newValueContactPoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Count getValueCount() {
+		return valueCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValueCount(Count newValueCount, NotificationChain msgs) {
+		Count oldValueCount = valueCount;
+		valueCount = newValueCount;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT, oldValueCount, newValueCount);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueCount(Count newValueCount) {
+		if (newValueCount != valueCount) {
+			NotificationChain msgs = null;
+			if (valueCount != null)
+				msgs = ((InternalEObject)valueCount).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT, null, msgs);
+			if (newValueCount != null)
+				msgs = ((InternalEObject)newValueCount).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT, null, msgs);
+			msgs = basicSetValueCount(newValueCount, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT, newValueCount, newValueCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Distance getValueDistance() {
+		return valueDistance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValueDistance(Distance newValueDistance, NotificationChain msgs) {
+		Distance oldValueDistance = valueDistance;
+		valueDistance = newValueDistance;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE, oldValueDistance, newValueDistance);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueDistance(Distance newValueDistance) {
+		if (newValueDistance != valueDistance) {
+			NotificationChain msgs = null;
+			if (valueDistance != null)
+				msgs = ((InternalEObject)valueDistance).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE, null, msgs);
+			if (newValueDistance != null)
+				msgs = ((InternalEObject)newValueDistance).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE, null, msgs);
+			msgs = basicSetValueDistance(newValueDistance, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE, newValueDistance, newValueDistance));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Duration getValueDuration() {
+		return valueDuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValueDuration(Duration newValueDuration, NotificationChain msgs) {
+		Duration oldValueDuration = valueDuration;
+		valueDuration = newValueDuration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION, oldValueDuration, newValueDuration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueDuration(Duration newValueDuration) {
+		if (newValueDuration != valueDuration) {
+			NotificationChain msgs = null;
+			if (valueDuration != null)
+				msgs = ((InternalEObject)valueDuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION, null, msgs);
+			if (newValueDuration != null)
+				msgs = ((InternalEObject)newValueDuration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION, null, msgs);
+			msgs = basicSetValueDuration(newValueDuration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION, newValueDuration, newValueDuration));
 	}
 
 	/**
@@ -2013,49 +2221,6 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ElementDefinition getValueElementDefinition() {
-		return valueElementDefinition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetValueElementDefinition(ElementDefinition newValueElementDefinition, NotificationChain msgs) {
-		ElementDefinition oldValueElementDefinition = valueElementDefinition;
-		valueElementDefinition = newValueElementDefinition;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, oldValueElementDefinition, newValueElementDefinition);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValueElementDefinition(ElementDefinition newValueElementDefinition) {
-		if (newValueElementDefinition != valueElementDefinition) {
-			NotificationChain msgs = null;
-			if (valueElementDefinition != null)
-				msgs = ((InternalEObject)valueElementDefinition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, null, msgs);
-			if (newValueElementDefinition != null)
-				msgs = ((InternalEObject)newValueElementDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, null, msgs);
-			msgs = basicSetValueElementDefinition(newValueElementDefinition, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, newValueElementDefinition, newValueElementDefinition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ResourceContainer getResource() {
 		return resource;
 	}
@@ -2116,56 +2281,70 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 		switch (featureID) {
 			case FhirPackage.PARAMETERS_PARAMETER__NAME:
 				return basicSetName(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
-				return basicSetValueBoolean(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
-				return basicSetValueInteger(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
-				return basicSetValueDecimal(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BASE64_BINARY:
 				return basicSetValueBase64Binary(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
-				return basicSetValueInstant(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
-				return basicSetValueString(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
-				return basicSetValueUri(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
+				return basicSetValueBoolean(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
+				return basicSetValueCode(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE:
 				return basicSetValueDate(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE_TIME:
 				return basicSetValueDateTime(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
-				return basicSetValueTime(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
-				return basicSetValueCode(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
-				return basicSetValueOid(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID:
-				return basicSetValueUuid(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
+				return basicSetValueDecimal(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ID:
 				return basicSetValueId(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
-				return basicSetValueUnsignedInt(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
-				return basicSetValuePositiveInt(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
+				return basicSetValueInstant(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
+				return basicSetValueInteger(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MARKDOWN:
 				return basicSetValueMarkdown(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
+				return basicSetValueOid(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
+				return basicSetValuePositiveInt(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
+				return basicSetValueString(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
+				return basicSetValueTime(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
+				return basicSetValueUnsignedInt(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
+				return basicSetValueUri(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
+				return basicSetValueAddress(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE:
+				return basicSetValueAge(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ANNOTATION:
 				return basicSetValueAnnotation(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ATTACHMENT:
 				return basicSetValueAttachment(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
-				return basicSetValueIdentifier(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODEABLE_CONCEPT:
 				return basicSetValueCodeableConcept(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODING:
 				return basicSetValueCoding(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
+				return basicSetValueContactPoint(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT:
+				return basicSetValueCount(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE:
+				return basicSetValueDistance(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION:
+				return basicSetValueDuration(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
+				return basicSetValueHumanName(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
+				return basicSetValueIdentifier(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY:
+				return basicSetValueMoney(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
+				return basicSetValuePeriod(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_QUANTITY:
 				return basicSetValueQuantity(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RANGE:
 				return basicSetValueRange(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
-				return basicSetValuePeriod(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RATIO:
 				return basicSetValueRatio(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_REFERENCE:
@@ -2174,18 +2353,10 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 				return basicSetValueSampledData(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_SIGNATURE:
 				return basicSetValueSignature(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
-				return basicSetValueHumanName(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
-				return basicSetValueAddress(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
-				return basicSetValueContactPoint(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIMING:
 				return basicSetValueTiming(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				return basicSetValueMeta(null, msgs);
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
-				return basicSetValueElementDefinition(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				return basicSetResource(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__PART:
@@ -2204,56 +2375,70 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 		switch (featureID) {
 			case FhirPackage.PARAMETERS_PARAMETER__NAME:
 				return getName();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
-				return getValueBoolean();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
-				return getValueInteger();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
-				return getValueDecimal();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BASE64_BINARY:
 				return getValueBase64Binary();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
-				return getValueInstant();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
-				return getValueString();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
-				return getValueUri();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
+				return getValueBoolean();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
+				return getValueCode();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE:
 				return getValueDate();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE_TIME:
 				return getValueDateTime();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
-				return getValueTime();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
-				return getValueCode();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
-				return getValueOid();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID:
-				return getValueUuid();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
+				return getValueDecimal();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ID:
 				return getValueId();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
-				return getValueUnsignedInt();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
-				return getValuePositiveInt();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
+				return getValueInstant();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
+				return getValueInteger();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MARKDOWN:
 				return getValueMarkdown();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
+				return getValueOid();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
+				return getValuePositiveInt();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
+				return getValueString();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
+				return getValueTime();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
+				return getValueUnsignedInt();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
+				return getValueUri();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
+				return getValueAddress();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE:
+				return getValueAge();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ANNOTATION:
 				return getValueAnnotation();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ATTACHMENT:
 				return getValueAttachment();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
-				return getValueIdentifier();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODEABLE_CONCEPT:
 				return getValueCodeableConcept();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODING:
 				return getValueCoding();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
+				return getValueContactPoint();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT:
+				return getValueCount();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE:
+				return getValueDistance();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION:
+				return getValueDuration();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
+				return getValueHumanName();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
+				return getValueIdentifier();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY:
+				return getValueMoney();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
+				return getValuePeriod();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_QUANTITY:
 				return getValueQuantity();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RANGE:
 				return getValueRange();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
-				return getValuePeriod();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RATIO:
 				return getValueRatio();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_REFERENCE:
@@ -2262,18 +2447,10 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 				return getValueSampledData();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_SIGNATURE:
 				return getValueSignature();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
-				return getValueHumanName();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
-				return getValueAddress();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
-				return getValueContactPoint();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIMING:
 				return getValueTiming();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				return getValueMeta();
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
-				return getValueElementDefinition();
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				return getResource();
 			case FhirPackage.PARAMETERS_PARAMETER__PART:
@@ -2294,26 +2471,14 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__NAME:
 				setName((org.hl7.fhir.String)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
-				setValueBoolean((org.hl7.fhir.Boolean)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
-				setValueInteger((org.hl7.fhir.Integer)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
-				setValueDecimal((Decimal)newValue);
-				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BASE64_BINARY:
 				setValueBase64Binary((Base64Binary)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
-				setValueInstant((Instant)newValue);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
+				setValueBoolean((org.hl7.fhir.Boolean)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
-				setValueString((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
-				setValueUri((Uri)newValue);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
+				setValueCode((Code)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE:
 				setValueDate((Date)newValue);
@@ -2321,29 +2486,44 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE_TIME:
 				setValueDateTime((DateTime)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
-				setValueTime((Time)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
-				setValueCode((Code)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
-				setValueOid((Oid)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID:
-				setValueUuid((Uuid)newValue);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
+				setValueDecimal((Decimal)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ID:
 				setValueId((Id)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
-				setValueUnsignedInt((UnsignedInt)newValue);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
+				setValueInstant((Instant)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
+				setValueInteger((org.hl7.fhir.Integer)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MARKDOWN:
+				setValueMarkdown((Markdown)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
+				setValueOid((Oid)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
 				setValuePositiveInt((PositiveInt)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MARKDOWN:
-				setValueMarkdown((Markdown)newValue);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
+				setValueString((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
+				setValueTime((Time)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
+				setValueUnsignedInt((UnsignedInt)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
+				setValueUri((Uri)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
+				setValueAddress((Address)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE:
+				setValueAge((Age)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ANNOTATION:
 				setValueAnnotation((Annotation)newValue);
@@ -2351,23 +2531,41 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ATTACHMENT:
 				setValueAttachment((Attachment)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
-				setValueIdentifier((Identifier)newValue);
-				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODEABLE_CONCEPT:
 				setValueCodeableConcept((CodeableConcept)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODING:
 				setValueCoding((Coding)newValue);
 				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
+				setValueContactPoint((ContactPoint)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT:
+				setValueCount((Count)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE:
+				setValueDistance((Distance)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION:
+				setValueDuration((Duration)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
+				setValueHumanName((HumanName)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
+				setValueIdentifier((Identifier)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY:
+				setValueMoney((Money)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
+				setValuePeriod((Period)newValue);
+				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_QUANTITY:
 				setValueQuantity((Quantity)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RANGE:
 				setValueRange((Range)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
-				setValuePeriod((Period)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RATIO:
 				setValueRatio((Ratio)newValue);
@@ -2381,23 +2579,11 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_SIGNATURE:
 				setValueSignature((Signature)newValue);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
-				setValueHumanName((HumanName)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
-				setValueAddress((Address)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
-				setValueContactPoint((ContactPoint)newValue);
-				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIMING:
 				setValueTiming((Timing)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				setValueMeta((Meta)newValue);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
-				setValueElementDefinition((ElementDefinition)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				setResource((ResourceContainer)newValue);
@@ -2421,26 +2607,14 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__NAME:
 				setName((org.hl7.fhir.String)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
-				setValueBoolean((org.hl7.fhir.Boolean)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
-				setValueInteger((org.hl7.fhir.Integer)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
-				setValueDecimal((Decimal)null);
-				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BASE64_BINARY:
 				setValueBase64Binary((Base64Binary)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
-				setValueInstant((Instant)null);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
+				setValueBoolean((org.hl7.fhir.Boolean)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
-				setValueString((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
-				setValueUri((Uri)null);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
+				setValueCode((Code)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE:
 				setValueDate((Date)null);
@@ -2448,29 +2622,44 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE_TIME:
 				setValueDateTime((DateTime)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
-				setValueTime((Time)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
-				setValueCode((Code)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
-				setValueOid((Oid)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID:
-				setValueUuid((Uuid)null);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
+				setValueDecimal((Decimal)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ID:
 				setValueId((Id)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
-				setValueUnsignedInt((UnsignedInt)null);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
+				setValueInstant((Instant)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
+				setValueInteger((org.hl7.fhir.Integer)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MARKDOWN:
+				setValueMarkdown((Markdown)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
+				setValueOid((Oid)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
 				setValuePositiveInt((PositiveInt)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MARKDOWN:
-				setValueMarkdown((Markdown)null);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
+				setValueString((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
+				setValueTime((Time)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
+				setValueUnsignedInt((UnsignedInt)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
+				setValueUri((Uri)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
+				setValueAddress((Address)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE:
+				setValueAge((Age)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ANNOTATION:
 				setValueAnnotation((Annotation)null);
@@ -2478,23 +2667,41 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ATTACHMENT:
 				setValueAttachment((Attachment)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
-				setValueIdentifier((Identifier)null);
-				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODEABLE_CONCEPT:
 				setValueCodeableConcept((CodeableConcept)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODING:
 				setValueCoding((Coding)null);
 				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
+				setValueContactPoint((ContactPoint)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT:
+				setValueCount((Count)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE:
+				setValueDistance((Distance)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION:
+				setValueDuration((Duration)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
+				setValueHumanName((HumanName)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
+				setValueIdentifier((Identifier)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY:
+				setValueMoney((Money)null);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
+				setValuePeriod((Period)null);
+				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_QUANTITY:
 				setValueQuantity((Quantity)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RANGE:
 				setValueRange((Range)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
-				setValuePeriod((Period)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RATIO:
 				setValueRatio((Ratio)null);
@@ -2508,23 +2715,11 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_SIGNATURE:
 				setValueSignature((Signature)null);
 				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
-				setValueHumanName((HumanName)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
-				setValueAddress((Address)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
-				setValueContactPoint((ContactPoint)null);
-				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIMING:
 				setValueTiming((Timing)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				setValueMeta((Meta)null);
-				return;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
-				setValueElementDefinition((ElementDefinition)null);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				setResource((ResourceContainer)null);
@@ -2546,56 +2741,70 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 		switch (featureID) {
 			case FhirPackage.PARAMETERS_PARAMETER__NAME:
 				return name != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
-				return valueBoolean != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
-				return valueInteger != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
-				return valueDecimal != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BASE64_BINARY:
 				return valueBase64Binary != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
-				return valueInstant != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
-				return valueString != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
-				return valueUri != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_BOOLEAN:
+				return valueBoolean != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
+				return valueCode != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE:
 				return valueDate != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DATE_TIME:
 				return valueDateTime != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
-				return valueTime != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODE:
-				return valueCode != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
-				return valueOid != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UUID:
-				return valueUuid != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DECIMAL:
+				return valueDecimal != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ID:
 				return valueId != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
-				return valueUnsignedInt != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
-				return valuePositiveInt != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INSTANT:
+				return valueInstant != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_INTEGER:
+				return valueInteger != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MARKDOWN:
 				return valueMarkdown != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_OID:
+				return valueOid != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_POSITIVE_INT:
+				return valuePositiveInt != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_STRING:
+				return valueString != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIME:
+				return valueTime != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_UNSIGNED_INT:
+				return valueUnsignedInt != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_URI:
+				return valueUri != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
+				return valueAddress != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_AGE:
+				return valueAge != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ANNOTATION:
 				return valueAnnotation != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ATTACHMENT:
 				return valueAttachment != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
-				return valueIdentifier != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODEABLE_CONCEPT:
 				return valueCodeableConcept != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CODING:
 				return valueCoding != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
+				return valueContactPoint != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_COUNT:
+				return valueCount != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DISTANCE:
+				return valueDistance != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_DURATION:
+				return valueDuration != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
+				return valueHumanName != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_IDENTIFIER:
+				return valueIdentifier != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_MONEY:
+				return valueMoney != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
+				return valuePeriod != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_QUANTITY:
 				return valueQuantity != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RANGE:
 				return valueRange != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_PERIOD:
-				return valuePeriod != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_RATIO:
 				return valueRatio != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_REFERENCE:
@@ -2604,18 +2813,10 @@ public class ParametersParameterImpl extends BackboneElementImpl implements Para
 				return valueSampledData != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_SIGNATURE:
 				return valueSignature != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_HUMAN_NAME:
-				return valueHumanName != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ADDRESS:
-				return valueAddress != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_CONTACT_POINT:
-				return valueContactPoint != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_TIMING:
 				return valueTiming != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				return valueMeta != null;
-			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
-				return valueElementDefinition != null;
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				return resource != null;
 			case FhirPackage.PARAMETERS_PARAMETER__PART:

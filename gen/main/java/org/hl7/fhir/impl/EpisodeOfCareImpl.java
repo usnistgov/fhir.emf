@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.EpisodeOfCare;
-import org.hl7.fhir.EpisodeOfCareCareTeam;
 import org.hl7.fhir.EpisodeOfCareStatus;
 import org.hl7.fhir.EpisodeOfCareStatusHistory;
 import org.hl7.fhir.FhirPackage;
@@ -45,7 +44,8 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getReferralRequest <em>Referral Request</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getCareManager <em>Care Manager</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getCareTeam <em>Care Team</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getTeam <em>Team</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getAccount <em>Account</em>}</li>
  * </ul>
  *
  * @generated
@@ -152,14 +152,24 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 	protected Reference careManager;
 
 	/**
-	 * The cached value of the '{@link #getCareTeam() <em>Care Team</em>}' containment reference list.
+	 * The cached value of the '{@link #getTeam() <em>Team</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCareTeam()
+	 * @see #getTeam()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EpisodeOfCareCareTeam> careTeam;
+	protected EList<Reference> team;
+
+	/**
+	 * The cached value of the '{@link #getAccount() <em>Account</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAccount()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> account;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -460,11 +470,23 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EpisodeOfCareCareTeam> getCareTeam() {
-		if (careTeam == null) {
-			careTeam = new EObjectContainmentEList<EpisodeOfCareCareTeam>(EpisodeOfCareCareTeam.class, this, FhirPackage.EPISODE_OF_CARE__CARE_TEAM);
+	public EList<Reference> getTeam() {
+		if (team == null) {
+			team = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.EPISODE_OF_CARE__TEAM);
 		}
-		return careTeam;
+		return team;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Reference> getAccount() {
+		if (account == null) {
+			account = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.EPISODE_OF_CARE__ACCOUNT);
+		}
+		return account;
 	}
 
 	/**
@@ -495,8 +517,10 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return ((InternalEList<?>)getReferralRequest()).basicRemove(otherEnd, msgs);
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:
 				return basicSetCareManager(null, msgs);
-			case FhirPackage.EPISODE_OF_CARE__CARE_TEAM:
-				return ((InternalEList<?>)getCareTeam()).basicRemove(otherEnd, msgs);
+			case FhirPackage.EPISODE_OF_CARE__TEAM:
+				return ((InternalEList<?>)getTeam()).basicRemove(otherEnd, msgs);
+			case FhirPackage.EPISODE_OF_CARE__ACCOUNT:
+				return ((InternalEList<?>)getAccount()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -529,8 +553,10 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return getReferralRequest();
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:
 				return getCareManager();
-			case FhirPackage.EPISODE_OF_CARE__CARE_TEAM:
-				return getCareTeam();
+			case FhirPackage.EPISODE_OF_CARE__TEAM:
+				return getTeam();
+			case FhirPackage.EPISODE_OF_CARE__ACCOUNT:
+				return getAccount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -579,9 +605,13 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:
 				setCareManager((Reference)newValue);
 				return;
-			case FhirPackage.EPISODE_OF_CARE__CARE_TEAM:
-				getCareTeam().clear();
-				getCareTeam().addAll((Collection<? extends EpisodeOfCareCareTeam>)newValue);
+			case FhirPackage.EPISODE_OF_CARE__TEAM:
+				getTeam().clear();
+				getTeam().addAll((Collection<? extends Reference>)newValue);
+				return;
+			case FhirPackage.EPISODE_OF_CARE__ACCOUNT:
+				getAccount().clear();
+				getAccount().addAll((Collection<? extends Reference>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -625,8 +655,11 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:
 				setCareManager((Reference)null);
 				return;
-			case FhirPackage.EPISODE_OF_CARE__CARE_TEAM:
-				getCareTeam().clear();
+			case FhirPackage.EPISODE_OF_CARE__TEAM:
+				getTeam().clear();
+				return;
+			case FhirPackage.EPISODE_OF_CARE__ACCOUNT:
+				getAccount().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -660,8 +693,10 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return referralRequest != null && !referralRequest.isEmpty();
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:
 				return careManager != null;
-			case FhirPackage.EPISODE_OF_CARE__CARE_TEAM:
-				return careTeam != null && !careTeam.isEmpty();
+			case FhirPackage.EPISODE_OF_CARE__TEAM:
+				return team != null && !team.isEmpty();
+			case FhirPackage.EPISODE_OF_CARE__ACCOUNT:
+				return account != null && !account.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

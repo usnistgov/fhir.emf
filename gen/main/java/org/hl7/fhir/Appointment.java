@@ -20,7 +20,10 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.hl7.fhir.Appointment#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getStatus <em>Status</em>}</li>
- *   <li>{@link org.hl7.fhir.Appointment#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Appointment#getServiceCategory <em>Service Category</em>}</li>
+ *   <li>{@link org.hl7.fhir.Appointment#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Appointment#getSpecialty <em>Specialty</em>}</li>
+ *   <li>{@link org.hl7.fhir.Appointment#getAppointmentType <em>Appointment Type</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getDescription <em>Description</em>}</li>
@@ -28,6 +31,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Appointment#getEnd <em>End</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getMinutesDuration <em>Minutes Duration</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getSlot <em>Slot</em>}</li>
+ *   <li>{@link org.hl7.fhir.Appointment#getCreated <em>Created</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getComment <em>Comment</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getParticipant <em>Participant</em>}</li>
  * </ul>
@@ -80,30 +84,88 @@ public interface Appointment extends DomainResource {
 	void setStatus(AppointmentStatus value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Service Category</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of appointment that is being booked (This may also be associated with participants for location, and/or a HealthcareService).
+	 * A broad categorisation of the service that is to be performed during this appointment.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getAppointment_Type()
+	 * @return the value of the '<em>Service Category</em>' containment reference.
+	 * @see #setServiceCategory(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getAppointment_ServiceCategory()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='serviceCategory' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getType();
+	CodeableConcept getServiceCategory();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Appointment#getType <em>Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.Appointment#getServiceCategory <em>Service Category</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' containment reference.
-	 * @see #getType()
+	 * @param value the new value of the '<em>Service Category</em>' containment reference.
+	 * @see #getServiceCategory()
 	 * @generated
 	 */
-	void setType(CodeableConcept value);
+	void setServiceCategory(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Service Type</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The specific service that is to be performed during this appointment.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Service Type</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getAppointment_ServiceType()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='serviceType' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CodeableConcept> getServiceType();
+
+	/**
+	 * Returns the value of the '<em><b>Specialty</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The specialty of a practitioner that would be required to perform the service requested in this appointment.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Specialty</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getAppointment_Specialty()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='specialty' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CodeableConcept> getSpecialty();
+
+	/**
+	 * Returns the value of the '<em><b>Appointment Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The style of appointment or patient that has been booked in the slot (not service type).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Appointment Type</em>' containment reference.
+	 * @see #setAppointmentType(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getAppointment_AppointmentType()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='appointmentType' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CodeableConcept getAppointmentType();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Appointment#getAppointmentType <em>Appointment Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Appointment Type</em>' containment reference.
+	 * @see #getAppointmentType()
+	 * @generated
+	 */
+	void setAppointmentType(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Reason</b></em>' containment reference.
@@ -276,6 +338,32 @@ public interface Appointment extends DomainResource {
 	 * @generated
 	 */
 	EList<Reference> getSlot();
+
+	/**
+	 * Returns the value of the '<em><b>Created</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The date that this appointment was initially created. This could be different to the meta.lastModified value on the initial entry, as this could have been before the resource was created on the FHIR server, and should remain unchanged over the lifespan of the appointment.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Created</em>' containment reference.
+	 * @see #setCreated(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getAppointment_Created()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='created' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	DateTime getCreated();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Appointment#getCreated <em>Created</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Created</em>' containment reference.
+	 * @see #getCreated()
+	 * @generated
+	 */
+	void setCreated(DateTime value);
 
 	/**
 	 * Returns the value of the '<em><b>Comment</b></em>' containment reference.

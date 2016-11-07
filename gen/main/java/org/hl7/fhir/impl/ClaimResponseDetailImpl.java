@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.hl7.fhir.ClaimResponseAdjudication1;
+import org.hl7.fhir.ClaimResponseAdjudication;
 import org.hl7.fhir.ClaimResponseDetail;
 import org.hl7.fhir.ClaimResponseSubDetail;
 import org.hl7.fhir.FhirPackage;
@@ -32,6 +32,7 @@ import org.hl7.fhir.PositiveInt;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseDetailImpl#getSequenceLinkId <em>Sequence Link Id</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ClaimResponseDetailImpl#getNoteNumber <em>Note Number</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseDetailImpl#getAdjudication <em>Adjudication</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ClaimResponseDetailImpl#getSubDetail <em>Sub Detail</em>}</li>
  * </ul>
@@ -50,6 +51,16 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 	protected PositiveInt sequenceLinkId;
 
 	/**
+	 * The cached value of the '{@link #getNoteNumber() <em>Note Number</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNoteNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PositiveInt> noteNumber;
+
+	/**
 	 * The cached value of the '{@link #getAdjudication() <em>Adjudication</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,7 +68,7 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ClaimResponseAdjudication1> adjudication;
+	protected EList<ClaimResponseAdjudication> adjudication;
 
 	/**
 	 * The cached value of the '{@link #getSubDetail() <em>Sub Detail</em>}' containment reference list.
@@ -136,9 +147,21 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ClaimResponseAdjudication1> getAdjudication() {
+	public EList<PositiveInt> getNoteNumber() {
+		if (noteNumber == null) {
+			noteNumber = new EObjectContainmentEList<PositiveInt>(PositiveInt.class, this, FhirPackage.CLAIM_RESPONSE_DETAIL__NOTE_NUMBER);
+		}
+		return noteNumber;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ClaimResponseAdjudication> getAdjudication() {
 		if (adjudication == null) {
-			adjudication = new EObjectContainmentEList<ClaimResponseAdjudication1>(ClaimResponseAdjudication1.class, this, FhirPackage.CLAIM_RESPONSE_DETAIL__ADJUDICATION);
+			adjudication = new EObjectContainmentEList<ClaimResponseAdjudication>(ClaimResponseAdjudication.class, this, FhirPackage.CLAIM_RESPONSE_DETAIL__ADJUDICATION);
 		}
 		return adjudication;
 	}
@@ -165,6 +188,8 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 		switch (featureID) {
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SEQUENCE_LINK_ID:
 				return basicSetSequenceLinkId(null, msgs);
+			case FhirPackage.CLAIM_RESPONSE_DETAIL__NOTE_NUMBER:
+				return ((InternalEList<?>)getNoteNumber()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__ADJUDICATION:
 				return ((InternalEList<?>)getAdjudication()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SUB_DETAIL:
@@ -183,6 +208,8 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 		switch (featureID) {
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SEQUENCE_LINK_ID:
 				return getSequenceLinkId();
+			case FhirPackage.CLAIM_RESPONSE_DETAIL__NOTE_NUMBER:
+				return getNoteNumber();
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__ADJUDICATION:
 				return getAdjudication();
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SUB_DETAIL:
@@ -203,9 +230,13 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SEQUENCE_LINK_ID:
 				setSequenceLinkId((PositiveInt)newValue);
 				return;
+			case FhirPackage.CLAIM_RESPONSE_DETAIL__NOTE_NUMBER:
+				getNoteNumber().clear();
+				getNoteNumber().addAll((Collection<? extends PositiveInt>)newValue);
+				return;
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__ADJUDICATION:
 				getAdjudication().clear();
-				getAdjudication().addAll((Collection<? extends ClaimResponseAdjudication1>)newValue);
+				getAdjudication().addAll((Collection<? extends ClaimResponseAdjudication>)newValue);
 				return;
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SUB_DETAIL:
 				getSubDetail().clear();
@@ -225,6 +256,9 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 		switch (featureID) {
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SEQUENCE_LINK_ID:
 				setSequenceLinkId((PositiveInt)null);
+				return;
+			case FhirPackage.CLAIM_RESPONSE_DETAIL__NOTE_NUMBER:
+				getNoteNumber().clear();
 				return;
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__ADJUDICATION:
 				getAdjudication().clear();
@@ -246,6 +280,8 @@ public class ClaimResponseDetailImpl extends BackboneElementImpl implements Clai
 		switch (featureID) {
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SEQUENCE_LINK_ID:
 				return sequenceLinkId != null;
+			case FhirPackage.CLAIM_RESPONSE_DETAIL__NOTE_NUMBER:
+				return noteNumber != null && !noteNumber.isEmpty();
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__ADJUDICATION:
 				return adjudication != null && !adjudication.isEmpty();
 			case FhirPackage.CLAIM_RESPONSE_DETAIL__SUB_DETAIL:

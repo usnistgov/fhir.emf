@@ -55,7 +55,7 @@ public enum DeviceStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Device is available for use.
+	 * Available
 	 * <!-- end-model-doc -->
 	 * @see #AVAILABLE
 	 * @model name="available"
@@ -69,7 +69,7 @@ public enum DeviceStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Device is no longer available for use (e.g. lost, expired, damaged).
+	 * Not Available
 	 * <!-- end-model-doc -->
 	 * @see #NOT_AVAILABLE
 	 * @model name="notAvailable" literal="not-available"
@@ -83,7 +83,7 @@ public enum DeviceStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Device was entered in error and voided.
+	 * Entered in Error
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"

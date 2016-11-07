@@ -105,7 +105,7 @@ public interface Provenance extends DomainResource {
 
 	/**
 	 * Returns the value of the '<em><b>Reason</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -117,7 +117,7 @@ public interface Provenance extends DomainResource {
 	 *        extendedMetaData="kind='element' name='reason' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<CodeableConcept> getReason();
+	EList<Coding> getReason();
 
 	/**
 	 * Returns the value of the '<em><b>Activity</b></em>' containment reference.
@@ -127,13 +127,13 @@ public interface Provenance extends DomainResource {
 	 * An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Activity</em>' containment reference.
-	 * @see #setActivity(CodeableConcept)
+	 * @see #setActivity(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getProvenance_Activity()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='activity' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getActivity();
+	Coding getActivity();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.Provenance#getActivity <em>Activity</em>}' containment reference.
@@ -143,7 +143,7 @@ public interface Provenance extends DomainResource {
 	 * @see #getActivity()
 	 * @generated
 	 */
-	void setActivity(CodeableConcept value);
+	void setActivity(Coding value);
 
 	/**
 	 * Returns the value of the '<em><b>Location</b></em>' containment reference.
@@ -193,11 +193,11 @@ public interface Provenance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.
+	 * An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Agent</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getProvenance_Agent()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='agent' namespace='##targetNamespace'"
 	 * @generated
 	 */

@@ -22,8 +22,8 @@ import org.hl7.fhir.Uri;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.ConceptMapDependsOnImpl#getElement <em>Element</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ConceptMapDependsOnImpl#getCodeSystem <em>Code System</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ConceptMapDependsOnImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ConceptMapDependsOnImpl#getSystem <em>System</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConceptMapDependsOnImpl#getCode <em>Code</em>}</li>
  * </ul>
  *
@@ -31,24 +31,24 @@ import org.hl7.fhir.Uri;
  */
 public class ConceptMapDependsOnImpl extends BackboneElementImpl implements ConceptMapDependsOn {
 	/**
-	 * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
+	 * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getElement()
+	 * @see #getProperty()
 	 * @generated
 	 * @ordered
 	 */
-	protected Uri element;
+	protected Uri property;
 
 	/**
-	 * The cached value of the '{@link #getCodeSystem() <em>Code System</em>}' containment reference.
+	 * The cached value of the '{@link #getSystem() <em>System</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCodeSystem()
+	 * @see #getSystem()
 	 * @generated
 	 * @ordered
 	 */
-	protected Uri codeSystem;
+	protected Uri system;
 
 	/**
 	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
@@ -84,8 +84,8 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uri getElement() {
-		return element;
+	public Uri getProperty() {
+		return property;
 	}
 
 	/**
@@ -93,11 +93,11 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetElement(Uri newElement, NotificationChain msgs) {
-		Uri oldElement = element;
-		element = newElement;
+	public NotificationChain basicSetProperty(Uri newProperty, NotificationChain msgs) {
+		Uri oldProperty = property;
+		property = newProperty;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT, oldElement, newElement);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY, oldProperty, newProperty);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -108,18 +108,18 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setElement(Uri newElement) {
-		if (newElement != element) {
+	public void setProperty(Uri newProperty) {
+		if (newProperty != property) {
 			NotificationChain msgs = null;
-			if (element != null)
-				msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT, null, msgs);
-			if (newElement != null)
-				msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT, null, msgs);
-			msgs = basicSetElement(newElement, msgs);
+			if (property != null)
+				msgs = ((InternalEObject)property).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY, null, msgs);
+			if (newProperty != null)
+				msgs = ((InternalEObject)newProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY, null, msgs);
+			msgs = basicSetProperty(newProperty, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT, newElement, newElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY, newProperty, newProperty));
 	}
 
 	/**
@@ -127,8 +127,8 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Uri getCodeSystem() {
-		return codeSystem;
+	public Uri getSystem() {
+		return system;
 	}
 
 	/**
@@ -136,11 +136,11 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCodeSystem(Uri newCodeSystem, NotificationChain msgs) {
-		Uri oldCodeSystem = codeSystem;
-		codeSystem = newCodeSystem;
+	public NotificationChain basicSetSystem(Uri newSystem, NotificationChain msgs) {
+		Uri oldSystem = system;
+		system = newSystem;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM, oldCodeSystem, newCodeSystem);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM, oldSystem, newSystem);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -151,18 +151,18 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCodeSystem(Uri newCodeSystem) {
-		if (newCodeSystem != codeSystem) {
+	public void setSystem(Uri newSystem) {
+		if (newSystem != system) {
 			NotificationChain msgs = null;
-			if (codeSystem != null)
-				msgs = ((InternalEObject)codeSystem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM, null, msgs);
-			if (newCodeSystem != null)
-				msgs = ((InternalEObject)newCodeSystem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM, null, msgs);
-			msgs = basicSetCodeSystem(newCodeSystem, msgs);
+			if (system != null)
+				msgs = ((InternalEObject)system).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM, null, msgs);
+			if (newSystem != null)
+				msgs = ((InternalEObject)newSystem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM, null, msgs);
+			msgs = basicSetSystem(newSystem, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM, newCodeSystem, newCodeSystem));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM, newSystem, newSystem));
 	}
 
 	/**
@@ -216,10 +216,10 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT:
-				return basicSetElement(null, msgs);
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM:
-				return basicSetCodeSystem(null, msgs);
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY:
+				return basicSetProperty(null, msgs);
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM:
+				return basicSetSystem(null, msgs);
 			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE:
 				return basicSetCode(null, msgs);
 		}
@@ -234,10 +234,10 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT:
-				return getElement();
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM:
-				return getCodeSystem();
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY:
+				return getProperty();
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM:
+				return getSystem();
 			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE:
 				return getCode();
 		}
@@ -252,11 +252,11 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT:
-				setElement((Uri)newValue);
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY:
+				setProperty((Uri)newValue);
 				return;
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM:
-				setCodeSystem((Uri)newValue);
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM:
+				setSystem((Uri)newValue);
 				return;
 			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE:
 				setCode((org.hl7.fhir.String)newValue);
@@ -273,11 +273,11 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT:
-				setElement((Uri)null);
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY:
+				setProperty((Uri)null);
 				return;
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM:
-				setCodeSystem((Uri)null);
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM:
+				setSystem((Uri)null);
 				return;
 			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE:
 				setCode((org.hl7.fhir.String)null);
@@ -294,10 +294,10 @@ public class ConceptMapDependsOnImpl extends BackboneElementImpl implements Conc
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__ELEMENT:
-				return element != null;
-			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE_SYSTEM:
-				return codeSystem != null;
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__PROPERTY:
+				return property != null;
+			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__SYSTEM:
+				return system != null;
 			case FhirPackage.CONCEPT_MAP_DEPENDS_ON__CODE:
 				return code != null;
 		}

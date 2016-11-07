@@ -39,6 +39,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.LocationImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getMode <em>Mode</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getType <em>Type</em>}</li>
@@ -48,6 +49,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getManagingOrganization <em>Managing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getPartOf <em>Part Of</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.LocationImpl#getEndpoint <em>Endpoint</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,6 +84,16 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String name;
+
+	/**
+	 * The cached value of the '{@link #getAlias() <em>Alias</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlias()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.hl7.fhir.String> alias;
 
 	/**
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference.
@@ -172,6 +184,16 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 	 * @ordered
 	 */
 	protected Reference partOf;
+
+	/**
+	 * The cached value of the '{@link #getEndpoint() <em>Endpoint</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndpoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> endpoint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,6 +310,18 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.LOCATION__NAME, newName, newName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<org.hl7.fhir.String> getAlias() {
+		if (alias == null) {
+			alias = new EObjectContainmentEList<org.hl7.fhir.String>(org.hl7.fhir.String.class, this, FhirPackage.LOCATION__ALIAS);
+		}
+		return alias;
 	}
 
 	/**
@@ -651,6 +685,18 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Reference> getEndpoint() {
+		if (endpoint == null) {
+			endpoint = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.LOCATION__ENDPOINT);
+		}
+		return endpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -660,6 +706,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return basicSetStatus(null, msgs);
 			case FhirPackage.LOCATION__NAME:
 				return basicSetName(null, msgs);
+			case FhirPackage.LOCATION__ALIAS:
+				return ((InternalEList<?>)getAlias()).basicRemove(otherEnd, msgs);
 			case FhirPackage.LOCATION__DESCRIPTION:
 				return basicSetDescription(null, msgs);
 			case FhirPackage.LOCATION__MODE:
@@ -678,6 +726,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return basicSetManagingOrganization(null, msgs);
 			case FhirPackage.LOCATION__PART_OF:
 				return basicSetPartOf(null, msgs);
+			case FhirPackage.LOCATION__ENDPOINT:
+				return ((InternalEList<?>)getEndpoint()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -696,6 +746,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return getStatus();
 			case FhirPackage.LOCATION__NAME:
 				return getName();
+			case FhirPackage.LOCATION__ALIAS:
+				return getAlias();
 			case FhirPackage.LOCATION__DESCRIPTION:
 				return getDescription();
 			case FhirPackage.LOCATION__MODE:
@@ -714,6 +766,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return getManagingOrganization();
 			case FhirPackage.LOCATION__PART_OF:
 				return getPartOf();
+			case FhirPackage.LOCATION__ENDPOINT:
+				return getEndpoint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -736,6 +790,10 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return;
 			case FhirPackage.LOCATION__NAME:
 				setName((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.LOCATION__ALIAS:
+				getAlias().clear();
+				getAlias().addAll((Collection<? extends org.hl7.fhir.String>)newValue);
 				return;
 			case FhirPackage.LOCATION__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)newValue);
@@ -765,6 +823,10 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 			case FhirPackage.LOCATION__PART_OF:
 				setPartOf((Reference)newValue);
 				return;
+			case FhirPackage.LOCATION__ENDPOINT:
+				getEndpoint().clear();
+				getEndpoint().addAll((Collection<? extends Reference>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -785,6 +847,9 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return;
 			case FhirPackage.LOCATION__NAME:
 				setName((org.hl7.fhir.String)null);
+				return;
+			case FhirPackage.LOCATION__ALIAS:
+				getAlias().clear();
 				return;
 			case FhirPackage.LOCATION__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)null);
@@ -813,6 +878,9 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 			case FhirPackage.LOCATION__PART_OF:
 				setPartOf((Reference)null);
 				return;
+			case FhirPackage.LOCATION__ENDPOINT:
+				getEndpoint().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -831,6 +899,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return status != null;
 			case FhirPackage.LOCATION__NAME:
 				return name != null;
+			case FhirPackage.LOCATION__ALIAS:
+				return alias != null && !alias.isEmpty();
 			case FhirPackage.LOCATION__DESCRIPTION:
 				return description != null;
 			case FhirPackage.LOCATION__MODE:
@@ -849,6 +919,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return managingOrganization != null;
 			case FhirPackage.LOCATION__PART_OF:
 				return partOf != null;
+			case FhirPackage.LOCATION__ENDPOINT:
+				return endpoint != null && !endpoint.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

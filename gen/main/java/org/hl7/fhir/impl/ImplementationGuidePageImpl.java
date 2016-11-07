@@ -32,7 +32,7 @@ import org.hl7.fhir.Uri;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ImplementationGuidePageImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ImplementationGuidePageImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ImplementationGuidePageImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImplementationGuidePageImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImplementationGuidePageImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImplementationGuidePageImpl#getPackage <em>Package</em>}</li>
@@ -54,14 +54,14 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 	protected Uri source;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
+	 * The cached value of the '{@link #getTitle() <em>Title</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getTitle()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String name;
+	protected org.hl7.fhir.String title;
 
 	/**
 	 * The cached value of the '{@link #getKind() <em>Kind</em>}' containment reference.
@@ -180,8 +180,8 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getName() {
-		return name;
+	public org.hl7.fhir.String getTitle() {
+		return title;
 	}
 
 	/**
@@ -189,11 +189,11 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetName(org.hl7.fhir.String newName, NotificationChain msgs) {
-		org.hl7.fhir.String oldName = name;
-		name = newName;
+	public NotificationChain basicSetTitle(org.hl7.fhir.String newTitle, NotificationChain msgs) {
+		org.hl7.fhir.String oldTitle = title;
+		title = newTitle;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME, oldName, newName);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE, oldTitle, newTitle);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -204,18 +204,18 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(org.hl7.fhir.String newName) {
-		if (newName != name) {
+	public void setTitle(org.hl7.fhir.String newTitle) {
+		if (newTitle != title) {
 			NotificationChain msgs = null;
-			if (name != null)
-				msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME, null, msgs);
-			if (newName != null)
-				msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME, null, msgs);
-			msgs = basicSetName(newName, msgs);
+			if (title != null)
+				msgs = ((InternalEObject)title).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE, null, msgs);
+			if (newTitle != null)
+				msgs = ((InternalEObject)newTitle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE, null, msgs);
+			msgs = basicSetTitle(newTitle, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME, newName, newName));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE, newTitle, newTitle));
 	}
 
 	/**
@@ -350,8 +350,8 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 		switch (featureID) {
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__SOURCE:
 				return basicSetSource(null, msgs);
-			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME:
-				return basicSetName(null, msgs);
+			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE:
+				return basicSetTitle(null, msgs);
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__KIND:
 				return basicSetKind(null, msgs);
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TYPE:
@@ -376,8 +376,8 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 		switch (featureID) {
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__SOURCE:
 				return getSource();
-			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME:
-				return getName();
+			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE:
+				return getTitle();
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__KIND:
 				return getKind();
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TYPE:
@@ -404,8 +404,8 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__SOURCE:
 				setSource((Uri)newValue);
 				return;
-			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME:
-				setName((org.hl7.fhir.String)newValue);
+			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE:
+				setTitle((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__KIND:
 				setKind((GuidePageKind)newValue);
@@ -440,8 +440,8 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__SOURCE:
 				setSource((Uri)null);
 				return;
-			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME:
-				setName((org.hl7.fhir.String)null);
+			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE:
+				setTitle((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__KIND:
 				setKind((GuidePageKind)null);
@@ -472,8 +472,8 @@ public class ImplementationGuidePageImpl extends BackboneElementImpl implements 
 		switch (featureID) {
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__SOURCE:
 				return source != null;
-			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__NAME:
-				return name != null;
+			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TITLE:
+				return title != null;
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__KIND:
 				return kind != null;
 			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE__TYPE:

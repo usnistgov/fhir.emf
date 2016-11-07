@@ -21,6 +21,7 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.ElementDefinitionConstraint#getRequirements <em>Requirements</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinitionConstraint#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinitionConstraint#getHuman <em>Human</em>}</li>
+ *   <li>{@link org.hl7.fhir.ElementDefinitionConstraint#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.hl7.fhir.ElementDefinitionConstraint#getXpath <em>Xpath</em>}</li>
  * </ul>
  *
@@ -132,6 +133,32 @@ public interface ElementDefinitionConstraint extends Element {
 	 * @generated
 	 */
 	void setHuman(org.hl7.fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A [FluentPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Expression</em>' containment reference.
+	 * @see #setExpression(org.hl7.fhir.String)
+	 * @see org.hl7.fhir.FhirPackage#getElementDefinitionConstraint_Expression()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='expression' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.String getExpression();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ElementDefinitionConstraint#getExpression <em>Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Expression</em>' containment reference.
+	 * @see #getExpression()
+	 * @generated
+	 */
+	void setExpression(org.hl7.fhir.String value);
 
 	/**
 	 * Returns the value of the '<em><b>Xpath</b></em>' containment reference.

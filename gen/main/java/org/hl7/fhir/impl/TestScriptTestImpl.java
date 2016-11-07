@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.TestScriptAction1;
-import org.hl7.fhir.TestScriptMetadata;
 import org.hl7.fhir.TestScriptTest;
 
 /**
@@ -32,7 +31,6 @@ import org.hl7.fhir.TestScriptTest;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.TestScriptTestImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptTestImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.TestScriptTestImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptTestImpl#getAction <em>Action</em>}</li>
  * </ul>
  *
@@ -58,16 +56,6 @@ public class TestScriptTestImpl extends BackboneElementImpl implements TestScrip
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String description;
-
-	/**
-	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMetadata()
-	 * @generated
-	 * @ordered
-	 */
-	protected TestScriptMetadata metadata;
 
 	/**
 	 * The cached value of the '{@link #getAction() <em>Action</em>}' containment reference list.
@@ -189,49 +177,6 @@ public class TestScriptTestImpl extends BackboneElementImpl implements TestScrip
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestScriptMetadata getMetadata() {
-		return metadata;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetMetadata(TestScriptMetadata newMetadata, NotificationChain msgs) {
-		TestScriptMetadata oldMetadata = metadata;
-		metadata = newMetadata;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_TEST__METADATA, oldMetadata, newMetadata);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMetadata(TestScriptMetadata newMetadata) {
-		if (newMetadata != metadata) {
-			NotificationChain msgs = null;
-			if (metadata != null)
-				msgs = ((InternalEObject)metadata).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_TEST__METADATA, null, msgs);
-			if (newMetadata != null)
-				msgs = ((InternalEObject)newMetadata).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT_TEST__METADATA, null, msgs);
-			msgs = basicSetMetadata(newMetadata, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT_TEST__METADATA, newMetadata, newMetadata));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<TestScriptAction1> getAction() {
 		if (action == null) {
 			action = new EObjectContainmentEList<TestScriptAction1>(TestScriptAction1.class, this, FhirPackage.TEST_SCRIPT_TEST__ACTION);
@@ -251,8 +196,6 @@ public class TestScriptTestImpl extends BackboneElementImpl implements TestScrip
 				return basicSetName(null, msgs);
 			case FhirPackage.TEST_SCRIPT_TEST__DESCRIPTION:
 				return basicSetDescription(null, msgs);
-			case FhirPackage.TEST_SCRIPT_TEST__METADATA:
-				return basicSetMetadata(null, msgs);
 			case FhirPackage.TEST_SCRIPT_TEST__ACTION:
 				return ((InternalEList<?>)getAction()).basicRemove(otherEnd, msgs);
 		}
@@ -271,8 +214,6 @@ public class TestScriptTestImpl extends BackboneElementImpl implements TestScrip
 				return getName();
 			case FhirPackage.TEST_SCRIPT_TEST__DESCRIPTION:
 				return getDescription();
-			case FhirPackage.TEST_SCRIPT_TEST__METADATA:
-				return getMetadata();
 			case FhirPackage.TEST_SCRIPT_TEST__ACTION:
 				return getAction();
 		}
@@ -293,9 +234,6 @@ public class TestScriptTestImpl extends BackboneElementImpl implements TestScrip
 				return;
 			case FhirPackage.TEST_SCRIPT_TEST__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.TEST_SCRIPT_TEST__METADATA:
-				setMetadata((TestScriptMetadata)newValue);
 				return;
 			case FhirPackage.TEST_SCRIPT_TEST__ACTION:
 				getAction().clear();
@@ -319,9 +257,6 @@ public class TestScriptTestImpl extends BackboneElementImpl implements TestScrip
 			case FhirPackage.TEST_SCRIPT_TEST__DESCRIPTION:
 				setDescription((org.hl7.fhir.String)null);
 				return;
-			case FhirPackage.TEST_SCRIPT_TEST__METADATA:
-				setMetadata((TestScriptMetadata)null);
-				return;
 			case FhirPackage.TEST_SCRIPT_TEST__ACTION:
 				getAction().clear();
 				return;
@@ -341,8 +276,6 @@ public class TestScriptTestImpl extends BackboneElementImpl implements TestScrip
 				return name != null;
 			case FhirPackage.TEST_SCRIPT_TEST__DESCRIPTION:
 				return description != null;
-			case FhirPackage.TEST_SCRIPT_TEST__METADATA:
-				return metadata != null;
 			case FhirPackage.TEST_SCRIPT_TEST__ACTION:
 				return action != null && !action.isEmpty();
 		}

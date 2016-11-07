@@ -18,12 +18,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.hl7.fhir.Media#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.Media#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.Media#getSubtype <em>Subtype</em>}</li>
- *   <li>{@link org.hl7.fhir.Media#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.Media#getView <em>View</em>}</li>
  *   <li>{@link org.hl7.fhir.Media#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.Media#getOperator <em>Operator</em>}</li>
- *   <li>{@link org.hl7.fhir.Media#getView <em>View</em>}</li>
  *   <li>{@link org.hl7.fhir.Media#getDeviceName <em>Device Name</em>}</li>
  *   <li>{@link org.hl7.fhir.Media#getHeight <em>Height</em>}</li>
  *   <li>{@link org.hl7.fhir.Media#getWidth <em>Width</em>}</li>

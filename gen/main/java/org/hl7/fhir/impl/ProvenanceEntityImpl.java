@@ -2,14 +2,18 @@
  */
 package org.hl7.fhir.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.ProvenanceAgent;
@@ -76,14 +80,14 @@ public class ProvenanceEntityImpl extends BackboneElementImpl implements Provena
 	protected org.hl7.fhir.String display;
 
 	/**
-	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' containment reference.
+	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAgent()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProvenanceAgent agent;
+	protected EList<ProvenanceAgent> agent;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,42 +285,11 @@ public class ProvenanceEntityImpl extends BackboneElementImpl implements Provena
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProvenanceAgent getAgent() {
+	public EList<ProvenanceAgent> getAgent() {
+		if (agent == null) {
+			agent = new EObjectContainmentEList<ProvenanceAgent>(ProvenanceAgent.class, this, FhirPackage.PROVENANCE_ENTITY__AGENT);
+		}
 		return agent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAgent(ProvenanceAgent newAgent, NotificationChain msgs) {
-		ProvenanceAgent oldAgent = agent;
-		agent = newAgent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROVENANCE_ENTITY__AGENT, oldAgent, newAgent);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAgent(ProvenanceAgent newAgent) {
-		if (newAgent != agent) {
-			NotificationChain msgs = null;
-			if (agent != null)
-				msgs = ((InternalEObject)agent).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROVENANCE_ENTITY__AGENT, null, msgs);
-			if (newAgent != null)
-				msgs = ((InternalEObject)newAgent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROVENANCE_ENTITY__AGENT, null, msgs);
-			msgs = basicSetAgent(newAgent, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROVENANCE_ENTITY__AGENT, newAgent, newAgent));
 	}
 
 	/**
@@ -336,7 +309,7 @@ public class ProvenanceEntityImpl extends BackboneElementImpl implements Provena
 			case FhirPackage.PROVENANCE_ENTITY__DISPLAY:
 				return basicSetDisplay(null, msgs);
 			case FhirPackage.PROVENANCE_ENTITY__AGENT:
-				return basicSetAgent(null, msgs);
+				return ((InternalEList<?>)getAgent()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -368,6 +341,7 @@ public class ProvenanceEntityImpl extends BackboneElementImpl implements Provena
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -384,7 +358,8 @@ public class ProvenanceEntityImpl extends BackboneElementImpl implements Provena
 				setDisplay((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.PROVENANCE_ENTITY__AGENT:
-				setAgent((ProvenanceAgent)newValue);
+				getAgent().clear();
+				getAgent().addAll((Collection<? extends ProvenanceAgent>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -411,7 +386,7 @@ public class ProvenanceEntityImpl extends BackboneElementImpl implements Provena
 				setDisplay((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.PROVENANCE_ENTITY__AGENT:
-				setAgent((ProvenanceAgent)null);
+				getAgent().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -434,7 +409,7 @@ public class ProvenanceEntityImpl extends BackboneElementImpl implements Provena
 			case FhirPackage.PROVENANCE_ENTITY__DISPLAY:
 				return display != null;
 			case FhirPackage.PROVENANCE_ENTITY__AGENT:
-				return agent != null;
+				return agent != null && !agent.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
